@@ -1,1 +1,39 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", serif;
+}
+
+body {
+    background-color: #09090B;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    margin-bottom: 144px;
+}
+
+.startSection {
+    height: calc(100vh - 112px);
+}
+
+@media (max-width: 768px) {
+    section {
+        margin-bottom: 80px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .startSection {
+        height: calc(100vh - 72px);
+    }
+}
