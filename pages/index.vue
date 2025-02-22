@@ -6,6 +6,7 @@
   </client-only>
   <GeniusSection />
   <JoinUsSection />
+  <PlanSection />
 </template>
 
 <script setup lang="ts"></script>

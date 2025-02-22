@@ -1,28 +1,27 @@
 <template>
   <div
-    class="absolute top-0 left-0 w-full h-screen z-0 bg-gradient-to-b from-primary to-black"
+    class="absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-primary to-[#09090B]"
   ></div>
-  <section class="z-20 startSection heroSection h-screen relative">
+  <div class="startSection heroSection relative">
     <div class="container mx-auto h-full relative px-4">
       <div class="h-full flex flex-col justify-center">
         <h1
           class="md:text-center mb-10 text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
         >
-          Unleash the power of <br />
-          intuitive finance
+          <!-- Unleash the power of <br />
+          intuitive finance -->
+          {{ $t("introSectionTitle1") }}
         </h1>
 
         <div>
           <p class="text-paragraph font-semibold text-xl md:text-center">
-            Say goodbye to the outdated financial tools. Every small business
-            owner,
+            {{ $t("introSectionTitle1Paragraph1") }}
           </p>
           <p class="text-paragraph font-semibold text-xl md:text-center">
-            regardless of the background, can now manage their business like a
-            pro. Simple.
+            {{ $t("introSectionTitle1Paragraph2") }}.
           </p>
           <p class="text-paragraph font-semibold text-xl md:text-center">
-            Intuitive. And never boring.
+            {{ $t("introSectionTitle1Paragraph3") }}
           </p>
         </div>
         <button
@@ -31,7 +30,7 @@
             adjustedPath === '/' ? ' text-white ' : ' text-black  border-black'
           "
         >
-          <span class="button-text">{{ $t("contact_us") }}</span>
+          <span class="button-text">{{ $t("introSectionButton") }}</span>
         </button>
         <button
           class="mt-8 px-7 py-2"
@@ -43,7 +42,7 @@
         </button>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">

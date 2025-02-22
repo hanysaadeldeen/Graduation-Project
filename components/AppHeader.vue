@@ -1,6 +1,6 @@
 <template>
   <header class="z-10 relative py-5 text-white bg-transparent">
-    <div class="container mx-auto relative max-sm:px-4 px-2">
+    <div class="container mx-auto max-sm:px-4 px-2">
       <div class="relative z-20">
         <div class="flex items-center justify-between">
           <nuxt-link :to="localePath('index')">
@@ -46,7 +46,7 @@
             >
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
-            <h4>Blog</h4>
+            <h4>{{ $t("blog") }}</h4>
             <button
               class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2"
               :class="
@@ -69,16 +69,11 @@
       <transition :name="transitionName">
         <div
           v-if="isSideBar"
-          class="sideBar z-20 lg:hidden absolute flex flex-col px-5 items-start w-1/3 right-2 top-10 h-[calc(100vh-72px)] transition-all"
+          class="sideBar z-40 lg:hidden absolute flex flex-col px-8 items-start w-full right-0 h-[calc(100vh-75px)] transition-all bg-white text-black"
           :class="[
             {
               'right-0': locale === 'ar',
-              'bg-gradient-to-l from-[#000000] to-[#220D0E]  text-white':
-                locale === 'ar' && adjustedPath === '/',
               'left-0': locale !== 'ar',
-              'bg-gradient-to-r from-[#000000] to-[#220D0E] text-white ':
-                adjustedPath === '/',
-              'bg-white text-black': adjustedPath !== '/',
             },
           ]"
         >
@@ -89,29 +84,14 @@
                   {{ $t("home") }}
                 </nuxt-link>
               </li>
-              <li :class="adjustedPath === '/company' ? 'active' : ''">
-                <nuxt-link :to="localePath('company')">{{
-                  $t("company")
-                }}</nuxt-link>
-              </li>
-              <li :class="adjustedPath === '/services' ? 'active' : ''">
-                <nuxt-link :to="localePath('solution')">{{
-                  $t("services")
-                }}</nuxt-link>
-              </li>
-              <li :class="adjustedPath === '/clients' ? 'active' : ''">
-                <nuxt-link :to="localePath('clients')">{{
-                  $t("clients")
-                }}</nuxt-link>
-              </li>
-              <li :class="adjustedPath === '/galary' ? 'active' : ''">
-                <nuxt-link :to="localePath('galary')">{{
-                  $t("gallery")
-                }}</nuxt-link>
+              <li :class="adjustedPath === 'Blog' ? 'active' : ''">
+                <nuxt-link :to="localePath('index')">
+                  {{ $t("blog") }}
+                </nuxt-link>
               </li>
             </ul>
           </nav>
-          <div class="gap-10 mt-10 flex flex-col justify-between items-start">
+          <div class="gap-5 mt-5 flex flex-col justify-between items-start">
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="font-medium text-xl"
@@ -119,24 +99,14 @@
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
             <button
-              class="gradient-button hover:text-white border hover:border-transparent transition-all duration-500 ease-in-out"
-              :class="
-                adjustedPath === '/'
-                  ? ' text-white  '
-                  : ' text-black  border-black'
-              "
+              class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2"
             >
-              <span class="gradient-bg"></span>
               <span class="button-text">{{ $t("contact_us") }}</span>
             </button>
           </div>
         </div>
       </transition>
     </div>
-    <div
-      v-if="isSideBar"
-      class="absolute left-0 w-full h-[calc(100vh-72px)] bg-black opacity-80 z-10"
-    ></div>
   </header>
 </template>
 

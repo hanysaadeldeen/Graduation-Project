@@ -7,12 +7,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", serif;
+    text-transform: capitalize;
 }
 
 body {
     background-color: #09090B;
 }
+
+html[lang="en"] {
+    font-family: 'League Spartan';
+}
+
+html[lang="ar"] {
+    font-family: 'GE Dinar One';
+}
+
 
 html {
     scroll-behavior: smooth;
