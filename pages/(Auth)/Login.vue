@@ -13,10 +13,10 @@
         </div>
 
         <div
-          class="flex justify-center items-center border-l border-secondary w-full lg:w-1/2"
+          class="flex justify-center items-center lg:border-l border-secondary w-full lg:w-1/2"
         >
           <div
-            class="flex justify-center flex-col w-full px-10 items-center gap-10"
+            class="flex justify-center flex-col w-full px-5 lg:px-10 items-center"
           >
             <h1
               class="text-center text-5xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
