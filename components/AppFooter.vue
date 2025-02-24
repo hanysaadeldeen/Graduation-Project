@@ -1,6 +1,11 @@
 <template>
   <footer
-    class="text-white bg-gradient-to-t from-primary to-[#09090B] border-t border-gray-900 py-6 md:py-8"
+    class="text-white from-primary to-[#09090B] border-t border-gray-800 py-6 md:py-8"
+    :class="
+      adjustedPath === '/Login' || adjustedPath === '/Register'
+        ? 'bg-gradient-to-b'
+        : 'bg-gradient-to-t'
+    "
   >
     <div class="container mx-auto relative max-sm:px-4 px-2">
       <div
@@ -82,12 +87,12 @@
       </div>
 
       <h1
-        class="sm:text-center text-paragraph-mediumDark font-medium text-base mt-8 text-paragraph"
+        class="sm:text-center text-paragraph-mediumDark font-medium text-base my-6 text-paragraph"
       >
         Our mission is to improve cybersecurity in every company we touch.
       </h1>
       <h1
-        class="border-t sm:text-center border-primary text-paragraph-mediumDark font-medium text-base py-6 md:pt-8"
+        class="border-t sm:text-center border-primary text-paragraph-mediumDark font-medium text-base pt-6"
       >
         Copyright © 2025 Zero Point Path. All Rights Reserved.
       </h1>
@@ -96,7 +101,20 @@
 </template>
 
 <script setup lang="ts">
-const localePath = useLocalePath();
+const route = useRoute();
+const adjustedPath = ref("");
+
+const getPathWithoutLocale = (path: string) => {
+  const segments = path.split("/");
+  if (segments[1] && segments[1].length === 2) {
+    return `/${segments.slice(2).join("/")}`;
+  }
+  return path;
+};
+
+watchEffect(() => {
+  adjustedPath.value = getPathWithoutLocale(route.path);
+});
 </script>
 
 <style scoped>

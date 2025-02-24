@@ -40,6 +40,9 @@
             </ul>
           </nav> -->
           <div class="gap-10 justify-between items-center hidden lg:flex">
+            <nuxt-link :to="localePath('Login')">
+              <h4>{{ $t("Login") }}</h4>
+            </nuxt-link>
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="font-medium text-xl cursor-pointer"

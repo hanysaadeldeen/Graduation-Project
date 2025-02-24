@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   css: ["swiper/css", "~/assets/css/main.css"],
-  modules: ["@pinia/nuxt", "@vee-validate/nuxt", "nuxt-swiper", "@nuxtjs/i18n"],
+  modules: ["@pinia/nuxt", "@vee-validate/nuxt", "@nuxtjs/i18n"],
   components: [
     "~/components",
     { path: "~/components/home/", extensions: ["vue"] },
