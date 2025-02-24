@@ -41,7 +41,7 @@
           </nav> -->
           <div class="gap-10 justify-between items-center hidden lg:flex">
             <nuxt-link :to="localePath('Login')">
-              <h4>{{ $t("Login") }}</h4>
+              <h4>{{ $t("login") }}</h4>
             </nuxt-link>
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
@@ -95,6 +95,9 @@
             </ul>
           </nav>
           <div class="gap-5 mt-5 flex flex-col justify-between items-start">
+            <nuxt-link :to="localePath('Login')">
+              <h4>{{ $t("login") }}</h4>
+            </nuxt-link>
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="font-medium text-xl"
