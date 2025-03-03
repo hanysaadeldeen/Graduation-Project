@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   components: [
     "~/components",
     { path: "~/components/home/", extensions: ["vue"] },
+    { path: "~/components/blog/", extensions: ["vue"] },
   ],
   i18n: {
     strategy: "prefix_except_default",
@@ -18,7 +19,13 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      script: [],
+      script: [
+        {
+          src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyC5UbwjShNViPsTd7E_mKvUZE8Nl5G2vKM&libraries=places`,
+          async: true,
+          defer: true,
+        },
+      ],
       link: [
         {
           rel: "icon",

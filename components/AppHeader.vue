@@ -49,7 +49,12 @@
             >
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
-            <h4>{{ $t("blog") }}</h4>
+            <!-- <h4>{{ $t("blog") }}</h4> -->
+            <nuxt-link :to="localePath('blog')">
+              <p :class="adjustedPath === 'blog' ? 'active' : ''">
+                {{ $t("blog") }}
+              </p>
+            </nuxt-link>
             <button
               class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2"
               :class="
@@ -82,20 +87,29 @@
         >
           <nav class="inline-block mt-10">
             <ul class="flex flex-col gap-5">
-              <li :class="adjustedPath === '/' ? 'active' : ''">
-                <nuxt-link :to="localePath('index')">
+              <nuxt-link
+                :to="localePath('index')"
+                @click="isSideBar = !isSideBar"
+              >
+                <li :class="adjustedPath === '/' ? 'active' : ''">
                   {{ $t("home") }}
-                </nuxt-link>
-              </li>
-              <li :class="adjustedPath === 'Blog' ? 'active' : ''">
-                <nuxt-link :to="localePath('index')">
+                </li>
+              </nuxt-link>
+              <nuxt-link
+                :to="localePath('blog')"
+                @click="isSideBar = !isSideBar"
+              >
+                <li :class="adjustedPath === 'blog' ? 'active' : ''">
                   {{ $t("blog") }}
-                </nuxt-link>
-              </li>
+                </li>
+              </nuxt-link>
             </ul>
           </nav>
           <div class="gap-5 mt-5 flex flex-col justify-between items-start">
-            <nuxt-link :to="localePath('Login')">
+            <nuxt-link
+              :to="localePath('Login')"
+              @click="isSideBar = !isSideBar"
+            >
               <h4>{{ $t("login") }}</h4>
             </nuxt-link>
             <button
