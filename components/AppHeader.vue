@@ -58,7 +58,7 @@
             <button
               class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2"
               :class="
-                adjustedPath === '/'
+                adjustedPath === '/' || adjustedPath === '/blog'
                   ? ' text-white '
                   : ' text-black  border-black'
               "
