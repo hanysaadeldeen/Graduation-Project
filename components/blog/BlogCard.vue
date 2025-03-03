@@ -10,7 +10,7 @@
         <i class="text-secondary fa-solid fa-calendar-days mr-2"></i> November
         25, 2024
       </p>
-      <nuxt-link>
+      <nuxt-link :to="localePath('/blogs/1')">
         <h1
           class="group-hover:text-secondary duration-300 transition-all cursor-pointer ease-in-out text-2xl font-bold text-white my-6 md:my-10"
         >
@@ -36,6 +36,8 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const localePath = useLocalePath();
+</script>
 
 <style scoped></style>

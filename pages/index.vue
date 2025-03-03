@@ -1,5 +1,8 @@
 <template>
   <HeroSection />
+  <nuxt-link :to="`/blog/1`" class="text-red-500 text-4xl"
+    >Go to Blog 1</nuxt-link
+  >
   <WhatUs />
   <client-only>
     <AccessCardsSection />

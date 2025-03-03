@@ -50,8 +50,8 @@
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
             <!-- <h4>{{ $t("blog") }}</h4> -->
-            <nuxt-link :to="localePath('blog')">
-              <p :class="adjustedPath === 'blog' ? 'active' : ''">
+            <nuxt-link :to="localePath('blogs')">
+              <p :class="adjustedPath === 'blogs' ? 'active' : ''">
                 {{ $t("blog") }}
               </p>
             </nuxt-link>
@@ -99,8 +99,8 @@
                 :to="localePath('blog')"
                 @click="isSideBar = !isSideBar"
               >
-                <li :class="adjustedPath === 'blog' ? 'active' : ''">
-                  {{ $t("blog") }}
+                <li :class="adjustedPath === 'blogs' ? 'active' : ''">
+                  {{ $t("blogs") }}
                 </li>
               </nuxt-link>
             </ul>
