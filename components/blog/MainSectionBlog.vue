@@ -54,7 +54,7 @@
         >
           Discover the latest articles and insights on Dark Atlas
         </h1>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-rows-4 gap-5 mt-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
           <BlogCard />
           <BlogCard />
           <BlogCard />

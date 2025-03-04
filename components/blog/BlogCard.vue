@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#161625] p-5 rounded-md group/item h-fit">
+  <div class="bg-[#161625] p-5 rounded-md group/item h-fit max-w-fit">
     <img
       src="~/assets/img/blog1.webp"
       alt="Blog Image"
