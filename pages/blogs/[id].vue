@@ -8,11 +8,11 @@
           class="w-full h-full max-h-[500px] object-cover"
         />
       </div>
-      <div class="p-8">
+      <div class="mt-8">
         <nuxt-link to="/blogs">
           <div class="flex gap-2.5 group items-center">
             <i
-              class="fa-solid fa-arrow-left cursor-pointer text-[#A1A1AA] transition-all duration-300 ease-in-out group-hover:translate-x-2 group-hover:text-white"
+              class="fa-solid fa-arrow-left cursor-pointer text-[#A1A1AA] transition-all duration-300 ease-in-out group-hover:-translate-x-2 group-hover:text-white"
             ></i>
             <h1 class="text-2xl text-paragraph font-medium">Blog</h1>
           </div>
