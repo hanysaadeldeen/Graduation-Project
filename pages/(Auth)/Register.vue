@@ -13,13 +13,14 @@
         </div>
 
         <div
-          class="flex justify-center items-center w-full lg:border-l border-secondary lg:w-1/2"
+          class="flex justify-center items-center w-full border-secondary lg:w-1/2"
+          :class="locale === 'ar' ? 'lg:border-r' : 'lg:border-l'"
         >
           <div
             class="flex justify-center flex-col w-full px-5 lg:px-10 items-center"
           >
             <h1
-              class="text-center text-5xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
+              class="text-center mb-5 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
             >
               Register Page
             </h1>
@@ -150,6 +151,7 @@
 <script setup lang="ts">
 import { Form, Field } from "vee-validate";
 import * as yup from "yup";
+const { locale } = useI18n();
 
 const localePath = useLocalePath();
 // تعريف المخطط (Schema) للتحقق من صحة البيانات

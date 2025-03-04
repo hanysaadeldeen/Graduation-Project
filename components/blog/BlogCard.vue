@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#161625] p-5 rounded-md group groupTwo h-fit">
+  <div class="bg-[#161625] p-5 rounded-md group/item h-fit">
     <img
       src="~/assets/img/blog1.webp"
       alt="Blog Image"
@@ -12,7 +12,7 @@
       </p>
       <nuxt-link :to="localePath('/blogs/1')">
         <h1
-          class="group-hover:text-secondary duration-300 transition-all cursor-pointer ease-in-out text-2xl font-bold text-white my-6 md:my-10"
+          class="group-hover/item:text-secondary duration-300 transition-all cursor-pointer ease-in-out text-2xl font-bold text-white my-6 md:my-10"
         >
           Helldown Ransomware Analysis
         </h1>
@@ -24,14 +24,16 @@
         center in the United States, the investigation revealed that the
         attackers gain access to victims through compromised VPNs credentials
       </p>
-      <button
-        class="group-hover:opacity-100 opacity-0 flex bg-gradient-to-r from-primary to-[#09090B] hover:scale-105 transition-all duration-300 ease-in-out w-full text-white text-center py-3 rounded-md text-xl font-medium tracking-wider items-center justify-center gap-3 mt-8"
-      >
-        Read More
-        <i
-          class="fa-solid fa-arrow-right cursor-pointer text-[#A1A1AA] transition-all duration-300 ease-in-out group-hover:translate-x-2 group-hover:text-white"
-        ></i>
-      </button>
+      <nuxt-link :to="localePath('/blogs/1')">
+        <button
+          class="group-hover/item:opacity-100 group/edit opacity-0 flex bg-gradient-to-r from-primary to-[#09090B] hover:scale-105 transition-all duration-300 ease-in-out w-full text-white text-center py-3 rounded-md text-xl font-medium tracking-wider items-center justify-center gap-3 mt-8"
+        >
+          Read More
+          <i
+            class="fa-solid fa-arrow-right cursor-pointer text-[#A1A1AA] transition-all duration-300 ease-in-out group-hover/edit:translate-x-2 group-hover/edit:text-white"
+          ></i>
+        </button>
+      </nuxt-link>
     </div>
   </div>
 </template>

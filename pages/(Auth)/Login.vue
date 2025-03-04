@@ -13,13 +13,14 @@
         </div>
 
         <div
-          class="flex justify-center items-center lg:border-l border-secondary w-full lg:w-1/2"
+          class="flex justify-center items-center border-secondary w-full lg:w-1/2"
+          :class="locale === 'ar' ? 'lg:border-r' : 'lg:border-l'"
         >
           <div
             class="flex justify-center flex-col w-full px-5 lg:px-10 items-center"
           >
             <h1
-              class="text-center text-5xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
+              class="text-center mb-5 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
             >
               Login Page
             </h1>
@@ -84,6 +85,7 @@
 
 <script setup lang="ts">
 import { Form, Field } from "vee-validate";
+const { locale } = useI18n();
 import * as yup from "yup";
 const localePath = useLocalePath();
 const schema = yup.object({

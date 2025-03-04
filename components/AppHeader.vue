@@ -41,7 +41,9 @@
           </nav> -->
           <div class="gap-10 justify-between items-center hidden lg:flex">
             <nuxt-link :to="localePath('Login')">
-              <h4>{{ $t("login") }}</h4>
+              <p :class="adjustedPath === '/' ? '/Login' : ''">
+                {{ $t("login") }}
+              </p>
             </nuxt-link>
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
@@ -52,16 +54,11 @@
             <!-- <h4>{{ $t("blog") }}</h4> -->
             <nuxt-link :to="localePath('blogs')">
               <p :class="adjustedPath === 'blogs' ? 'active' : ''">
-                {{ $t("blog") }}
+                {{ $t("blogs") }}
               </p>
             </nuxt-link>
             <button
-              class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2"
-              :class="
-                adjustedPath === '/' || adjustedPath === '/blog'
-                  ? ' text-white '
-                  : ' text-black  border-black'
-              "
+              class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2 text-white"
             >
               <span class="button-text">{{ $t("contact_us") }}</span>
             </button>
@@ -86,7 +83,7 @@
           ]"
         >
           <nav class="inline-block mt-10">
-            <ul class="flex flex-col gap-5">
+            <ul class="flex flex-col gap-2">
               <nuxt-link
                 :to="localePath('index')"
                 @click="isSideBar = !isSideBar"
@@ -96,22 +93,24 @@
                 </li>
               </nuxt-link>
               <nuxt-link
-                :to="localePath('blog')"
+                :to="localePath('blogs')"
                 @click="isSideBar = !isSideBar"
               >
-                <li :class="adjustedPath === 'blogs' ? 'active' : ''">
+                <li :class="adjustedPath === '/blogs' ? 'active' : ''">
                   {{ $t("blogs") }}
+                </li>
+              </nuxt-link>
+              <nuxt-link
+                :to="localePath('Login')"
+                @click="isSideBar = !isSideBar"
+              >
+                <li :class="adjustedPath === '/Login' ? 'active' : ''">
+                  {{ $t("login") }}
                 </li>
               </nuxt-link>
             </ul>
           </nav>
           <div class="gap-5 mt-5 flex flex-col justify-between items-start">
-            <nuxt-link
-              :to="localePath('Login')"
-              @click="isSideBar = !isSideBar"
-            >
-              <h4>{{ $t("login") }}</h4>
-            </nuxt-link>
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="font-medium text-xl"
