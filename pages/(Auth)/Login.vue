@@ -41,7 +41,7 @@
                     name="email"
                     type="email"
                     placeholder="Enter Your Email"
-                    class="text-black w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.email }"
                   />
                   <span class="text-red-500 text-sm">{{ errors.email }}</span>
@@ -55,8 +55,9 @@
                   <Field
                     id="password"
                     name="password"
+                    type="password"
                     placeholder="Enter Your Email"
-                    class="text-black w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.password }"
                   />
                   <span class="text-red-500 text-sm">{{
@@ -64,8 +65,10 @@
                   }}</span>
                 </div>
                 <button
+                  :disabled="isLoading"
                   type="submit"
                   class="py-2 w-full capitalize rounded-xl bg-gradient-to-l from-primary to-secondary text-white font-bold tracking-wider text-2xl"
+                  :class="{ 'opacity-50 cursor-not-allowed': isLoading }"
                 >
                   Login In
                 </button>
@@ -87,6 +90,11 @@
 import { Form, Field } from "vee-validate";
 const { locale } = useI18n();
 import * as yup from "yup";
+import { useAuthStore } from "~/stores/authStore";
+import { useToast } from "vue-toast-notification";
+
+const toast = useToast({ position: "top-right", duration: 1500 });
+
 const localePath = useLocalePath();
 const schema = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -95,9 +103,20 @@ const schema = yup.object({
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
 });
-
-const onSubmit = (values: any) => {
-  console.log("Login Data:", values);
+const { loginUser } = useAuthStore();
+const authStore = useAuthStore();
+const { isLoading, error } = storeToRefs(authStore);
+const onSubmit = async (values: any) => {
+  try {
+    const response = await loginUser(values);
+    localStorage.setItem("token", response?.token?.result.token);
+    if (response) {
+      toast.success("Login successfully completed");
+      navigateTo(localePath("/"));
+    }
+  } catch (error: any) {
+    toast.error(error);
+  }
 };
 </script>
 

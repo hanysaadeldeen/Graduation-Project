@@ -42,7 +42,7 @@
                     name="firstName"
                     type="text"
                     placeholder="Enter Your First Name"
-                    class="text-black w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.firstName }"
                   />
                   <span class="text-red-500 text-sm">{{
@@ -62,11 +62,30 @@
                     name="lastName"
                     type="text"
                     placeholder="Enter Your Last Name"
-                    class="text-black w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.lastName }"
                   />
                   <span class="text-red-500 text-sm">{{
                     errors.lastName
+                  }}</span>
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="userName"
+                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
+                  >
+                    User Name
+                  </label>
+                  <Field
+                    id="userName"
+                    name="userName"
+                    type="text"
+                    placeholder="Enter Your Last Name"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    :class="{ 'border-red-500': errors.userName }"
+                  />
+                  <span class="text-red-500 text-sm">{{
+                    errors.userName
                   }}</span>
                 </div>
 
@@ -82,7 +101,7 @@
                     name="email"
                     type="email"
                     placeholder="Enter Your Email"
-                    class="text-black w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.email }"
                   />
                   <span class="text-red-500 text-sm">{{ errors.email }}</span>
@@ -100,7 +119,7 @@
                     name="password"
                     type="password"
                     placeholder="Enter Your Password"
-                    class="text-black w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.password }"
                   />
                   <span class="text-red-500 text-sm">{{
@@ -120,7 +139,7 @@
                     name="confirmPassword"
                     type="password"
                     placeholder="Confirm Your Password"
-                    class="text-black w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.confirmPassword }"
                   />
                   <span class="text-red-500 text-sm">{{
@@ -129,8 +148,10 @@
                 </div>
 
                 <button
+                  :disabled="isLoading"
                   type="submit"
                   class="py-2 w-full capitalize rounded-xl bg-gradient-to-l from-primary to-secondary text-white font-bold tracking-wider text-2xl"
+                  :class="{ 'opacity-50 cursor-not-allowed': isLoading }"
                 >
                   Register
                 </button>
@@ -151,10 +172,10 @@
 <script setup lang="ts">
 import { Form, Field } from "vee-validate";
 import * as yup from "yup";
+import { useAuthStore } from "~/stores/authStore";
 const { locale } = useI18n();
 
 const localePath = useLocalePath();
-// تعريف المخطط (Schema) للتحقق من صحة البيانات
 const schema = yup.object({
   firstName: yup
     .string()
@@ -164,6 +185,10 @@ const schema = yup.object({
     .string()
     .min(2, "Last name must be at least 2 characters")
     .required("Last name is required"),
+  userName: yup
+    .string()
+    .min(2, "User name must be at least 2 characters")
+    .required("User name is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
     .string()
@@ -175,9 +200,22 @@ const schema = yup.object({
     .required("Confirm password is required"),
 });
 
-// دالة تنفيذ الطلب عند الضغط على زر التسجيل
-const onSubmit = (values: any) => {
-  console.log("Register Data:", values);
+const { registerUser } = useAuthStore();
+const authStore = useAuthStore();
+const { isLoading, error } = storeToRefs(authStore);
+import { useToast } from "vue-toast-notification";
+const toast = useToast({ position: "top-right", duration: 1500 });
+
+const onSubmit = async (values: any) => {
+  try {
+    const response = await registerUser(values);
+    if (response) {
+      toast.success("register successfully completed");
+      navigateTo(localePath("/login"));
+    }
+  } catch (error: any) {
+    toast.error(error);
+  }
 };
 </script>
 

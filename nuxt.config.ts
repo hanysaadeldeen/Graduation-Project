@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["swiper/css", "~/assets/css/main.css"],
   modules: ["@pinia/nuxt", "@vee-validate/nuxt", "@nuxtjs/i18n"],
+  plugins: ["~/plugins/toast.client"],
   components: [
     "~/components",
     { path: "~/components/home/", extensions: ["vue"] },
@@ -38,10 +39,6 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=GE+Dinar+One&display=swap",
-        },
-        {
-          rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css",
         },
       ],
@@ -52,6 +49,11 @@ export default defineNuxtConfig({
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
+    },
+  },
+  runtimeConfig: {
+    public: {
+      BaseApi: "https://77d0-197-42-6-148.ngrok-free.app/api/Account",
     },
   },
 });

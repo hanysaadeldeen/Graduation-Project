@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Regular */
+@font-face {
+    font-family: 'GE Dinar One';
+    src: url('/fonts/alfont_com_GE-Dinar-One-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Medium */
+@font-face {
+    font-family: 'GE Dinar One';
+    src: url('/fonts/ArbFONTS-GE-Dinar-One-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Bold */
+@font-face {
+    font-family: 'GE Dinar One';
+    src: url('/fonts/alfont_com_GE-Dinar-One-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 
 * {
     margin: 0;
