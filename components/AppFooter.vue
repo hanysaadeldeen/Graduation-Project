@@ -9,7 +9,7 @@
   >
     <div class="container mx-auto relative max-sm:px-4 px-2">
       <div
-        class="flex max-lg:flex-col max-lg:items-start justify-between items-center gap-8"
+        class="flex max-lg:flex-col max-lg:items-start justify-between items-end gap-8"
       >
         <div class="">
           <img
@@ -19,6 +19,14 @@
           />
         </div>
         <div class="subscribe">
+          <h1
+            class="text-2xl mb-5 md:text-center text-paragraph"
+            :class="locale === 'ar' ? 'text-right' : 'text-left'"
+          >
+            <span class="text-white"> Subscribe </span>
+            <br />
+            New Security Updates Weekly!
+          </h1>
           <form @submit.prevent="" class="lg:mx-auto">
             <input
               class="bg-primary"
@@ -103,6 +111,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const adjustedPath = ref("");
+const { locale } = useI18n();
 
 const getPathWithoutLocale = (path: string) => {
   const segments = path.split("/");

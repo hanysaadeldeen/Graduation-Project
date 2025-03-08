@@ -57,6 +57,21 @@
                 {{ $t("blogs") }}
               </p>
             </nuxt-link>
+            <nuxt-link
+              class="flex gap-2 items-center cursor-pointer relative"
+              @click="isToolOpen = !isToolOpen"
+            >
+              <p :class="adjustedPath === 'tools' ? 'active' : ''">
+                {{ $t("tools") }}
+              </p>
+              <i class="fa-solid fa-angle-down"></i>
+              <transition name="dropdown">
+                <div
+                  v-if="isToolOpen"
+                  class="absolute w-5 h-5 -bottom-[25px] left-1/2 -translate-x-1/2 arrowTools"
+                ></div>
+              </transition>
+            </nuxt-link>
             <button
               class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2 text-white"
             >
@@ -70,11 +85,80 @@
             ></i>
           </div>
         </div>
+        <transition name="dropdown">
+          <div
+            v-if="isToolOpen"
+            class="absolute top-16 md:w-fit rounded-md h-fit bg-white p-4 max-lg:hidden"
+            :class="{
+              'left-5': locale === 'ar',
+              'right-5': locale !== 'ar',
+            }"
+          >
+            <div class="w-full grid grid-cols-2 xl:grid-cols-3 gap-4">
+              <div
+                class="tool flex flex-col gap-4 items-center justify-center mx-auto p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+              >
+                <div>
+                  <img src="~/assets/img/spider.svg" alt="spider" />
+                </div>
+                <p class="text-black font-semibold tracking-wider text-base">
+                  Website Scanner
+                </p>
+              </div>
+              <div
+                class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+              >
+                <div
+                  class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-eye text-[#744712] text-2xl"></i>
+                </div>
+                <p class="text-black font-semibold tracking-wider text-base">
+                  Port Scanner
+                </p>
+              </div>
+              <div
+                class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+              >
+                <div
+                  class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-envelope text-[#744712] text-2xl"></i>
+                </div>
+                <p class="text-black font-semibold tracking-wider text-base">
+                  Email Scanner
+                </p>
+              </div>
+              <div
+                class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+              >
+                <div>
+                  <img src="~/assets/img/password.svg" alt="password" />
+                </div>
+                <p class="text-black font-semibold tracking-wider text-base">
+                  Password Auditor
+                </p>
+              </div>
+              <div
+                class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+              >
+                <div
+                  class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-bug text-[#744712] text-2xl"></i>
+                </div>
+                <p class="text-black font-semibold tracking-wider text-base">
+                  Pug Scanner
+                </p>
+              </div>
+            </div>
+          </div>
+        </transition>
       </div>
       <transition :name="transitionName">
         <div
           v-if="isSideBar"
-          class="sideBar z-40 lg:hidden absolute flex flex-col px-8 items-start w-full right-0 h-[calc(100vh-75px)] transition-all bg-white text-black"
+          class="sideBar z-40 lg:hidden absolute flex flex-col px-8 pb-5 items-start w-full right-0 min-h-[calc(100vh-75px)] max-h-fit transition-all bg-white text-black"
           :class="[
             {
               'right-0': locale === 'ar',
@@ -83,7 +167,7 @@
           ]"
         >
           <nav class="inline-block mt-10">
-            <ul class="flex flex-col gap-2">
+            <ul class="flex flex-col gap-2 w-full">
               <nuxt-link
                 :to="localePath('index')"
                 @click="isSideBar = !isSideBar"
@@ -108,6 +192,105 @@
                   {{ $t("login") }}
                 </li>
               </nuxt-link>
+              <nuxt-link
+                class="flex gap-2 items-center cursor-pointer relative"
+                @click="isToolOpen = !isToolOpen"
+              >
+                <li>
+                  {{ $t("tools") }}
+                </li>
+                <i class="fa-solid fa-angle-down"></i>
+                <transition name="dropdown">
+                  <div
+                    v-if="isToolOpen"
+                    class="absolute w-5 h-5 -bottom-[8px] arrowTools2"
+                    :class="{
+                      'left-5': locale === 'en',
+                      'right-0': locale !== 'ar',
+                    }"
+                  ></div>
+                </transition>
+              </nuxt-link>
+              <transition name="dropdown">
+                <div
+                  v-if="isToolOpen"
+                  :class="{
+                    'left-5': locale === 'ar',
+                    'right-5': locale !== 'ar',
+                  }"
+                >
+                  <div class="w-full grid grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
+                    <div
+                      class="tool flex flex-col gap-3 items-center justify-center mx-auto p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                    >
+                      <div>
+                        <img src="~/assets/img/spider.svg" alt="spider" />
+                      </div>
+                      <p
+                        class="text-black font-semibold tracking-wider text-base text-center"
+                      >
+                        Website Scanner
+                      </p>
+                    </div>
+                    <div
+                      class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                    >
+                      <div
+                        class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                      >
+                        <i class="fa-solid fa-eye text-[#744712] text-2xl"></i>
+                      </div>
+                      <p
+                        class="text-black font-semibold tracking-wider text-base text-center"
+                      >
+                        Port Scanner
+                      </p>
+                    </div>
+                    <div
+                      class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                    >
+                      <div
+                        class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                      >
+                        <i
+                          class="fa-solid fa-envelope text-[#744712] text-2xl"
+                        ></i>
+                      </div>
+                      <p
+                        class="text-black font-semibold tracking-wider text-base text-center"
+                      >
+                        Email Scanner
+                      </p>
+                    </div>
+                    <div
+                      class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                    >
+                      <div>
+                        <img src="~/assets/img/password.svg" alt="password" />
+                      </div>
+                      <p
+                        class="text-black font-semibold tracking-wider text-base text-center"
+                      >
+                        Password Auditor
+                      </p>
+                    </div>
+                    <div
+                      class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                    >
+                      <div
+                        class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                      >
+                        <i class="fa-solid fa-bug text-[#744712] text-2xl"></i>
+                      </div>
+                      <p
+                        class="text-black font-semibold tracking-wider text-base text-center"
+                      >
+                        Pug Scanner
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </transition>
             </ul>
           </nav>
           <div class="gap-5 mt-5 flex flex-col justify-between items-start">
@@ -146,32 +329,7 @@ const getPathWithoutLocale = (path: string) => {
 };
 const adjustedPath = computed(() => getPathWithoutLocale(route.path));
 
-// const handleResize = () => {
-//   if (window.innerWidth > 768) {
-//     isSideBar.value = false;
-//   } else {
-//     isSideBar.value = true;
-//   }
-// };
-
-// const addResizeListener = () => {
-//   window.addEventListener("resize", handleResize);
-// };
-
-// const removeResizeListener = () => {
-//   window.removeEventListener("resize", handleResize);
-// };
-
-// if (typeof window !== "undefined") {
-//   onMounted(() => {
-//     addResizeListener();
-//     handleResize();
-//   });
-
-//   onUnmounted(() => {
-//     removeResizeListener();
-//   });
-// }
+const isToolOpen = ref<boolean>(false);
 </script>
 
 <style scoped>
@@ -265,6 +423,28 @@ ul li.active::before {
 
 .sidebar-ar-leave-to {
   transform: translateX(100%);
+  opacity: 0;
+}
+
+.arrowTools,
+.arrowTools2 {
+  border-width: 10px;
+  border-style: solid;
+}
+.arrowTools {
+  border-color: transparent transparent white transparent;
+}
+.arrowTools2 {
+  border-color: transparent transparent #f4f8fd transparent;
+}
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  transform: translateY(-10px);
   opacity: 0;
 }
 </style>
