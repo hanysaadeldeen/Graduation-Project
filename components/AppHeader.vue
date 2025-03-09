@@ -249,7 +249,11 @@
                   <div class="w-full grid grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
                     <nuxt-link
                       :to="localePath('websiteScanner')"
-                      @click="isToolOpen = !isToolOpen"
+                      @click="
+                        {
+                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
+                        }
+                      "
                     >
                       <div
                         class="tool flex flex-col gap-3 items-center justify-center mx-auto p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
@@ -266,7 +270,11 @@
                     </nuxt-link>
                     <nuxt-link
                       :to="localePath('portScanner')"
-                      @click="isToolOpen = !isToolOpen"
+                      @click="
+                        {
+                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
+                        }
+                      "
                     >
                       <div
                         class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
@@ -287,7 +295,11 @@
                     </nuxt-link>
                     <nuxt-link
                       :to="localePath('emailScanner')"
-                      @click="isToolOpen = !isToolOpen"
+                      @click="
+                        {
+                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
+                        }
+                      "
                     >
                       <div
                         class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
@@ -308,7 +320,11 @@
                     </nuxt-link>
                     <nuxt-link
                       :to="localePath('passwordAuditor')"
-                      @click="isToolOpen = !isToolOpen"
+                      @click="
+                        {
+                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
+                        }
+                      "
                     >
                       <div
                         class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
@@ -325,7 +341,11 @@
                     </nuxt-link>
                     <nuxt-link
                       :to="localePath('pugScanner')"
-                      @click="isToolOpen = !isToolOpen"
+                      @click="
+                        {
+                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
+                        }
+                      "
                     >
                       <div
                         class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
