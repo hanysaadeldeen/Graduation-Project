@@ -95,62 +95,89 @@
             }"
           >
             <div class="w-full grid grid-cols-2 xl:grid-cols-3 gap-4">
-              <div
-                class="tool flex flex-col gap-4 items-center justify-center mx-auto p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
-              >
-                <div>
-                  <img src="~/assets/img/spider.svg" alt="spider" />
-                </div>
-                <p class="text-black font-semibold tracking-wider text-base">
-                  Website Scanner
-                </p>
-              </div>
-              <div
-                class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+              <nuxt-link
+                :to="localePath('websiteScanner')"
+                @click="isToolOpen = !isToolOpen"
               >
                 <div
-                  class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                  class="tool flex flex-col gap-4 items-center justify-center mx-auto p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
                 >
-                  <i class="fa-solid fa-eye text-[#744712] text-2xl"></i>
+                  <div>
+                    <img src="~/assets/img/spider.svg" alt="spider" />
+                  </div>
+                  <p class="text-black font-semibold tracking-wider text-base">
+                    Website Scanner
+                  </p>
                 </div>
-                <p class="text-black font-semibold tracking-wider text-base">
-                  Port Scanner
-                </p>
-              </div>
-              <div
-                class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+              </nuxt-link>
+              <nuxt-link
+                :to="localePath('portScanner')"
+                @click="isToolOpen = !isToolOpen"
               >
                 <div
-                  class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                  class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
                 >
-                  <i class="fa-solid fa-envelope text-[#744712] text-2xl"></i>
+                  <div
+                    class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                  >
+                    <i class="fa-solid fa-eye text-[#744712] text-2xl"></i>
+                  </div>
+                  <p class="text-black font-semibold tracking-wider text-base">
+                    Port Scanner
+                  </p>
                 </div>
-                <p class="text-black font-semibold tracking-wider text-base">
-                  Email Scanner
-                </p>
-              </div>
-              <div
-                class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
-              >
-                <div>
-                  <img src="~/assets/img/password.svg" alt="password" />
-                </div>
-                <p class="text-black font-semibold tracking-wider text-base">
-                  Password Auditor
-                </p>
-              </div>
-              <div
-                class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+              </nuxt-link>
+
+              <nuxt-link
+                :to="localePath('emailScanner')"
+                @click="isToolOpen = !isToolOpen"
               >
                 <div
-                  class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                  class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
                 >
-                  <i class="fa-solid fa-bug text-[#744712] text-2xl"></i>
+                  <div
+                    class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                  >
+                    <i class="fa-solid fa-envelope text-[#744712] text-2xl"></i>
+                  </div>
+                  <p class="text-black font-semibold tracking-wider text-base">
+                    Email Scanner
+                  </p>
                 </div>
-                <p class="text-black font-semibold tracking-wider text-base">
-                  Pug Scanner
-                </p>
-              </div>
+              </nuxt-link>
+
+              <nuxt-link
+                :to="localePath('passwordAuditor')"
+                @click="isToolOpen = !isToolOpen"
+              >
+                <div
+                  class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                >
+                  <div>
+                    <img src="~/assets/img/password.svg" alt="password" />
+                  </div>
+                  <p class="text-black font-semibold tracking-wider text-base">
+                    Password Auditor
+                  </p>
+                </div>
+              </nuxt-link>
+              <nuxt-link
+                :to="localePath('pugScanner')"
+                @click="isToolOpen = !isToolOpen"
+              >
+                <div
+                  class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                >
+                  <div
+                    class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                  >
+                    <i class="fa-solid fa-bug text-[#744712] text-2xl"></i>
+                  </div>
+                  <p class="text-black font-semibold tracking-wider text-base">
+                    Pug Scanner
+                  </p>
+                </div>
+              </nuxt-link>
             </div>
           </div>
         </transition>
@@ -220,74 +247,103 @@
                   }"
                 >
                   <div class="w-full grid grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
-                    <div
-                      class="tool flex flex-col gap-3 items-center justify-center mx-auto p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
-                    >
-                      <div>
-                        <img src="~/assets/img/spider.svg" alt="spider" />
-                      </div>
-                      <p
-                        class="text-black font-semibold tracking-wider text-base text-center"
-                      >
-                        Website Scanner
-                      </p>
-                    </div>
-                    <div
-                      class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                    <nuxt-link
+                      :to="localePath('websiteScanner')"
+                      @click="isToolOpen = !isToolOpen"
                     >
                       <div
-                        class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                        class="tool flex flex-col gap-3 items-center justify-center mx-auto p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
                       >
-                        <i class="fa-solid fa-eye text-[#744712] text-2xl"></i>
+                        <div>
+                          <img src="~/assets/img/spider.svg" alt="spider" />
+                        </div>
+                        <p
+                          class="text-black font-semibold tracking-wider text-base text-center"
+                        >
+                          Website Scanner
+                        </p>
                       </div>
-                      <p
-                        class="text-black font-semibold tracking-wider text-base text-center"
-                      >
-                        Port Scanner
-                      </p>
-                    </div>
-                    <div
-                      class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                    </nuxt-link>
+                    <nuxt-link
+                      :to="localePath('portScanner')"
+                      @click="isToolOpen = !isToolOpen"
                     >
                       <div
-                        class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                        class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
                       >
-                        <i
-                          class="fa-solid fa-envelope text-[#744712] text-2xl"
-                        ></i>
+                        <div
+                          class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                        >
+                          <i
+                            class="fa-solid fa-eye text-[#744712] text-2xl"
+                          ></i>
+                        </div>
+                        <p
+                          class="text-black font-semibold tracking-wider text-base text-center"
+                        >
+                          Port Scanner
+                        </p>
                       </div>
-                      <p
-                        class="text-black font-semibold tracking-wider text-base text-center"
-                      >
-                        Email Scanner
-                      </p>
-                    </div>
-                    <div
-                      class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
-                    >
-                      <div>
-                        <img src="~/assets/img/password.svg" alt="password" />
-                      </div>
-                      <p
-                        class="text-black font-semibold tracking-wider text-base text-center"
-                      >
-                        Password Auditor
-                      </p>
-                    </div>
-                    <div
-                      class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                    </nuxt-link>
+                    <nuxt-link
+                      :to="localePath('emailScanner')"
+                      @click="isToolOpen = !isToolOpen"
                     >
                       <div
-                        class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                        class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
                       >
-                        <i class="fa-solid fa-bug text-[#744712] text-2xl"></i>
+                        <div
+                          class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                        >
+                          <i
+                            class="fa-solid fa-envelope text-[#744712] text-2xl"
+                          ></i>
+                        </div>
+                        <p
+                          class="text-black font-semibold tracking-wider text-base text-center"
+                        >
+                          Email Scanner
+                        </p>
                       </div>
-                      <p
-                        class="text-black font-semibold tracking-wider text-base text-center"
+                    </nuxt-link>
+                    <nuxt-link
+                      :to="localePath('passwordAuditor')"
+                      @click="isToolOpen = !isToolOpen"
+                    >
+                      <div
+                        class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
                       >
-                        Pug Scanner
-                      </p>
-                    </div>
+                        <div>
+                          <img src="~/assets/img/password.svg" alt="password" />
+                        </div>
+                        <p
+                          class="text-black font-semibold tracking-wider text-base text-center"
+                        >
+                          Password Auditor
+                        </p>
+                      </div>
+                    </nuxt-link>
+                    <nuxt-link
+                      :to="localePath('pugScanner')"
+                      @click="isToolOpen = !isToolOpen"
+                    >
+                      <div
+                        class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                      >
+                        <div
+                          class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                        >
+                          <i
+                            class="fa-solid fa-bug text-[#744712] text-2xl"
+                          ></i>
+                        </div>
+                        <p
+                          class="text-black font-semibold tracking-wider text-base text-center"
+                        >
+                          Pug Scanner
+                        </p>
+                      </div>
+                    </nuxt-link>
                   </div>
                 </div>
               </transition>

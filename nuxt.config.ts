@@ -54,6 +54,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       BaseApi: "https://77d0-197-42-6-148.ngrok-free.app/api/Account",
+      emailApi: "b31a8b5c304c480b924c708bc973ae99",
     },
   },
 });
