@@ -1,134 +1,3 @@
-<!-- <template>
-  <section class="blog">
-    <div class="container px-4 mx-auto">
-      <h1
-        class="text-2xl md:text-4xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center mb-8"
-      >
-        Email Scanner
-      </h1>
-
-      <Form
-        @submit="onSubmit"
-        :validation-schema="schema"
-        v-slot="{ errors }"
-        class="flex gap-4 max-md:flex-col items-end justify-center"
-      >
-        <div class="w-full md:w-[400px]">
-          <label
-            for="email"
-            class="text-paragraph font-semibold text-xl mb-2 cursor-pointer"
-            >Email</label
-          >
-          <Field
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Enter Email"
-            class="text-white w-full md:w-[400px] h-fit p-3 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
-            :class="{ 'border-red-500': errors.email }"
-          />
-          <span class="text-red-500 text-sm">{{ errors.email }}</span>
-        </div>
-        <button
-          :disabled="isLoading"
-          type="submit"
-          class="py-2.5 capitalize rounded-xl bg-gradient-to-l h-fit px-10 w-full md:w-fit from-primary to-secondary text-white font-bold tracking-wider text-lg"
-          :class="{ 'opacity-50 cursor-not-allowed': isLoading }"
-        >
-          Email Scanner
-        </button>
-      </Form>
-      <div v-html="emailResult"></div>
-    </div>
-  </section>
-</template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-import { Form, Field } from "vee-validate";
-import * as yup from "yup";
-
-const emailResult = ref("");
-const isLoading = ref(false);
-
-const schema = yup.object({
-  email: yup.string().email("Invalid email").required("Email is required"),
-});
-const onSubmit = async (values: any) => {
-  const runtimeConfig = useRuntimeConfig();
-  const apiUrl = `https://emailvalidation.abstractapi.com/v1/?api_key=${runtimeConfig.public.emailApi}&email=${values.email}`;
-
-  try {
-    isLoading.value = true;
-    const response = await fetch(apiUrl);
-    isLoading.value = false;
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status} ${response.statusText}`);
-    }
-
-    const data = await response.json();
-
-    if (data.email) {
-      emailResult.value = `
-        <h2>Email Scanner Results:</h2>
-        <table>
-          <tr><th>Attribute</th><th>Value</th></tr>
-          <tr><td>Email</td><td>${data.email}</td></tr>
-          <tr><td>Autocorrect</td><td>${data.autocorrect || "N/A"}</td></tr>
-          <tr><td>Deliverability</td><td>${data.deliverability}</td></tr>
-          <tr><td>Quality Score</td><td>${data.quality_score}</td></tr>
-          <tr><td>Valid Format</td><td>${data.is_valid_format.text}</td></tr>
-          <tr><td>Free Email</td><td>${data.is_free_email.text}</td></tr>
-          <tr><td>Disposable Email</td><td>${
-            data.is_disposable_email.text
-          }</td></tr>
-          <tr><td>Role Email</td><td>${data.is_role_email.text}</td></tr>
-          <tr><td>MX Found</td><td>${data.is_mx_found.text}</td></tr>
-          <tr><td>SMTP Valid</td><td>${data.is_smtp_valid.text}</td></tr>
-        </table>
-      `;
-    } else {
-      emailResult.value = "No data available for this email.";
-    }
-  } catch (error) {
-    emailResult.value = "An error occurred while scanning the email.";
-  }
-};
-</script>
-
-<style scoped>
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-table,
-th,
-td {
-  border: 1px solid #ddd;
-}
-
-th,
-td {
-  padding: 12px;
-  text-align: left;
-}
-
-th {
-  background-color: #007bff;
-  color: white;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-tr:hover {
-  background-color: #ddd;
-}
-</style> -->
-
 <template>
   <section class="blog">
     <div class="container px-4 mx-auto">
@@ -155,7 +24,7 @@ tr:hover {
             name="email"
             type="email"
             placeholder="Enter Email"
-            class="text-white w-full md:w-[400px] h-fit p-3 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+            class="text-white lowercase w-full md:w-[400px] h-fit p-3 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
             :class="{ 'border-red-500': errors.email }"
           />
           <span class="text-red-500 text-sm">{{ errors.email }}</span>
@@ -206,7 +75,8 @@ tr:hover {
 import { ref } from "vue";
 import { Form, Field } from "vee-validate";
 import * as yup from "yup";
-
+import { useToast } from "vue-toast-notification";
+const toast = useToast({ position: "top-right", duration: 1500 });
 const emailData = ref(null);
 const isLoading = ref(false);
 
@@ -239,10 +109,13 @@ const onSubmit = async (values) => {
         "MX Found": data.is_mx_found?.text,
         "SMTP Valid": data.is_smtp_valid?.text,
       };
+      toast.success("Email Scan successfully");
     } else {
       emailData.value = null;
     }
   } catch (error) {
+    toast.error("Error in This Email");
+
     emailData.value = null;
   }
 };

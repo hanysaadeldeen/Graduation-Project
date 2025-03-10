@@ -111,7 +111,7 @@
                 </div>
               </nuxt-link>
               <nuxt-link
-                :to="localePath('portScanner')"
+                :to="localePath('whoisScanner')"
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
@@ -123,7 +123,7 @@
                     <i class="fa-solid fa-eye text-[#744712] text-2xl"></i>
                   </div>
                   <p class="text-black font-semibold tracking-wider text-base">
-                    Port Scanner
+                    Whois Scanner
                   </p>
                 </div>
               </nuxt-link>
@@ -147,7 +147,7 @@
               </nuxt-link>
 
               <nuxt-link
-                :to="localePath('passwordAuditor')"
+                :to="localePath('passwordgenerator')"
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
@@ -157,12 +157,12 @@
                     <img src="~/assets/img/password.svg" alt="password" />
                   </div>
                   <p class="text-black font-semibold tracking-wider text-base">
-                    Password Auditor
+                    Password Generator
                   </p>
                 </div>
               </nuxt-link>
               <nuxt-link
-                :to="localePath('pugScanner')"
+                :to="localePath('virusscanner')"
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
@@ -174,7 +174,7 @@
                     <i class="fa-solid fa-bug text-[#744712] text-2xl"></i>
                   </div>
                   <p class="text-black font-semibold tracking-wider text-base">
-                    Pug Scanner
+                    Virus scan
                   </p>
                 </div>
               </nuxt-link>
@@ -269,7 +269,7 @@
                       </div>
                     </nuxt-link>
                     <nuxt-link
-                      :to="localePath('portScanner')"
+                      :to="localePath('whoisScanner')"
                       @click="
                         {
                           (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
@@ -289,7 +289,7 @@
                         <p
                           class="text-black font-semibold tracking-wider text-base text-center"
                         >
-                          Port Scanner
+                          Whois scanner
                         </p>
                       </div>
                     </nuxt-link>
@@ -319,7 +319,7 @@
                       </div>
                     </nuxt-link>
                     <nuxt-link
-                      :to="localePath('passwordAuditor')"
+                      :to="localePath('passwordgenerator')"
                       @click="
                         {
                           (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
@@ -335,12 +335,12 @@
                         <p
                           class="text-black font-semibold tracking-wider text-base text-center"
                         >
-                          Password Auditor
+                          Password Generator
                         </p>
                       </div>
                     </nuxt-link>
                     <nuxt-link
-                      :to="localePath('pugScanner')"
+                      :to="localePath('virusscanner')"
                       @click="
                         {
                           (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
@@ -360,7 +360,7 @@
                         <p
                           class="text-black font-semibold tracking-wider text-base text-center"
                         >
-                          Pug Scanner
+                          Virus scan
                         </p>
                       </div>
                     </nuxt-link>

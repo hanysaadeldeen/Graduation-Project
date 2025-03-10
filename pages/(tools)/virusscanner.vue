@@ -4,7 +4,7 @@
       <h1
         class="text-2xl md:text-4xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center mb-8"
       >
-        Pug Scanner
+        virus Scanner
       </h1>
     </div>
   </section>
