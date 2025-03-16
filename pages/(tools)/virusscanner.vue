@@ -32,7 +32,7 @@ const handleScan = async (value) => {
         v-slot="{ errors }"
         class="flex gap-4 max-md:flex-col items-end justify-center p-6 rounded-lg backdrop-blur-md shadow-lg"
       >
-        <div class="w-full md:w-[400px]">
+        <div class="w-full md:w-[400px] relative">
           <label
             for="urlInput"
             class="text-paragraph font-semibold text-xl mb-2 cursor-pointer"
@@ -47,7 +47,9 @@ const handleScan = async (value) => {
             class="text-white lowercase w-full h-fit p-3 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary transition-all duration-200"
             :class="{ 'border-red-500': errors.urlInput }"
           />
-          <span class="text-red-500 text-sm">{{ errors.urlInput }}</span>
+          <span class="text-red-500 text-sm absolute left-1 -bottom-7">{{
+            errors.urlInput
+          }}</span>
         </div>
         <button
           :disabled="loading"

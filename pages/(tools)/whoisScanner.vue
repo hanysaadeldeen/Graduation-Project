@@ -14,7 +14,7 @@
         v-slot="{ errors }"
         class="flex gap-4 max-md:flex-col items-end justify-center"
       >
-        <div class="w-full md:w-[400px]">
+        <div class="w-full md:w-[400px] relative">
           <label
             for="domain"
             class="text-paragraph font-semibold text-xl mb-2 cursor-pointer"
@@ -30,7 +30,9 @@
             :class="{ 'border-red-500': errors.domain }"
             v-model="domain"
           />
-          <span class="text-red-500 text-sm">{{ errors.domain }}</span>
+          <span class="text-red-500 text-sm absolute left-1 -bottom-7">{{
+            errors.domain
+          }}</span>
         </div>
         <button
           :disabled="isLoading"

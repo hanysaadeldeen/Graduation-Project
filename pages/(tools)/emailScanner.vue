@@ -13,7 +13,7 @@
         v-slot="{ errors }"
         class="flex gap-4 max-md:flex-col items-end justify-center"
       >
-        <div class="w-full md:w-[400px]">
+        <div class="w-full md:w-[400px] relative">
           <label
             for="email"
             class="text-paragraph font-semibold text-xl mb-2 cursor-pointer"
@@ -27,7 +27,9 @@
             class="text-white lowercase w-full md:w-[400px] h-fit p-3 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
             :class="{ 'border-red-500': errors.email }"
           />
-          <span class="text-red-500 text-sm">{{ errors.email }}</span>
+          <span class="text-red-500 text-sm absolute left-1 -bottom-7">{{
+            errors.email
+          }}</span>
         </div>
         <button
           :disabled="isLoading"
