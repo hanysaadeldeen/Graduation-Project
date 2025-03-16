@@ -48,12 +48,13 @@ export const useAuthStore = defineStore("authentication", () => {
   };
 
   // forgot password (send code )
-  const forgetPassword = async (data: { phone: number | null }) => {
-    isLoading.value = true;
+  const forgetPassword = async (data: { email: string }) => {
     error.value = null;
     try {
+      isLoading.value = true;
       const response = await sendCode(data);
       isLoading.value = false;
+      return response;
     } catch (err: any) {
       isLoading.value = false;
       error.value = err.message || "Registration failed";

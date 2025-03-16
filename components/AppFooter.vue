@@ -2,9 +2,9 @@
   <footer
     class="text-white from-primary to-[#09090B] border-t border-gray-800 py-6 md:py-8"
     :class="
-      adjustedPath === '/Login' || adjustedPath === '/Register'
-        ? 'bg-gradient-to-b'
-        : 'bg-gradient-to-t'
+      adjustedPath === '/' || adjustedPath === '/blogs'
+        ? 'bg-gradient-to-t'
+        : 'bg-gradient-to-b'
     "
   >
     <div class="container mx-auto relative max-sm:px-4 px-2">

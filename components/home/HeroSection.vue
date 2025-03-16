@@ -6,10 +6,8 @@
     <div class="container mx-auto h-full relative px-4">
       <div class="h-full flex flex-col justify-center">
         <h1
-          class="md:text-center mb-10 text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
+          class="md:text-center mb-10 pt-4 text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
         >
-          <!-- Unleash the power of <br />
-          intuitive finance -->
           {{ $t("introSectionTitle1") }}
         </h1>
 

@@ -22,7 +22,7 @@
             <h1
               class="text-center mb-5 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
             >
-              Login Page
+              Reset Password
             </h1>
             <div class="w-full">
               <Form
@@ -32,36 +32,41 @@
               >
                 <div class="mb-4">
                   <label
-                    for="email"
-                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
-                    >Email</label
-                  >
-                  <Field
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Enter Your Email"
-                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
-                    :class="{ 'border-red-500': errors.email }"
-                  />
-                  <span class="text-red-500 text-sm">{{ errors.email }}</span>
-                </div>
-                <div class="mb-8">
-                  <label
                     for="password"
                     class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
-                    >Password</label
                   >
+                    Password
+                  </label>
                   <Field
                     id="password"
                     name="password"
                     type="password"
-                    placeholder="Enter Your Email"
+                    placeholder="Enter Your Password"
                     class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.password }"
                   />
                   <span class="text-red-500 text-sm">{{
                     errors.password
+                  }}</span>
+                </div>
+
+                <div class="mb-8">
+                  <label
+                    for="confirmPassword"
+                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
+                  >
+                    Confirm Password
+                  </label>
+                  <Field
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Confirm Your Password"
+                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    :class="{ 'border-red-500': errors.confirmPassword }"
+                  />
+                  <span class="text-red-500 text-sm">{{
+                    errors.confirmPassword
                   }}</span>
                 </div>
                 <button
@@ -70,17 +75,12 @@
                   class="py-2 w-full capitalize rounded-xl bg-gradient-to-l from-primary to-secondary text-white font-bold tracking-wider text-2xl"
                   :class="{ 'opacity-50 cursor-not-allowed': isLoading }"
                 >
-                  Login In
+                  Reset Password
                 </button>
               </Form>
-              <nuxt-link :to="localePath('Register')">
+              <nuxt-link :to="localePath('Login')">
                 <h1 class="text-paragraph text-center text-xl mt-5">
-                  Create Account <span class="text-white">Register</span>
-                </h1>
-              </nuxt-link>
-              <nuxt-link :to="localePath('ForgetPassword')">
-                <h1 class="text-paragraph text-center text-xl mt-5">
-                  Forget <span class="text-white">Password</span>
+                  Return to <span class="text-white">login</span>
                 </h1>
               </nuxt-link>
             </div>
@@ -102,22 +102,24 @@ const toast = useToast({ position: "top-right", duration: 1500 });
 
 const localePath = useLocalePath();
 const schema = yup.object({
-  email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
     .string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password")], "Passwords must match")
+    .required("Confirm password is required"),
 });
-const { loginUser } = useAuthStore();
+const { resetPass } = useAuthStore();
 const authStore = useAuthStore();
 const { isLoading, error } = storeToRefs(authStore);
 const onSubmit = async (values: any) => {
   try {
-    const response = await loginUser(values);
-    localStorage.setItem("token", response?.token?.result.token);
+    const response = await resetPass(values);
     if (response) {
-      toast.success("Login successfully completed");
-      navigateTo(localePath("/"));
+      toast.success("Reset Password successfully completed");
+      navigateTo(localePath("login"));
     }
   } catch (error: any) {
     toast.error(error);

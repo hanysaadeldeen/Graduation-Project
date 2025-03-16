@@ -75,29 +75,32 @@ export const useAuth = () => {
 
   // forget password (send code )
 
-  const sendCode = async (data: { phone: number | null }) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Accept", "application/json");
-    myHeaders.append("Accept-Language", "ar");
+  const sendCode = async (data: { email: string }) => {
+    // var myHeaders = new Headers();
+    // myHeaders.append("Accept", "application/json");
+    // myHeaders.append("Accept-Language", "ar");
 
-    var formdata = new FormData();
-    formdata.append("phone_code", "966");
-    formdata.append("phone", "data.phone");
-
+    // var formdata = new FormData();
+    // formdata.append("phone_code", "966");
+    // formdata.append("phone", "data.phone");
+    const Senderdata = {
+      email: data.email,
+    };
     try {
-      const response = await $fetch(`${config.public.apiBase}send-code`, {
-        method: "POST",
-        headers: myHeaders,
-        body: formdata,
-      });
+      const response = await $fetch(
+        `${config.public.BaseApi}/forget-password`,
+        {
+          method: "POST",
+          body: Senderdata,
+        }
+      );
       return response;
     } catch (error) {
-      throw new Error("Failed to sign up");
+      throw new Error("Failed to Send Code");
     }
   };
 
   // verify code
-
   const verifyCodeSend = async (data: { code: number | null }) => {
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
@@ -126,26 +129,29 @@ export const useAuth = () => {
     password: string;
     password_confirmation: string;
   }) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Accept", "application/json");
-    myHeaders.append("Accept-Language", "ar");
+    // var myHeaders = new Headers();
+    // myHeaders.append("Accept", "application/json");
+    // myHeaders.append("Accept-Language", "ar");
 
-    var formdata = new FormData();
-    formdata.append("_method", "PATCH");
-    formdata.append("phone_code", "966");
-    formdata.append("phone", "123456789");
-    formdata.append("code", "1111");
-    formdata.append("password", data.password);
+    // var formdata = new FormData();
+    // formdata.append("_method", "PATCH");
+    // formdata.append("phone_code", "966");
+    // formdata.append("phone", "123456789");
+    // formdata.append("code", "1111");
+    // formdata.append("password", data.password);
+
+    const Senderdata = {
+      password: data.password,
+    };
 
     try {
-      const response = await $fetch(`${config.public.apiBase}reset-password`, {
+      const response = await $fetch(`${config.public.BaseApi}/reset-password`, {
         method: "POST",
-        headers: myHeaders,
-        body: formdata,
+        body: Senderdata,
       });
       return response;
     } catch (error) {
-      throw new Error("Failed to sign up");
+      throw new Error("Failed to Reset password");
     }
   };
 
