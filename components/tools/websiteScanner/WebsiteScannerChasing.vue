@@ -13,11 +13,13 @@
         class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+50px)]"
       >
         <div class="rounded-md flex items-center justify-center">
-          <i class="fa-solid fa-arrows-rotate text-[#FFB45C] text-7xl"></i>
+          <i
+            class="fa-solid fa-arrows-rotate text-[#FFB45C] text-7xl max-md:text-5xl"
+          ></i>
         </div>
-        <div class="">
+        <div class="mt-5">
           <h1
-            class="group-hover/item:text-secondary duration-300 transition-all cursor-pointer ease-in-out text-2xl font-bold text-white my-2.5 md:my-5"
+            class="group-hover/item:text-secondary duration-300 transition-all cursor-pointer ease-in-out max-md:text-xl text-2xl font-bold text-white my-4 md:my-5"
           >
             Complete and continuous attack surface visibility
           </h1>
@@ -33,11 +35,13 @@
         class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+50px)]"
       >
         <div class="rounded-md flex items-center justify-center">
-          <i class="fa-solid fa-sliders text-[#FFB45C] text-7xl"></i>
+          <i
+            class="fa-solid fa-sliders text-[#FFB45C] text-7xl max-md:text-5xl"
+          ></i>
         </div>
-        <div class="">
+        <div class="mt-5">
           <h1
-            class="group-hover/item:text-secondary duration-300 transition-all cursor-pointer ease-in-out text-2xl font-bold text-white my-2.5 md:my-5"
+            class="group-hover/item:text-secondary duration-300 transition-all cursor-pointer ease-in-out max-md:text-xl text-2xl font-bold text-white my-4 md:my-5"
           >
             AI-driven prioritization at scale
           </h1>
@@ -53,11 +57,13 @@
         class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+50px)]"
       >
         <div class="rounded-md flex items-center justify-center">
-          <i class="fa-solid fa-users-gear text-[#FFB45C] text-7xl"></i>
+          <i
+            class="fa-solid fa-users-gear text-[#FFB45C] text-7xl max-md:text-5xl"
+          ></i>
         </div>
-        <div class="">
+        <div class="mt-5">
           <h1
-            class="group-hover/item:text-secondary duration-300 transition-all ease-in-out text-2xl font-bold text-white my-2.5 md:my-5"
+            class="group-hover/item:text-secondary duration-300 transition-all ease-in-out max-md:text-xl text-2xl font-bold text-white my-4 md:my-5"
           >
             Streamlined collaboration and remediation
           </h1>
