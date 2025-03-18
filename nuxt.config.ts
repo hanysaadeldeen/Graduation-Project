@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "~/components",
     { path: "~/components/home/", extensions: ["vue"] },
     { path: "~/components/blog/", extensions: ["vue"] },
+    { path: "~/components/tools/websiteScanner/", extensions: ["vue"] },
   ],
   i18n: {
     strategy: "prefix_except_default",
