@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <MainSectionBlog />
+  <div class="blog">
+    <div class="container px-4 mx-auto">
+      <MainSectionBlog />
+      <BlogsCardSection />
+    </div>
   </div>
 </template>
 

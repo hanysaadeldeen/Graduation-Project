@@ -10,11 +10,11 @@
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[80px] gap-x-7 mt-16"
     >
       <div
-        class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+50px)]"
+        class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+20px)]"
       >
         <div class="rounded-md flex items-center justify-center">
           <i
-            class="fa-solid fa-arrows-rotate text-[#FFB45C] text-7xl max-md:text-5xl"
+            class="fa-solid fa-arrows-rotate text-[#FFB45C] text-5xl max-md:text-5xl"
           ></i>
         </div>
         <div class="mt-5">
@@ -32,11 +32,11 @@
         </div>
       </div>
       <div
-        class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+50px)]"
+        class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+20px)]"
       >
         <div class="rounded-md flex items-center justify-center">
           <i
-            class="fa-solid fa-sliders text-[#FFB45C] text-7xl max-md:text-5xl"
+            class="fa-solid fa-sliders text-[#FFB45C] text-5xl max-md:text-5xl"
           ></i>
         </div>
         <div class="mt-5">
@@ -54,11 +54,11 @@
         </div>
       </div>
       <div
-        class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+50px)]"
+        class="bg-[#161625] p-5 group/item w-full md:max-w-[400px] border border-secondary rounded-3xl min-h-fit h-[calc(100%+20px)]"
       >
         <div class="rounded-md flex items-center justify-center">
           <i
-            class="fa-solid fa-users-gear text-[#FFB45C] text-7xl max-md:text-5xl"
+            class="fa-solid fa-users-gear text-[#FFB45C] text-5xl max-md:text-5xl"
           ></i>
         </div>
         <div class="mt-5">

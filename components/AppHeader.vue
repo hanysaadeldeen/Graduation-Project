@@ -45,12 +45,7 @@
                 {{ $t("login") }}
               </p>
             </nuxt-link>
-            <button
-              @click="setLocale(locale === 'en' ? 'ar' : 'en')"
-              class="font-medium text-xl cursor-pointer"
-            >
-              {{ locale === "en" ? "العربية" : "English" }}
-            </button>
+
             <!-- <h4>{{ $t("blog") }}</h4> -->
             <nuxt-link :to="localePath('blogs')">
               <p :class="adjustedPath === 'blogs' ? 'active' : ''">
@@ -72,11 +67,27 @@
                 ></div>
               </transition>
             </nuxt-link>
+            <nuxt-link
+              :to="localePath('programs')"
+              class="flex gap-2 items-center cursor-pointer relative"
+            >
+              <p :class="adjustedPath === 'programs' ? 'active' : ''">
+                {{ $t("Bounties") }}
+              </p>
+              <i class="fa-solid fa-virus"></i>
+            </nuxt-link>
             <button
+              @click="setLocale(locale === 'en' ? 'ar' : 'en')"
+              class="font-medium text-xl cursor-pointer"
+            >
+              {{ locale === "en" ? "العربية" : "English" }}
+            </button>
+
+            <!-- <button
               class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2 text-white"
             >
               <span class="button-text">{{ $t("contact_us") }}</span>
-            </button>
+            </button> -->
           </div>
           <div class="block lg:hidden">
             <i
@@ -210,6 +221,16 @@
                 <li :class="adjustedPath === '/blogs' ? 'active' : ''">
                   {{ $t("blogs") }}
                 </li>
+              </nuxt-link>
+              <nuxt-link
+                :to="localePath('programs')"
+                @click="isSideBar = !isSideBar"
+                class="flex gap-2 items-center cursor-pointer relative"
+              >
+                <li :class="adjustedPath === '/programs' ? 'active' : ''">
+                  {{ $t("programs") }}
+                </li>
+                <i class="fa-solid fa-virus"></i>
               </nuxt-link>
               <nuxt-link
                 :to="localePath('Login')"
@@ -376,11 +397,11 @@
             >
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
-            <button
+            <!-- <button
               class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2"
             >
               <span class="button-text">{{ $t("contact_us") }}</span>
-            </button>
+            </button> -->
           </div>
         </div>
       </transition>
