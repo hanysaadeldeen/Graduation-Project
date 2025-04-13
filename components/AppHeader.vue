@@ -1,6 +1,6 @@
 <template>
-  <header class="z-10 relative py-5 text-white bg-transparent">
-    <div class="container mx-auto max-sm:px-4 px-2">
+  <header class="relative z-10 bg-transparent py-5 text-white">
+    <div class="container mx-auto px-2 max-sm:px-4">
       <div class="relative z-20">
         <div class="flex items-center justify-between">
           <nuxt-link :to="localePath('index')">
@@ -39,7 +39,7 @@
               </li>
             </ul>
           </nav> -->
-          <div class="gap-10 justify-between items-center hidden lg:flex">
+          <div class="hidden items-center justify-between gap-10 lg:flex">
             <nuxt-link :to="localePath('Login')">
               <p :class="adjustedPath === '/' ? '/Login' : ''">
                 {{ $t("login") }}
@@ -53,7 +53,7 @@
               </p>
             </nuxt-link>
             <nuxt-link
-              class="flex gap-2 items-center cursor-pointer relative"
+              class="relative flex cursor-pointer items-center gap-2"
               @click="isToolOpen = !isToolOpen"
             >
               <p :class="adjustedPath === 'tools' ? 'active' : ''">
@@ -63,22 +63,31 @@
               <transition name="dropdown">
                 <div
                   v-if="isToolOpen"
-                  class="absolute w-5 h-5 -bottom-[25px] left-1/2 -translate-x-1/2 arrowTools"
+                  class="arrowTools absolute -bottom-[25px] left-1/2 h-5 w-5 -translate-x-1/2"
                 ></div>
               </transition>
             </nuxt-link>
             <nuxt-link
               :to="localePath('programs')"
-              class="flex gap-2 items-center cursor-pointer relative"
+              class="relative flex cursor-pointer items-center gap-2"
             >
               <p :class="adjustedPath === 'programs' ? 'active' : ''">
                 {{ $t("Bounties") }}
               </p>
               <i class="fa-solid fa-virus"></i>
             </nuxt-link>
+            <a
+              href="https://ramadan-ctf-ieeemansb.me/"
+              class="relative"
+              target="_blank"
+            >
+              <p>
+                {{ $t("CTF") }}
+              </p>
+            </a>
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
-              class="font-medium text-xl cursor-pointer"
+              class="cursor-pointer text-xl font-medium"
             >
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
@@ -92,31 +101,31 @@
           <div class="block lg:hidden">
             <i
               @click="isSideBar = !isSideBar"
-              class="fa-solid fa-bars-staggered text-3xl cursor-pointer"
+              class="fa-solid fa-bars-staggered cursor-pointer text-3xl"
             ></i>
           </div>
         </div>
         <transition name="dropdown">
           <div
             v-if="isToolOpen"
-            class="absolute top-16 md:w-fit rounded-md h-fit bg-white p-4 max-lg:hidden"
+            class="absolute top-16 h-fit rounded-md bg-white p-4 max-lg:hidden md:w-fit"
             :class="{
               'left-5': locale === 'ar',
               'right-5': locale !== 'ar',
             }"
           >
-            <div class="w-full grid grid-cols-2 xl:grid-cols-3 gap-4">
+            <div class="grid w-full grid-cols-2 gap-4 xl:grid-cols-3">
               <nuxt-link
                 :to="localePath('websiteScanner')"
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
-                  class="tool flex flex-col gap-4 items-center justify-center mx-auto p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                  class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
                   <div>
                     <img src="~/assets/img/spider.svg" alt="spider" />
                   </div>
-                  <p class="text-black font-semibold tracking-wider text-base">
+                  <p class="text-base font-semibold tracking-wider text-black">
                     Website Scanner
                   </p>
                 </div>
@@ -126,14 +135,14 @@
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
-                  class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                  class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
                   <div
-                    class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                    class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
                   >
-                    <i class="fa-solid fa-eye text-[#744712] text-2xl"></i>
+                    <i class="fa-solid fa-eye text-2xl text-[#744712]"></i>
                   </div>
-                  <p class="text-black font-semibold tracking-wider text-base">
+                  <p class="text-base font-semibold tracking-wider text-black">
                     Whois Scanner
                   </p>
                 </div>
@@ -144,14 +153,14 @@
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
-                  class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                  class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
                   <div
-                    class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                    class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
                   >
-                    <i class="fa-solid fa-envelope text-[#744712] text-2xl"></i>
+                    <i class="fa-solid fa-envelope text-2xl text-[#744712]"></i>
                   </div>
-                  <p class="text-black font-semibold tracking-wider text-base">
+                  <p class="text-base font-semibold tracking-wider text-black">
                     Email Scanner
                   </p>
                 </div>
@@ -162,12 +171,12 @@
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
-                  class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                  class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
                   <div>
                     <img src="~/assets/img/password.svg" alt="password" />
                   </div>
-                  <p class="text-black font-semibold tracking-wider text-base">
+                  <p class="text-base font-semibold tracking-wider text-black">
                     Password Generator
                   </p>
                 </div>
@@ -177,14 +186,14 @@
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
-                  class="tool flex flex-col gap-4 items-center justify-center p-5 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                  class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
                   <div
-                    class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                    class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
                   >
-                    <i class="fa-solid fa-bug text-[#744712] text-2xl"></i>
+                    <i class="fa-solid fa-bug text-2xl text-[#744712]"></i>
                   </div>
-                  <p class="text-black font-semibold tracking-wider text-base">
+                  <p class="text-base font-semibold tracking-wider text-black">
                     Virus scan
                   </p>
                 </div>
@@ -196,7 +205,7 @@
       <transition :name="transitionName">
         <div
           v-if="isSideBar"
-          class="sideBar z-40 lg:hidden absolute flex flex-col px-8 pb-5 items-start w-full right-0 min-h-[calc(100vh-75px)] max-h-fit transition-all bg-white text-black"
+          class="sideBar absolute right-0 z-40 flex max-h-fit min-h-[calc(100vh-75px)] w-full flex-col items-start bg-white px-8 pb-5 text-black transition-all lg:hidden"
           :class="[
             {
               'right-0': locale === 'ar',
@@ -204,8 +213,8 @@
             },
           ]"
         >
-          <nav class="inline-block mt-10">
-            <ul class="flex flex-col gap-2 w-full">
+          <nav class="mt-10 inline-block">
+            <ul class="flex w-full flex-col gap-2">
               <nuxt-link
                 :to="localePath('index')"
                 @click="isSideBar = !isSideBar"
@@ -225,13 +234,24 @@
               <nuxt-link
                 :to="localePath('programs')"
                 @click="isSideBar = !isSideBar"
-                class="flex gap-2 items-center cursor-pointer relative"
+                class="relative flex cursor-pointer items-center gap-2"
               >
                 <li :class="adjustedPath === '/programs' ? 'active' : ''">
-                  {{ $t("programs") }}
+                  {{ $t("Bounties") }}
                 </li>
                 <i class="fa-solid fa-virus"></i>
               </nuxt-link>
+              <a
+                href="https://ramadan-ctf-ieeemansb.me/"
+                @click="isSideBar = !isSideBar"
+                class="relative flex cursor-pointer items-center gap-2"
+                target="_blank"
+              >
+                <li :class="adjustedPath === '/ctf' ? 'active' : ''">
+                  {{ $t("CTF") }}
+                </li>
+              </a>
+
               <nuxt-link
                 :to="localePath('Login')"
                 @click="isSideBar = !isSideBar"
@@ -241,7 +261,7 @@
                 </li>
               </nuxt-link>
               <nuxt-link
-                class="flex gap-2 items-center cursor-pointer relative"
+                class="relative flex cursor-pointer items-center gap-2"
                 @click="isToolOpen = !isToolOpen"
               >
                 <li>
@@ -251,7 +271,7 @@
                 <transition name="dropdown">
                   <div
                     v-if="isToolOpen"
-                    class="absolute w-5 h-5 -bottom-[8px] arrowTools2"
+                    class="arrowTools2 absolute -bottom-[8px] h-5 w-5"
                     :class="{
                       'left-5': locale === 'en',
                       'right-0': locale !== 'ar',
@@ -267,7 +287,7 @@
                     'right-5': locale !== 'ar',
                   }"
                 >
-                  <div class="w-full grid grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
+                  <div class="grid w-full grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
                     <nuxt-link
                       :to="localePath('websiteScanner')"
                       @click="
@@ -277,13 +297,13 @@
                       "
                     >
                       <div
-                        class="tool flex flex-col gap-3 items-center justify-center mx-auto p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                        class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
                         <div>
                           <img src="~/assets/img/spider.svg" alt="spider" />
                         </div>
                         <p
-                          class="text-black font-semibold tracking-wider text-base text-center"
+                          class="text-center text-base font-semibold tracking-wider text-black"
                         >
                           Website Scanner
                         </p>
@@ -298,17 +318,17 @@
                       "
                     >
                       <div
-                        class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                        class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
                         <div
-                          class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                          class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
                         >
                           <i
-                            class="fa-solid fa-eye text-[#744712] text-2xl"
+                            class="fa-solid fa-eye text-2xl text-[#744712]"
                           ></i>
                         </div>
                         <p
-                          class="text-black font-semibold tracking-wider text-base text-center"
+                          class="text-center text-base font-semibold tracking-wider text-black"
                         >
                           Whois scanner
                         </p>
@@ -323,17 +343,17 @@
                       "
                     >
                       <div
-                        class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                        class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
                         <div
-                          class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                          class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
                         >
                           <i
-                            class="fa-solid fa-envelope text-[#744712] text-2xl"
+                            class="fa-solid fa-envelope text-2xl text-[#744712]"
                           ></i>
                         </div>
                         <p
-                          class="text-black font-semibold tracking-wider text-base text-center"
+                          class="text-center text-base font-semibold tracking-wider text-black"
                         >
                           Email Scanner
                         </p>
@@ -348,13 +368,13 @@
                       "
                     >
                       <div
-                        class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                        class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
                         <div>
                           <img src="~/assets/img/password.svg" alt="password" />
                         </div>
                         <p
-                          class="text-black font-semibold tracking-wider text-base text-center"
+                          class="text-center text-base font-semibold tracking-wider text-black"
                         >
                           Password Generator
                         </p>
@@ -369,17 +389,17 @@
                       "
                     >
                       <div
-                        class="tool flex flex-col gap-4 items-center justify-center p-2 rounded-md hover:bg-[#E8EBF0] cursor-pointer transition-all duration-300 ease-in-out"
+                        class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
                         <div
-                          class="bg-[#FFB45C] w-[48px] h-[48px] rounded-md flex items-center justify-center"
+                          class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
                         >
                           <i
-                            class="fa-solid fa-bug text-[#744712] text-2xl"
+                            class="fa-solid fa-bug text-2xl text-[#744712]"
                           ></i>
                         </div>
                         <p
-                          class="text-black font-semibold tracking-wider text-base text-center"
+                          class="text-center text-base font-semibold tracking-wider text-black"
                         >
                           Virus scan
                         </p>
@@ -390,10 +410,10 @@
               </transition>
             </ul>
           </nav>
-          <div class="gap-5 mt-5 flex flex-col justify-between items-start">
+          <div class="mt-5 flex flex-col items-start justify-between gap-5">
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
-              class="font-medium text-xl"
+              class="text-xl font-medium"
             >
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
@@ -414,7 +434,7 @@ const { locale, setLocale } = useI18n();
 const localePath = useLocalePath();
 const isSideBar = ref<boolean>(false);
 const transitionName = computed(() =>
-  locale.value === "ar" ? "sidebar-ar" : "sidebar-en"
+  locale.value === "ar" ? "sidebar-ar" : "sidebar-en",
 );
 const route = useRoute();
 const getPathWithoutLocale = (path: string) => {
@@ -536,7 +556,9 @@ ul li.active::before {
 }
 .dropdown-enter-active,
 .dropdown-leave-active {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
 }
 
 .dropdown-enter-from,
