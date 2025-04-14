@@ -63,7 +63,7 @@
             :class="bountyType === 'Hackers' ? 'border-b-2 text-primary' : ''"
             @click="bountyType = 'Hackers'"
           >
-            Hackers (34)
+            Hackers (2)
           </p>
           <p
             class="cursor-pointer pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
