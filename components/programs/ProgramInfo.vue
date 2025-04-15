@@ -5,7 +5,7 @@
         class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black"
         :class="
           bountyType === 'All'
-            ? 'bg-[#ffb45c] text-white'
+            ? 'bg-hookYellow text-white'
             : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
         "
         @click="bountyType = 'All'"
@@ -110,7 +110,7 @@
                     Web
                   </td>
                   <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="severity-dot severity-critical text-[#ffb45c]"
+                    <span class="severity-dot severity-critical text-hookYellow"
                       >Critical</span
                     >
                   </td>
@@ -131,7 +131,7 @@
                     iOS
                   </td>
                   <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="severity-dot severity-critical text-[#ffb45c]"
+                    <span class="severity-dot severity-critical text-hookYellow"
                       >Critical</span
                     >
                   </td>
@@ -152,7 +152,7 @@
                     Android
                   </td>
                   <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="severity-dot severity-critical text-[#ffb45c]"
+                    <span class="severity-dot severity-critical text-hookYellow"
                       >Critical</span
                     >
                   </td>
@@ -390,7 +390,7 @@
           <div
             class="flex items-center gap-4 border-b border-paragraph px-6 pb-4"
           >
-            <i class="fa-solid fa-circle-dollar-to-slot text-[#ffb45c]"></i>
+            <i class="fa-solid fa-circle-dollar-to-slot text-hookYellow"></i>
             <h1 class="text-xl font-bold text-white">Rewards</h1>
           </div>
           <div class="px-6 pt-4">
@@ -399,19 +399,19 @@
               <p class="text-lg font-medium text-white">$200- $10,000</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">Critical</p>
+              <p class="text-hookYellow text-lg font-semibold">Critical</p>
               <p class="text-lg font-medium text-white">$10,000</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">High</p>
+              <p class="text-hookYellow text-lg font-semibold">High</p>
               <p class="text-lg font-medium text-white">$5,000</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">Medium</p>
+              <p class="text-hookYellow text-lg font-semibold">Medium</p>
               <p class="text-lg font-medium text-white">$2,000</p>
             </div>
             <div class="flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">Low</p>
+              <p class="text-hookYellow text-lg font-semibold">Low</p>
               <p class="text-lg font-medium text-white">$200</p>
             </div>
           </div>
@@ -420,7 +420,7 @@
           <div
             class="flex items-center gap-4 border-b border-paragraph px-6 pb-4"
           >
-            <i class="fa-solid fa-chart-column text-[#ffb45c]"></i>
+            <i class="fa-solid fa-chart-column text-hookYellow"></i>
             <h1 class="text-xl font-bold text-white">Stats</h1>
           </div>
           <div class="px-6 pt-4">
@@ -429,11 +429,11 @@
               <p class="text-lg font-medium text-white">1229</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">Submissions</p>
+              <p class="text-hookYellow text-lg font-semibold">Submissions</p>
               <p class="text-lg font-medium text-white">33</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">Total rewards</p>
+              <p class="text-hookYellow text-lg font-semibold">Total rewards</p>
               <p class="text-lg font-medium text-white">$0</p>
             </div>
           </div>
@@ -452,19 +452,21 @@
               <p class="text-lg font-medium text-white">Business days</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">First Response</p>
+              <p class="text-hookYellow text-lg font-semibold">
+                First Response
+              </p>
               <p class="text-lg font-medium text-white">3d</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">Triage Time</p>
+              <p class="text-hookYellow text-lg font-semibold">Triage Time</p>
               <p class="text-lg font-medium text-white">3d</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">Reward Time</p>
+              <p class="text-hookYellow text-lg font-semibold">Reward Time</p>
               <p class="text-lg font-medium text-white">3d</p>
             </div>
             <div class="flex items-center justify-between">
-              <p class="text-lg font-semibold text-[#ffb45c]">
+              <p class="text-hookYellow text-lg font-semibold">
                 Resolution Time
               </p>
               <p class="text-lg font-medium text-white">14d</p>

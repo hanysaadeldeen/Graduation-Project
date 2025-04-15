@@ -138,7 +138,7 @@
                   class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
                   <div
-                    class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
+                    class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
                   >
                     <i class="fa-solid fa-eye text-2xl text-[#744712]"></i>
                   </div>
@@ -156,7 +156,7 @@
                   class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
                   <div
-                    class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
+                    class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
                   >
                     <i class="fa-solid fa-envelope text-2xl text-[#744712]"></i>
                   </div>
@@ -189,7 +189,7 @@
                   class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
                   <div
-                    class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
+                    class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
                   >
                     <i class="fa-solid fa-bug text-2xl text-[#744712]"></i>
                   </div>
@@ -321,7 +321,7 @@
                         class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
                         <div
-                          class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
+                          class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
                         >
                           <i
                             class="fa-solid fa-eye text-2xl text-[#744712]"
@@ -346,7 +346,7 @@
                         class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
                         <div
-                          class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
+                          class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
                         >
                           <i
                             class="fa-solid fa-envelope text-2xl text-[#744712]"
@@ -392,7 +392,7 @@
                         class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
                         <div
-                          class="flex h-[48px] w-[48px] items-center justify-center rounded-md bg-[#FFB45C]"
+                          class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
                         >
                           <i
                             class="fa-solid fa-bug text-2xl text-[#744712]"

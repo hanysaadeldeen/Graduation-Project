@@ -82,7 +82,7 @@
     <nav class="mt-5 flex justify-center">
       <ul class="inline-flex h-10 text-sm md:text-xl">
         <li
-          class="xs:px-2 ms-0 flex h-10 cursor-pointer items-center justify-center rounded-s-lg border border-e-0 border-gray-700 bg-gray-800 px-4 leading-tight text-[#ffb45c] hover:bg-gray-700 sm:px-3"
+          class="xs:px-2 text-hookYellow ms-0 flex h-10 cursor-pointer items-center justify-center rounded-s-lg border border-e-0 border-gray-700 bg-gray-800 px-4 leading-tight hover:bg-gray-700 sm:px-3"
           @click.prevent="updateRoute('previous')"
         >
           Previous
@@ -90,10 +90,10 @@
         <li
           v-for="(page, index) in pages"
           :key="index"
-          class="xs:px-2 flex h-10 cursor-pointer items-center justify-center border border-gray-700 px-4 leading-tight hover:bg-[#ffb45c] hover:text-white sm:px-3"
+          class="xs:px-2 hover:bg-hookYellow flex h-10 cursor-pointer items-center justify-center border border-gray-700 px-4 leading-tight hover:text-white sm:px-3"
           :class="
             page === activePage
-              ? 'bg-[#ffb45c] text-white'
+              ? 'bg-hookYellow text-white'
               : 'bg-gray-800 text-gray-400'
           "
           @click="updateManual(page)"
@@ -101,7 +101,7 @@
           {{ page }}
         </li>
         <li
-          class="xs:px-2 flex h-10 cursor-pointer items-center justify-center rounded-e-lg border border-gray-700 bg-gray-800 px-4 leading-tight text-[#ffb45c] hover:bg-gray-700 sm:px-3"
+          class="xs:px-2 text-hookYellow flex h-10 cursor-pointer items-center justify-center rounded-e-lg border border-gray-700 bg-gray-800 px-4 leading-tight hover:bg-gray-700 sm:px-3"
           @click.prevent="updateRoute('next')"
         >
           Next

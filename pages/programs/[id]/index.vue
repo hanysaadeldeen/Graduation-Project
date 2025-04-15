@@ -38,19 +38,20 @@
             >
               This program is active now
             </button>
-            <button
+            <nuxt-link
+              :to="localePath(`/programs/${params.id}/report`)"
               class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
             >
               Submit report
               <i
                 class="fa-solid fa-arrow-right cursor-pointer text-[#A1A1AA] transition-all duration-300 ease-in-out group-hover/edit:translate-x-2 group-hover/edit:text-white"
               ></i>
-            </button>
+            </nuxt-link>
           </div>
         </div>
         <div class="relative z-20 flex space-x-6">
           <p
-            class="cursor-pointer border-[#ffb45c] pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
+            class="border-hookYellow cursor-pointer pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
             :class="
               bountyType === 'programInfo' ? 'border-b-2 text-primary' : ''
             "
@@ -59,7 +60,7 @@
             Program info
           </p>
           <p
-            class="cursor-pointer border-[#ffb45c] pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
+            class="border-hookYellow cursor-pointer pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
             :class="bountyType === 'Hackers' ? 'border-b-2 text-primary' : ''"
             @click="bountyType = 'Hackers'"
           >
@@ -69,7 +70,7 @@
             class="cursor-pointer pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
             :class="
               bountyType === 'Reports'
-                ? 'border-b-2 border-[#ffb45c] text-primary'
+                ? 'border-hookYellow border-b-2 text-primary'
                 : ''
             "
             @click="bountyType = 'Reports'"
@@ -88,14 +89,15 @@
 <script setup lang="ts">
 import BountiesInfo from "~/components/programs/BountiesInfo.vue";
 
-const route = useRoute();
+const { params } = useRoute();
+const localePath = useLocalePath();
+
 const bountyType = ref<string>("programInfo");
-console.log(route.params.id);
 </script>
 
 <style scoped>
 .headerProgram {
-  background-image: url("../../assets/img/program.jpg");
+  background-image: url("../../../assets/img/program.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

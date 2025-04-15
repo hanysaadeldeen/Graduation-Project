@@ -18,6 +18,7 @@ module.exports = {
         cardGreen: "#9AE266",
         cardOrange: "#F3B059",
         cardDarkRed: "#987681",
+        hookYellow: "#ffb45c",
       },
       screens: {},
     },
