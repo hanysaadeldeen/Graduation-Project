@@ -8,8 +8,8 @@
       <span> Back to Reports </span>
     </nuxt-link>
     <section class="mt-16">
-      <h1
-        class="border-hookYellow mb-4 border-b pb-4 text-xl font-bold text-white md:text-3xl"
+      <!-- <h1
+        class="mb-4 border-b border-hookYellow pb-4 text-xl font-bold text-white md:text-3xl"
       >
         Submit Report
       </h1>
@@ -32,12 +32,15 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
+      <ReportSection />
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import ReportSection from "~/components/programs/ReportSection.vue";
+
 const { params } = useRoute();
 </script>
 
