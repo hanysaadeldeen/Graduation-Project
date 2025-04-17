@@ -1,31 +1,31 @@
 <template>
   <div
-    class="absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-primary to-[#09090B]"
+    class="absolute left-0 top-0 h-screen w-full bg-gradient-to-b from-primary to-[#09090B]"
   ></div>
-  <div class="startSection heroSection relative">
-    <div class="container mx-auto h-full relative px-4">
-      <div class="h-full flex flex-col justify-center">
+  <div ref="HeroSectionRef" class="startSection heroSection relative h-dvh">
+    <div class="container relative mx-auto h-full px-4">
+      <div class="flex h-full flex-col justify-center">
         <h1
-          class="md:text-center mb-10 pt-4 text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
+          class="mb-10 bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text pt-4 text-5xl font-bold text-transparent md:text-center md:text-7xl"
         >
           {{ $t("introSectionTitle1") }}
         </h1>
 
         <div>
-          <p class="text-paragraph font-semibold text-xl md:text-center">
+          <p class="text-xl font-semibold text-paragraph md:text-center">
             {{ $t("introSectionTitle1Paragraph1") }}
           </p>
-          <p class="text-paragraph font-semibold text-xl md:text-center">
+          <p class="text-xl font-semibold text-paragraph md:text-center">
             {{ $t("introSectionTitle1Paragraph2") }}.
           </p>
-          <p class="text-paragraph font-semibold text-xl md:text-center">
+          <p class="text-xl font-semibold text-paragraph md:text-center">
             {{ $t("introSectionTitle1Paragraph3") }}
           </p>
         </div>
         <button
-          class="rounded-full border transition-all mt-10 duration-500 ease-in-out px-7 py-2 w-full sm:w-fit mx-auto"
+          class="mx-auto mt-10 w-full rounded-full border px-7 py-2 transition-all duration-500 ease-in-out sm:w-fit"
           :class="
-            adjustedPath === '/' ? ' text-white ' : ' text-black  border-black'
+            adjustedPath === '/' ? 'text-white' : 'border-black text-black'
           "
         >
           <span class="button-text">{{ $t("introSectionButton") }}</span>
@@ -33,7 +33,7 @@
         <button
           class="mt-8 px-7 py-2"
           :class="
-            adjustedPath === '/' ? ' text-white ' : ' text-black  border-black'
+            adjustedPath === '/' ? 'text-white' : 'border-black text-black'
           "
         >
           <span class="button-text">{{ $t("Learn more") }}</span>
@@ -44,7 +44,9 @@
 </template>
 
 <script setup lang="ts">
+import { gsap } from "gsap";
 const route = useRoute();
+const HeroSectionRef = ref();
 const getPathWithoutLocale = (path: string) => {
   const segments = path.split("/");
   if (segments[1] && segments[1].length === 2) {
@@ -53,6 +55,14 @@ const getPathWithoutLocale = (path: string) => {
   return path;
 };
 const adjustedPath = computed(() => getPathWithoutLocale(route.path));
+onMounted(() => {
+  gsap.from(HeroSectionRef.value, {
+    opacity: 0,
+    y: 200,
+    duration: 1,
+    ease: "power3.out",
+  });
+});
 </script>
 
 <style scoped></style>

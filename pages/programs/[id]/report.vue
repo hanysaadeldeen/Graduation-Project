@@ -8,31 +8,6 @@
       <span> Back to Reports </span>
     </nuxt-link>
     <section class="mt-16">
-      <!-- <h1
-        class="mb-4 border-b border-hookYellow pb-4 text-xl font-bold text-white md:text-3xl"
-      >
-        Submit Report
-      </h1>
-      <div class="mt-8 flex flex-col gap-4">
-        <div class="general">
-          <h1 class="subHeader">General info</h1>
-
-          <div class="mt-6">
-            <label
-              for="VulnerabilityTitle"
-              class="mb-2 inline-block cursor-pointer text-lg font-semibold text-white"
-            >
-              Vulnerability Title
-            </label>
-            <input
-              id="VulnerabilityTitle"
-              type="text"
-              placeholder="Short description of the vulnerability "
-              class="w-full rounded-lg bg-white/10 px-4 py-4 text-xl text-white outline-none"
-            />
-          </div>
-        </div>
-      </div> -->
       <ReportSection />
     </section>
   </div>

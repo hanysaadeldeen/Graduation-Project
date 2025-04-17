@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="text-white from-primary to-[#09090B] border-t border-gray-800 py-6 md:py-8"
+    class="border-t border-gray-800 from-primary to-[#09090B] py-6 text-white md:py-8"
     :class="
       adjustedPath === '/ForgetPassword' ||
       adjustedPath === '/Login' ||
@@ -10,34 +10,32 @@
         : 'bg-gradient-to-t'
     "
   >
-    <div class="container mx-auto relative max-sm:px-4 px-2">
+    <div class="container relative mx-auto px-2 max-sm:px-4">
       <div
-        class="flex max-lg:flex-col max-lg:items-start justify-between items-end gap-8"
+        class="flex items-end justify-between gap-8 max-lg:flex-col max-lg:items-start"
       >
-        <div class="">
-          <img
-            src="~/assets/img/LogoWhite-V.svg"
-            class="max-w-[192px] object-contain"
-            alt="logo"
-          />
-        </div>
+        <img
+          src="~/assets/img/LogoWhite-V.svg"
+          alt="Logo"
+          class="mx-auto max-w-[192px] object-contain"
+        />
         <div class="subscribe">
           <h1
-            class="text-2xl mb-5 md:text-center text-paragraph"
+            class="mb-5 text-center text-2xl text-paragraph"
             :class="locale === 'ar' ? 'text-right' : 'text-left'"
           >
             <span class="text-white"> Subscribe </span>
             <br />
             New Security Updates Weekly!
           </h1>
-          <form @submit.prevent="" class="lg:mx-auto">
+          <form @submit.prevent="" class="mx-auto">
             <input
               class="bg-primary"
               type="text"
               placeholder="Enter Your Email"
             />
             <button
-              class="font-bold tracking-wider text-lg bg-gradient-to-l from-primary to-secondary"
+              class="bg-gradient-to-l from-primary to-secondary text-lg font-bold tracking-wider"
             >
               subscribe
             </button>
@@ -46,51 +44,51 @@
         <div class="social">
           <div class="flex gap-6">
             <i
-              class="fa-brands fa-facebook text-paragraph hover:text-white transition-all duration-300 ease-in-out cursor-pointer text-2xl"
+              class="fa-brands fa-facebook cursor-pointer text-2xl text-paragraph transition-all duration-300 ease-in-out hover:text-white"
             ></i>
             <i
-              class="fa-brands fa-twitter text-paragraph hover:text-white transition-all duration-300 ease-in-out cursor-pointer text-2xl"
+              class="fa-brands fa-twitter cursor-pointer text-2xl text-paragraph transition-all duration-300 ease-in-out hover:text-white"
             ></i>
             <i
-              class="fa-brands fa-github text-paragraph hover:text-white transition-all duration-300 ease-in-out cursor-pointer text-2xl"
+              class="fa-brands fa-github cursor-pointer text-2xl text-paragraph transition-all duration-300 ease-in-out hover:text-white"
             ></i>
             <i
-              class="fa-brands fa-linkedin text-paragraph hover:text-white transition-all duration-300 ease-in-out cursor-pointer text-2xl"
+              class="fa-brands fa-linkedin cursor-pointer text-2xl text-paragraph transition-all duration-300 ease-in-out hover:text-white"
             ></i>
           </div>
         </div>
       </div>
 
       <div
-        class="flex flex-wrap lg:justify-between items-start mt-8 lg:mx-auto w-fit gap-6 md:gap-10 text-lg md:text-xl font-semibold"
+        class="mt-8 flex w-fit flex-wrap items-start gap-6 text-lg font-semibold md:gap-10 md:text-xl lg:mx-auto lg:justify-between"
       >
         <nuxt-link
-          class="cursor-pointer text-white hover:text-paragraph transition-all duration-300 ease-in-out"
+          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Home") }}</p>
         </nuxt-link>
         <nuxt-link
-          class="cursor-pointer text-white hover:text-paragraph transition-all duration-300 ease-in-out"
+          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Platform") }}</p>
         </nuxt-link>
         <nuxt-link
-          class="cursor-pointer text-white hover:text-paragraph transition-all duration-300 ease-in-out"
+          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Blogs") }}</p>
         </nuxt-link>
         <nuxt-link
-          class="cursor-pointer text-white hover:text-paragraph transition-all duration-300 ease-in-out"
+          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Services") }}</p>
         </nuxt-link>
         <nuxt-link
-          class="cursor-pointer text-white hover:text-paragraph transition-all duration-300 ease-in-out"
+          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Company") }}</p>
         </nuxt-link>
         <nuxt-link
-          class="cursor-pointer text-white hover:text-paragraph transition-all duration-300 ease-in-out"
+          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <!-- :to="localePath('gallery')" -->
           <p>{{ $t("Partners") }}</p>
@@ -98,12 +96,12 @@
       </div>
 
       <h1
-        class="sm:text-center text-paragraph-mediumDark font-medium text-base my-6 text-paragraph"
+        class="text-paragraph-mediumDark my-6 text-base font-medium text-paragraph sm:text-center"
       >
         Our mission is to improve cybersecurity in every company we touch.
       </h1>
       <h1
-        class="border-t sm:text-center border-primary text-paragraph-mediumDark font-medium text-base pt-6"
+        class="text-paragraph-mediumDark border-t border-primary pt-6 text-base font-medium sm:text-center"
       >
         Copyright © 2025 Zero Point Path. All Rights Reserved.
       </h1>
@@ -131,7 +129,7 @@ watchEffect(() => {
 
 <style scoped>
 .footer_title {
-  @apply capitalize text-base font-normal text-[#BD292E] mb-6;
+  @apply mb-6 text-base font-normal capitalize text-[#BD292E];
 }
 
 @media (max-width: 768px) {

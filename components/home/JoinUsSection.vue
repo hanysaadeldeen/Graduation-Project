@@ -1,12 +1,12 @@
 <template>
   <section class="JoinUs">
-    <div class="container px-4 mx-auto">
+    <div ref="JoinUsSection" class="container mx-auto px-4">
       <h1
         v-html="$t('joinUsTitle')"
-        class="font-bold text-4xl md:text-4xl bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent w-full md:w-[536px]"
+        class="w-full bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold text-transparent md:w-[536px] md:text-4xl"
       ></h1>
       <div
-        class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+        class="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
         <JoinUsCard
           v-for="card in JoinUsCards"
@@ -21,6 +21,9 @@
   </section>
 </template>
 <script setup lang="ts">
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const JoinUsCards = [
   {
     id: 1,
@@ -87,6 +90,27 @@ const JoinUsCards = [
     color: "#987681",
   },
 ];
+
+const JoinUsSection = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  if (JoinUsSection.value) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: JoinUsSection.value,
+        start: "top 70%",
+        end: "top 30%",
+        scrub: true,
+        markers: false,
+      },
+    });
+    tl.from(JoinUsSection.value, {
+      opacity: 0,
+      y: 200,
+      duration: 1,
+    });
+  }
+});
 </script>
 
 <style scoped></style>

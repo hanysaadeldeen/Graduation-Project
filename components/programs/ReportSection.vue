@@ -1,10 +1,10 @@
 <template>
-  <div class="dark">
+  <div class="overflow-hidden">
     <div class="text-white transition-colors duration-200">
       <div>
         <div class="flex flex-col gap-8 md:flex-row">
           <!-- Main form column -->
-          <div class="flex-1">
+          <div class="report-section1 flex-1">
             <h1 class="mb-6 text-3xl font-bold">Submit Report</h1>
 
             <!-- General info section -->
@@ -388,7 +388,7 @@
           </div>
 
           <!-- Sidebar -->
-          <div class="w-full md:w-80">
+          <div class="report-section2 w-full md:w-80">
             <div class="rounded-lg border border-gray-700 bg-gray-800 p-4">
               <div class="pb-0">
                 <div class="mb-3 flex items-center">
@@ -452,8 +452,9 @@
               </div>
               <div class="mt-4 flex flex-col gap-2">
                 <button
-                  class="w-full cursor-not-allowed rounded-md bg-blue-600 px-4 py-2 text-white opacity-50"
-                  :disabled="!canSubmit"
+                  class="w-full rounded-md bg-blue-600 px-4 py-2 text-white"
+                  :disabled="false"
+                  @click="submitReport"
                 >
                   Submit Report
                 </button>
@@ -475,8 +476,22 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { gsap } from "gsap";
 
+onMounted(() => {
+  gsap.from(".report-section1", {
+    opacity: 0,
+    duration: 1,
+    x: -200,
+    ease: "power3.out",
+  });
+  gsap.from(".report-section2", {
+    opacity: 0,
+    duration: 1,
+    x: 200,
+    ease: "power3.out",
+  });
+});
 // Form data
 const title = ref("");
 const selectedTarget = ref("");
@@ -558,21 +573,28 @@ const impactOptions = ["None", "Low", "High"];
 const userInteractionOptions = ["None", "Required"];
 
 // Computed properties
+// const canSubmit = computed(() => {
+//   return (
+//     title.value &&
+//     selectedTarget.value &&
+//     selectedCategory.value &&
+//     selectedSeverity.value &&
+//     vulnerabilityDescription.value &&
+//     validationSteps.value &&
+//     termsAccepted.value
+//   );
+// });
 const canSubmit = computed(() => {
-  return (
-    title.value &&
-    selectedTarget.value &&
-    selectedCategory.value &&
-    selectedSeverity.value &&
-    vulnerabilityDescription.value &&
-    validationSteps.value &&
-    termsAccepted.value
-  );
+  return title.value;
 });
 
 // Methods
 const saveDraft = () => {
   console.log("Saving draft...");
+  // Here you would implement the logic to save the form as a draft
+};
+const submitReport = () => {
+  console.log(title.value);
   // Here you would implement the logic to save the form as a draft
 };
 </script>

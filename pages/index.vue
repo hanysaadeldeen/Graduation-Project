@@ -1,11 +1,13 @@
 <template>
   <HeroSection />
   <WhatUs />
-  <client-only>
-    <AccessCardsSection />
-  </client-only>
   <GeniusSection />
-  <JoinUsSection />
+  <ClientOnly>
+    <JoinUsSection />
+  </ClientOnly>
+  <!-- <ClientOnly>
+    <AccessCardsSection />
+  </ClientOnly> -->
   <PlanSection />
 </template>
 

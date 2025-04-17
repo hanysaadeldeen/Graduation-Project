@@ -38,6 +38,7 @@
 
 body {
     background-color: #09090B;
+    overflow-x: hidden;
 }
 
 html[lang="en"] {
