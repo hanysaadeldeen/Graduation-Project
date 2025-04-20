@@ -43,7 +43,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const splitTypes = ref();
 const progressLine = ref();
-const sectionRef = ref<HTMLElement | null>(null);
+const sectionRef = ref();
 
 onMounted(async () => {
   if (process.client) {
