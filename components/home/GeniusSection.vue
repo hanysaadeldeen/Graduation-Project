@@ -45,9 +45,7 @@
             </div>
           </div>
           <div class="px-5 lg:px-12">
-            <h4 class="mb-4 text-lg font-medium text-white">
-              Smart forecasting
-            </h4>
+            <p class="mb-4 text-lg font-medium text-white">Smart forecasting</p>
             <p class="font-normal text-[#A1A1AA]">
               Harness the power of Cobalt's predictive analytics to map out the
               financial future of your business.
