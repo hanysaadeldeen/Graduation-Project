@@ -1,26 +1,28 @@
 <template>
   <div
-    class="h-fit py-10 w-full text-white bg-gradient-to-t from-primary to-[#09090B]"
+    class="h-fit w-full bg-gradient-to-t from-primary to-[#09090B] py-10 text-white"
   >
-    <div class="container mx-auto h-full relative px-4">
-      <div class="h-full flex items-center justify-between">
-        <div class="hidden h-full items-center justify-center w-1/2 lg:flex">
+    <div class="container relative mx-auto h-full px-4">
+      <div class="flex h-full items-center justify-between">
+        <div class="hidden h-full w-1/2 items-center justify-center lg:flex">
           <img
             src="~/assets/img/LogoWhite-V.svg"
             alt="Logo"
             class="w-[350px]"
+            width="350"
+            height="70"
           />
         </div>
 
         <div
-          class="flex justify-center items-center w-full border-secondary lg:w-1/2"
+          class="flex w-full items-center justify-center border-secondary lg:w-1/2"
           :class="locale === 'ar' ? 'lg:border-r' : 'lg:border-l'"
         >
           <div
-            class="flex justify-center flex-col w-full px-5 lg:px-10 items-center"
+            class="flex w-full flex-col items-center justify-center px-5 lg:px-10"
           >
             <h1
-              class="text-center mb-5 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
+              class="mb-5 bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-center text-4xl font-bold text-transparent md:text-5xl"
             >
               Register Page
             </h1>
@@ -33,7 +35,7 @@
                 <div class="mb-4">
                   <label
                     for="firstName"
-                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
+                    class="mb-2 inline-block cursor-pointer text-xl font-semibold text-paragraph"
                   >
                     First Name
                   </label>
@@ -42,10 +44,10 @@
                     name="firstName"
                     type="text"
                     placeholder="Enter Your First Name"
-                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="w-full rounded-md border border-none border-transparent bg-primary p-2 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.firstName }"
                   />
-                  <span class="text-red-500 text-sm">{{
+                  <span class="text-sm text-red-500">{{
                     errors.firstName
                   }}</span>
                 </div>
@@ -53,7 +55,7 @@
                 <div class="mb-4">
                   <label
                     for="lastName"
-                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
+                    class="mb-2 inline-block cursor-pointer text-xl font-semibold text-paragraph"
                   >
                     Last Name
                   </label>
@@ -62,17 +64,17 @@
                     name="lastName"
                     type="text"
                     placeholder="Enter Your Last Name"
-                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="w-full rounded-md border border-none border-transparent bg-primary p-2 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.lastName }"
                   />
-                  <span class="text-red-500 text-sm">{{
+                  <span class="text-sm text-red-500">{{
                     errors.lastName
                   }}</span>
                 </div>
                 <div class="mb-4">
                   <label
                     for="userName"
-                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
+                    class="mb-2 inline-block cursor-pointer text-xl font-semibold text-paragraph"
                   >
                     User Name
                   </label>
@@ -81,10 +83,10 @@
                     name="userName"
                     type="text"
                     placeholder="Enter Your Last Name"
-                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="w-full rounded-md border border-none border-transparent bg-primary p-2 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.userName }"
                   />
-                  <span class="text-red-500 text-sm">{{
+                  <span class="text-sm text-red-500">{{
                     errors.userName
                   }}</span>
                 </div>
@@ -92,7 +94,7 @@
                 <div class="mb-4">
                   <label
                     for="email"
-                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
+                    class="mb-2 inline-block cursor-pointer text-xl font-semibold text-paragraph"
                   >
                     Email
                   </label>
@@ -101,16 +103,16 @@
                     name="email"
                     type="email"
                     placeholder="Enter Your Email"
-                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="w-full rounded-md border border-none border-transparent bg-primary p-2 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.email }"
                   />
-                  <span class="text-red-500 text-sm">{{ errors.email }}</span>
+                  <span class="text-sm text-red-500">{{ errors.email }}</span>
                 </div>
 
                 <div class="mb-4">
                   <label
                     for="password"
-                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
+                    class="mb-2 inline-block cursor-pointer text-xl font-semibold text-paragraph"
                   >
                     Password
                   </label>
@@ -119,10 +121,10 @@
                     name="password"
                     type="password"
                     placeholder="Enter Your Password"
-                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="w-full rounded-md border border-none border-transparent bg-primary p-2 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.password }"
                   />
-                  <span class="text-red-500 text-sm">{{
+                  <span class="text-sm text-red-500">{{
                     errors.password
                   }}</span>
                 </div>
@@ -130,7 +132,7 @@
                 <div class="mb-8">
                   <label
                     for="confirmPassword"
-                    class="text-paragraph font-semibold text-xl mb-2 cursor-pointer inline-block"
+                    class="mb-2 inline-block cursor-pointer text-xl font-semibold text-paragraph"
                   >
                     Confirm Password
                   </label>
@@ -139,10 +141,10 @@
                     name="confirmPassword"
                     type="password"
                     placeholder="Confirm Your Password"
-                    class="text-white w-full p-2 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                    class="w-full rounded-md border border-none border-transparent bg-primary p-2 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                     :class="{ 'border-red-500': errors.confirmPassword }"
                   />
-                  <span class="text-red-500 text-sm">{{
+                  <span class="text-sm text-red-500">{{
                     errors.confirmPassword
                   }}</span>
                 </div>
@@ -150,14 +152,14 @@
                 <button
                   :disabled="isLoading"
                   type="submit"
-                  class="py-2 w-full capitalize rounded-xl bg-gradient-to-l from-primary to-secondary text-white font-bold tracking-wider text-2xl"
-                  :class="{ 'opacity-50 cursor-not-allowed': isLoading }"
+                  class="w-full rounded-xl bg-gradient-to-l from-primary to-secondary py-2 text-2xl font-bold capitalize tracking-wider text-white"
+                  :class="{ 'cursor-not-allowed opacity-50': isLoading }"
                 >
                   Register
                 </button>
               </Form>
               <nuxt-link :to="localePath('Login')">
-                <h1 class="text-paragraph text-xl text-center mt-5 capitalize">
+                <h1 class="mt-5 text-center text-xl capitalize text-paragraph">
                   Have an Account <span class="text-white"> Login</span>
                 </h1>
               </nuxt-link>

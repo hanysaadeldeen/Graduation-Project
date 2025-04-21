@@ -40,7 +40,12 @@
                 </div>
               </div>
               <div class="">
-                <img src="~/assets/img/IconGinus.svg" alt="IconGinus" />
+                <img
+                  src="~/assets/img/IconGinus.svg"
+                  alt="IconGinus"
+                  width="450"
+                  height="216"
+                />
               </div>
             </div>
           </div>
@@ -69,9 +74,9 @@
                 <div
                   class="flex w-full items-center justify-between gap-5 rounded-lg border border-gray-700 p-3 max-sm:flex-wrap md:gap-3"
                 >
-                  <h3 class="font-normal text-[#A1A1AA]">
+                  <p class="font-normal text-[#A1A1AA]">
                     ✨ Who's our most profitable customer?
-                  </h3>
+                  </p>
                   <button
                     class="buttonAskChat rounded-lg border border-gray-700 bg-black px-3 py-2 text-base font-medium text-white max-sm:w-full"
                   >
@@ -81,9 +86,9 @@
               </div>
             </div>
             <div class="px-5 lg:px-12">
-              <h4 class="mb-4 text-lg font-medium text-white">
+              <p class="mb-4 text-lg font-medium text-white">
                 Chat with Genius
-              </h4>
+              </p>
               <p class="font-normal text-[#A1A1AA]">
                 Just ask. With Genius by your side, navigating the <br />
                 financial maze becomes intuitive and effortless.

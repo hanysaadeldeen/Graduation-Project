@@ -9,6 +9,8 @@
             src="~/assets/img/LogoWhite-V.svg"
             alt="Logo"
             class="w-[350px]"
+            width="350"
+            height="70"
           />
         </div>
 

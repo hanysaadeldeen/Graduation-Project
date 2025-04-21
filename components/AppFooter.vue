@@ -18,6 +18,8 @@
           src="~/assets/img/LogoWhite-V.svg"
           alt="Logo"
           class="mx-auto max-w-[192px] object-contain"
+          width="192"
+          height="48"
         />
         <div class="subscribe">
           <h1

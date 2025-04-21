@@ -8,6 +8,8 @@
           src="~/assets/img/company1.png"
           alt="Bykea Logo"
           class="h-10 w-10 rounded-full"
+          width="40"
+          height="40"
         />
         <span class="text-lg font-semibold text-white">Bykea</span>
       </div>

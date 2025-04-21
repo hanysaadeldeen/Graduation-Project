@@ -8,6 +8,8 @@
               src="~/assets/img/Logo White-H.svg"
               alt="Zero Point Path"
               class="inline-block w-48 object-contain"
+              width="192"
+              height="48"
             />
           </nuxt-link>
           <div class="hidden items-center justify-between gap-10 lg:flex">
