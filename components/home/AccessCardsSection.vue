@@ -2,7 +2,7 @@
   <section class="AccessCardSection relative" id="sectionPin">
     <div class="container mx-auto px-4">
       <h1
-        class="font-bold text-4xl md:text-4xl bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent w-full md:w-[536px]"
+        class="w-full bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold text-transparent md:w-[536px] md:text-4xl"
       >
         Access for Every One.
       </h1>

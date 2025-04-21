@@ -1,27 +1,27 @@
 <template>
   <div
-    class="card rounded-xl overflow-hidden py-14 px-7 bg-[#18181B] w-[400px] h-[300px] flex-shrink-0 relative"
+    class="card relative h-[300px] w-[400px] flex-shrink-0 overflow-hidden rounded-xl bg-[#18181B] px-7 py-14"
   >
-    <h4 class="text-white text-2xl font-medium mb-3">
+    <h2 class="mb-3 text-2xl font-medium text-white">
       {{ title }}
-    </h4>
-    <p class="text-[#A1A1AA] text-base font-normal max-sm:text-center">
+    </h2>
+    <p class="text-base font-normal text-[#A1A1AA] max-sm:text-center">
       {{ description }}
     </p>
-    <div class="flex items-center justify-between mt-10">
+    <div class="mt-10 flex items-center justify-between">
       <a
         :href="link"
-        class="decoration-clone cursor-pointer"
+        class="cursor-pointer decoration-clone"
         :style="{ color: color }"
       >
         learn more
       </a>
       <i
-        class="fa-solid fa-arrow-right text-xl cursor-pointer text-[#A1A1AA]"
+        class="fa-solid fa-arrow-right cursor-pointer text-xl text-[#A1A1AA]"
       ></i>
     </div>
     <div
-      class="absolute w-14 h-14 rounded-full -top-5 -right-5"
+      class="absolute -right-5 -top-5 h-14 w-14 rounded-full"
       :style="{ background: color }"
     ></div>
   </div>
