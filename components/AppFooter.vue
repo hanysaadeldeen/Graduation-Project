@@ -62,37 +62,37 @@
       <div
         class="mt-8 flex w-fit flex-wrap items-start gap-6 text-lg font-semibold md:gap-10 md:text-xl lg:mx-auto lg:justify-between"
       >
-        <nuxt-link
+        <div
           class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Home") }}</p>
-        </nuxt-link>
-        <nuxt-link
+        </div>
+        <div
           class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Platform") }}</p>
-        </nuxt-link>
-        <nuxt-link
+        </div>
+        <div
           class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Blogs") }}</p>
-        </nuxt-link>
-        <nuxt-link
+        </div>
+        <div
           class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Services") }}</p>
-        </nuxt-link>
-        <nuxt-link
+        </div>
+        <div
           class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <p>{{ $t("Company") }}</p>
-        </nuxt-link>
-        <nuxt-link
+        </div>
+        <div
           class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
           <!-- :to="localePath('gallery')" -->
           <p>{{ $t("Partners") }}</p>
-        </nuxt-link>
+        </div>
       </div>
 
       <h1

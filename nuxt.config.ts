@@ -18,6 +18,11 @@ export default defineNuxtConfig({
     ],
     defaultLocale: "en",
     vueI18n: "./i18n.config.ts",
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root",
+    },
   },
   app: {
     head: {
@@ -44,6 +49,13 @@ export default defineNuxtConfig({
         },
       ],
       title: "Zero_Point_Path",
+      meta: [
+        {
+          name: "description",
+          content:
+            "ZeroPointSecurity: Hands-on cybersecurity training with interactive challenges in PWN, WEB, MISC, Forensics, Mobile, and Hardware. Learn in a gamified environment with personalized feedback.",
+        },
+      ],
     },
   },
   postcss: {
