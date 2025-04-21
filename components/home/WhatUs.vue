@@ -1,5 +1,5 @@
 <template>
-  <div class="whatUsSection relative h-screen" ref="sectionRef">
+  <!-- <div class="whatUsSection relative h-screen">
     <div class="container mx-auto px-4">
       <h1
         v-html="$t('whatUsSectionTitle')"
@@ -30,63 +30,94 @@
         ></span>
       </div>
     </div>
-  </div>
+  </div> -->
+  <template>
+    <section class="whatUsSection relative h-screen">
+      <div
+        class="container mx-auto flex h-full items-center justify-center px-4"
+      >
+        <div
+          class="flex w-full items-center justify-between gap-20 max-md:flex-col md:gap-10"
+        >
+          <h1
+            v-html="$t('whatUsSectionTitle')"
+            class="w-full bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text font-bold text-transparent md:w-[536px]"
+            :class="
+              locale === 'ar'
+                ? 'text-xl md:text-[50px] md:leading-[60px]'
+                : 'text-xl md:text-4xl'
+            "
+          ></h1>
+          <p
+            class="w-full font-semibold text-paragraph md:w-[700px]"
+            :class="
+              locale === 'ar'
+                ? 'text-lg md:text-2xl'
+                : 'text-lg tracking-wider md:text-xl'
+            "
+          >
+            {{ $t("whatUsSectionDescription") }}
+          </p>
+        </div>
+      </div>
+    </section>
+  </template>
 </template>
 
 <script setup lang="ts">
 const { locale } = useI18n();
 
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { gsap } from "gsap";
+// import ScrollTrigger from "gsap/ScrollTrigger";
+// import { gsap } from "gsap";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-const splitTypes = ref();
-const progressLine = ref();
-const sectionRef = ref();
+// const splitTypes = ref();
+// const progressLine = ref();
+// const sectionRef = ref();
 
-onMounted(async () => {
-  if (process.client) {
-    const SplitType = (await import("split-type")).default;
-    gsap.registerPlugin(ScrollTrigger);
+// onMounted(async () => {
+//   if (process.client) {
+//     const SplitType = (await import("split-type")).default;
+//     gsap.registerPlugin(ScrollTrigger);
 
-    if (splitTypes.value && progressLine.value) {
-      const char = splitTypes.value;
-      const text = new SplitType(char, { types: "words" });
-      const totalWords = text.words ? text.words.length : 0;
+//     if (splitTypes.value && progressLine.value) {
+//       const char = splitTypes.value;
+//       const text = new SplitType(char, { types: "words" });
+//       const totalWords = text.words ? text.words.length : 0;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.value,
-          start: "-10% top",
-          end: `+=${totalWords * 25}`,
-          scrub: 1,
-          markers: false,
-          toggleActions: "play pause resume none",
-          pin: true,
-          pinSpacing: true,
-        },
-      });
+//       const tl = gsap.timeline({
+//         scrollTrigger: {
+//           trigger: sectionRef.value,
+//           start: "-10% top",
+//           end: `+=${totalWords * 25}`,
+//           scrub: 1,
+//           markers: false,
+//           toggleActions: "play pause resume none",
+//           pin: true,
+//           pinSpacing: true,
+//         },
+//       });
 
-      tl.fromTo(
-        text.words,
-        { color: "#525A66" },
-        {
-          color: "#FFFFFF",
-          duration: 10,
-          stagger: 0.5,
-          onUpdate: function () {
-            const progress = (this.progress() * totalWords) / totalWords;
-            gsap.to(progressLine.value, {
-              height: `${progress * 100}%`,
-              duration: 0.2,
-            });
-          },
-        },
-      );
-    }
-  }
-});
+//       tl.fromTo(
+//         text.words,
+//         { color: "#525A66" },
+//         {
+//           color: "#FFFFFF",
+//           duration: 10,
+//           stagger: 0.5,
+//           onUpdate: function () {
+//             const progress = (this.progress() * totalWords) / totalWords;
+//             gsap.to(progressLine.value, {
+//               height: `${progress * 100}%`,
+//               duration: 0.2,
+//             });
+//           },
+//         },
+//       );
+//     }
+//   }
+// });
 </script>
 
 <style scoped></style>

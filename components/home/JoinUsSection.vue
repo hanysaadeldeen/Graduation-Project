@@ -98,15 +98,15 @@ onMounted(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: JoinUsSection.value,
-        start: "top 70%",
-        end: "top 30%",
+        start: "-20% 80%",
+        end: "top 35%",
         scrub: true,
-        markers: false,
+        markers: true,
       },
     });
     tl.from(JoinUsSection.value, {
       opacity: 0,
-      y: 200,
+      y: 300,
       duration: 1,
     });
   }

@@ -1,5 +1,5 @@
 <template>
-  <section class="Genius relative">
+  <section ref="GeniusSection" class="Genius relative">
     <div
       ref="GeniusSectionOne"
       id="GeniusSection"
@@ -20,7 +20,7 @@
         </p>
       </div>
       <div class="grid grid-cols-1 justify-between gap-8 md:grid-cols-2">
-        <div class="card rounded-2xl bg-[#18181B] py-7">
+        <div ref="ginusCritical" class="card rounded-2xl bg-[#18181B] py-7">
           <div class="ginusBackground px-4 py-3 lg:px-8 lg:py-7">
             <div class="rounded-2xl bg-[#18181B] px-3 pt-16">
               <div
@@ -54,7 +54,10 @@
             </p>
           </div>
         </div>
-        <div class="card relative rounded-2xl bg-[#18181B] py-7">
+        <div
+          ref="ginusChat"
+          class="card relative rounded-2xl bg-[#18181B] py-7"
+        >
           <div
             class="flex h-full flex-col justify-between gap-4 pt-14 md:pt-28"
           >
@@ -96,29 +99,47 @@
 </template>
 
 <script setup lang="ts">
-// import { gsap } from "gsap";
-// import ScrollTrigger from "gsap/ScrollTrigger";
-// gsap.registerPlugin(ScrollTrigger);
-// const GeniusSectionOne = ref<HTMLElement | null>(null);
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
-// onMounted(() => {
-//   if (GeniusSectionOne.value) {
-//     const tl = gsap.timeline({
-//       scrollTrigger: {
-//         trigger: GeniusSectionOne.value, // استخدم الـ ref مباشرة
-//         start: "top center",
-//         end: "bottom top",
-//         scrub: true,
-//         markers: true,
-//       },
-//     });
-//     tl.from(GeniusSectionOne.value, {
-//       opacity: 0,
-//       y: 50,
-//       duration: 1,
-//     });
-//   }
-// });
+const GeniusSection = ref(null);
+const ginusCritical = ref(null);
+const ginusChat = ref(null);
+
+onMounted(() => {
+  if (GeniusSection.value) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: GeniusSection.value,
+        start: "top 40%",
+        end: "center center",
+        scrub: true,
+        markers: false,
+      },
+    });
+    tl.from(
+      ginusCritical.value,
+      {
+        opacity: 0,
+        duration: 1,
+        x: -200,
+        ease: "power3.out",
+      },
+      0,
+    );
+    tl.from(
+      ginusChat.value,
+      {
+        opacity: 0,
+        duration: 1,
+        x: 200,
+        ease: "power3.out",
+      },
+      0,
+    );
+  }
+});
 </script>
 
 <style scoped>

@@ -10,49 +10,18 @@
               class="inline-block w-48 object-contain"
             />
           </nuxt-link>
-          <!-- <nav class="hidden lg:block">
-            <ul class="flex gap-10">
-              <li :class="adjustedPath === '/' ? 'active' : ''">
-                <nuxt-link :to="localePath('index')">
-                  {{ $t("home") }}
-                </nuxt-link>
-              </li>
-              <li :class="adjustedPath === '/company' ? 'active' : ''">
-                <nuxt-link :to="localePath('company')">{{
-                  $t("company")
-                }}</nuxt-link>
-              </li>
-              <li :class="adjustedPath === '/services' ? 'active' : ''">
-                <nuxt-link :to="localePath('solution')">{{
-                  $t("services")
-                }}</nuxt-link>
-              </li>
-              <li :class="adjustedPath === '/clients' ? 'active' : ''">
-                <nuxt-link :to="localePath('clients')">{{
-                  $t("clients")
-                }}</nuxt-link>
-              </li>
-              <li :class="adjustedPath === '/galary' ? 'active' : ''">
-                <nuxt-link :to="localePath('galary')">{{
-                  $t("gallery")
-                }}</nuxt-link>
-              </li>
-            </ul>
-          </nav> -->
           <div class="hidden items-center justify-between gap-10 lg:flex">
             <nuxt-link :to="localePath('Login')">
               <p :class="adjustedPath === '/' ? '/Login' : ''">
                 {{ $t("login") }}
               </p>
             </nuxt-link>
-
-            <!-- <h4>{{ $t("blog") }}</h4> -->
             <nuxt-link :to="localePath('blogs')">
               <p :class="adjustedPath === 'blogs' ? 'active' : ''">
                 {{ $t("blogs") }}
               </p>
             </nuxt-link>
-            <nuxt-link
+            <div
               class="relative flex cursor-pointer items-center gap-2"
               @click="isToolOpen = !isToolOpen"
             >
@@ -66,7 +35,7 @@
                   class="arrowTools absolute -bottom-[25px] left-1/2 h-5 w-5 -translate-x-1/2"
                 ></div>
               </transition>
-            </nuxt-link>
+            </div>
             <nuxt-link
               :to="localePath('programs')"
               class="relative flex cursor-pointer items-center gap-2"
@@ -91,12 +60,6 @@
             >
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
-
-            <!-- <button
-              class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2 text-white"
-            >
-              <span class="button-text">{{ $t("contact_us") }}</span>
-            </button> -->
           </div>
           <div class="block lg:hidden">
             <i
@@ -116,85 +79,36 @@
           >
             <div class="grid w-full grid-cols-2 gap-4 xl:grid-cols-3">
               <nuxt-link
-                :to="localePath('websiteScanner')"
+                v-for="tool in tools"
+                :key="tool.route"
+                :to="localePath(tool.route)"
                 @click="isToolOpen = !isToolOpen"
               >
                 <div
                   class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                 >
-                  <div>
-                    <img src="~/assets/img/spider.svg" alt="spider" />
-                  </div>
-                  <p class="text-base font-semibold tracking-wider text-black">
-                    Website Scanner
-                  </p>
-                </div>
-              </nuxt-link>
-              <nuxt-link
-                :to="localePath('whoisScanner')"
-                @click="isToolOpen = !isToolOpen"
-              >
-                <div
-                  class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                >
                   <div
-                    class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
+                    :class="{
+                      'flex h-[48px] w-[48px] items-center justify-center rounded-md bg-hookYellow':
+                        tool.iconType === 'fa',
+                    }"
                   >
-                    <i class="fa-solid fa-eye text-2xl text-[#744712]"></i>
+                    <i
+                      v-if="tool.iconType === 'fa'"
+                      :class="[
+                        'fa-solid',
+                        tool.icon,
+                        'text-2xl text-[#744712]',
+                      ]"
+                    ></i>
+                    <img
+                      v-else
+                      :src="tool.icon"
+                      :alt="tool.label.toLowerCase()"
+                    />
                   </div>
                   <p class="text-base font-semibold tracking-wider text-black">
-                    Whois Scanner
-                  </p>
-                </div>
-              </nuxt-link>
-
-              <nuxt-link
-                :to="localePath('emailScanner')"
-                @click="isToolOpen = !isToolOpen"
-              >
-                <div
-                  class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                >
-                  <div
-                    class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
-                  >
-                    <i class="fa-solid fa-envelope text-2xl text-[#744712]"></i>
-                  </div>
-                  <p class="text-base font-semibold tracking-wider text-black">
-                    Email Scanner
-                  </p>
-                </div>
-              </nuxt-link>
-
-              <nuxt-link
-                :to="localePath('passwordgenerator')"
-                @click="isToolOpen = !isToolOpen"
-              >
-                <div
-                  class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                >
-                  <div>
-                    <img src="~/assets/img/password.svg" alt="password" />
-                  </div>
-                  <p class="text-base font-semibold tracking-wider text-black">
-                    Password Generator
-                  </p>
-                </div>
-              </nuxt-link>
-              <nuxt-link
-                :to="localePath('virusscanner')"
-                @click="isToolOpen = !isToolOpen"
-              >
-                <div
-                  class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                >
-                  <div
-                    class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
-                  >
-                    <i class="fa-solid fa-bug text-2xl text-[#744712]"></i>
-                  </div>
-                  <p class="text-base font-semibold tracking-wider text-black">
-                    Virus scan
+                    {{ tool.label }}
                   </p>
                 </div>
               </nuxt-link>
@@ -260,13 +174,15 @@
                   {{ $t("login") }}
                 </li>
               </nuxt-link>
-              <nuxt-link
+              <div
                 class="relative flex cursor-pointer items-center gap-2"
                 @click="isToolOpen = !isToolOpen"
               >
-                <li>
-                  {{ $t("tools") }}
-                </li>
+                <ul>
+                  <li>
+                    {{ $t("tools") }}
+                  </li>
+                </ul>
                 <i class="fa-solid fa-angle-down"></i>
                 <transition name="dropdown">
                   <div
@@ -278,7 +194,7 @@
                     }"
                   ></div>
                 </transition>
-              </nuxt-link>
+              </div>
               <transition name="dropdown">
                 <div
                   v-if="isToolOpen"
@@ -289,119 +205,38 @@
                 >
                   <div class="grid w-full grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
                     <nuxt-link
-                      :to="localePath('websiteScanner')"
-                      @click="
-                        {
-                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
-                        }
-                      "
+                      v-for="tool in tools"
+                      :key="tool.route"
+                      :to="localePath(tool.route)"
+                      @click="isToolOpen = !isToolOpen"
                     >
                       <div
                         class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                       >
-                        <div>
-                          <img src="~/assets/img/spider.svg" alt="spider" />
-                        </div>
-                        <p
-                          class="text-center text-base font-semibold tracking-wider text-black"
-                        >
-                          Website Scanner
-                        </p>
-                      </div>
-                    </nuxt-link>
-                    <nuxt-link
-                      :to="localePath('whoisScanner')"
-                      @click="
-                        {
-                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
-                        }
-                      "
-                    >
-                      <div
-                        class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                      >
                         <div
-                          class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
+                          :class="{
+                            'flex h-[48px] w-[48px] items-center justify-center rounded-md bg-hookYellow':
+                              tool.iconType === 'fa',
+                          }"
                         >
                           <i
-                            class="fa-solid fa-eye text-2xl text-[#744712]"
+                            v-if="tool.iconType === 'fa'"
+                            :class="[
+                              'fa-solid',
+                              tool.icon,
+                              'text-2xl text-[#744712]',
+                            ]"
                           ></i>
+                          <img
+                            v-else
+                            :src="tool.icon"
+                            :alt="tool.label.toLowerCase()"
+                          />
                         </div>
                         <p
-                          class="text-center text-base font-semibold tracking-wider text-black"
+                          class="text-base font-semibold tracking-wider text-black"
                         >
-                          Whois scanner
-                        </p>
-                      </div>
-                    </nuxt-link>
-                    <nuxt-link
-                      :to="localePath('emailScanner')"
-                      @click="
-                        {
-                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
-                        }
-                      "
-                    >
-                      <div
-                        class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                      >
-                        <div
-                          class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
-                        >
-                          <i
-                            class="fa-solid fa-envelope text-2xl text-[#744712]"
-                          ></i>
-                        </div>
-                        <p
-                          class="text-center text-base font-semibold tracking-wider text-black"
-                        >
-                          Email Scanner
-                        </p>
-                      </div>
-                    </nuxt-link>
-                    <nuxt-link
-                      :to="localePath('passwordgenerator')"
-                      @click="
-                        {
-                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
-                        }
-                      "
-                    >
-                      <div
-                        class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                      >
-                        <div>
-                          <img src="~/assets/img/password.svg" alt="password" />
-                        </div>
-                        <p
-                          class="text-center text-base font-semibold tracking-wider text-black"
-                        >
-                          Password Generator
-                        </p>
-                      </div>
-                    </nuxt-link>
-                    <nuxt-link
-                      :to="localePath('virusscanner')"
-                      @click="
-                        {
-                          (isToolOpen = !isToolOpen), (isSideBar = !isSideBar);
-                        }
-                      "
-                    >
-                      <div
-                        class="tool flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                      >
-                        <div
-                          class="bg-hookYellow flex h-[48px] w-[48px] items-center justify-center rounded-md"
-                        >
-                          <i
-                            class="fa-solid fa-bug text-2xl text-[#744712]"
-                          ></i>
-                        </div>
-                        <p
-                          class="text-center text-base font-semibold tracking-wider text-black"
-                        >
-                          Virus scan
+                          {{ tool.label }}
                         </p>
                       </div>
                     </nuxt-link>
@@ -417,11 +252,6 @@
             >
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
-            <!-- <button
-              class="rounded-full border transition-all duration-500 ease-in-out px-7 py-2"
-            >
-              <span class="button-text">{{ $t("contact_us") }}</span>
-            </button> -->
           </div>
         </div>
       </transition>
@@ -436,6 +266,52 @@ const isSideBar = ref<boolean>(false);
 const transitionName = computed(() =>
   locale.value === "ar" ? "sidebar-ar" : "sidebar-en",
 );
+
+// Define tools array for v-for
+
+import spider from "~/assets/img/spider.svg";
+import password from "~/assets/img/password.svg";
+
+interface Tool {
+  route: string;
+  label: string;
+  icon: string;
+  iconType: "fa" | "img";
+}
+
+const tools = ref<Tool[]>([
+  {
+    route: "websiteScanner",
+    label: "Website Scanner",
+    icon: spider,
+    iconType: "img",
+  },
+  {
+    route: "whoisScanner",
+    label: "Whois Scanner",
+    icon: "fa-eye",
+    iconType: "fa",
+  },
+  {
+    route: "emailScanner",
+    label: "Email Scanner",
+    icon: "fa-envelope",
+    iconType: "fa",
+  },
+  {
+    route: "passwordgenerator",
+    label: "Password Generator",
+    icon: password,
+    iconType: "img",
+  },
+  {
+    route: "virusscanner",
+    label: "Virus scan",
+    icon: "fa-bug",
+    iconType: "fa",
+  },
+]);
+
 const route = useRoute();
 const getPathWithoutLocale = (path: string) => {
   const segments = path.split("/");

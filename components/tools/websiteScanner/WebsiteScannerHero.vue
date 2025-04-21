@@ -1,39 +1,62 @@
 <template>
-  <div class="flex items-center justify-between max-md:flex-col gap-16">
-    <div class="md:w-1/2 md:max-w-[600px] w-full">
+  <div
+    ref="WebsiteScannerHero"
+    class="flex items-center justify-between gap-16 max-md:flex-col"
+  >
+    <div ref="WebsiteScannerHeroLeft" class="w-full md:w-1/2 md:max-w-[600px]">
       <h1
-        class="mb-4 md:mb-8 font-bold text-2xl md:text-4xl bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
+        class="mb-4 bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-2xl font-bold text-transparent md:mb-8 md:text-4xl"
       >
         Vulnerability <br />
         Management
       </h1>
       <p
-        class="mb-4 md:mb-8 text-paragraph font-medium leading-6 text-xl text-justify"
+        class="mb-4 text-justify text-xl font-medium leading-6 text-paragraph md:mb-8"
       >
         Stay ahead of modern threats with a solution built for dynamic
         environments. InsightVM delivers comprehensive visibility,
         adversary-aware prioritization enriched with expert threat intelligence
         to drive meaningful risk reduction and streamline remediation workflows.
       </p>
-      <div class="flex max-lg:flex-wrap gap-5">
+      <div class="flex gap-5 max-lg:flex-wrap">
         <button
-          class="bg-[#152738] rounded-full max-md:w-full text-white text-center py-2 px-10 text-xl font-medium tracking-wider"
+          class="rounded-full bg-[#152738] px-10 py-2 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
         >
           Request Demo
         </button>
         <button
-          class="bg-[#152738] max-md:w-full text-white text-center py-2 px-10 rounded-full text-xl font-medium tracking-wider"
+          class="rounded-full bg-[#152738] px-10 py-2 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
         >
           Start Free Trial
         </button>
       </div>
     </div>
-    <div class="md:w-1/2 md:max-w-[600px] w-full">
+    <div ref="WebsiteScannerImage" class="w-full md:w-1/2 md:max-w-[600px]">
       <img src="~/assets/img/webScanner.png" alt="webScanner Image" />
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import gsap from "gsap";
+
+const WebsiteScannerHero = ref(null);
+const WebsiteScannerHeroLeft = ref(null);
+const WebsiteScannerImage = ref(null);
+onMounted(() => {
+  gsap.from(WebsiteScannerHeroLeft.value, {
+    opacity: 0,
+    duration: 1,
+    x: -300,
+    ease: "power2.out",
+  });
+  gsap.from(WebsiteScannerImage.value, {
+    opacity: 0,
+    duration: 1,
+    x: 300,
+    ease: "power2.out",
+  });
+});
+</script>
 
 <style scoped></style>

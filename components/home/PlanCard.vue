@@ -1,11 +1,13 @@
 <template>
   <div
-    class="px-5 py-7 rounded-2xl bg-[#131619] relative"
-    :class="id === 2 ? 'xl:-translate-y-5' : 'xl:translate-y-2'"
+    class="relative rounded-2xl bg-[#131619] px-5 py-7"
+    :class="
+      id === 2 ? `${classs} xl:-translate-y-5` : `${classs} xl:translate-y-2`
+    "
   >
     <div :class="id === 2 ? 'label' : 'hidden'">Most Popular</div>
     <div class="mb-8">
-      <h1 class="text-white text-3xl font-bold relative mb-3 tracking-wider">
+      <h1 class="relative mb-3 text-3xl font-bold tracking-wider text-white">
         {{ title
         }}<span
           class="text-base text-paragraph"
@@ -14,10 +16,10 @@
           /Year</span
         >
       </h1>
-      <h1 class="text-paragraph text-xl font-bold relative mb-5 tracking-wider">
+      <h1 class="relative mb-5 text-xl font-bold tracking-wider text-paragraph">
         {{ description }}
       </h1>
-      <div class="content flex flex-col gap-7 mt-7">
+      <div class="content mt-7 flex flex-col gap-7">
         <div
           class="flex items-center gap-4"
           v-for="(item, index) in content"
@@ -29,7 +31,7 @@
       </div>
     </div>
     <button
-      class="py-4 w-full capitalize rounded-xl bg-gradient-to-l from-primary to-secondary text-white font-bold tracking-wider text-2xl"
+      class="w-full rounded-xl bg-gradient-to-l from-primary to-secondary py-4 text-2xl font-bold capitalize tracking-wider text-white"
     >
       {{ btn }}
     </button>
@@ -43,6 +45,7 @@ type Props = {
   description: string;
   content: string[];
   btn: string;
+  classs: string;
 };
 defineProps<Props>();
 </script>

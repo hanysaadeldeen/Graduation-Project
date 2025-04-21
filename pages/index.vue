@@ -2,13 +2,9 @@
   <HeroSection />
   <WhatUs />
   <GeniusSection />
-  <ClientOnly>
-    <JoinUsSection />
-  </ClientOnly>
-  <!-- <ClientOnly>
-    <AccessCardsSection />
-  </ClientOnly> -->
+  <JoinUsSection />
   <PlanSection />
+  <AccessCardsSection />
 </template>
 
 <script setup lang="ts"></script>

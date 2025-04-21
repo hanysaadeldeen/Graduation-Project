@@ -1,12 +1,12 @@
 <template>
-  <section class="JoinUs">
-    <div class="container px-4 mx-auto">
+  <section class="PalnSection" ref="PlanSection">
+    <div class="container mx-auto px-4">
       <h1
-        class="font-bold text-4xl md:text-4xl bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent w-full md:w-[536px]"
+        class="w-full bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold text-transparent md:w-[536px] md:text-4xl"
       >
         Join Us and Explore ZeroPointPath’s Features
       </h1>
-      <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+      <div class="mt-20 grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <PlanCard
           v-for="card in PlanCardSection"
           :id="card.id"
@@ -15,6 +15,7 @@
           :description="card.description"
           :content="card.content"
           :btn="card.btn"
+          :classs="card.plan"
         />
       </div>
     </div>
@@ -34,6 +35,7 @@ const PlanCardSection = [
       " 4 databases",
     ],
     btn: "Current Plan",
+    plan: "PlanOne",
   },
   {
     id: 2,
@@ -47,6 +49,7 @@ const PlanCardSection = [
       " Advanced support",
     ],
     btn: "coming soon",
+    plan: "PlanTwo",
   },
   {
     id: 3,
@@ -60,8 +63,59 @@ const PlanCardSection = [
       " Professional support",
     ],
     btn: "coming soon",
+    plan: "PlanThree",
   },
 ];
+
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+const PlanSection = ref(null);
+
+onMounted(() => {
+  if (PlanSection.value) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: PlanSection.value,
+        start: "top 40%",
+        end: "center 40%",
+        scrub: true,
+        markers: false,
+      },
+    });
+    tl.from(
+      ".PlanOne",
+      {
+        opacity: 0,
+        duration: 1,
+        x: -200,
+        ease: "power3.out",
+      },
+      0,
+    );
+    tl.from(
+      ".PlanTwo",
+      {
+        opacity: 0,
+        duration: 1,
+        y: 200,
+        ease: "power3.out",
+      },
+      0,
+    );
+    tl.from(
+      ".PlanThree",
+      {
+        opacity: 0,
+        duration: 1,
+        x: 200,
+        ease: "power3.out",
+      },
+      0,
+    );
+  }
+});
 </script>
 
 <style scoped></style>
