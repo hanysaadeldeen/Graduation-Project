@@ -101,7 +101,7 @@ onMounted(() => {
         start: "-20% 80%",
         end: "top 35%",
         scrub: true,
-        markers: true,
+        markers: false,
       },
     });
     tl.from(JoinUsSection.value, {
