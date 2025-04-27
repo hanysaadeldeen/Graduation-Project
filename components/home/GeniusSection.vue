@@ -1,5 +1,5 @@
 <template>
-  <section ref="GeniusSection" class="Genius relative">
+  <section ref="GeniusSection" class="Genius relative overflow-hidden">
     <div
       ref="GeniusSectionOne"
       id="GeniusSection"

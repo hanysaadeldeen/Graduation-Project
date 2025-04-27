@@ -6,7 +6,9 @@
       >
         Join Us and Explore ZeroPointPath’s Features
       </h1>
-      <div class="mt-20 grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3">
+      <div
+        class="mt-20 grid grid-cols-1 gap-10 overflow-hidden lg:grid-cols-2 xl:grid-cols-3"
+      >
         <PlanCard
           v-for="card in PlanCardSection"
           :id="card.id"

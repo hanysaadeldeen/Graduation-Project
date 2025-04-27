@@ -50,7 +50,6 @@ onMounted(() => {
         trigger: currentSection,
         start,
         end,
-        markers: false,
         onEnter: () => {
           gsap.to("body", {
             backgroundColor: section.bodyColor,
