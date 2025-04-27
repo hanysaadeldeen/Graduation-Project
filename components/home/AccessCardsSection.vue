@@ -1,5 +1,5 @@
 <template>
-  <section class="AccessCardSection relative" id="sectionPin">
+  <section class="relative" id="AccessCardSection">
     <div class="container mx-auto px-4">
       <h1
         class="w-full bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold text-transparent md:w-[536px] md:text-4xl"
@@ -92,7 +92,7 @@ onMounted(() => {
     ease: "none",
   });
   ScrollTrigger.create({
-    trigger: "#sectionPin",
+    trigger: "#AccessCardSection",
     start: "top 20%",
     end: () => `+=${Math.abs(getScrollAmount())}`,
     pin: true,
@@ -105,7 +105,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-#sectionPin {
+#AccessCardSection {
   overflow: hidden;
 }
 .pin-wrap {

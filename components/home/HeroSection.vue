@@ -1,7 +1,4 @@
 <template>
-  <div
-    class="absolute left-0 top-0 h-screen w-full bg-gradient-to-b from-primary to-[#09090B]"
-  ></div>
   <div ref="HeroSectionRef" class="startSection heroSection relative h-dvh">
     <div class="container relative mx-auto h-full px-4">
       <div class="flex h-full flex-col justify-center">
@@ -44,6 +41,9 @@
 </template>
 
 <script setup lang="ts">
+// <div
+//       class="absolute left-0 top-0 h-screen w-full bg-gradient-to-b from-primary to-[#09090B]"
+//     ></div>
 import { gsap } from "gsap";
 const route = useRoute();
 const HeroSectionRef = ref();

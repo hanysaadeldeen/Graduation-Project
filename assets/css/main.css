@@ -59,17 +59,11 @@ section {
 }
 
 .startSection {
-    height: calc(100vh - 112px);
+    height: calc(100vh - 94px);
 }
 
 @media (max-width: 768px) {
     section {
         margin-bottom: 80px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .startSection {
-        height: calc(100vh - 72px);
     }
 }
