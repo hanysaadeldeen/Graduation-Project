@@ -43,11 +43,14 @@ onMounted(() => {
       const currentSection = section.ref.value.$el;
       const prevSection =
         index > 0 ? sectionsData[index - 1].ref.value.$el : null;
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const start = isMobile ? "top 20%" : "top 35%";
+      const end = isMobile ? "bottom 60%" : "bottom 60%";
       ScrollTrigger.create({
         trigger: currentSection,
-        start: "top 35%",
-        end: "bottom 60%",
-        markers: true,
+        start,
+        end,
+        markers: false,
         onEnter: () => {
           gsap.to("body", {
             backgroundColor: section.bodyColor,
