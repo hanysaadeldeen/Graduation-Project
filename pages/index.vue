@@ -58,7 +58,7 @@ onMounted(() => {
           });
           gsap.to(currentSection, {
             backgroundColor: section.bodyColor,
-            color: "#ffffff",
+            color: "#000",
             duration: 0.5,
             ease: "power2.out",
           });
@@ -99,7 +99,7 @@ onMounted(() => {
           gsap.to(currentSection, {
             backgroundColor: section.bodyColor,
             duration: 0.5,
-            color: "#ffffff",
+            color: "#000",
             ease: "power2.out",
           });
           if (prevSection) {

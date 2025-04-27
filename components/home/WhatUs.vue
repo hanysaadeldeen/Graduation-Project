@@ -4,9 +4,7 @@
       class="container mx-auto flex h-[70%] items-center justify-center px-4"
     >
       <div class="flex w-full flex-col items-center justify-between gap-10">
-        <h1
-          class="w-full text-center text-4xl font-bold text-white md:text-5xl"
-        >
+        <h1 class="w-full text-center text-4xl font-bold md:text-5xl">
           {{ $t("whatUsSectionTitle") }}
         </h1>
         <!-- <h1
