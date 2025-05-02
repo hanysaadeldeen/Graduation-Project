@@ -1,43 +1,39 @@
 <template>
   <section class="Last_bolg">
     <h1
-      class="text-2xl md:text-4xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center mb-8"
+      class="mb-8 bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-center text-2xl font-bold tracking-wider text-transparent md:text-4xl"
     >
       Latest Post
     </h1>
     <div
-      class="flex max-md:flex-wrap justify-between gap-6 bg-[#161625] p-5 rounded-md items-center mb-20"
+      class="mb-20 flex items-center justify-between gap-6 rounded-md bg-[#161625] p-5 max-md:flex-wrap"
     >
-      <div class="w-full md:w-1/2 rounded-md">
+      <div class="w-full rounded-md md:w-1/2">
         <img
-          src="~/assets/img/blog.jpeg"
-          class="inline-block w-full h-full max-h-[400px] object-cover max-w-full"
+          v-if="props.blogs"
+          :src="props.blogs[3].image"
+          class="inline-block h-full max-h-[400px] w-full max-w-full object-cover"
         />
       </div>
-      <div class="flex flex-col gap-5 w-full md:w-1/2">
-        <p class="text-paragraph text-xl">October 13, 2024</p>
-        <div class="flex max-lg:flex-wrap gap-5">
+      <div class="flex w-full flex-col gap-5 md:w-1/2">
+        <p class="text-xl text-paragraph">October 13, 2024</p>
+        <div class="flex gap-5 max-lg:flex-wrap">
           <button
-            class="bg-[#152738] max-md:w-full text-white text-center py-4 px-5 rounded-md text-xl font-medium tracking-wider"
+            class="rounded-md bg-[#152738] px-5 py-4 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
           >
-            DarkAtlas Squad
+            ZeroPointSecurity
           </button>
           <button
-            class="bg-[#152738] max-md:w-full text-white text-center py-4 px-5 rounded-md text-xl font-medium tracking-wider"
+            class="rounded-md bg-[#152738] px-5 py-4 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
           >
             Malware Analysis
           </button>
         </div>
-        <h1 class="text-white font-bold text-3xl">
-          Fog Ransomware – Technical Analysis
+        <h1 class="text-3xl font-bold text-white">
+          {{ props.blogs[0]?.title }}
         </h1>
-        <p class="text-paragraph text-xl line-clamp-5">
-          Introduction On July 30th, [StrikeReady Labs] reported the discovery
-          of a malicious **LNK** file. This file is designed to download a
-          PowerShell script from the URL management.xuzeest[.]buzz/DSC30/.The
-          Dark Atlas Squad has been closely monitoring this Advanced Persistent
-          Threat (APT), attributed to SideWinder, an Indian threat group has
-          been active since at least 2012.SideWinder primarily focusing […]
+        <p class="line-clamp-5 text-xl text-paragraph">
+          {{ props.blogs[0]?.title }}
         </p>
       </div>
     </div>
@@ -45,7 +41,26 @@
 </template>
 
 <script setup lang="ts">
-const { locale } = useI18n();
+// const { locale } = useI18n();
+
+interface Section {
+  title: string;
+  content: string;
+}
+interface blogs {
+  id: string;
+  title: string;
+  sections: Section[];
+  image: string;
+  createdAt: string;
+  authorName: string;
+  authorEmail: string;
+}
+
+interface Props {
+  blogs: blogs[];
+}
+const props = defineProps<Props>();
 </script>
 
 <style scoped></style>

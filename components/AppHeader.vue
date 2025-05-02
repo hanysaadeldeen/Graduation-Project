@@ -56,6 +56,14 @@
                 {{ $t("CTF") }}
               </p>
             </a>
+            <nuxt-link
+              :to="localePath('community')"
+              class="relative flex cursor-pointer items-center gap-2"
+            >
+              <p :class="adjustedPath === 'community' ? 'active' : ''">
+                {{ $t("community") }}
+              </p>
+            </nuxt-link>
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="cursor-pointer text-xl font-medium"
@@ -167,7 +175,14 @@
                   {{ $t("CTF") }}
                 </li>
               </a>
-
+              <nuxt-link
+                :to="localePath('community')"
+                class="relative flex cursor-pointer items-center gap-2"
+              >
+                <li :class="adjustedPath === 'community' ? 'active' : ''">
+                  {{ $t("community") }}
+                </li>
+              </nuxt-link>
               <nuxt-link
                 :to="localePath('Login')"
                 @click="isSideBar = !isSideBar"

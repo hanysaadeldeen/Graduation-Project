@@ -1,32 +1,28 @@
 <template>
-  <div class="bg-[#161625] p-5 rounded-md group/item h-fit max-w-fit">
+  <div class="group/item h-fit max-w-fit rounded-md bg-[#161625] p-5">
     <img
       src="~/assets/img/blog1.webp"
-      alt="Blog Image"
-      class="object-cover w-full max-w-full h-full max-h-[220px] rounded-md"
+      :alt="blog.title"
+      class="h-full max-h-[220px] w-full max-w-full rounded-md object-cover"
     />
     <div class="mt-5">
-      <p class="text-lg font-bold text-white mb-5">
-        <i class="text-secondary fa-solid fa-calendar-days mr-2"></i> November
+      <p class="mb-5 text-lg font-bold text-white">
+        <i class="fa-solid fa-calendar-days mr-2 text-secondary"></i> November
         25, 2024
       </p>
       <nuxt-link :to="localePath('/blogs/1')">
         <h1
-          class="group-hover/item:text-secondary duration-300 transition-all cursor-pointer ease-in-out text-2xl font-bold text-white my-6 md:my-10"
+          class="my-6 cursor-pointer text-2xl font-bold text-white transition-all duration-300 ease-in-out group-hover/item:text-secondary md:my-10"
         >
-          Helldown Ransomware Analysis
+          {{ blog.title }}
         </h1>
       </nuxt-link>
-      <p class="text-paragraph text-xl line-clamp-3">
-        In June [Arctic Wolf Labs] reported a deployment of a new ransomware
-        named Fog Ransomware, according to their report the ransomware was seen
-        in several incident Response cases, affecting education and recreation
-        center in the United States, the investigation revealed that the
-        attackers gain access to victims through compromised VPNs credentials
+      <p class="line-clamp-3 text-xl text-paragraph">
+        {{ blog?.sections[0].content }}
       </p>
-      <nuxt-link :to="localePath('/blogs/1')">
+      <nuxt-link :to="localePath(`/blogs/${blog.id}`)">
         <button
-          class="group-hover/item:opacity-100 group/edit opacity-0 flex bg-gradient-to-r from-primary to-[#09090B] hover:scale-105 transition-all duration-300 ease-in-out w-full text-white text-center py-3 rounded-md text-xl font-medium tracking-wider items-center justify-center gap-3 mt-8"
+          class="group/edit mt-8 flex w-full items-center justify-center gap-3 rounded-md bg-gradient-to-r from-primary to-[#09090B] py-3 text-center text-xl font-medium tracking-wider text-white opacity-0 transition-all duration-300 ease-in-out hover:scale-105 group-hover/item:opacity-100"
         >
           Read More
           <i
@@ -40,6 +36,25 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath();
+
+interface Section {
+  title: string;
+  content: string;
+}
+interface blogs {
+  id: string;
+  title: string;
+  sections: Section[];
+  image: string;
+  createdAt: string;
+  authorName: string;
+  authorEmail: string;
+}
+
+interface Props {
+  blog: blogs;
+}
+defineProps<Props>();
 </script>
 
 <style scoped></style>
