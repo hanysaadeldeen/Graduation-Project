@@ -23,7 +23,7 @@ interface Section {
   title: string;
   content: string;
 }
-interface blogs {
+interface Blog {
   id: string;
   title: string;
   sections: Section[];
@@ -32,10 +32,10 @@ interface blogs {
   authorName: string;
   authorEmail: string;
 }
-
 interface Props {
-  blogs: blogs[];
+  blogs: Blog[] | null;
 }
+
 defineProps<Props>();
 </script>
 

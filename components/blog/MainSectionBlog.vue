@@ -10,8 +10,8 @@
     >
       <div class="w-full rounded-md md:w-1/2">
         <img
-          v-if="props.blogs"
-          :src="props.blogs[3].image"
+          v-if="blogs"
+          :src="blogs[3].image"
           class="inline-block h-full max-h-[400px] w-full max-w-full object-cover"
         />
       </div>
@@ -30,10 +30,10 @@
           </button>
         </div>
         <h1 class="text-3xl font-bold text-white">
-          {{ props.blogs[0]?.title }}
+          {{ blogs ? blogs[0].title : "" }}
         </h1>
         <p class="line-clamp-5 text-xl text-paragraph">
-          {{ props.blogs[0]?.title }}
+          {{ blogs ? blogs[0]?.sections[0].content : "" }}
         </p>
       </div>
     </div>
@@ -47,7 +47,7 @@ interface Section {
   title: string;
   content: string;
 }
-interface blogs {
+interface Blogs {
   id: string;
   title: string;
   sections: Section[];
@@ -58,9 +58,9 @@ interface blogs {
 }
 
 interface Props {
-  blogs: blogs[];
+  blogs: Blogs[] | null;
 }
-const props = defineProps<Props>();
+defineProps<Props>();
 </script>
 
 <style scoped></style>

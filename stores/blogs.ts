@@ -5,7 +5,7 @@ interface Section {
   content: string;
 }
 
-interface blogs {
+interface Blogs {
   id: string;
   title: string;
   sections: Section[];
@@ -16,8 +16,8 @@ interface blogs {
 }
 
 export const useblogsStore = defineStore("blogs", () => {
-  const blogs = ref<blogs | null>(null);
-  const blogId = ref<blogs | null>(null);
+  const blogs = ref<Blogs[] | null>(null);
+  const blogId = ref<Blogs | null>(null);
   const loading = ref(false);
   const error = ref<string | null>(null);
 
@@ -28,7 +28,7 @@ export const useblogsStore = defineStore("blogs", () => {
     error.value = null;
     console.log("here1");
     try {
-      const { data, error: fetchError } = await useFetch<blogs>(
+      const { data, error: fetchError } = await useFetch<Blogs[]>(
         `${runtimeConfig.public.BaseApi}/api/Blog`,
         {
           method: "GET",
@@ -41,7 +41,7 @@ export const useblogsStore = defineStore("blogs", () => {
         error.value = fetchError.value.message;
         return;
       }
-      blogs.value = data.value;
+      blogs.value = data.value || [];
     } catch (err: any) {
       error.value = err.message || "Unknown error";
       console.log(err);
@@ -49,11 +49,11 @@ export const useblogsStore = defineStore("blogs", () => {
       loading.value = false;
     }
   };
-  const fetchBlogId = async (id: string) => {
+  const fetchBlogId = async (id: any) => {
     loading.value = true;
     error.value = null;
     try {
-      const { data, error: fetchError } = await useFetch<blogs>(
+      const { data, error: fetchError } = await useFetch<Blogs>(
         `${runtimeConfig.public.BaseApi}/api/Blog/${id}`,
       );
       if (fetchError.value) {
