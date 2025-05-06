@@ -1,7 +1,7 @@
 <template>
   <div class="group/item h-fit max-w-fit rounded-md bg-[#161625] p-5">
     <img
-      src="~/assets/img/blog1.webp"
+      :src="runtimeConfig.public.BaseApi + blog.image"
       :alt="blog.title"
       class="h-full max-h-[220px] w-full max-w-full rounded-md object-cover"
     />
@@ -10,7 +10,7 @@
         <i class="fa-solid fa-calendar-days mr-2 text-secondary"></i> November
         25, 2024
       </p>
-      <nuxt-link :to="localePath('/blogs/1')">
+      <nuxt-link :to="localePath(`/blogs/${blog.id}`)">
         <h1
           class="my-6 cursor-pointer text-2xl font-bold text-white transition-all duration-300 ease-in-out group-hover/item:text-secondary md:my-10"
         >
@@ -36,6 +36,7 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath();
+const runtimeConfig = useRuntimeConfig();
 
 interface Section {
   title: string;

@@ -11,8 +11,9 @@
       <div class="w-full rounded-md md:w-1/2">
         <img
           v-if="blogs"
-          :src="blogs[3].image"
+          :src="runtimeConfig.public.BaseApi + blogs[0].image"
           class="inline-block h-full max-h-[400px] w-full max-w-full object-cover"
+          loading="lazy"
         />
       </div>
       <div class="flex w-full flex-col gap-5 md:w-1/2">
@@ -42,6 +43,7 @@
 
 <script setup lang="ts">
 // const { locale } = useI18n();
+const runtimeConfig = useRuntimeConfig();
 
 interface Section {
   title: string;
@@ -60,6 +62,7 @@ interface Blogs {
 interface Props {
   blogs: Blogs[] | null;
 }
+
 defineProps<Props>();
 </script>
 

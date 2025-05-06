@@ -1,14 +1,27 @@
 <template>
   <section class="blogId">
     <div class="container mx-auto px-4">
-      <div>
+      <div
+        v-if="loading"
+        class="flex h-full flex-col items-center justify-center gap-4"
+      >
         <img
-          src="~/assets/img/blog1.webp"
-          alt="BlogImage"
-          class="h-full max-h-[500px] w-full object-cover"
+          src="~/assets/img/Spin.svg"
+          class="size-[150px]"
+          width="150"
+          height="150"
+          alt="Spin"
         />
       </div>
-      <div class="mt-8">
+      <div v-if="!loading && blogId">
+        <img
+          :src="runtimeConfig.public.BaseApi + blogId?.image"
+          alt="BlogImage"
+          class="h-full max-h-[500px] w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div v-if="!loading && blogId" class="mt-8">
         <nuxt-link to="/blogs">
           <div class="group flex items-center gap-2.5">
             <i
@@ -69,20 +82,23 @@
           </div>
         </div>
       </div>
+      <div v-else-if="!loading && error" class="mt-8">
+        <p class="text-center uppercase text-red-500">fail to fetch blog</p>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
-// console.log(route.params.id);
 
 const blogsStore = useblogsStore();
 const { blogId, loading, error } = storeToRefs(blogsStore);
 
+const runtimeConfig = useRuntimeConfig();
+
 onMounted(() => {
-  console.log(typeof route.params.id);
-  blogsStore.fetchBlogId(route.params.id);
+  blogsStore.fetchBlogId(route.params.id.toString());
 });
 </script>
 

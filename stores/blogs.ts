@@ -49,16 +49,29 @@ export const useblogsStore = defineStore("blogs", () => {
       loading.value = false;
     }
   };
-  const fetchBlogId = async (id: any) => {
+  const fetchBlogId = async (id: string) => {
     loading.value = true;
     error.value = null;
+
     try {
       const { data, error: fetchError } = await useFetch<Blogs>(
         `${runtimeConfig.public.BaseApi}/api/Blog/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+          },
+        },
       );
       if (fetchError.value) {
         error.value = fetchError.value.message;
         return;
+      }
+      if (!data.value) {
+        error.value = "Blog not found";
+        return;
+      } else {
+        console.log(data.value);
       }
       blogId.value = data.value!;
     } catch (err: any) {
