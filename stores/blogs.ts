@@ -29,12 +29,9 @@ export const useblogsStore = defineStore("blogs", () => {
     console.log("here1");
     try {
       const { data, error: fetchError } = await useFetch<Blogs[]>(
-        `${runtimeConfig.public.BaseApi}/api/Blog`,
+        `${runtimeConfig.public.BaseApi}/Blog`,
         {
           method: "GET",
-          headers: {
-            "ngrok-skip-browser-warning": "true",
-          },
         },
       );
       if (fetchError.value) {

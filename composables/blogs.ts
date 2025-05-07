@@ -23,7 +23,7 @@ const getBlogs = async () => {
       {
         method: "GET",
         headers: {
-          "ngrok-skip-browser-warning": "true",
+          // "ngrok-skip-browser-warning": "true",
         },
       },
     );
