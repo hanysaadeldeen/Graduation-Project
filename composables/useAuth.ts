@@ -92,7 +92,7 @@ export const useAuth = () => {
         {
           method: "POST",
           body: Senderdata,
-        }
+        },
       );
       return response;
     } catch (error) {

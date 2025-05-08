@@ -87,7 +87,7 @@
         <button
           type="button"
           @click="removeTarget(index)"
-          class="mt-2 text-sm text-red-500 hover:text-red-700"
+          class="mt-4 cursor-pointer rounded-lg bg-red-500 px-4 py-1 text-sm text-white hover:bg-red-800"
           v-if="targets.length > 1"
         >
           Remove Target
@@ -292,6 +292,8 @@
 import { Form, Field } from "vee-validate";
 import * as Yup from "yup";
 import { ref } from "vue";
+import { programsController } from "~/composables/programs";
+const { addProgram } = await programsController();
 
 // Define interfaces for TypeScript
 interface Target {
@@ -388,7 +390,7 @@ const removeTarget = (index: number) => {
   targets.value.splice(index, 1);
 };
 
-const onSubmit = (values: any) => {
+const onSubmit = async (values: any) => {
   // Combine rewards into a single object
   const formattedValues: FormValues = {
     ...values,
@@ -400,7 +402,14 @@ const onSubmit = (values: any) => {
     },
     targets: values.targets,
   };
-  console.log("Form submitted:", formattedValues);
-  // Handle form submission, e.g., send data to API
+  const response: any = await addProgram(formattedValues);
+
+  if (response.status00231 === 201) {
+    // Handle success
+    console.log("Program added successfully");
+  } else {
+    // Handle error
+    console.error("Failed to add program");
+  }
 };
 </script>
