@@ -24,6 +24,15 @@
         <ProgramsCard />
       </div>
     </div>
+    <div class="mt-8">
+      <nuxt-link to="/programs/AddPrograms">
+        <button
+          class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
+        >
+          Add Programs
+        </button></nuxt-link
+      >
+    </div>
   </div>
 </template>
 
