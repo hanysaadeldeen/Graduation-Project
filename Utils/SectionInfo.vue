@@ -1,10 +1,10 @@
 <template>
-  <div class="sectionInfo w-full sm:max-w-[640px] relative flex flex-col gap-5">
+  <div class="sectionInfo relative flex w-full flex-col gap-5 sm:max-w-[640px]">
     <h1
       v-html="$t(about)"
-      class="font-bold text-4xl sm:text-5xl leading-[3rem] sm:leading-[4rem] bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
+      class="bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold leading-[3rem] text-transparent sm:text-5xl sm:leading-[4rem]"
     ></h1>
-    <p class="text-paragraph font-medium leading-6 text-xl">
+    <p class="text-xl font-medium leading-6 text-paragraph">
       {{ description && $t(description) }}
     </p>
   </div>

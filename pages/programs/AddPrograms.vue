@@ -1,7 +1,6 @@
 <template>
   <Form
     @submit="onSubmit"
-    :validation-schema="schema"
     v-slot="{ errors, isSubmitting }"
     class="w-full rounded-lg p-6 shadow-lg"
     as="form"
@@ -12,7 +11,70 @@
       Add Bug Bounty Program
     </h1>
 
-    <!-- In Scope Targets -->
+    <!-- program title -->
+    <div class="mb-4">
+      <label
+        for="programtitle"
+        class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300"
+        >program title</label
+      >
+      <Field
+        name="programtitle"
+        as="input"
+        id="programtitle"
+        type="text"
+        placeholder="enter program title"
+        class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-white"
+        :class="{ 'border-red-500': errors.programtitle }"
+      />
+      <span class="text-sm text-red-500">{{ errors.programtitle }}</span>
+    </div>
+    <!-- company name -->
+    <div class="mb-4">
+      <label
+        for="companyName"
+        class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300"
+        >company Name</label
+      >
+      <Field
+        name="companyName"
+        as="input"
+        type="text"
+        id="companyName"
+        placeholder="Enter company Name"
+        class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-white"
+        :class="{ 'border-red-500': errors.companyName }"
+      />
+      <span class="text-sm text-red-500">{{ errors.companyName }}</span>
+    </div>
+    <!-- company logo -->
+    <div class="mb-4">
+      <label
+        for="image"
+        class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300"
+        >Company Image</label
+      >
+      <Field name="image" v-slot="{ field, errorMessage }">
+        <input
+          id="image"
+          type="file"
+          accept="image/*"
+          @change="handleImageUpload($event, field)"
+          class="block w-full text-sm text-gray-400 file:mr-4 file:rounded-md file:border-0 file:bg-gray-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-gray-600"
+        />
+        <span v-if="errorMessage" class="text-sm text-red-500">{{
+          errorMessage
+        }}</span>
+      </Field>
+
+      <img
+        v-if="imagePreview"
+        :src="imagePreview"
+        alt="Preview"
+        class="mt-4 h-48 w-full rounded object-cover"
+      />
+    </div>
+    <!-- Targets -->
     <div class="mb-4">
       <label
         class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300"
@@ -100,6 +162,38 @@
       >
         Add Target
       </button>
+    </div>
+    <!-- collaboration Type -->
+    <div class="mb-4">
+      <label
+        for="collaborationType"
+        class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300"
+        >collaboration Type</label
+      >
+      <Field
+        name="collaborationType"
+        id="collaborationType"
+        as="input"
+        type="text"
+        placeholder="Enter type (e.g., Retesting)"
+        class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-white"
+        :class="{ 'border-red-500': errors.collaborationType }"
+      />
+      <span class="text-sm text-red-500">{{ errors.collaborationType }}</span>
+    </div>
+    <!-- goldStandard -->
+    <div class="mb-4">
+      <label
+        for="goldStandard"
+        class="mr-2 inline-block cursor-pointer text-2xl font-bold text-red-500"
+        >goldStandard</label
+      >
+      <input
+        type="checkbox"
+        id="goldStandard"
+        class="h-4 w-4 p-3"
+        v-model="goldStandard"
+      />
     </div>
 
     <!-- In Scope Vulnerabilities -->
@@ -328,6 +422,31 @@ const targets = ref<Target[]>([
 
 // Define Yup schema
 const schema = Yup.object({
+  image: Yup.mixed()
+    .required("Image is required")
+    .test("fileType", "Unsupported file format", (value) =>
+      value
+        ? ["image/jpeg", "image/png", "image/JPG", "image/webp"].includes(
+            value.type,
+          )
+        : true,
+    )
+    .test(
+      "fileSize",
+      "File is too large",
+      (value) => (value ? value.size <= 5 * 1024 * 1024 : true), // 5MB
+    ),
+
+  collaborationType: Yup.string()
+    .required("collaboration Type are required")
+    .min(10, "collaboration Type must be at least 10 characters"),
+  programtitle: Yup.string()
+    .required("program title are required")
+    .min(10, "program title must be at least 10 characters"),
+  companyName: Yup.string()
+    .required("company Name are required")
+    .min(10, "company Name must be at least 2 characters"),
+
   targets: Yup.array()
     .of(
       Yup.object({
@@ -350,6 +469,7 @@ const schema = Yup.object({
   inScopeVulnerabilities: Yup.string()
     .required("In Scope Vulnerabilities are required")
     .min(10, "In Scope Vulnerabilities must be at least 10 characters"),
+
   outOfScopeVulnerabilities: Yup.string()
     .required("Out of Scope Vulnerabilities are required")
     .min(10, "Out of Scope Vulnerabilities must be at least 10 characters"),
@@ -380,7 +500,24 @@ const schema = Yup.object({
       .matches(/^\$?\d+$/, "Must be a valid amount (e.g., $200)"),
   }),
 });
+const goldStandard = ref(false);
 
+const image = ref(null);
+const imagePreview = ref<any>(null);
+
+const handleImageUpload = (event: any, field: any) => {
+  const file = event.target.files[0];
+  if (file) {
+    image.value = file;
+    field.onChange(file);
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      imagePreview.value = e.target?.result || null;
+    };
+    reader.readAsDataURL(file);
+  }
+};
 // Methods
 const addTarget = () => {
   targets.value.push({ url: "", type: "", severity: "", reward: "" });
@@ -392,24 +529,27 @@ const removeTarget = (index: number) => {
 
 const onSubmit = async (values: any) => {
   // Combine rewards into a single object
-  const formattedValues: FormValues = {
-    ...values,
-    rewards: {
-      critical: values.rewards.critical,
-      high: values.rewards.high,
-      medium: values.rewards.medium,
-      low: values.rewards.low,
-    },
-    targets: values.targets,
-  };
-  const response: any = await addProgram(formattedValues);
+  // const formattedValues: FormValues = {
+  //   ...values,
+  //   rewards: {
+  //     critical: values.rewards.critical,
+  //     high: values.rewards.high,
+  //     medium: values.rewards.medium,
+  //     low: values.rewards.low,
+  //   },
+  //   targets: values.targets,
+  // };
+  // const response: any = await addProgram(formattedValues);
 
-  if (response.status00231 === 201) {
-    // Handle success
-    console.log("Program added successfully");
-  } else {
-    // Handle error
-    console.error("Failed to add program");
-  }
+  console.log(values);
+  console.log("goldStandard", goldStandard.value);
+
+  // if (response.status00231 === 201) {
+  //   // Handle success
+  //   console.log("Program added successfully");
+  // } else {
+  //   // Handle error
+  //   console.error("Failed to add program");
+  // }
 };
 </script>

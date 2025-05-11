@@ -164,6 +164,8 @@ const imagePreview = ref(null);
 
 // Handle image upload
 const handleImageUpload = (event, field) => {
+  console.log("imagePreview", imagePreview.value);
+
   const file = event.target.files[0];
   if (file) {
     form.value.image = file;

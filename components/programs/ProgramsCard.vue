@@ -18,7 +18,7 @@
     <h2 class="mt-4 text-xl font-bold text-white">Bug Bounty Program</h2>
     <p class="text-sm text-paragraph">Retesting, Collaboration</p>
 
-    <div class="mt-4 flex flex-wrap gap-2">
+    <!-- <div class="mt-4 flex flex-wrap gap-2">
       <span
         class="rounded-full bg-[#E0E9FF] px-3 py-1 text-xs font-medium text-[#002375]"
         >Domain <span class="border-l border-[#002375] pl-1">7</span></span
@@ -40,7 +40,7 @@
         class="rounded-full bg-[#E0E9FF] px-3 py-1 text-xs font-medium text-[#002375]"
         >y Program <span class="border-l border-[#002375] pl-1">7</span></span
       >
-    </div>
+    </div> -->
 
     <div class="mt-6">
       <div class="flex items-center space-x-2">
