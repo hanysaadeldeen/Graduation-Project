@@ -373,12 +373,12 @@
 
     <!-- Submit Button -->
     <button
-      :disabled="isSubmitting"
+      :disabled="submitLoading"
       type="submit"
       class="w-full rounded-xl bg-gradient-to-l from-primary to-secondary px-16 py-2 text-2xl font-medium capitalize tracking-wider text-white md:w-fit"
-      :class="{ 'cursor-not-allowed opacity-50': isSubmitting }"
+      :class="{ 'cursor-not-allowed opacity-50': submitLoading }"
     >
-      {{ isSubmitting ? "Submitting..." : "Add Program" }}
+      {{ submitLoading ? "Submitting..." : "Add Program" }}
     </button>
   </Form>
 </template>
@@ -387,7 +387,8 @@ import { Form, Field } from "vee-validate";
 import * as Yup from "yup";
 import { ref } from "vue";
 import { programsController } from "~/composables/programs";
-const { addProgram } = await programsController();
+const { addProgram, fetchPrograms, fetchProgramId } =
+  await programsController();
 
 // Define interfaces for TypeScript
 interface Target {
@@ -500,7 +501,7 @@ const schema = Yup.object({
       .matches(/^\$?\d+$/, "Must be a valid amount (e.g., $200)"),
   }),
 });
-const goldStandard = ref(false);
+const goldStandard = ref<boolean>(false);
 
 const image = ref(null);
 const imagePreview = ref<any>(null);
@@ -527,29 +528,14 @@ const removeTarget = (index: number) => {
   targets.value.splice(index, 1);
 };
 
+const submitLoading = ref<boolean>(false);
 const onSubmit = async (values: any) => {
   // Combine rewards into a single object
-  // const formattedValues: FormValues = {
-  //   ...values,
-  //   rewards: {
-  //     critical: values.rewards.critical,
-  //     high: values.rewards.high,
-  //     medium: values.rewards.medium,
-  //     low: values.rewards.low,
-  //   },
-  //   targets: values.targets,
-  // };
-  // const response: any = await addProgram(formattedValues);
+  submitLoading.value = true;
+  console.log("Form 1:");
 
-  console.log(values);
-  console.log("goldStandard", goldStandard.value);
-
-  // if (response.status00231 === 201) {
-  //   // Handle success
-  //   console.log("Program added successfully");
-  // } else {
-  //   // Handle error
-  //   console.error("Failed to add program");
-  // }
+  await addProgram(values, goldStandard.value);
+  submitLoading.value = false;
+  console.log("Form 2:");
 };
 </script>

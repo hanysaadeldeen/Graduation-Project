@@ -104,13 +104,18 @@ export const programsController = async () => {
       loading.value = false;
     }
   };
-  const addProgram = async (values: any) => {
+  const addProgram = async (values: any, goldStandard: any) => {
+    console.log("addProgram function");
+
     loading.value = true;
     error.value = null;
     const formData = new FormData();
     const runtimeConfig = useRuntimeConfig();
 
-    // Append top-level string fields
+    formData.append("title", values.programtitle);
+    formData.append("companyName", values.companyName);
+    formData.append("collaborationType", values.collaborationType);
+    formData.append("goldStandard", String(goldStandard));
     formData.append("focusArea", values.focusArea);
     formData.append("inScopeVulnerabilities", values.inScopeVulnerabilities);
     formData.append(
@@ -121,35 +126,46 @@ export const programsController = async () => {
     formData.append("disclosureGuidelines", values.disclosureGuidelines);
     formData.append("eligibility", values.eligibility);
 
-    // Append rewards fields
-    formData.append("rewards[critical]", values.rewards.critical);
-    formData.append("rewards[high]", values.rewards.high);
-    formData.append("rewards[medium]", values.rewards.medium);
-    formData.append("rewards[low]", values.rewards.low);
+    formData.append("targets", JSON.stringify(values.targets));
+    formData.append("rewards", JSON.stringify(values.rewards));
 
-    // Append targets array
-    values.targets.forEach((target: Target, index: number) => {
-      formData.append(`targets[${index}][url]`, target.url);
-      formData.append(`targets[${index}][type]`, target.type);
-      formData.append(`targets[${index}][severity]`, target.severity);
-      formData.append(`targets[${index}][reward]`, target.reward);
-    });
+    if (values.image instanceof File) {
+      formData.append("image", values.image);
+    } else if (typeof values.image === "string") {
+      formData.append("image", values.image);
+    }
+
+    console.log(values);
+
+    const allvalue = {
+      name: values.programtitle,
+      logoUrl: "https://example.com/logo.png",
+      collaborationType: values.collaborationType,
+      goldStandard: goldStandard,
+      vulnerabilitiesCount: 50,
+      hackersPaid: 20,
+      responseEfficiency: 95,
+      companyName: values.companyName,
+      programStatus: "Active",
+    };
+    console.log(allvalue);
 
     try {
+      console.log("before fetch");
+
       const { data, error: fetchError } = await useFetch(
-        `${runtimeConfig.public.BaseApi}/`,
+        `${runtimeConfig.public.BaseApi}/api/BBPrograms`,
         {
           method: "POST",
-          body: formData,
+          body: allvalue,
         },
       );
 
-      if (fetchError.value) {
-        console.error("Submission failed:", fetchError.value);
-        error.value = fetchError.value.message || "Submission failed";
+      if (fetchError) {
+        console.log("Error:", fetchError);
+
         return;
       }
-
       console.log("Form submitted successfully:", data.value);
       return data.value;
     } catch (err) {
