@@ -38,7 +38,9 @@
             >
               This program is active now
             </button>
+
             <nuxt-link
+              v-if="userId"
               :to="localePath(`/programs/${params.id}/report`)"
               class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
             >
@@ -51,7 +53,7 @@
         </div>
         <div class="relative z-20 flex space-x-6">
           <p
-            class="border-hookYellow cursor-pointer pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
+            class="cursor-pointer border-hookYellow pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
             :class="
               bountyType === 'programInfo' ? 'border-b-2 text-primary' : ''
             "
@@ -60,7 +62,7 @@
             Program info
           </p>
           <p
-            class="border-hookYellow cursor-pointer pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
+            class="cursor-pointer border-hookYellow pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
             :class="bountyType === 'Hackers' ? 'border-b-2 text-primary' : ''"
             @click="bountyType = 'Hackers'"
           >
@@ -70,7 +72,7 @@
             class="cursor-pointer pb-2 text-lg font-semibold text-white hover:text-[#dddd]"
             :class="
               bountyType === 'Reports'
-                ? 'border-hookYellow border-b-2 text-primary'
+                ? 'border-b-2 border-hookYellow text-primary'
                 : ''
             "
             @click="bountyType = 'Reports'"
@@ -93,6 +95,7 @@ const { params } = useRoute();
 const localePath = useLocalePath();
 
 const bountyType = ref<string>("programInfo");
+const userId = useCookie("userId");
 </script>
 
 <style scoped>

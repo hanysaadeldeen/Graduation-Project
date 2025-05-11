@@ -31,14 +31,21 @@ export const useAuthStore = defineStore("authentication", () => {
     }
   };
 
+  const token: any = useCookie("token");
+  const userId = useCookie("userId");
   // login
   const loginUser = async (data: { email: string; password: string }) => {
     isLoading.value = true;
     error.value = null;
     try {
       isLoading.value = true;
-      const response = await login(data);
+      const response = (await login(data)) as any;
       isLoading.value = false;
+      if (response) {
+        token.value = response.token;
+        userId.value = response.userId;
+      }
+
       return response;
     } catch (err: any) {
       isLoading.value = false;

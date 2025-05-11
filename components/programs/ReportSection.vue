@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden text-white transition-colors duration-200">
     <!-- Main form column -->
-    <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors }">
+    <Form @submit="onSubmit" v-slot="{ errors, submitCount }">
       <div class="flex flex-col gap-8 px-2 md:flex-row">
         <div class="report-section1 flex-1">
           <h1 class="mb-6 text-3xl font-bold">Submit Report</h1>
@@ -19,14 +19,16 @@
               >
               <Field
                 id="title"
-                name="title"
+                name="VulnerabilityTitle"
                 type="text"
                 placeholder="Short description of the vulnerability and the affected asset"
                 class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2"
-                :class="{ 'border-red-500': errors.title }"
+                :class="{ 'border-red-500': errors.VulnerabilityTitle }"
                 v-model="title"
               />
-              <span class="text-sm text-red-500">{{ errors.title }}</span>
+              <span class="text-sm text-red-500">{{
+                errors.VulnerabilityTitle
+              }}</span>
             </div>
           </div>
 
@@ -41,11 +43,11 @@
 
             <Field
               id="target"
-              name="targets"
+              name="VulnerabilityTarget"
               v-model="selectedTarget"
               as="select"
               class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2"
-              :class="{ 'border-red-500': errors.target }"
+              :class="{ 'border-red-500': errors.VulnerabilityTarget }"
             >
               <option value="" disabled>Select the vulnerability target</option>
               <option
@@ -56,7 +58,9 @@
                 {{ target }}
               </option>
             </Field>
-            <span class="text-sm text-red-500">{{ errors.targets }}</span>
+            <span class="text-sm text-red-500">{{
+              errors.VulnerabilityTarget
+            }}</span>
           </div>
 
           <!-- Vulnerability category -->
@@ -68,7 +72,7 @@
             >
 
             <Field
-              name="category"
+              name="VulnerabilityCategory"
               as="select"
               id="category"
               v-model="selectedCategory"
@@ -85,7 +89,9 @@
                 {{ category }}
               </option>
             </Field>
-            <span class="text-sm text-red-500">{{ errors.category }}</span>
+            <span class="text-sm text-red-500">{{
+              errors.VulnerabilityCategory
+            }}</span>
           </div>
 
           <!-- Severity level section -->
@@ -106,30 +112,89 @@
               </p>
 
               <!-- Severity buttons -->
-              <div
-                class="mb-6 flex flex-wrap gap-2 border-b border-gray-600 pb-4"
-              >
-                <button
-                  v-for="severity in severityLevels"
-                  :key="severity.value"
-                  :class="[
-                    'flex items-center gap-2 rounded-md border-4 px-4 py-2',
-                    selectedSeverity === severity.value
-                      ? `${severity.color} scale-110 border-4 border-hookYellow`
-                      : `${severity.color} border-transparent`,
-                  ]"
-                  @click="selectedSeverity = severity.value"
+              <Field
+                name="SeverityLevel"
+                as="input"
+                type="hidden"
+                v-model="selectedSeverity"
+              />
+
+              <!-- Severity Buttons -->
+              <div class="mb- border-b border-gray-600 pb-4">
+                <div class="6 flex flex-wrap gap-2">
+                  <button
+                    v-for="severity in severityLevels"
+                    :key="severity.value"
+                    :class="[
+                      'flex items-center gap-2 rounded-md border-4 px-4 py-2',
+                      selectedSeverity === severity.value
+                        ? `${severity.color} scale-110 border-hookYellow`
+                        : `${severity.color} border-transparent`,
+                    ]"
+                    type="button"
+                    @click="selectedSeverity = severity.value"
+                  >
+                    <span
+                      v-if="severity.value !== 'none'"
+                      :class="`h-2 w-2 rounded-full ${severity.dotColor}`"
+                    ></span>
+                    <span>{{ severity.label }}</span>
+                  </button>
+                </div>
+                <p
+                  class="mt-3 text-sm text-red-500"
+                  v-if="submitCount > 0 && errors.SeverityLevel"
                 >
-                  <span
-                    v-if="severity.value !== 'none'"
-                    :class="`h-2 w-2 rounded-full ${severity.dotColor}`"
-                  ></span>
-                  <span>{{ severity.label }}</span>
-                </button>
+                  {{ errors.SeverityLevel }}
+                </p>
               </div>
 
               <!-- CVSS Metrics grid -->
               <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <Field
+                  name="AttackVector"
+                  as="input"
+                  type="hidden"
+                  v-model="AttackVector"
+                />
+                <Field name="Scope" as="input" type="hidden" v-model="scope" />
+                <Field
+                  name="AttackComplexity"
+                  as="input"
+                  type="hidden"
+                  v-model="attackComplexity"
+                />
+                <Field
+                  name="Confidentiality"
+                  as="input"
+                  type="hidden"
+                  v-model="confidentiality"
+                />
+                <Field
+                  name="PrivilegesRequired"
+                  as="input"
+                  type="hidden"
+                  v-model="privilegesRequired"
+                />
+                <Field
+                  name="Integrity"
+                  as="input"
+                  type="hidden"
+                  v-model="integrity"
+                />
+                <Field
+                  name="UserInteraction"
+                  as="input"
+                  type="hidden"
+                  v-model="userInteraction"
+                />
+                <Field
+                  name="Availability"
+                  as="input"
+                  type="hidden"
+                  v-model="availability"
+                />
+
                 <!-- Attack Vector -->
                 <div>
                   <div class="mb-2 flex items-center">
@@ -144,15 +209,21 @@
                       :key="option"
                       :class="[
                         'rounded-md border px-3 py-1 text-base',
-                        attackVector === option
+                        AttackVector === option
                           ? 'border-gray-400 bg-gray-200 text-gray-900'
                           : 'border-gray-600 bg-gray-700',
                       ]"
-                      @click="attackVector = option"
+                      @click="AttackVector = option"
                     >
                       {{ option }}
                     </button>
                   </div>
+                  <p
+                    class="mt-3 text-sm text-red-500"
+                    v-if="submitCount > 0 && errors.AttackVector"
+                  >
+                    {{ errors.AttackVector }}
+                  </p>
                 </div>
 
                 <!-- Scope -->
@@ -178,6 +249,12 @@
                       {{ option }}
                     </button>
                   </div>
+                  <p
+                    class="mt-3 text-sm text-red-500"
+                    v-if="submitCount > 0 && errors.Scope"
+                  >
+                    {{ errors.Scope }}
+                  </p>
                 </div>
 
                 <!-- Attack Complexity -->
@@ -203,6 +280,12 @@
                       {{ option }}
                     </button>
                   </div>
+                  <p
+                    class="mt-3 text-sm text-red-500"
+                    v-if="submitCount > 0 && errors.AttackComplexity"
+                  >
+                    {{ errors.AttackComplexity }}
+                  </p>
                 </div>
 
                 <!-- Confidentiality -->
@@ -228,6 +311,12 @@
                       {{ option }}
                     </button>
                   </div>
+                  <p
+                    class="mt-3 text-sm text-red-500"
+                    v-if="submitCount > 0 && errors.Confidentiality"
+                  >
+                    {{ errors.Confidentiality }}
+                  </p>
                 </div>
 
                 <!-- Privileges Required -->
@@ -255,6 +344,12 @@
                       {{ option }}
                     </button>
                   </div>
+                  <p
+                    class="mt-3 text-sm text-red-500"
+                    v-if="submitCount > 0 && errors.PrivilegesRequired"
+                  >
+                    {{ errors.PrivilegesRequired }}
+                  </p>
                 </div>
 
                 <!-- Integrity -->
@@ -280,6 +375,12 @@
                       {{ option }}
                     </button>
                   </div>
+                  <p
+                    class="mt-3 text-sm text-red-500"
+                    v-if="submitCount > 0 && errors.Integrity"
+                  >
+                    {{ errors.Integrity }}
+                  </p>
                 </div>
 
                 <!-- User Interaction -->
@@ -305,6 +406,12 @@
                       {{ option }}
                     </button>
                   </div>
+                  <p
+                    class="mt-3 text-sm text-red-500"
+                    v-if="submitCount > 0 && errors.UserInteraction"
+                  >
+                    {{ errors.UserInteraction }}
+                  </p>
                 </div>
 
                 <!-- Availability -->
@@ -330,6 +437,12 @@
                       {{ option }}
                     </button>
                   </div>
+                  <p
+                    class="mt-3 text-sm text-red-500"
+                    v-if="submitCount > 0 && errors.Availability"
+                  >
+                    {{ errors.Availability }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -347,11 +460,13 @@
               >
               <Field
                 as="textarea"
-                name="Description"
+                name="VulnerabilityDetails"
                 class="min-h-[200px] w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2"
                 v-model="vulnerabilityDescription"
               />
-              <span class="text-sm text-red-500">{{ errors.Description }}</span>
+              <span class="text-sm text-red-500">{{
+                errors.VulnerabilityDetails
+              }}</span>
             </div>
           </div>
 
@@ -370,11 +485,13 @@
 
             <Field
               as="textarea"
-              name="Validation"
+              name="ValidationSteps"
               class="min-h-[200px] w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2"
               v-model="validationSteps"
             />
-            <span class="text-sm text-red-500">{{ errors.Validation }}</span>
+            <span class="text-sm text-red-500">{{
+              errors.ValidationSteps
+            }}</span>
           </div>
 
           <div class="w-full max-w-4xl space-y-4">
@@ -404,26 +521,16 @@
                 Drag & Drop Or Select More Files From Your Computer (Max. 50MB
                 Per File)
               </label>
-              <!-- <Field
-                ref="fileInput"
-                id="file-upload"
-                name="files"
-                type="file"
-                multiple
-                class="hidden"
-                accept=".bmp,.gif,.jpeg,.jpg,.pdf,.png,.mp4,.mov,.csv,.txt,.zip,.json,.xml,.md,.ts"
-                v-on="files"
-              /> -->
               <Field
                 id="file-upload"
-                name="files"
+                name="Attachment"
                 type="file"
                 multiple
                 class="block w-full text-sm text-gray-500 file:mr-4 file:rounded-md file:border-0 file:bg-primary file:px-4 file:py-2 file:text-white hover:file:bg-secondary"
                 accept=".bmp,.gif,.jpeg,.jpg,.pdf,.png,.mp4,.mov,.csv,.txt,.zip,.json,.xml,.md,.ts"
                 v-model="files"
               />
-              <span class="text-sm text-red-500">{{ errors.files }}</span>
+              <span class="text-sm text-red-500">{{ errors.Attachment }}</span>
             </div>
           </div>
         </div>
@@ -506,6 +613,8 @@
 </template>
 
 <script setup>
+import { report } from "~/composables/report";
+
 import { gsap } from "gsap";
 import { Form, Field } from "vee-validate";
 import { useToast } from "vue-toast-notification";
@@ -513,27 +622,38 @@ import * as yup from "yup";
 const fileInput = ref(null);
 const toast = useToast({ position: "top-right", duration: 1500 });
 const schema = yup.object({
-  title: yup
+  VulnerabilityTitle: yup
     .string()
     .min(3, "title must be at least 6 characters")
     .required("title is required"),
-  targets: yup
+  VulnerabilityTarget: yup
     .string()
     .required("Please select a vulnerability target")
     .notOneOf([""], "Please select a valid target"),
-  category: yup
+  VulnerabilityCategory: yup
     .string()
     .required("Please select a Vulnerability category")
     .notOneOf([""], "Please select a valid category"),
-  Description: yup
+  VulnerabilityDetails: yup
     .string()
     .min(50, "Description must be at least 50 characters")
     .required("Description is required"),
-  Validation: yup
+  ValidationSteps: yup
     .string()
     .min(50, "Validation must be at least 50 characters")
     .required("Description is required"),
-  files: yup.mixed().required("At least one file is required"),
+  Attachment: yup.mixed().required("At least one file is required"),
+  SeverityLevel: yup.string().required("Please select a severity level"),
+  AttackVector: yup.string().required("Please select a Attack Vector"),
+  AttackComplexity: yup.string().required("Please select a Attack Complexity"),
+  PrivilegesRequired: yup
+    .string()
+    .required("Please select a Privileges Required"),
+  UserInteraction: yup.string().required("Please select a User Interaction"),
+  Scope: yup.string().required("Please select a Scope"),
+  Confidentiality: yup.string().required("Please select a Confidentiality"),
+  Integrity: yup.string().required("Please select a Integrity"),
+  Availability: yup.string().required("Please select a Availability"),
 });
 const triggerFileUpload = () => {
   fileInput.value?.click();
@@ -557,7 +677,7 @@ const title = ref("");
 const selectedTarget = ref("");
 const selectedCategory = ref("");
 const selectedSeverity = ref(null);
-const attackVector = ref(null);
+const AttackVector = ref(null);
 const scope = ref(null);
 const attackComplexity = ref(null);
 const confidentiality = ref(null);
@@ -633,12 +753,18 @@ const scopeOptions = ["Unchanged", "Changed"];
 const complexityOptions = ["Low", "High"];
 const impactOptions = ["None", "Low", "High"];
 const userInteractionOptions = ["None", "Required"];
-
+const { addReport } = await report();
 const onSubmit = async (values) => {
   console.log("values", values);
-  toast.success("Report submitted successfully");
-  setTimeout(() => {
-    router.replace(`/programs/${params.id}`);
-  }, 1500);
+
+  const response = await addReport(params.id, values);
+  if (response) {
+    toast.success("Report submitted successfully");
+    // setTimeout(() => {
+    //   router.replace(`/programs/${params.id}`);
+    // }, 1500);
+  } else {
+    toast.error("Failed to submit report");
+  }
 };
 </script>
