@@ -29,7 +29,7 @@ export const useblogsStore = defineStore("blogs", () => {
     console.log("here1");
     try {
       const { data, error: fetchError } = await useFetch<Blogs[]>(
-        `${runtimeConfig.public.BaseApi}/Blog`,
+        `${runtimeConfig.public.BaseApi}/api/Blog`,
         {
           method: "GET",
         },

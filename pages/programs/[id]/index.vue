@@ -40,7 +40,6 @@
             </button>
 
             <nuxt-link
-              v-if="userId"
               :to="localePath(`/programs/${params.id}/report`)"
               class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
             >
