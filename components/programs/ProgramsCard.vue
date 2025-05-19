@@ -89,7 +89,7 @@
         <span
           class="mb-0.5 mr-1.5 h-2.5 w-2.5 rounded-full bg-green-300"
         ></span>
-        {{ program.responseEfficiency }}
+        % {{ program.responseEfficiency }}
       </div>
     </div>
 

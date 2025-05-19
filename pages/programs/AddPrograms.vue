@@ -1,7 +1,7 @@
 <template>
   <Form
     @submit="onSubmit"
-    v-slot="{ errors, isSubmitting }"
+    v-slot="{ errors, isSubmitting, values }"
     :validation-schema="schema"
     class="w-full rounded-lg p-6 shadow-lg"
     as="form"
@@ -382,6 +382,32 @@
       </div>
     </div>
 
+    <!-- Response Efficiency -->
+    <div class="mb-4">
+      <label
+        for="responseEfficiency"
+        class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300"
+      >
+        Response Efficiency ( {{ values?.responseEfficiency || 50 }} %)
+      </label>
+      <Field
+        name="responseEfficiency"
+        as="input"
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+        id="responseEfficiency"
+        class="w-full"
+        :class="{ 'border-red-500': errors.responseEfficiency }"
+      />
+      <div class="mt-2 flex justify-between text-sm text-gray-400">
+        <span>0%</span>
+        <span>100%</span>
+      </div>
+      <span class="text-sm text-red-500">{{ errors.responseEfficiency }}</span>
+    </div>
+
     <!-- Submit Button -->
     <button
       :disabled="submitLoading"
@@ -455,10 +481,10 @@ const schema = Yup.object({
     .min(10, "collaboration Type must be at least 10 characters"),
   title: Yup.string()
     .required("program title are required")
-    .min(10, "program title must be at least 10 characters"),
+    .min(5, "program title must be at least 10 characters"),
   companyName: Yup.string()
     .required("company Name are required")
-    .min(10, "company Name must be at least 2 characters"),
+    .min(2, "company Name must be at least 2 characters"),
   image: Yup.string().required("company image are required"),
 
   targets: Yup.array()
@@ -513,6 +539,10 @@ const schema = Yup.object({
       .required("Low reward is required")
       .matches(/^\$?\d+$/, "Must be a valid amount (e.g., $200)"),
   }),
+  responseEfficiency: Yup.number()
+    .required("Response Efficiency is required")
+    .min(0, "Response Efficiency must be at least 0")
+    .max(100, "Response Efficiency must be at most 100"),
 });
 const goldStandard = ref<boolean>(false);
 
@@ -550,10 +580,11 @@ const onSubmit = async (values: any) => {
     goldStandard: goldStandard.value,
     vulnerabilitiesCount: 0,
     hackersPaid: 0,
-    responseEfficiency: 90,
     programStatus: "Active",
     focusArea: "Web Security",
+    responseEfficiency: Number(values.responseEfficiency) || 50,
   };
+  console.log(data);
 
   const response = await addProgram(data);
   if (response) {
