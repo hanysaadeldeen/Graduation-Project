@@ -2,6 +2,7 @@
   <Form
     @submit="onSubmit"
     v-slot="{ errors, isSubmitting }"
+    :validation-schema="schema"
     class="w-full rounded-lg p-6 shadow-lg"
     as="form"
   >
