@@ -33,6 +33,7 @@ export const useAuthStore = defineStore("authentication", () => {
 
   const token: any = useCookie("token");
   const userId = useCookie("userId");
+  const usereRole = useCookie("usereRole");
   // login
   const loginUser = async (data: { email: string; password: string }) => {
     isLoading.value = true;
@@ -44,8 +45,8 @@ export const useAuthStore = defineStore("authentication", () => {
       if (response) {
         token.value = response.token;
         userId.value = response.userId;
+        usereRole.value = response.role;
       }
-
       return response;
     } catch (err: any) {
       isLoading.value = false;

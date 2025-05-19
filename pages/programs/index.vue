@@ -11,17 +11,26 @@
         Campaigns & top-paying opportunities
       </h1>
       <div
+        v-if="loading"
+        class="flex h-full flex-col items-center justify-center gap-4"
+      >
+        <img
+          src="~/assets/img/Spin.svg"
+          class="size-[150px]"
+          width="150"
+          height="150"
+          alt="Spin"
+        />
+      </div>
+      <div v-else-if="error" class="text-red-500">Error: {{ error }}</div>
+      <div
         class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
-        <ProgramsCard />
-        <ProgramsCard />
-        <ProgramsCard />
-        <ProgramsCard />
-        <ProgramsCard />
-        <ProgramsCard />
-        <ProgramsCard />
-        <ProgramsCard />
-        <ProgramsCard />
+        <ProgramsCard
+          v-for="program in data"
+          :key="program.id"
+          :program="program"
+        />
       </div>
     </div>
     <div class="mt-8">
@@ -38,6 +47,13 @@
 
 <script setup lang="ts">
 import SectionInfo from "../../Utils/SectionInfo.vue";
+
+import { programsController } from "~/composables/programs";
+const { fetchPrograms, data, error, loading } = await programsController();
+
+onMounted(() => {
+  fetchPrograms();
+});
 </script>
 
 <style scoped></style>

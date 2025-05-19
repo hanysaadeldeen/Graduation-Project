@@ -13,12 +13,17 @@
           alt="Spin"
         />
       </div>
-      <div v-if="!loading && blogs">
+      <!-- <div v-if="!loading && blogs">
         <MainSectionBlog :blogs="blogs" />
         <BlogsCardSection :blogs="blogs" />
-      </div>
-      <div v-else-if="!loading" class="flex h-full items-center justify-center">
+      </div> -->
+      <div v-else-if="error" class="flex h-full items-center justify-center">
         <p class="text-center uppercase text-red-500">fail to fetch blogs</p>
+      </div>
+      <div class="my-10 text-center" v-else-if="blogs?.length === 0">
+        <p class="text-center text-2xl uppercase text-white">
+          there is No Blogs
+        </p>
       </div>
       <div class="mt-8">
         <nuxt-link to="/blogs/addBlog">
@@ -34,15 +39,14 @@
 </template>
 
 <script setup lang="ts">
-import { useblogsStore } from "~/stores/blogs";
+import { blogsController } from "~/composables/blogs";
 
-const blogsStore = useblogsStore();
+const { blogs, fetchBlogs, error, loading } = await blogsController();
+console.log("blogs", blogs);
 
-const { blogs, loading, error } = storeToRefs(blogsStore);
-
-// onMounted(() => {
-//   blogsStore.fetchBlogs();
-// });
+onMounted(() => {
+  fetchBlogs();
+});
 </script>
 
 <style scoped></style>

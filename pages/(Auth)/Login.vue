@@ -99,6 +99,7 @@ const { locale } = useI18n();
 import * as yup from "yup";
 import { useAuthStore } from "~/stores/authStore";
 import { useToast } from "vue-toast-notification";
+import { useAuth } from "../../composables/useAuth";
 
 const toast = useToast({ position: "top-right", duration: 1500 });
 
@@ -113,10 +114,12 @@ const schema = yup.object({
 const { loginUser } = useAuthStore();
 const authStore = useAuthStore();
 const { isLoading, error } = storeToRefs(authStore);
+
+const { login } = useAuth();
+
 const onSubmit = async (values: any) => {
   try {
     const response = await loginUser(values);
-    localStorage.setItem("token", response?.token?.result.token);
     if (response) {
       toast.success("Login successfully completed");
       navigateTo(localePath("/"));

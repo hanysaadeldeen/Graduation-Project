@@ -14,20 +14,20 @@
     <!-- program title -->
     <div class="mb-4">
       <label
-        for="programtitle"
+        for="title"
         class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300"
         >program title</label
       >
       <Field
-        name="programtitle"
+        name="title"
         as="input"
-        id="programtitle"
+        id="title"
         type="text"
         placeholder="enter program title"
         class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-white"
-        :class="{ 'border-red-500': errors.programtitle }"
+        :class="{ 'border-red-500': errors.title }"
       />
-      <span class="text-sm text-red-500">{{ errors.programtitle }}</span>
+      <span class="text-sm text-red-500">{{ errors.title }}</span>
     </div>
     <!-- company name -->
     <div class="mb-4">
@@ -54,7 +54,17 @@
         class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300"
         >Company Image</label
       >
-      <Field name="image" v-slot="{ field, errorMessage }">
+      <Field
+        name="image"
+        as="input"
+        id="image"
+        type="text"
+        placeholder="enter Company Image"
+        class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-white"
+        :class="{ 'border-red-500': errors.title }"
+      />
+      <span class="text-sm text-red-500">{{ errors.image }}</span>
+      <!-- <Field name="image" v-slot="{ field, errorMessage }">
         <input
           id="image"
           type="file"
@@ -72,7 +82,7 @@
         :src="imagePreview"
         alt="Preview"
         class="mt-4 h-48 w-full rounded object-cover"
-      />
+      /> -->
     </div>
     <!-- Targets -->
     <div class="mb-4">
@@ -387,8 +397,8 @@ import { Form, Field } from "vee-validate";
 import * as Yup from "yup";
 import { ref } from "vue";
 import { programsController } from "~/composables/programs";
-const { addProgram, fetchPrograms, fetchProgramId } =
-  await programsController();
+const { addProgram } = await programsController();
+const toast = useToast({ position: "top-right", duration: 1500 });
 
 // Define interfaces for TypeScript
 interface Target {
@@ -421,32 +431,34 @@ const targets = ref<Target[]>([
   { url: "", type: "", severity: "", reward: "" },
 ]);
 
+const router = useRouter();
 // Define Yup schema
 const schema = Yup.object({
-  image: Yup.mixed()
-    .required("Image is required")
-    .test("fileType", "Unsupported file format", (value) =>
-      value
-        ? ["image/jpeg", "image/png", "image/JPG", "image/webp"].includes(
-            value.type,
-          )
-        : true,
-    )
-    .test(
-      "fileSize",
-      "File is too large",
-      (value) => (value ? value.size <= 5 * 1024 * 1024 : true), // 5MB
-    ),
+  // image: Yup.mixed()
+  //   .required("Image is required")
+  //   .test("fileType", "Unsupported file format", (value) =>
+  //     value
+  //       ? ["image/jpeg", "image/png", "image/JPG", "image/webp"].includes(
+  //           value.type,
+  //         )
+  //       : true,
+  //   )
+  //   .test(
+  //     "fileSize",
+  //     "File is too large",
+  //     (value) => (value ? value.size <= 5 * 1024 * 1024 : true), // 5MB
+  //   ),
 
   collaborationType: Yup.string()
     .required("collaboration Type are required")
     .min(10, "collaboration Type must be at least 10 characters"),
-  programtitle: Yup.string()
+  title: Yup.string()
     .required("program title are required")
     .min(10, "program title must be at least 10 characters"),
   companyName: Yup.string()
     .required("company Name are required")
     .min(10, "company Name must be at least 2 characters"),
+  image: Yup.string().required("company image are required"),
 
   targets: Yup.array()
     .of(
@@ -527,15 +539,32 @@ const addTarget = () => {
 const removeTarget = (index: number) => {
   targets.value.splice(index, 1);
 };
+import { useToast } from "vue-toast-notification";
 
 const submitLoading = ref<boolean>(false);
 const onSubmit = async (values: any) => {
-  // Combine rewards into a single object
   submitLoading.value = true;
-  console.log("Form 1:");
+  const data = {
+    ...values,
+    goldStandard: goldStandard.value,
+    vulnerabilitiesCount: 0,
+    hackersPaid: 0,
+    responseEfficiency: 90,
+    programStatus: "Active",
+    focusArea: "Web Security",
+  };
 
-  await addProgram(values, goldStandard.value);
+  const response = await addProgram(data);
+  if (response) {
+    if (response.data) {
+      toast.success("Program added successfully");
+      setTimeout(() => {
+        router.push("/programs");
+      }, 1500);
+    } else {
+      toast.error("something went wrong");
+    }
+  }
   submitLoading.value = false;
-  console.log("Form 2:");
 };
 </script>

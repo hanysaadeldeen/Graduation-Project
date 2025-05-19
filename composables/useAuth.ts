@@ -47,22 +47,21 @@ export const useAuth = () => {
 
   // login
   const login = async (data: { email: string; password: string }) => {
-    // var myHeaders = new Headers();
-    // myHeaders.append("Accept", "application/json");
-    // myHeaders.append("Accept-Language", "ar");
-
     var formdata = new FormData();
-    formdata.append("email", data.email);
-    formdata.append("password", data.password);
+    formdata.append("Email", data.email);
+    formdata.append("Password", data.password);
     const Senderdata = {
       email: data.email,
       password: data.password,
     };
     try {
-      const response = await $fetch(`${config.public.BaseApi}/login`, {
-        method: "POST",
-        body: Senderdata,
-      });
+      const response = await $fetch(
+        `${config.public.BaseApi}/api/account/login`,
+        {
+          method: "POST",
+          body: Senderdata,
+        },
+      );
       return response;
     } catch (error: any) {
       if (error?.data?.message) {

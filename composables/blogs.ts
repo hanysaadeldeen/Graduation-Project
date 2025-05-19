@@ -1,4 +1,26 @@
-const getBlogs = async () => {
+export const blogsController = () => {
+  const blogs = ref<Blogs[] | null>(null);
+  const blogId = ref<Blogs | null>(null);
+  const loading = ref(false);
+  const error = ref<string | null>(null);
+
+  const config = useRuntimeConfig();
+
+  interface Section {
+    title: string;
+    content: string;
+  }
+
+  interface Blogs {
+    id: string;
+    title: string;
+    sections: Section[];
+    image: string;
+    createdAt: string;
+    authorName: string;
+    authorEmail: string;
+  }
+
   interface SectionsJson {
     introduction: string;
     whatIsFog: string;
@@ -14,54 +36,76 @@ const getBlogs = async () => {
     dataLeakSite: string;
   }
 
-  const runtimeConfig = useRuntimeConfig();
-  const loading = ref(false);
-  const error = ref<string | null>(null);
-  const fetchBlog = async (url: string, id?: number) => {
-    const { data, error } = await useFetch(
-      `${runtimeConfig.public.BaseApi}/${url}/${id}`,
-      {
-        method: "GET",
-        headers: {
-          // "ngrok-skip-browser-warning": "true",
+  const fetchBlogs = async () => {
+    loading.value = true;
+    error.value = null;
+
+    try {
+      const res = await $fetch<Blogs[]>(`http://zeroapi.runasp.net/api/Blog`);
+      blogs.value = res;
+    } catch (err: any) {
+      error.value = err.data?.message || err.message || "Unknown error";
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  const fetchBlogId = async (id: string) => {
+    loading.value = true;
+    error.value = null;
+
+    try {
+      const res = await $fetch<Blogs>(
+        `http://zeroapi.runasp.net/api/Blog/${id}`,
+        {
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+          },
         },
-      },
-    );
-    return data.value;
+      );
+      blogId.value = res;
+    } catch (err: any) {
+      error.value = err.data?.message || err.message || "Unknown error";
+    } finally {
+      loading.value = false;
+    }
   };
 
   const addBlog = async (data: AddBlog) => {
     loading.value = true;
     error.value = null;
+
     const formdata = new FormData();
     formdata.append("image", data.image);
     formdata.append("introduction", data.introduction);
     formdata.append("whatIsFog", data.whatIsFog);
     formdata.append("technicalInvestigation", data.technicalInvestigation);
     formdata.append("dataLeakSite", data.dataLeakSite);
+
     try {
-      const { data, error: fetchError } = await useFetch<AddBlog>(
-        `${runtimeConfig.public.BaseApi}/api/Blog`,
-        {
-          method: "POST",
-          headers: {
-            "ngrok-skip-browser-warning": "true",
-          },
-          body: formdata,
+      const res = await $fetch(`http://zeroapi.runasp.net/api/Blog`, {
+        method: "POST",
+        body: formdata,
+        headers: {
+          "ngrok-skip-browser-warning": "true",
         },
-      );
-      if (fetchError.value) {
-        error.value = fetchError.value.message;
-        return;
-      }
-      console.log(data.value);
+      });
+
+      return res;
     } catch (err: any) {
-      error.value = err.message || "Unknown error";
+      error.value = err.data?.message || err.message || "Unknown error";
     } finally {
       loading.value = false;
     }
   };
-  return { fetchBlog, addBlog };
-};
 
-export default getBlogs;
+  return {
+    blogs,
+    blogId,
+    loading,
+    error,
+    fetchBlogs,
+    fetchBlogId,
+    addBlog,
+  };
+};

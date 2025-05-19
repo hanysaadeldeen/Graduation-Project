@@ -98,66 +98,29 @@
               </thead>
               <tbody>
                 <tr
+                  v-for="target in programId.targets"
                   class="cursor-pointer border-b border-secondary transition-all duration-200 ease-in-out hover:bg-secondary"
                 >
                   <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="text-blue-600">https://www.cube.exchange</span>
-                    <button @click="copyPassword" class="ml-2 text-gray-400">
+                    <span class="text-blue-600">{{ target.url }}</span>
+                    <button
+                      @click="copyPassword(target.url)"
+                      class="ml-2 text-gray-400"
+                    >
                       <i class="far fa-copy"></i>
                     </button>
                   </td>
                   <td class="px-4 py-3 font-medium capitalize text-white">
-                    Web
+                    {{ target.type }}
                   </td>
                   <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="severity-dot severity-critical text-hookYellow"
-                      >Critical</span
+                    <span
+                      class="severity-dot severity-critical text-hookYellow"
+                      >{{ target.severity }}</span
                     >
                   </td>
                   <td class="px-4 py-3 font-medium capitalize text-white">
-                    Bounty
-                  </td>
-                </tr>
-                <tr
-                  class="cursor-pointer border-b border-secondary transition-all duration-200 ease-in-out hover:bg-secondary"
-                >
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="text-blue-600">*.cube.exchange</span>
-                    <button @click="copyPassword" class="ml-2 text-gray-400">
-                      <i class="far fa-copy"></i>
-                    </button>
-                  </td>
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    iOS
-                  </td>
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="severity-dot severity-critical text-hookYellow"
-                      >Critical</span
-                    >
-                  </td>
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    Bounty
-                  </td>
-                </tr>
-                <tr
-                  class="cursor-pointer border-b border-secondary transition-all duration-200 ease-in-out hover:bg-secondary"
-                >
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="text-blue-600">https://apps.apple.com/us</span>
-                    <button @click="copyPassword" class="ml-2 text-gray-400">
-                      <i class="far fa-copy"></i>
-                    </button>
-                  </td>
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    Android
-                  </td>
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="severity-dot severity-critical text-hookYellow"
-                      >Critical</span
-                    >
-                  </td>
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    Bounty
+                    {{ target.reward }}
                   </td>
                 </tr>
               </tbody>
@@ -179,7 +142,10 @@
             <p class="text-xl text-paragraph">
               We are interested in the following vulnerabilities:
             </p>
-            <ul class="mt-5 space-y-4">
+            <p class="text-2xl text-paragraph">
+              {{ programId.inScopeVulnerabilities }}
+            </p>
+            <!-- <ul class="mt-5 space-y-4">
               <li class="textDescription text-xl text-white">
                 Assets that do not belong to the company
               </li>
@@ -199,7 +165,7 @@
               <li class="textDescription text-xl text-white">
                 Missing HTTP security headers
               </li>
-            </ul>
+            </ul> -->
           </div>
           <div class="mt-8">
             <h2
@@ -213,7 +179,10 @@
               discretion). In general, the following vulnerabilities do not
               correspond to the severity threshold:
             </p>
-            <ul class="mt-5 space-y-4">
+            <p class="text-2xl text-paragraph">
+              {{ programId.outOfScopeVulnerabilities }}
+            </p>
+            <!-- <ul class="mt-5 space-y-4">
               <li class="textDescription text-xl text-white">
                 Assets that do not belong to the company
               </li>
@@ -273,7 +242,7 @@
                 Host header issues without proof-of-concept demonstrating clear
                 security impact
               </li>
-            </ul>
+            </ul> -->
           </div>
         </div>
         <!--Program Rules -->
@@ -282,7 +251,10 @@
           v-if="bountyType === 'ProgramRules' || bountyType === 'All'"
         >
           <h1 class="mb-4 text-3xl font-bold text-white">Program Rules</h1>
-          <ul class="mt-5 space-y-4">
+          <p class="text-2xl text-paragraph">
+            {{ programId.programRules }}
+          </p>
+          <!-- <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               Don’t exploit any DoS/DDoS vulnerabilities, social engineering
               attacks, or spam
@@ -313,7 +285,7 @@
               anyone who is not a HackenProof Team or an authorized employee of
               this Company without appropriate permission
             </li>
-          </ul>
+          </ul> -->
         </div>
         <!--Disclosure Guidelines -->
         <div
@@ -323,7 +295,10 @@
           <h1 class="mb-4 text-3xl font-bold text-white">
             Disclosure Guidelines
           </h1>
-          <ul class="mt-5 space-y-4">
+          <p class="text-2xl text-paragraph">
+            {{ programId.disclosureGuidelines }}
+          </p>
+          <!-- <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               Do not discuss this program or any vulnerabilities (even resolved
               ones) outside of the program without express consent from the
@@ -336,7 +311,7 @@
             <li class="textDescription text-xl text-white">
               Please do NOT publish/discuss bugs
             </li>
-          </ul>
+          </ul> -->
         </div>
         <!--Eligibility and Coordinated Disclosure -->
         <div
@@ -351,7 +326,10 @@
             us improve the security. However, only those that meet the following
             eligibility requirements may receive a monetary reward:
           </p>
-          <ul class="mt-5 space-y-4">
+          <p class="text-2xl text-paragraph">
+            {{ programId.eligibility }}
+          </p>
+          <!-- <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               You must be the first reporter of a vulnerability.
             </li>
@@ -382,7 +360,7 @@
               ONLY USE the EMAIL under which you registered your HackenProof
               account (in case of violation, no bounty can be awarded)
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
       <div class="w-full lg:w-2/5">
@@ -396,27 +374,37 @@
           <div class="px-6 pt-4">
             <div class="mb-4 flex items-center justify-between">
               <p class="text-lg font-semibold text-white">Range Of Bounty</p>
-              <p class="text-lg font-medium text-white">$200- $10,000</p>
+              <p class="text-lg font-medium text-white">
+                ${{ programId.rewards.critical }}- ${{ programId.rewards.low }}
+              </p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">Critical</p>
-              <p class="text-lg font-medium text-white">$10,000</p>
+              <p class="text-lg font-semibold text-hookYellow">Critical</p>
+              <p class="text-lg font-medium text-white">
+                {{ programId.rewards.critical }}
+              </p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">High</p>
-              <p class="text-lg font-medium text-white">$5,000</p>
+              <p class="text-lg font-semibold text-hookYellow">High</p>
+              <p class="text-lg font-medium text-white">
+                {{ programId.rewards.high }}
+              </p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">Medium</p>
-              <p class="text-lg font-medium text-white">$2,000</p>
+              <p class="text-lg font-semibold text-hookYellow">Medium</p>
+              <p class="text-lg font-medium text-white">
+                {{ programId.rewards.medium }}
+              </p>
             </div>
             <div class="flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">Low</p>
-              <p class="text-lg font-medium text-white">$200</p>
+              <p class="text-lg font-semibold text-hookYellow">Low</p>
+              <p class="text-lg font-medium text-white">
+                {{ programId.rewards.low }}
+              </p>
             </div>
           </div>
         </div>
-        <div class="mb-5 rounded-lg border border-paragraph py-4">
+        <!-- <div class="mb-5 rounded-lg border border-paragraph py-4">
           <div
             class="flex items-center gap-4 border-b border-paragraph px-6 pb-4"
           >
@@ -429,11 +417,11 @@
               <p class="text-lg font-medium text-white">1229</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">Submissions</p>
+              <p class="text-lg font-semibold text-hookYellow">Submissions</p>
               <p class="text-lg font-medium text-white">33</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">Total rewards</p>
+              <p class="text-lg font-semibold text-hookYellow">Total rewards</p>
               <p class="text-lg font-medium text-white">$0</p>
             </div>
           </div>
@@ -452,27 +440,27 @@
               <p class="text-lg font-medium text-white">Business days</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">
+              <p class="text-lg font-semibold text-hookYellow">
                 First Response
               </p>
               <p class="text-lg font-medium text-white">3d</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">Triage Time</p>
+              <p class="text-lg font-semibold text-hookYellow">Triage Time</p>
               <p class="text-lg font-medium text-white">3d</p>
             </div>
             <div class="mb-4 flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">Reward Time</p>
+              <p class="text-lg font-semibold text-hookYellow">Reward Time</p>
               <p class="text-lg font-medium text-white">3d</p>
             </div>
             <div class="flex items-center justify-between">
-              <p class="text-hookYellow text-lg font-semibold">
+              <p class="text-lg font-semibold text-hookYellow">
                 Resolution Time
               </p>
               <p class="text-lg font-medium text-white">14d</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -482,10 +470,16 @@
 import { useToast } from "vue-toast-notification";
 const toast = useToast({ position: "top-right", duration: 1500 });
 const bountyType = ref<string>("All");
-const copyPassword = () => {
-  // navigator.clipboard.writeText(password.value);
+const copyPassword = (value: string) => {
+  navigator.clipboard.writeText(value);
   toast.success("Copied to clipboard");
 };
+
+interface Props {
+  programId: any;
+}
+
+defineProps<Props>();
 </script>
 
 <style scoped>

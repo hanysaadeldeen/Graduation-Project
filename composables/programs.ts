@@ -2,6 +2,8 @@ export const programsController = async () => {
   const runtimeConfig = useRuntimeConfig();
   const loading = ref(false);
   const error = ref<string | null>(null);
+  const data = ref<ProgramCard[] | null>(null);
+  const programId = ref<ProgramDetails | null>(null);
 
   interface ProgramCard {
     id: number;
@@ -59,118 +61,66 @@ export const programsController = async () => {
     eligibility: string;
     rewards: Rewards;
   }
-
   const fetchPrograms = async () => {
+    loading.value = true;
     try {
-      loading.value = true;
-
-      const { data, error: fetchError } = await useFetch<ProgramCard[]>(
+      const response = await $fetch<ProgramCard[]>(
         `${runtimeConfig.public.BaseApi}/api/BBPrograms`,
-        {
-          method: "GET",
-        },
+        { method: "GET" },
       );
-      if (fetchError.value) {
-        error.value = fetchError.value.message;
-        return;
-      }
-      loading.value = false;
-      return data.value;
+      data.value = response;
     } catch (err: any) {
-      error.value = err.message || "Unknown error";
+      console.error("Fetch error:", err);
+      error.value =
+        err?.response?._data?.title || err.message || "Unknown error";
     } finally {
       loading.value = false;
     }
   };
-  const fetchProgramId = async (id: string) => {
+
+  const fetchProgramById = async (id: string) => {
+    loading.value = true;
     try {
-      loading.value = true;
-
-      const { data, error: fetchError } = await useFetch<ProgramDetails>(
-        `${runtimeConfig.public.BaseApi}/api/BBPrograms/${id}`,
+      const data = await $fetch<ProgramDetails>(
+        `${runtimeConfig.public.BaseApi}/api/BBPrograms/ProgramDetails/${id}`,
         {
           method: "GET",
         },
       );
-      if (fetchError.value) {
-        error.value = fetchError.value.message;
-        return;
-      }
-      loading.value = false;
-      return data.value;
+      programId.value = data;
     } catch (err: any) {
-      error.value = err.message || "Unknown error";
+      console.error("Fetch program by ID error:", err);
+      error.value =
+        err?.response?._data?.title || err.message || "Unknown error";
+      return { data: null, error: error.value, loading: loading.value };
     } finally {
       loading.value = false;
     }
   };
-  const addProgram = async (values: any, goldStandard: any) => {
-    console.log("addProgram function");
-
+  const addProgram = async (values: any) => {
     loading.value = true;
     error.value = null;
-    const formData = new FormData();
-    const runtimeConfig = useRuntimeConfig();
-
-    formData.append("title", values.programtitle);
-    formData.append("companyName", values.companyName);
-    formData.append("collaborationType", values.collaborationType);
-    formData.append("goldStandard", String(goldStandard));
-    formData.append("focusArea", values.focusArea);
-    formData.append("inScopeVulnerabilities", values.inScopeVulnerabilities);
-    formData.append(
-      "outOfScopeVulnerabilities",
-      values.outOfScopeVulnerabilities,
-    );
-    formData.append("programRules", values.programRules);
-    formData.append("disclosureGuidelines", values.disclosureGuidelines);
-    formData.append("eligibility", values.eligibility);
-
-    formData.append("targets", JSON.stringify(values.targets));
-    formData.append("rewards", JSON.stringify(values.rewards));
-
-    if (values.image instanceof File) {
-      formData.append("image", values.image);
-    } else if (typeof values.image === "string") {
-      formData.append("image", values.image);
-    }
-
-    console.log(values);
-
-    const allvalue = {
-      name: values.programtitle,
-      logoUrl: "https://example.com/logo.png",
-      collaborationType: values.collaborationType,
-      goldStandard: goldStandard,
-      vulnerabilitiesCount: 50,
-      hackersPaid: 20,
-      responseEfficiency: 95,
-      companyName: values.companyName,
-      programStatus: "Active",
-    };
-    console.log(allvalue);
 
     try {
-      console.log("before fetch");
-
-      const { data, error: fetchError } = await useFetch(
+      const data = await $fetch(
         `${runtimeConfig.public.BaseApi}/api/BBPrograms`,
         {
           method: "POST",
-          body: allvalue,
+          body: values,
         },
       );
 
-      if (fetchError) {
-        console.log("Error:", fetchError);
-
-        return;
+      return { data, error: null };
+    } catch (err: any) {
+      const errorData = err?.response?._data;
+      if (errorData) {
+        if (errorData.errors) {
+          for (const key in errorData.errors) {
+            console.error(`${key}: ${errorData.errors[key].join(", ")}`);
+          }
+        }
       }
-      console.log("Form submitted successfully:", data.value);
-      return data.value;
-    } catch (err) {
-      console.error("Submission error:", err);
-      error.value = err instanceof Error ? err.message : "An error occurred";
+      return { data: null, error: errorData || err };
     } finally {
       loading.value = false;
     }
@@ -179,6 +129,10 @@ export const programsController = async () => {
   return {
     addProgram,
     fetchPrograms,
-    fetchProgramId,
+    fetchProgramById,
+    data,
+    error,
+    loading,
+    programId,
   };
 };

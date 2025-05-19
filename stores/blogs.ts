@@ -29,7 +29,7 @@ export const useblogsStore = defineStore("blogs", () => {
     console.log("here1");
     try {
       const { data, error: fetchError } = await useFetch<Blogs[]>(
-        `${runtimeConfig.public.BaseApi}/api/Blog`,
+        `http://zeroapi.runasp.net//api/Blog`,
         {
           method: "GET",
         },
@@ -52,7 +52,7 @@ export const useblogsStore = defineStore("blogs", () => {
 
     try {
       const { data, error: fetchError } = await useFetch<Blogs>(
-        `${runtimeConfig.public.BaseApi}/api/Blog/${id}`,
+        `http://zeroapi.runasp.net//api/Blog/${id}`,
         {
           method: "GET",
           headers: {

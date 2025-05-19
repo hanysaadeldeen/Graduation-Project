@@ -17,6 +17,7 @@
 import ReportSection from "~/components/programs/ReportSection.vue";
 
 const { params } = useRoute();
+console.log(params.id);
 </script>
 
 <style scoped>

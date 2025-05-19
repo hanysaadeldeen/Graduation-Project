@@ -1,7 +1,11 @@
 <template>
   <div class="overflow-hidden text-white transition-colors duration-200">
     <!-- Main form column -->
-    <Form @submit="onSubmit" v-slot="{ errors, submitCount }">
+    <Form
+      @submit="onSubmit"
+      :validation-schema="schema"
+      v-slot="{ errors, submitCount }"
+    >
       <div class="flex flex-col gap-8 px-2 md:flex-row">
         <div class="report-section1 flex-1">
           <h1 class="mb-6 text-3xl font-bold">Submit Report</h1>
@@ -599,8 +603,10 @@
             </div>
             <div class="mt-4 flex flex-col gap-2">
               <button
+                :disabled="loading"
                 class="w-full rounded-md bg-blue-600 px-4 py-2 text-white disabled:cursor-not-allowed disabled:bg-blue-300"
                 type="submit"
+                :class="{ 'cursor-not-allowed opacity-50': loading }"
               >
                 Submit Report
               </button>
@@ -642,7 +648,7 @@ const schema = yup.object({
     .string()
     .min(50, "Validation must be at least 50 characters")
     .required("Description is required"),
-  Attachment: yup.mixed().required("At least one file is required"),
+  // Attachment: yup.mixed().required("At least one file is required"),
   SeverityLevel: yup.string().required("Please select a severity level"),
   AttackVector: yup.string().required("Please select a Attack Vector"),
   AttackComplexity: yup.string().required("Please select a Attack Complexity"),
@@ -753,18 +759,21 @@ const scopeOptions = ["Unchanged", "Changed"];
 const complexityOptions = ["Low", "High"];
 const impactOptions = ["None", "Low", "High"];
 const userInteractionOptions = ["None", "Required"];
-const { addReport } = await report();
-const onSubmit = async (values) => {
-  console.log("values", values);
 
-  const response = await addReport(params.id, values);
-  if (response) {
-    toast.success("Report submitted successfully");
-    // setTimeout(() => {
-    //   router.replace(`/programs/${params.id}`);
-    // }, 1500);
-  } else {
-    toast.error("Failed to submit report");
+const { data, error, loading, addReport } = report();
+const onSubmit = async (values) => {
+  await addReport(params.id, values);
+  if (data.value) {
+    toast.success("Report added successfully");
+    setTimeout(() => {
+      router.push("/programs");
+    }, 1500);
+    return;
+  }
+
+  if (error.value) {
+    toast.error(error.value || "Something went wrong");
+    return;
   }
 };
 </script>

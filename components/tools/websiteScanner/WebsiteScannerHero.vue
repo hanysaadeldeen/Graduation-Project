@@ -19,16 +19,22 @@
         to drive meaningful risk reduction and streamline remediation workflows.
       </p>
       <div class="flex gap-5 max-lg:flex-wrap">
-        <button
-          class="rounded-full bg-[#152738] px-10 py-2 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
+        <a
+          href="https://drive.google.com/file/d/1TyN9cfcKjUTMViEfNs1Q5veSOdGFSYRP/view?usp=sharing"
+          target="_blank"
+          class="text-decoration-none cursor-pointer"
         >
-          Request Demo
-        </button>
-        <button
+          <button
+            class="rounded-full bg-[#152738] px-10 py-2 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
+          >
+            Request Demo
+          </button>
+        </a>
+        <!-- <button
           class="rounded-full bg-[#152738] px-10 py-2 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
         >
           Start Free Trial
-        </button>
+        </button> -->
       </div>
     </div>
     <div ref="WebsiteScannerImage" class="w-full md:w-1/2 md:max-w-[600px]">

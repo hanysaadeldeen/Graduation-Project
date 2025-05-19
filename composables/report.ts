@@ -1,6 +1,11 @@
-export const report = async () => {
+import { useToast } from "vue-toast-notification";
+
+export const report = () => {
   const config = useRuntimeConfig();
-  const Error = ref<any | null>(null);
+
+  const data = ref<any>(null);
+  const error = ref<string | null>(null);
+  const loading = ref(false);
 
   interface VulnerabilityReport {
     ProgramId: string;
@@ -22,83 +27,91 @@ export const report = async () => {
     Attachment: File;
   }
 
-  // const token = useCookie("token") as any;
-  const userId = useCookie("userId") as any;
-  const addReport = async (programID: any, values: VulnerabilityReport) => {
-    const formData = new FormData();
-    formData.append("ProgramId", programID);
-    formData.append("UserId", userId);
-    formData.append("VulnerabilityTitle", values.VulnerabilityTitle);
-    formData.append("VulnerabilityTarget", values.VulnerabilityTarget);
-    formData.append("VulnerabilityCategory", values.VulnerabilityCategory);
-    formData.append("SeverityLevel", values.SeverityLevel);
-    formData.append("AttackVector", values.AttackVector);
-    formData.append("AttackComplexity", values.AttackComplexity);
-    formData.append("PrivilegesRequired", values.PrivilegesRequired);
-    formData.append("UserInteraction", values.UserInteraction);
-    formData.append("Scope", values.Scope);
-    formData.append("Confidentiality", values.Confidentiality);
-    formData.append("Integrity", values.Integrity);
-    formData.append("Availability", values.Availability);
-    formData.append("VulnerabilityDetails", values.VulnerabilityDetails);
-    formData.append("ValidationSteps", values.ValidationSteps);
-    formData.append("Attachment", values.Attachment);
+  const userId = useCookie("userId");
 
+  const toast = useToast({ position: "top-right", duration: 1500 });
+
+  const addReport = async (programID: string, values: VulnerabilityReport) => {
+    loading.value = true;
+    error.value = null;
+
+    const allData = {
+      ...values,
+      programId: programID,
+      userId: userId.value,
+    };
+
+    if (!userId.value) {
+      toast.error("User ID not found");
+      return;
+    }
     try {
-      const { data, error: fetchError } = await useFetch(
+      const response = await $fetch(
         `${config.public.BaseApi}/api/ReportSubmissions`,
         {
           method: "POST",
-          body: formData,
+          body: allData,
         },
       );
-      if (fetchError) {
-        console.log(fetchError);
-        Error.value = fetchError || null;
-        return;
-      }
-      return data;
-    } catch (error) {
-      Error.value = error;
+      data.value = response;
+    } catch (err: any) {
+      error.value =
+        err?.response?._data?.title || err.message || "Unknown error";
+
+      console.error(error.value);
+    } finally {
+      loading.value = false;
     }
   };
 
-  const getAllReports = async (id: any) => {
+  const getAllReports = async (id: string) => {
+    loading.value = true;
+    error.value = null;
+
     try {
-      const { data, error: fetchError } = await useFetch(
+      const response = await $fetch(
         `${config.public.BaseApi}/api/ReportSubmissions/${id}`,
         {
           method: "GET",
         },
       );
-      if (fetchError) {
-        console.log(fetchError);
-        Error.value = fetchError || null;
-        return;
-      }
-      return data;
-    } catch (error) {
-      Error.value = error;
+      data.value = response;
+    } catch (err: any) {
+      console.error("Get All Reports Error:", err);
+      error.value =
+        err?.response?._data?.title || err.message || "Unknown error";
+    } finally {
+      loading.value = false;
     }
   };
-  const getReportId = async (id: any) => {
+
+  const getReportId = async (id: string) => {
+    loading.value = true;
+    error.value = null;
+
     try {
-      const { data, error: fetchError } = await useFetch(
+      const response = await $fetch(
         `${config.public.BaseApi}/api/ReportSubmissions/${id}`,
         {
           method: "GET",
         },
       );
-      if (fetchError) {
-        console.log(fetchError);
-        Error.value = fetchError || null;
-        return;
-      }
-      return data;
-    } catch (error) {
-      Error.value = error;
+      data.value = response;
+    } catch (err: any) {
+      console.error("Get Report By ID Error:", err);
+      error.value =
+        err?.response?._data?.title || err.message || "Unknown error";
+    } finally {
+      loading.value = false;
     }
   };
 
-  return { addReport, getReportId, getAllReports };
+  return {
+    data,
+    error,
+    loading,
+    addReport,
+    getAllReports,
+    getReportId,
+  };
 };

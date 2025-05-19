@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="bountyType === 'programInfo'">
-      <ProgramInfo />
+      <ProgramInfo :programId="programId" />
     </div>
     <div v-if="bountyType === 'Hackers'">
       <BountiesHackers />
@@ -23,9 +23,10 @@
 <script setup lang="ts">
 import ProgramInfo from "~/components/programs/ProgramInfo.vue";
 import BountiesHackers from "./BountiesHackers.vue";
-type Props = {
+interface Props {
   bountyType: string;
-};
+  programId: any;
+}
 
 defineProps<Props>();
 </script>
