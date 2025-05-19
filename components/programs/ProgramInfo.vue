@@ -99,13 +99,18 @@
               <tbody>
                 <tr
                   v-for="target in programId.targets"
-                  class="cursor-pointer border-b border-secondary transition-all duration-200 ease-in-out hover:bg-secondary"
+                  class="group cursor-pointer border-b border-secondary transition-all duration-200 ease-in-out hover:bg-secondary"
                 >
-                  <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span class="text-blue-600">{{ target.url }}</span>
+                  <td
+                    class="flex items-center gap-2 px-4 py-3 font-medium capitalize text-white"
+                  >
+                    <span
+                      class="inline-block w-[300px] truncate text-blue-600 group-hover:text-white"
+                      >{{ target.url }}</span
+                    >
                     <button
                       @click="copyPassword(target.url)"
-                      class="ml-2 text-gray-400"
+                      class="transion-all ml-2 text-gray-400 duration-300 ease-in-out hover:scale-110 group-hover:text-white"
                     >
                       <i class="far fa-copy"></i>
                     </button>
@@ -256,7 +261,7 @@
           </p>
           <!-- <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
-              Don’t exploit any DoS/DDoS vulnerabilities, social engineering
+              Don't exploit any DoS/DDoS vulnerabilities, social engineering
               attacks, or spam
             </li>
             <li class="textDescription text-xl text-white">
@@ -274,11 +279,11 @@
               Most brute-forcing issues without clear impact
             </li>
             <li class="textDescription text-xl text-white">
-              In case you find chain vulnerabilities we’ll pay only for
+              In case you find chain vulnerabilities we'll pay only for
               vulnerability with the highest severity.
             </li>
             <li class="textDescription text-xl text-white">
-              Don’t break any law and stay in the defined scope
+              Don't break any law and stay in the defined scope
             </li>
             <li class="textDescription text-xl text-white">
               Any details of found vulnerabilities must not be communicated to
@@ -354,7 +359,7 @@
               contractor.
             </li>
             <li class="textDescription text-xl text-white">
-              Don’t break any law and stay in the defined scope
+              Don't break any law and stay in the defined scope
             </li>
             <li class="textDescription text-xl text-white">
               ONLY USE the EMAIL under which you registered your HackenProof
@@ -375,31 +380,31 @@
             <div class="mb-4 flex items-center justify-between">
               <p class="text-lg font-semibold text-white">Range Of Bounty</p>
               <p class="text-lg font-medium text-white">
-                ${{ programId.rewards.critical }}- ${{ programId.rewards.low }}
+                ${{ programId.rewards.critical }} - ${{ programId.rewards.low }}
               </p>
             </div>
             <div class="mb-4 flex items-center justify-between">
               <p class="text-lg font-semibold text-hookYellow">Critical</p>
               <p class="text-lg font-medium text-white">
-                {{ programId.rewards.critical }}
+                ${{ programId.rewards.critical }}
               </p>
             </div>
             <div class="mb-4 flex items-center justify-between">
               <p class="text-lg font-semibold text-hookYellow">High</p>
               <p class="text-lg font-medium text-white">
-                {{ programId.rewards.high }}
+                ${{ programId.rewards.high }}
               </p>
             </div>
             <div class="mb-4 flex items-center justify-between">
               <p class="text-lg font-semibold text-hookYellow">Medium</p>
               <p class="text-lg font-medium text-white">
-                {{ programId.rewards.medium }}
+                ${{ programId.rewards.medium }}
               </p>
             </div>
             <div class="flex items-center justify-between">
               <p class="text-lg font-semibold text-hookYellow">Low</p>
               <p class="text-lg font-medium text-white">
-                {{ programId.rewards.low }}
+                ${{ programId.rewards.low }}
               </p>
             </div>
           </div>
@@ -492,5 +497,12 @@ defineProps<Props>();
   display: inline-block;
   background-color: #ffb45c;
   margin: 0 8px 2px 0;
+}
+
+.truncate-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 250px;
 }
 </style>
