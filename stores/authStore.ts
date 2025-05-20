@@ -31,9 +31,9 @@ export const useAuthStore = defineStore("authentication", () => {
     }
   };
 
-  const token: any = useCookie("token");
-  const userId = useCookie("userId");
-  const usereRole = useCookie("usereRole");
+  const token: any = useCookie("token", { maxAge: 60 * 60 * 24 * 7 });
+  const userId = useCookie("userId", { maxAge: 60 * 60 * 24 * 7 });
+  const usereRole = useCookie("usereRole", { maxAge: 60 * 60 * 24 * 7 });
   // login
   const loginUser = async (data: { email: string; password: string }) => {
     isLoading.value = true;

@@ -125,11 +125,68 @@ export const programsController = async () => {
       loading.value = false;
     }
   };
+  const updateProgram = async (values: any, id: string) => {
+    loading.value = true;
+    error.value = null;
+
+    try {
+      const data = await $fetch(
+        `${runtimeConfig.public.BaseApi}/api/BBPrograms/${id}`,
+        {
+          method: "PUT",
+          body: values,
+        },
+      );
+
+      return { data, error: null };
+    } catch (err: any) {
+      const errorData = err?.response?._data;
+      if (errorData) {
+        if (errorData.errors) {
+          for (const key in errorData.errors) {
+            console.error(`${key}: ${errorData.errors[key].join(", ")}`);
+          }
+        }
+      }
+      return { data: null, error: errorData || err };
+    } finally {
+      loading.value = false;
+    }
+  };
+  const deleteProgram = async (id: string) => {
+    loading.value = true;
+    error.value = null;
+
+    try {
+      const data = await $fetch(
+        `${runtimeConfig.public.BaseApi}/api/BBPrograms/${id}`,
+        {
+          method: "DELETE",
+        },
+      );
+      fetchPrograms();
+      return { data, error: null };
+    } catch (err: any) {
+      const errorData = err?.response?._data;
+      if (errorData) {
+        if (errorData.errors) {
+          for (const key in errorData.errors) {
+            console.error(`${key}: ${errorData.errors[key].join(", ")}`);
+          }
+        }
+      }
+      return { data: null, error: errorData || err };
+    } finally {
+      loading.value = false;
+    }
+  };
 
   return {
     addProgram,
     fetchPrograms,
     fetchProgramById,
+    updateProgram,
+    deleteProgram,
     data,
     error,
     loading,

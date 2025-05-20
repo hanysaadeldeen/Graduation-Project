@@ -3,7 +3,7 @@
     class="flex w-full flex-col justify-between rounded-lg bg-primary p-6 shadow-lg"
   >
     <div
-      class="flex items-center justify-between border-b border-gray-200 pb-3"
+      class="relative flex items-center justify-between border-b border-gray-200 pb-3"
     >
       <div class="flex items-center space-x-3">
         <img
@@ -21,10 +21,24 @@
           program.companyName
         }}</span>
       </div>
+      <div class="flex items-center gap-4" v-if="usereRole === 'Admin'">
+        <nuxt-link :to="localePath(`/programs/${program.id}/edtiProgram`)">
+          <span
+            ><i
+              class="fa-regular fa-pen-to-square cursor-pointer text-2xl font-light text-hookYellow transition-all duration-200 ease-in-out hover:text-hookYellow/70"
+            ></i
+          ></span>
+        </nuxt-link>
+        <button @click="deleteProgram(program.id)">
+          <i
+            class="fa-regular fa-trash-can cursor-pointer text-2xl font-light text-red-500 transition-all duration-200 ease-in-out hover:text-red-600"
+          ></i>
+        </button>
+      </div>
     </div>
 
     <h2 class="mt-4 text-xl font-bold text-white">{{ program.title }}</h2>
-    <p class="text-sm text-paragraph">Retesting, Collaboration</p>
+    <p class="text-sm text-paragraph">{{ program.collaborationType }}</p>
 
     <!-- <div class="mt-4 flex flex-wrap gap-2">
       <span
@@ -108,12 +122,17 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath();
+import { programsController } from "~/composables/programs";
+
+const { deleteProgram } = await programsController();
 
 interface Props {
   program: any;
 }
 
 defineProps<Props>();
+
+let usereRole = useCookie("usereRole");
 </script>
 
 <style scoped></style>
