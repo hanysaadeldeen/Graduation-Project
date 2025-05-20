@@ -115,17 +115,18 @@ const { loginUser } = useAuthStore();
 const authStore = useAuthStore();
 const { isLoading, error } = storeToRefs(authStore);
 
-const { login } = useAuth();
-
 const onSubmit = async (values: any) => {
   try {
     const response = await loginUser(values);
-    if (response) {
+
+    if (response?.message) {
+      toast.error(response?.message);
+    } else if (!response?.errors) {
       toast.success("Login successfully completed");
       navigateTo(localePath("/"));
     }
   } catch (error: any) {
-    toast.error(error);
+    toast.error("Registration failed");
   }
 };
 </script>

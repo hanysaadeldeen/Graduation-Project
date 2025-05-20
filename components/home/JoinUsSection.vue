@@ -100,13 +100,13 @@ onMounted(() => {
         trigger: JoinUsSection.value,
         start: "-20% 80%",
         end: "top 35%",
-        scrub: true,
+        scrub: false,
         markers: false,
       },
     });
     tl.from(JoinUsSection.value, {
       opacity: 0,
-      y: 300,
+      y: 500,
       duration: 1,
     });
   }

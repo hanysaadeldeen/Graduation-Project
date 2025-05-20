@@ -41,8 +41,7 @@
 <script setup lang="ts">
 import { blogsController } from "~/composables/blogs";
 
-const { blogs, fetchBlogs, error, loading } = await blogsController();
-console.log("blogs", blogs);
+const { blogs, fetchBlogs, error, loading } = blogsController();
 
 onMounted(() => {
   fetchBlogs();

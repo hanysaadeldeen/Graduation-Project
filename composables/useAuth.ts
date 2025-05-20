@@ -10,46 +10,33 @@ export const useAuth = () => {
     password: string;
     confirmPassword: string;
   }) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Accept", "application/json");
-    myHeaders.append("Accept-Language", "ar");
-    var formdata = new FormData();
-    formdata.append("firstName", data.firstName);
-    formdata.append("lastName", data.lastName);
-    formdata.append("email", data.email);
-    formdata.append("phone_code", "966");
-    formdata.append("password", data.password);
-    formdata.append("confirmPassword", data.confirmPassword);
-
     const Senderdata = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      userName: data.userName,
-      email: data.email,
-      phoneNumber: "01098765432",
-      password: data.password,
+      FirstName: data.firstName,
+      LastName: data.lastName,
+      UserName: data.userName,
+      Email: data.email,
+      PhoneNumber: "01098765432",
+      Password: data.password,
     };
     try {
-      const response = await $fetch(`${config.public.BaseApi}/register`, {
-        method: "POST",
-        body: Senderdata,
-        // headers: myHeaders,
-      });
+      const response = await $fetch(
+        `${config.public.BaseApi}/api/account/register`,
+        {
+          method: "POST",
+          body: Senderdata,
+        },
+      );
       return response;
-    } catch (error) {
-      if (error?.data) {
-        throw new Error(error?.data?.errors || "Failed to sign in");
-      } else {
-        throw new Error("Failed to sign in");
+    } catch (error: any) {
+      if (error?.response?._data) {
+        return error.response._data;
       }
+      return error;
     }
   };
 
   // login
   const login = async (data: { email: string; password: string }) => {
-    var formdata = new FormData();
-    formdata.append("Email", data.email);
-    formdata.append("Password", data.password);
     const Senderdata = {
       email: data.email,
       password: data.password,
@@ -64,24 +51,15 @@ export const useAuth = () => {
       );
       return response;
     } catch (error: any) {
-      if (error?.data?.message) {
-        throw new Error(error.data.message);
-      } else {
-        throw new Error("Failed to sign in");
+      if (error?.response?._data) {
+        return error.response._data;
       }
+      return error;
     }
   };
 
   // forget password (send code )
-
   const sendCode = async (data: { email: string }) => {
-    // var myHeaders = new Headers();
-    // myHeaders.append("Accept", "application/json");
-    // myHeaders.append("Accept-Language", "ar");
-
-    // var formdata = new FormData();
-    // formdata.append("phone_code", "966");
-    // formdata.append("phone", "data.phone");
     const Senderdata = {
       email: data.email,
     };
@@ -94,51 +72,38 @@ export const useAuth = () => {
         },
       );
       return response;
-    } catch (error) {
-      throw new Error("Failed to Send Code");
+    } catch (error: any) {
+      if (error?.response?._data) {
+        return error.response._data;
+      }
+      return error;
     }
   };
 
   // verify code
   const verifyCodeSend = async (data: { code: number | null }) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Accept", "application/json");
-    myHeaders.append("Accept-Language", "ar");
-
-    var formdata = new FormData();
-    formdata.append("phone_code", "966");
-    formdata.append("phone", "123456789");
-    formdata.append("code", " data.code");
-
+    const Senderdata = {
+      code: data.code,
+    };
     try {
-      const response = await $fetch(`${config.public.apiBase}verify`, {
+      const response = await $fetch(`${config.public.BaseApi}/verify`, {
         method: "POST",
-        headers: myHeaders,
-        body: formdata,
+        body: Senderdata,
       });
       return response;
-    } catch (error) {
-      throw new Error("Failed to sign up");
+    } catch (error: any) {
+      if (error?.response?._data) {
+        return error.response._data;
+      }
+      return error;
     }
   };
 
   // reset password
-
   const resetPassword = async (data: {
     password: string;
     password_confirmation: string;
   }) => {
-    // var myHeaders = new Headers();
-    // myHeaders.append("Accept", "application/json");
-    // myHeaders.append("Accept-Language", "ar");
-
-    // var formdata = new FormData();
-    // formdata.append("_method", "PATCH");
-    // formdata.append("phone_code", "966");
-    // formdata.append("phone", "123456789");
-    // formdata.append("code", "1111");
-    // formdata.append("password", data.password);
-
     const Senderdata = {
       password: data.password,
     };
@@ -149,8 +114,11 @@ export const useAuth = () => {
         body: Senderdata,
       });
       return response;
-    } catch (error) {
-      throw new Error("Failed to Reset password");
+    } catch (error: any) {
+      if (error?.response?._data) {
+        return error.response._data;
+      }
+      return error;
     }
   };
 

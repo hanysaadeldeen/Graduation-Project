@@ -13,17 +13,21 @@
             />
           </nuxt-link>
           <div class="hidden items-center justify-between gap-10 lg:flex">
-            <nuxt-link :to="localePath('Login')">
+            <nuxt-link :to="localePath('Login')" v-if="!isLogin">
               <p :class="adjustedPath === '/' ? '/Login' : ''">
                 {{ $t("login") }}
               </p>
             </nuxt-link>
+            <div v-if="isLogin">
+              <p>{{ "userName" }}</p>
+            </div>
             <nuxt-link :to="localePath('blogs')">
               <p :class="adjustedPath === 'blogs' ? 'active' : ''">
                 {{ $t("blogs") }}
               </p>
             </nuxt-link>
             <div
+              v-if="isLogin"
               class="relative flex cursor-pointer items-center gap-2"
               @click="isToolOpen = !isToolOpen"
             >
@@ -39,6 +43,7 @@
               </transition>
             </div>
             <nuxt-link
+              v-if="isLogin"
               :to="localePath('programs')"
               class="relative flex cursor-pointer items-center gap-2"
             >
@@ -48,6 +53,7 @@
               <i class="fa-solid fa-virus"></i>
             </nuxt-link>
             <a
+              v-if="isLogin"
               href="https://ramadan-ctf-ieeemansb.me/"
               class="relative"
               target="_blank"
@@ -64,12 +70,12 @@
                 {{ $t("community") }}
               </p>
             </nuxt-link>
-            <button
+            <!-- <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="cursor-pointer text-xl font-medium"
             >
               {{ locale === "en" ? "العربية" : "English" }}
-            </button>
+            </button> -->
           </div>
           <div class="block lg:hidden">
             <i
@@ -156,6 +162,7 @@
                 </li>
               </nuxt-link>
               <nuxt-link
+                v-if="isLogin"
                 :to="localePath('programs')"
                 @click="isSideBar = !isSideBar"
                 class="relative flex cursor-pointer items-center gap-2"
@@ -166,6 +173,7 @@
                 <i class="fa-solid fa-virus"></i>
               </nuxt-link>
               <a
+                v-if="isLogin"
                 href="https://ramadan-ctf-ieeemansb.me/"
                 @click="isSideBar = !isSideBar"
                 class="relative flex cursor-pointer items-center gap-2"
@@ -192,6 +200,7 @@
                 </li>
               </nuxt-link>
               <div
+                v-if="isLogin"
                 class="relative flex cursor-pointer items-center gap-2"
                 @click="isToolOpen = !isToolOpen"
               >
@@ -214,7 +223,7 @@
               </div>
               <transition name="dropdown">
                 <div
-                  v-if="isToolOpen"
+                  v-if="isToolOpen && isLogin"
                   :class="{
                     'left-5': locale === 'ar',
                     'right-5': locale !== 'ar',
@@ -262,14 +271,14 @@
               </transition>
             </ul>
           </nav>
-          <div class="mt-5 flex flex-col items-start justify-between gap-5">
+          <!-- <div class="mt-5 flex flex-col items-start justify-between gap-5">
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="text-xl font-medium"
             >
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
-          </div>
+          </div> -->
         </div>
       </transition>
     </div>
@@ -289,6 +298,8 @@ const transitionName = computed(() =>
 import spider from "~/assets/img/spider.svg";
 import password from "~/assets/img/password.svg";
 
+let isLogin = useCookie("token");
+let userName = useCookie("userName");
 interface Tool {
   route: string;
   label: string;

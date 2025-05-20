@@ -30,10 +30,11 @@
           v-for="program in data"
           :key="program.id"
           :program="program"
+          @delete="DeleteProgram"
         />
       </div>
     </div>
-    <div class="mt-8">
+    <div class="mt-8" v-if="usereRole === 'Admin'">
       <nuxt-link to="/programs/AddPrograms">
         <button
           class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
@@ -49,7 +50,15 @@
 import SectionInfo from "../../Utils/SectionInfo.vue";
 
 import { programsController } from "~/composables/programs";
-const { fetchPrograms, data, error, loading } = await programsController();
+const { fetchPrograms, data, error, loading, deleteProgram } =
+  await programsController();
+
+const DeleteProgram = async (id: string) => {
+  await deleteProgram(id);
+  fetchPrograms();
+};
+
+let usereRole = useCookie("usereRole");
 
 onMounted(() => {
   fetchPrograms();

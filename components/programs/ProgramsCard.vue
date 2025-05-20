@@ -29,7 +29,7 @@
             ></i
           ></span>
         </nuxt-link>
-        <button @click="deleteProgram(program.id)">
+        <button @click="emit('delete', program.id)">
           <i
             class="fa-regular fa-trash-can cursor-pointer text-2xl font-light text-red-500 transition-all duration-200 ease-in-out hover:text-red-600"
           ></i>
@@ -124,13 +124,12 @@
 const localePath = useLocalePath();
 import { programsController } from "~/composables/programs";
 
-const { deleteProgram } = await programsController();
-
 interface Props {
   program: any;
 }
 
 defineProps<Props>();
+const emit = defineEmits(["delete"]);
 
 let usereRole = useCookie("usereRole");
 </script>

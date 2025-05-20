@@ -206,17 +206,20 @@ const { registerUser } = useAuthStore();
 const authStore = useAuthStore();
 const { isLoading, error } = storeToRefs(authStore);
 import { useToast } from "vue-toast-notification";
-const toast = useToast({ position: "top-right", duration: 1500 });
+const toast = useToast({ position: "top-right", duration: 2500 });
 
 const onSubmit = async (values: any) => {
   try {
     const response = await registerUser(values);
-    if (response) {
+
+    if (response?.errors) {
+      toast.error(response?.errors[0]);
+    } else if (!response?.errors) {
       toast.success("register successfully completed");
       navigateTo(localePath("/login"));
     }
   } catch (error: any) {
-    toast.error(error);
+    toast.error("Registration failed");
   }
 };
 </script>
