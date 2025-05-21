@@ -19,7 +19,7 @@
               </p>
             </nuxt-link>
             <div v-if="isLogin">
-              <p>{{ "userName" }}</p>
+              <p>{{ userName }}</p>
             </div>
             <nuxt-link :to="localePath('blogs')">
               <p :class="adjustedPath === 'blogs' ? 'active' : ''">
@@ -123,7 +123,9 @@
                       :alt="tool.label.toLowerCase()"
                     />
                   </div>
-                  <p class="text-base font-semibold tracking-wider text-black">
+                  <p
+                    class="text-center text-base font-semibold tracking-wider text-black"
+                  >
                     {{ tool.label }}
                   </p>
                 </div>

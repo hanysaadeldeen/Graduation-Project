@@ -13,10 +13,10 @@
           alt="Spin"
         />
       </div>
-      <!-- <div v-if="!loading && blogs">
+      <div v-if="!loading && blogs">
         <MainSectionBlog :blogs="blogs" />
         <BlogsCardSection :blogs="blogs" />
-      </div> -->
+      </div>
       <div v-else-if="error" class="flex h-full items-center justify-center">
         <p class="text-center uppercase text-red-500">fail to fetch blogs</p>
       </div>

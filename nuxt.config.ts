@@ -66,7 +66,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      BaseApi: "https://zeropoint.runasp.net",
+      BaseApi: "https://zeropoint.runasp.net/api",
       emailApi: "b31a8b5c304c480b924c708bc973ae99",
       portApi: "at_3lNiCgasU9k2naFPfhn2fIU8FGnLp",
     },

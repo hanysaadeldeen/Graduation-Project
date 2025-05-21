@@ -47,7 +47,7 @@ export const report = () => {
     }
     try {
       const response = await $fetch(
-        `${config.public.BaseApi}/api/ReportSubmissions`,
+        `${config.public.BaseApi}/ReportSubmissions`,
         {
           method: "POST",
           body: allData,
@@ -70,7 +70,7 @@ export const report = () => {
 
     try {
       const response = await $fetch(
-        `${config.public.BaseApi}/api/ReportSubmissions/${id}`,
+        `${config.public.BaseApi}/ReportSubmissions/${id}`,
         {
           method: "GET",
         },
@@ -91,7 +91,7 @@ export const report = () => {
 
     try {
       const response = await $fetch(
-        `${config.public.BaseApi}/api/ReportSubmissions/${id}`,
+        `${config.public.BaseApi}/ReportSubmissions/${id}`,
         {
           method: "GET",
         },

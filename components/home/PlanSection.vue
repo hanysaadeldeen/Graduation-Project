@@ -7,7 +7,7 @@
         Join Us and Explore ZeroPointPath’s Features
       </h1>
       <div
-        class="mt-20 grid grid-cols-1 gap-10 overflow-hidden lg:grid-cols-2 xl:grid-cols-3"
+        class="mt-20 grid grid-cols-1 gap-10 overflow-x-hidden lg:grid-cols-2 xl:grid-cols-3"
       >
         <PlanCard
           v-for="card in PlanCardSection"
@@ -81,8 +81,8 @@ onMounted(() => {
       scrollTrigger: {
         trigger: PlanSection.value,
         start: "top 40%",
-        end: "center 40%",
-        scrub: true,
+        end: "30% 70%",
+        scrub: false,
         markers: false,
       },
     });
@@ -101,7 +101,7 @@ onMounted(() => {
       {
         opacity: 0,
         duration: 1,
-        y: 200,
+        // y: 200,
         ease: "power3.out",
       },
       0,

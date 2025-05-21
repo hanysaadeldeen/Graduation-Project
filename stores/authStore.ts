@@ -5,7 +5,7 @@ interface LoginResponse {
   token: string;
   userId: string;
   role: string;
-  user: any;
+  userName: string;
 }
 
 export const useAuthStore = defineStore("authentication", () => {
@@ -19,6 +19,7 @@ export const useAuthStore = defineStore("authentication", () => {
   const token = useCookie("token", { maxAge: 60 * 60 * 24 * 7 });
   const userId = useCookie("userId", { maxAge: 60 * 60 * 24 * 7 });
   const userRole = useCookie("userRole", { maxAge: 60 * 60 * 24 * 7 });
+  const userName = useCookie("userName", { maxAge: 60 * 60 * 24 * 7 });
 
   // register
   const registerUser = async (data: {
@@ -52,7 +53,7 @@ export const useAuthStore = defineStore("authentication", () => {
         token.value = response.token;
         userId.value = response.userId;
         userRole.value = response.role;
-        user.value = response.user;
+        userName.value = response.userName;
       }
       isLoading.value = false;
       return response;

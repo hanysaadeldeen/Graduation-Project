@@ -65,7 +65,7 @@ export const programsController = async () => {
     loading.value = true;
     try {
       const response = await $fetch<ProgramCard[]>(
-        `${runtimeConfig.public.BaseApi}/api/BBPrograms`,
+        `${runtimeConfig.public.BaseApi}/BBPrograms`,
         { method: "GET" },
       );
       data.value = response;
@@ -82,7 +82,7 @@ export const programsController = async () => {
     loading.value = true;
     try {
       const data = await $fetch<ProgramDetails>(
-        `${runtimeConfig.public.BaseApi}/api/BBPrograms/ProgramDetails/${id}`,
+        `${runtimeConfig.public.BaseApi}/BBPrograms/ProgramDetails/${id}`,
         {
           method: "GET",
         },
@@ -102,13 +102,10 @@ export const programsController = async () => {
     error.value = null;
 
     try {
-      const data = await $fetch(
-        `${runtimeConfig.public.BaseApi}/api/BBPrograms`,
-        {
-          method: "POST",
-          body: values,
-        },
-      );
+      const data = await $fetch(`${runtimeConfig.public.BaseApi}/BBPrograms`, {
+        method: "POST",
+        body: values,
+      });
 
       return { data, error: null };
     } catch (err: any) {
@@ -131,7 +128,7 @@ export const programsController = async () => {
 
     try {
       const data = await $fetch(
-        `${runtimeConfig.public.BaseApi}/api/BBPrograms/${id}`,
+        `${runtimeConfig.public.BaseApi}/BBPrograms/${id}`,
         {
           method: "PUT",
           body: values,
@@ -159,7 +156,7 @@ export const programsController = async () => {
 
     try {
       const data = await $fetch(
-        `${runtimeConfig.public.BaseApi}/api/BBPrograms/${id}`,
+        `${runtimeConfig.public.BaseApi}/BBPrograms/${id}`,
         {
           method: "DELETE",
         },

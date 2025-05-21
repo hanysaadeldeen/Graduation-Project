@@ -41,7 +41,7 @@ export const blogsController = () => {
     error.value = null;
 
     try {
-      const res = await $fetch<Blogs[]>(`http://zeroapi.runasp.net/api/Blog`);
+      const res = await $fetch<Blogs[]>(`${config.public.BaseApi}/Blog`);
       blogs.value = res;
     } catch (err: any) {
       error.value = err.data?.message || err.message || "Unknown error";
@@ -55,14 +55,11 @@ export const blogsController = () => {
     error.value = null;
 
     try {
-      const res = await $fetch<Blogs>(
-        `http://zeroapi.runasp.net/api/Blog/${id}`,
-        {
-          headers: {
-            "ngrok-skip-browser-warning": "true",
-          },
+      const res = await $fetch<Blogs>(`${config.public.BaseApi}/Blog/${id}`, {
+        headers: {
+          "ngrok-skip-browser-warning": "true",
         },
-      );
+      });
       blogId.value = res;
     } catch (err: any) {
       error.value = err.data?.message || err.message || "Unknown error";
@@ -83,7 +80,7 @@ export const blogsController = () => {
     formdata.append("dataLeakSite", data.dataLeakSite);
 
     try {
-      const res = await $fetch(`http://zeroapi.runasp.net/api/Blog`, {
+      const res = await $fetch(`${config.public.BaseApi}/Blog`, {
         method: "POST",
         body: formdata,
         headers: {

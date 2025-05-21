@@ -20,7 +20,7 @@ export const useAuth = () => {
     };
     try {
       const response = await $fetch(
-        `${config.public.BaseApi}/api/account/register`,
+        `${config.public.BaseApi}/account/register`,
         {
           method: "POST",
           body: Senderdata,
@@ -42,13 +42,10 @@ export const useAuth = () => {
       password: data.password,
     };
     try {
-      const response = await $fetch(
-        `${config.public.BaseApi}/api/account/login`,
-        {
-          method: "POST",
-          body: Senderdata,
-        },
-      );
+      const response = await $fetch(`${config.public.BaseApi}/account/login`, {
+        method: "POST",
+        body: Senderdata,
+      });
       return response;
     } catch (error: any) {
       if (error?.response?._data) {
