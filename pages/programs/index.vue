@@ -37,7 +37,7 @@
     <div class="mt-8" v-if="usereRole === 'Admin'">
       <nuxt-link to="/programs/AddPrograms">
         <button
-          class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
+          class="group/edit mx-auto flex w-fit items-center justify-center gap-3 rounded-full bg-hookYellow px-10 py-3 text-center text-xl font-medium tracking-wider text-black transition-all duration-300 ease-in-out hover:scale-105"
         >
           Add Programs
         </button></nuxt-link
@@ -58,7 +58,7 @@ const DeleteProgram = async (id: string) => {
   fetchPrograms();
 };
 
-let usereRole = useCookie("usereRole");
+let usereRole = useCookie("userRole");
 
 onMounted(() => {
   fetchPrograms();

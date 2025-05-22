@@ -1,7 +1,7 @@
 <template>
   <section
     ref="WebsiteScannerHero"
-    class="flex items-center justify-between gap-16 max-md:flex-col"
+    class="mt-8 flex items-center justify-between gap-16 max-md:flex-col md:mt-16"
   >
     <div ref="WebsiteScannerHeroLeft" class="w-full md:w-1/2 md:max-w-[600px]">
       <h1
@@ -26,7 +26,7 @@
           <button
             class="mx-auto w-full rounded-full bg-hookYellow px-7 py-2 text-lg font-medium shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:shadow-[0_0_35px_rgba(255,193,7,0.7)] sm:w-fit"
           >
-            Request Demo
+            Download Now
           </button>
         </a>
       </div>

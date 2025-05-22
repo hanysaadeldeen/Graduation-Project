@@ -22,7 +22,7 @@ const handleScan = async (value) => {
   <section class="VirusScanner">
     <div class="container mx-auto p-4">
       <h1
-        class="text-2xl md:text-4xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center mb-8"
+        class="mb-8 w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
       >
         URL Scanner
       </h1>
@@ -30,12 +30,12 @@ const handleScan = async (value) => {
         @submit="handleScan"
         :validation-schema="schema"
         v-slot="{ errors }"
-        class="flex gap-4 max-md:flex-col items-end justify-center p-6 rounded-lg backdrop-blur-md shadow-lg"
+        class="flex items-end justify-center gap-4 rounded-lg p-6 shadow-lg backdrop-blur-md max-md:flex-col"
       >
-        <div class="w-full md:w-[400px] relative">
+        <div class="relative w-full md:w-[400px]">
           <label
             for="urlInput"
-            class="text-paragraph font-semibold text-xl mb-2 cursor-pointer"
+            class="mb-2 cursor-pointer text-xl font-semibold text-paragraph"
           >
             URL Scanner
           </label>
@@ -44,18 +44,18 @@ const handleScan = async (value) => {
             name="urlInput"
             type="text"
             placeholder="Enter URL"
-            class="text-white lowercase w-full h-fit p-3 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary transition-all duration-200"
+            class="h-fit w-full rounded-md border border-none border-transparent bg-primary p-3 lowercase text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary"
             :class="{ 'border-red-500': errors.urlInput }"
           />
-          <span class="text-red-500 text-sm absolute left-1 -bottom-7">{{
+          <span class="absolute -bottom-7 left-1 text-sm text-red-500">{{
             errors.urlInput
           }}</span>
         </div>
         <button
           :disabled="loading"
           type="submit"
-          class="py-2.5 capitalize rounded-xl bg-gradient-to-r from-primary to-secondary h-fit px-10 w-full md:w-fit text-white font-bold tracking-wider text-lg transition-all duration-200 hover:scale-105 hover:shadow-lg"
-          :class="{ 'opacity-50 cursor-not-allowed': loading }"
+          class="h-fit w-full rounded-xl bg-hookYellow px-10 py-2.5 text-lg font-bold capitalize tracking-wider text-black md:w-fit"
+          :class="{ 'cursor-not-allowed opacity-50': loading }"
         >
           Scan URL
         </button>
@@ -65,28 +65,28 @@ const handleScan = async (value) => {
 
       <div v-if="scanResults">
         <h2
-          class="text-2xl md:text-3xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center"
+          class="bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-center text-2xl font-bold tracking-wider text-transparent md:text-3xl"
         >
           Scan Results:
         </h2>
         <table
-          class="table-auto w-full border-collapse border border-gray-300 mt-2"
+          class="mt-2 w-full table-auto border-collapse border border-gray-300"
         >
           <thead>
             <tr class="bg-primary text-white">
-              <th class="border p-2 font-semibold text-lg tracking-wide">
+              <th class="border p-2 text-lg font-semibold tracking-wide">
                 Type
               </th>
-              <th class="border p-2 font-semibold text-lg tracking-wide">
+              <th class="border p-2 text-lg font-semibold tracking-wide">
                 Value
               </th>
             </tr>
           </thead>
           <tbody>
             <tr
-              class="border-b text-white border-secondary hover:bg-secondary transition-all duration-200 ease-in-out cursor-pointer"
+              class="cursor-pointer border-b border-secondary text-white transition-all duration-200 ease-in-out hover:bg-secondary"
             >
-              <td class="border p-2 font-semibold text-lg tracking-wide">
+              <td class="border p-2 text-lg font-semibold tracking-wide">
                 Malicious
               </td>
               <td class="border p-2 text-red-500">
@@ -94,9 +94,9 @@ const handleScan = async (value) => {
               </td>
             </tr>
             <tr
-              class="border-b text-white border-secondary hover:bg-secondary transition-all duration-200 ease-in-out cursor-pointer"
+              class="cursor-pointer border-b border-secondary text-white transition-all duration-200 ease-in-out hover:bg-secondary"
             >
-              <td class="border p-2 font-semibold text-lg tracking-wide">
+              <td class="border p-2 text-lg font-semibold tracking-wide">
                 Harmless
               </td>
               <td class="border p-2 text-green-500">
@@ -104,9 +104,9 @@ const handleScan = async (value) => {
               </td>
             </tr>
             <tr
-              class="border-b text-white border-secondary hover:bg-secondary transition-all duration-200 ease-in-out cursor-pointer"
+              class="cursor-pointer border-b border-secondary text-white transition-all duration-200 ease-in-out hover:bg-secondary"
             >
-              <td class="border p-2 font-semibold text-lg tracking-wide">
+              <td class="border p-2 text-lg font-semibold tracking-wide">
                 Suspicious
               </td>
               <td class="border p-2 text-yellow-500">
@@ -114,9 +114,9 @@ const handleScan = async (value) => {
               </td>
             </tr>
             <tr
-              class="border-b text-white border-secondary hover:bg-secondary transition-all duration-200 ease-in-out cursor-pointer"
+              class="cursor-pointer border-b border-secondary text-white transition-all duration-200 ease-in-out hover:bg-secondary"
             >
-              <td class="border p-2 font-semibold text-lg tracking-wide">
+              <td class="border p-2 text-lg font-semibold tracking-wide">
                 Last Analysis Date
               </td>
               <td class="border p-2 text-red-500">
@@ -127,7 +127,7 @@ const handleScan = async (value) => {
         </table>
 
         <h2
-          class="mt-4 text-2xl md:text-3xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center"
+          class="mt-4 bg-gradient-to-b bg-clip-text text-center text-2xl font-bold tracking-wider text-transparent text-white md:text-3xl"
         >
           Vendors Analysis:
         </h2>
@@ -138,19 +138,19 @@ const handleScan = async (value) => {
             class="mt-4"
           >
             <h3
-              class="mb-4 text-lg md:text-xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center"
+              class="mb-4 bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-center text-lg font-bold tracking-wider text-transparent md:text-xl"
             >
               {{ key }} ({{ group.length }})
             </h3>
             <table
-              class="table-auto w-full border-collapse border border-gray-300"
+              class="w-full table-auto border-collapse border border-gray-300"
             >
               <thead>
                 <tr class="bg-primary text-white">
-                  <th class="border p-2 font-semibold text-lg tracking-wide">
+                  <th class="border p-2 text-lg font-semibold tracking-wide">
                     Vendor
                   </th>
-                  <th class="border p-2 font-semibold text-lg tracking-wide">
+                  <th class="border p-2 text-lg font-semibold tracking-wide">
                     Result
                   </th>
                 </tr>
@@ -159,11 +159,11 @@ const handleScan = async (value) => {
                 <tr
                   v-for="vendor in group"
                   :key="vendor.vendor"
-                  class="border-b text-white border-secondary hover:bg-secondary transition-all duration-200 ease-in-out cursor-pointer"
+                  class="cursor-pointer border-b border-secondary text-white transition-all duration-200 ease-in-out hover:bg-secondary"
                 >
                   <td class="border p-2 text-white">{{ vendor.vendor }}</td>
                   <td
-                    class="border p-2 font-semibold text-lg tracking-wide"
+                    class="border p-2 text-lg font-semibold tracking-wide"
                     :class="{
                       'text-red-500': key === 'Phishing',
                       'text-green-500': key === 'Clean',

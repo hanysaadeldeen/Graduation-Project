@@ -342,7 +342,7 @@ const tools = ref<Tool[]>([
   },
   {
     route: "virusscanner",
-    label: "Virus scan",
+    label: "URL Scanner",
     icon: "fa-bug",
     iconType: "fa",
   },

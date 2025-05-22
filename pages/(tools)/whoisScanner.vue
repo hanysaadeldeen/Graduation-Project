@@ -1,9 +1,9 @@
 <!-- pages/whois.vue -->
 <template>
   <section class="blog">
-    <div class="container px-4 mx-auto">
+    <div class="container mx-auto px-4">
       <h1
-        class="text-2xl md:text-4xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center mb-8"
+        class="mb-8 w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
       >
         Whois Scanner
       </h1>
@@ -12,12 +12,12 @@
         @submit="getWhoisData"
         :validation-schema="schema"
         v-slot="{ errors }"
-        class="flex gap-4 max-md:flex-col items-end justify-center"
+        class="flex items-end justify-center gap-4 max-md:flex-col"
       >
-        <div class="w-full md:w-[400px] relative">
+        <div class="relative w-full md:w-[400px]">
           <label
             for="domain"
-            class="text-paragraph font-semibold text-xl mb-2 cursor-pointer"
+            class="mb-2 cursor-pointer text-xl font-semibold text-paragraph"
           >
             Domain or IP
           </label>
@@ -26,32 +26,32 @@
             name="domain"
             type="text"
             placeholder="Enter Domain or IP (e.g., google.com or https://google.com)"
-            class="text-white lowercase w-full md:w-[400px] h-fit p-3 border-none bg-primary border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+            class="h-fit w-full rounded-md border border-none border-transparent bg-primary p-3 lowercase text-white focus:outline-none focus:ring-2 focus:ring-secondary md:w-[400px]"
             :class="{ 'border-red-500': errors.domain }"
             v-model="domain"
           />
-          <span class="text-red-500 text-sm absolute left-1 -bottom-7">{{
+          <span class="absolute -bottom-7 left-1 text-sm text-red-500">{{
             errors.domain
           }}</span>
         </div>
         <button
           :disabled="isLoading"
           type="submit"
-          class="py-2.5 capitalize rounded-xl bg-gradient-to-l h-fit px-10 w-full md:w-fit from-primary to-secondary text-white font-bold tracking-wider text-lg"
-          :class="{ 'opacity-50 cursor-not-allowed': isLoading }"
+          class="h-fit w-full rounded-xl bg-hookYellow px-10 py-2.5 text-lg font-bold capitalize tracking-wider text-black md:w-fit"
+          :class="{ 'cursor-not-allowed opacity-50': isLoading }"
         >
-          {{ isLoading ? "Searching..." : "Lookup" }}
+          {{ isLoading ? "Searching..." : "scan" }}
         </button>
       </Form>
 
-      <div v-if="whoisData" class="overflow-x-auto mt-10">
+      <div v-if="whoisData" class="mt-10 overflow-x-auto">
         <h2
-          class="text-xl md:text-2xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center mb-2"
+          class="mb-2 bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-center text-xl font-bold tracking-wider text-transparent md:text-2xl"
         >
           Whois Results
         </h2>
         <table
-          class="w-full md:w-[616px] mx-auto border-collapse rounded-lg overflow-hidden bg-white/10 backdrop-blur-md"
+          class="mx-auto w-full border-collapse overflow-hidden rounded-lg bg-white/10 backdrop-blur-md md:w-[616px]"
         >
           <thead>
             <tr class="bg-primary text-white">
@@ -63,9 +63,9 @@
             <tr
               v-for="[key, value] in domainInfoEntries"
               :key="key"
-              class="border-b border-secondary hover:bg-secondary transition-all duration-200 ease-in-out cursor-pointer"
+              class="cursor-pointer border-b border-secondary transition-all duration-200 ease-in-out hover:bg-secondary"
             >
-              <td class="px-4 py-3 text-white font-medium capitalize">
+              <td class="px-4 py-3 font-medium capitalize text-white">
                 {{ formatKey(key) }}
               </td>
               <td class="px-4 py-3 text-gray-300">{{ value || "N/A" }}</td>
@@ -102,7 +102,7 @@ const schema = yup.object({
           /^(https?:\/\/)?([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-_]+\.[a-zA-Z]{2,11}\/?$/;
         const ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
         return domainRegex.test(value) || ipRegex.test(value);
-      }
+      },
     ),
 });
 // Computed properties
@@ -110,6 +110,7 @@ const domainInfo = computed(() => {
   if (!whoisData.value?.WhoisRecord?.registryData) return {};
   const data = whoisData.value.WhoisRecord.registryData;
   return {
+    "Raw Whois": whoisData.value.WhoisRecord.rawText,
     "Domain Name": data.domainName,
     "Registry Domain ID": data.domainId,
     Registrar: data.registrarName,
@@ -133,7 +134,6 @@ const domainInfo = computed(() => {
     "Tech Email": data.technicalContact?.email,
     "Tech Phone": data.technicalContact?.telephone,
     "Tech Country": data.technicalContact?.country,
-    "Raw Whois": whoisData.value.WhoisRecord.rawText,
   };
 });
 const runtimeConfig = useRuntimeConfig();
@@ -145,13 +145,13 @@ const getWhoisData = async () => {
   isLoading.value = true;
   try {
     const response = await fetch(
-      `${apiUrl}?apiKey=${runtimeConfig.public.portApi}&domainName=${domain.value}&outputFormat=JSON`
+      `${apiUrl}?apiKey=${runtimeConfig.public.portApi}&domainName=${domain.value}&outputFormat=JSON`,
     );
 
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(
-        errorData.ErrorMessage || `HTTP error! Status: ${response.status}`
+        errorData.ErrorMessage || `HTTP error! Status: ${response.status}`,
       );
     }
     const data = await response.json();

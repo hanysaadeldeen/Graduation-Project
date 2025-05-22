@@ -1,23 +1,23 @@
 <template>
   <section class="blog">
-    <div class="container px-4 mx-auto">
+    <div class="container mx-auto px-4">
       <h1
-        class="text-2xl md:text-4xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center mb-8"
+        class="mb-8 w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
       >
         Password Generator
       </h1>
 
       <div
-        class="result bg-secondary text-white font-semibold tracking-wider p-4 mt-4 rounded relative text-center"
+        class="result relative mt-4 rounded bg-secondary p-4 text-center font-semibold tracking-wider text-white"
       >
-        <div class="text-lg font-mono" @click="copyPassword">
+        <div class="font-mono text-lg" @click="copyPassword">
           {{ password || "CLICK GENERATE" }}
         </div>
 
         <button
           v-if="password"
           @click="copyPassword"
-          class="absolute top-2 flex items-center text-lg gap-2 right-2 text-white hover:scale-105 transition-all duration-300 ease-in-out"
+          class="absolute right-2 top-2 flex items-center gap-2 text-lg text-white transition-all duration-300 ease-in-out hover:scale-105"
         >
           copy
           <i class="far fa-copy"></i>
@@ -26,7 +26,7 @@
 
       <div class="mt-4">
         <label
-          class="my-2 inline-block md:text-xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center"
+          class="my-2 inline-block bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-center font-bold tracking-wider text-transparent md:text-xl"
           >Length: {{ length }}</label
         >
         <input
@@ -38,9 +38,9 @@
         />
       </div>
 
-      <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2">
         <label
-          class="text-2xl text-white cursor-pointer font-bold inline-block mx-2"
+          class="mx-2 inline-block cursor-pointer text-2xl font-bold text-white"
           ><input
             type="checkbox"
             v-model="options.uppercase"
@@ -49,7 +49,7 @@
           Uppercase</label
         >
         <label
-          class="text-2xl cursor-pointer text-white font-bold inline-block mx-2"
+          class="mx-2 inline-block cursor-pointer text-2xl font-bold text-white"
           ><input
             type="checkbox"
             v-model="options.lowercase"
@@ -58,7 +58,7 @@
           Lowercase</label
         >
         <label
-          class="text-2xl cursor-pointer text-white font-bold inline-block mx-2"
+          class="mx-2 inline-block cursor-pointer text-2xl font-bold text-white"
           ><input
             type="checkbox"
             v-model="options.number"
@@ -67,7 +67,7 @@
           Numbers</label
         >
         <label
-          class="text-2xl cursor-pointer text-white font-bold inline-block mx-2"
+          class="mx-2 inline-block cursor-pointer text-2xl font-bold text-white"
           ><input
             type="checkbox"
             v-model="options.symbol"
@@ -79,7 +79,7 @@
 
       <button
         @click="generatePassword"
-        class="py-2.5 block mt-5 capitalize mx-auto rounded-xl bg-gradient-to-l h-fit px-10 w-full md:w-fit from-primary to-secondary text-white font-bold tracking-wider text-lg"
+        class="mx-auto mt-5 block h-fit w-full rounded-xl bg-hookYellow bg-gradient-to-l px-10 py-2.5 text-lg font-bold capitalize tracking-wider text-black md:w-fit"
       >
         Generate Password
       </button>

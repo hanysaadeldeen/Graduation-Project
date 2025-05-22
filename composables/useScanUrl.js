@@ -2,7 +2,7 @@ import { ref } from "vue";
 
 export function useScanUrl() {
   const apiKey =
-    "6d360109125bdbcbface394d2a23bcb278589721cbdc0c11812108533b7adca3";
+    "4624a307c315af2a919fa52deb4feb059db458f8a64107587186ee6ddb5371ae";
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   const scanResults = ref(null);
   const loading = ref(false);
@@ -23,7 +23,7 @@ export function useScanUrl() {
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: `url=${encodeURIComponent(url)}`,
-        }
+        },
       );
 
       if (!scanResponse.ok)
@@ -37,7 +37,7 @@ export function useScanUrl() {
         {
           method: "GET",
           headers: { "x-apikey": apiKey },
-        }
+        },
       );
 
       if (!resultResponse.ok)
