@@ -2,8 +2,9 @@
   <div class="sectionInfo relative flex w-full flex-col gap-5 sm:max-w-[640px]">
     <h1
       v-html="$t(about)"
-      class="bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold leading-[3rem] text-transparent sm:text-5xl sm:leading-[4rem]"
+      class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
     ></h1>
+
     <p class="text-xl font-medium leading-6 text-paragraph">
       {{ description && $t(description) }}
     </p>

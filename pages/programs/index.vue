@@ -1,12 +1,25 @@
 <template>
   <div class="bounties container mx-auto mb-16 px-2 max-sm:px-4">
-    <SectionInfo
+    <!-- <SectionInfo
       about="Opportunity Discovery"
       description="Find the best opportunities for your skills and wallet"
-    />
+    /> -->
+    <div class="sectionInfo relative flex w-full flex-col gap-5">
+      <h1
+        class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
+      >
+        Opportunity Discovery
+      </h1>
+
+      <p
+        class="w-full text-center text-2xl font-medium tracking-wide text-white/60 max-sm:text-justify md:text-2xl"
+      >
+        Find the best opportunities for your skills and wallet
+      </p>
+    </div>
     <div class="mt-20">
       <h1
-        class="bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-xl font-bold leading-[3rem] text-transparent sm:leading-[4rem] md:text-2xl lg:text-3xl"
+        class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
       >
         Campaigns & top-paying opportunities
       </h1>
