@@ -1,6 +1,6 @@
 <template>
-  <section class="WhoIs relative h-screen">
-    <div class="containerPoligon absolute left-0 top-0 h-3/4 w-full"></div>
+  <section class="WhoIs relative flex h-[486px] items-center justify-center">
+    <div class="containerPoligon absolute left-0 top-0 h-full w-full"></div>
 
     <div
       class="absolute -top-10 left-0 z-10 h-dvh w-full rotate-180 opacity-30"
@@ -41,6 +41,6 @@
 <style scoped>
 .containerPoligon {
   background-color: #1f1f1f;
-  clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 75%);
+  clip-path: polygon(0 23%, 100% 0, 100% 100%, 0 80%);
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="WhyUs relative h-screen">
+  <div class="WhyUs relative h-screen">
     <div class="containerPoligon absolute left-0 top-0 h-3/4 w-full"></div>
     <div
       class="absolute -top-10 left-0 z-10 h-dvh w-full rotate-180 opacity-30"
@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts"></script>
