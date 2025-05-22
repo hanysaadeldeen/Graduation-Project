@@ -57,7 +57,7 @@
         >
           <div class="flex flex-col items-center gap-2 max-md:w-full">
             <button
-              class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-secondary px-6 py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
+              class="group/edit flex w-full items-center justify-center gap-3 rounded-md border-2 border-hookYellow bg-transparent px-6 py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
             >
               This program is active now
             </button>
@@ -73,7 +73,7 @@
                   },
                 })
               "
-              class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
+              class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-hookYellow py-3 text-center text-xl font-medium tracking-wider text-black transition-all duration-300 ease-in-out hover:scale-105"
             >
               Submit report
               <i

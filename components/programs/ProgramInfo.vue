@@ -147,30 +147,29 @@
             <p class="text-xl text-paragraph">
               We are interested in the following vulnerabilities:
             </p>
-            <p class="text-2xl text-paragraph">
+            <!-- <p class="text-2xl text-paragraph">
               {{ programId.inScopeVulnerabilities }}
-            </p>
-            <!-- <ul class="mt-5 space-y-4">
+            </p> -->
+            <ul class="mt-5 space-y-4">
               <li class="textDescription text-xl text-white">
-                Assets that do not belong to the company
+                Business logic issues
               </li>
               <li class="textDescription text-xl text-white">
-                Reports that state that software is out of date/vulnerable
-                without a proof of concept
+                Payments manipulation
               </li>
               <li class="textDescription text-xl text-white">
-                Spam (sms, email, etc)
+                Remote code execution (RCE)
               </li>
               <li class="textDescription text-xl text-white">
-                Vulnerabilities in third-party applications
+                Injection vulnerabilities (SQL, XXE)
               </li>
               <li class="textDescription text-xl text-white">
-                Most brute-forcing issues without clear impact
+                Server-Side Request Forgery (SSRF)
               </li>
               <li class="textDescription text-xl text-white">
-                Missing HTTP security headers
+                Cross-Site Scripting (XSS)
               </li>
-            </ul> -->
+            </ul>
           </div>
           <div class="mt-8">
             <h2
@@ -184,70 +183,60 @@
               discretion). In general, the following vulnerabilities do not
               correspond to the severity threshold:
             </p>
-            <p class="text-2xl text-paragraph">
+            <!-- <p class="text-2xl text-paragraph">
               {{ programId.outOfScopeVulnerabilities }}
-            </p>
-            <!-- <ul class="mt-5 space-y-4">
-              <li class="textDescription text-xl text-white">
-                Assets that do not belong to the company
-              </li>
-              <li class="textDescription text-xl text-white">
-                Reports that state that software is out of date/vulnerable
-                without a proof of concept
-              </li>
-              <li class="textDescription text-xl text-white">
-                Spam (sms, email, etc)
-              </li>
+            </p> -->
+            <ul class="mt-5 space-y-4">
               <li class="textDescription text-xl text-white">
                 Vulnerabilities in third-party applications
               </li>
               <li class="textDescription text-xl text-white">
-                Most brute-forcing issues without clear impact
-              </li>
-              <li class="textDescription text-xl text-white">
-                Missing HTTP security headers
-              </li>
-              <li class="textDescription text-xl text-white">
                 Assets that do not belong to the company
               </li>
               <li class="textDescription text-xl text-white">
-                Reports that state that software is out of date/vulnerable
+                Best practices concerns
+              </li>
+              <li class="textDescription text-xl text-white">
+                Recently (less than 30 days) disclosed 0day vulnerabilities
+              </li>
+              <li class="textDescription text-xl text-white">
+                Vulnerabilities affecting users of outdated browsers or
+                platforms
+              </li>
+              <li class="textDescription text-xl text-white">
+                Social engineering, phishing, physical, or other fraud
+                activities
+              </li>
+              <li class="textDescription text-xl text-white">
+                Publicly accessible login panels without proof of exploitation
+              </li>
+              <li class="textDescription text-xl text-white">
+                Reports that state that software is out of date / vulnerable
                 without a proof of concept
+              </li>
+              <li class="textDescription text-xl text-white">
+                Vulnerabilities involving active content such as web browser
+                add-ons
+              </li>
+              <li class="textDescription text-xl text-white">
+                Most brute-forcing issues without clear impact
+              </li>
+              <li class="textDescription text-xl text-white">
+                Denial of service (DoS/DDoS)
+              </li>
+              <li class="textDescription text-xl text-white">
+                Theoretical issues
+              </li>
+              <li class="textDescription text-xl text-white">
+                Moderately Sensitive Information Disclosure
               </li>
               <li class="textDescription text-xl text-white">
                 Spam (sms, email, etc)
               </li>
               <li class="textDescription text-xl text-white">
-                Login & Logout CSRF
+                Missing HTTP security headers
               </li>
-              <li class="textDescription text-xl text-white">
-                Most brute-forcing issues without clear impact
-              </li>
-              <li class="textDescription text-xl text-white">
-                Mixed HTTP Content
-              </li>
-              <li class="textDescription text-xl text-white">
-                Response manipulations without demonstration of system state
-                change
-              </li>
-              <li class="textDescription text-xl text-white">
-                MitM and local attacks
-              </li>
-              <li class="textDescription text-xl text-white">
-                HTTPS Mixed Content Scripts
-              </li>
-              <li class="textDescription text-xl text-white">
-                Content Spoofing without embedded links/HTML
-              </li>
-              <li class="textDescription text-xl text-white">
-                Content spoofing and text injection issues without showing an
-                attack vector/without being able to modify HTML/CSS
-              </li>
-              <li class="textDescription text-xl text-white">
-                Host header issues without proof-of-concept demonstrating clear
-                security impact
-              </li>
-            </ul> -->
+            </ul>
           </div>
         </div>
         <!--Program Rules -->
@@ -256,41 +245,41 @@
           v-if="bountyType === 'ProgramRules' || bountyType === 'All'"
         >
           <h1 class="mb-4 text-3xl font-bold text-white">Program Rules</h1>
-          <p class="text-2xl text-paragraph">
+          <!-- <p class="text-2xl text-paragraph">
             {{ programId.programRules }}
-          </p>
-          <!-- <ul class="mt-5 space-y-4">
-            <li class="textDescription text-xl text-white">
-              Don't exploit any DoS/DDoS vulnerabilities, social engineering
-              attacks, or spam
-            </li>
-            <li class="textDescription text-xl text-white">
-              Reports that state that software is out of date/vulnerable without
-              a proof of concept
-            </li>
+          </p> -->
+          <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               Avoid using web application scanners for automatic vulnerability
               searching which generates massive traffic
             </li>
             <li class="textDescription text-xl text-white">
-              Vulnerabilities in third-party applications
+              Make every effort not to damage or restrict the availability of
+              products, services, or infrastructure
             </li>
             <li class="textDescription text-xl text-white">
-              Most brute-forcing issues without clear impact
+              Avoid compromising any personal data, interruption, or degradation
+              of any service
             </li>
             <li class="textDescription text-xl text-white">
-              In case you find chain vulnerabilities we'll pay only for
+              Perform testing only within the scope
+            </li>
+            <li class="textDescription text-xl text-white">
+              Don’t exploit any DoS/DDoS vulnerabilities, social engineering
+              attacks, or spam
+            </li>
+            <li class="textDescription text-xl text-white">
+              Don’t spam forms or account creation flows using automated
+              scanners
+            </li>
+            <li class="textDescription text-xl text-white">
+              In case you find chain vulnerabilities we’ll pay only for
               vulnerability with the highest severity.
             </li>
             <li class="textDescription text-xl text-white">
-              Don't break any law and stay in the defined scope
+              Don’t break any law and stay in the defined scope
             </li>
-            <li class="textDescription text-xl text-white">
-              Any details of found vulnerabilities must not be communicated to
-              anyone who is not a HackenProof Team or an authorized employee of
-              this Company without appropriate permission
-            </li>
-          </ul> -->
+          </ul>
         </div>
         <!--Disclosure Guidelines -->
         <div
@@ -300,10 +289,10 @@
           <h1 class="mb-4 text-3xl font-bold text-white">
             Disclosure Guidelines
           </h1>
-          <p class="text-2xl text-paragraph">
+          <!-- <p class="text-2xl text-paragraph">
             {{ programId.disclosureGuidelines }}
-          </p>
-          <!-- <ul class="mt-5 space-y-4">
+          </p> -->
+          <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               Do not discuss this program or any vulnerabilities (even resolved
               ones) outside of the program without express consent from the
@@ -316,7 +305,7 @@
             <li class="textDescription text-xl text-white">
               Please do NOT publish/discuss bugs
             </li>
-          </ul> -->
+          </ul>
         </div>
         <!--Eligibility and Coordinated Disclosure -->
         <div
@@ -331,16 +320,12 @@
             us improve the security. However, only those that meet the following
             eligibility requirements may receive a monetary reward:
           </p>
-          <p class="text-2xl text-paragraph">
+          <!-- <p class="text-2xl text-paragraph">
             {{ programId.eligibility }}
-          </p>
-          <!-- <ul class="mt-5 space-y-4">
+          </p> -->
+          <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               You must be the first reporter of a vulnerability.
-            </li>
-            <li class="textDescription text-xl text-white">
-              Reports that state that software is out of date/vulnerable without
-              a proof of concept
             </li>
             <li class="textDescription text-xl text-white">
               The vulnerability must be a qualifying vulnerability
@@ -365,7 +350,7 @@
               ONLY USE the EMAIL under which you registered your HackenProof
               account (in case of violation, no bounty can be awarded)
             </li>
-          </ul> -->
+          </ul>
         </div>
       </div>
       <div class="w-full lg:w-2/5">

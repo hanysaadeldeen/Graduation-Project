@@ -28,7 +28,7 @@
       <div class="mt-8">
         <nuxt-link to="/blogs/addBlog" v-if="usereRole === 'Admin'">
           <button
-            class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
+            class="group/edit mx-auto flex w-fit items-center justify-center gap-3 rounded-full bg-hookYellow px-10 py-3 text-center text-xl font-medium tracking-wider text-black transition-all duration-300 ease-in-out hover:scale-105"
           >
             Add Blog
           </button></nuxt-link
@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import { blogsController } from "~/composables/blogs";
-let usereRole = useCookie("usereRole");
+let usereRole = useCookie("userRole");
 
 const { blogs, fetchBlogs, error, loading } = blogsController();
 

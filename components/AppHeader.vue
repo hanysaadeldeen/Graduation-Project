@@ -1,6 +1,6 @@
 <template>
   <header class="relative z-40 bg-transparent py-5 text-white">
-    <div class="container mx-auto px-2 max-sm:px-4">
+    <div class="container mx-auto px-5">
       <div class="relative z-20">
         <div class="flex items-center justify-between">
           <nuxt-link :to="localePath('index')">
@@ -63,6 +63,7 @@
               </p>
             </a>
             <nuxt-link
+              v-if="isLogin"
               :to="localePath('community')"
               class="relative flex cursor-pointer items-center gap-2"
             >
@@ -149,7 +150,7 @@
             },
           ]"
         >
-          <div class="container mx-auto pl-5">
+          <div class="container mx-auto px-5 pl-5">
             <nav class="mt-10 inline-block">
               <ul class="flex w-full flex-col gap-2">
                 <nuxt-link
@@ -191,6 +192,7 @@
                   </li>
                 </a>
                 <nuxt-link
+                  v-if="isLogin"
                   :to="localePath('community')"
                   class="relative flex cursor-pointer items-center gap-2"
                 >

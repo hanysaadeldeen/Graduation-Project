@@ -131,7 +131,7 @@ interface Props {
 defineProps<Props>();
 const emit = defineEmits(["delete"]);
 
-let usereRole = useCookie("usereRole");
+let usereRole = useCookie("userRole");
 </script>
 
 <style scoped></style>
