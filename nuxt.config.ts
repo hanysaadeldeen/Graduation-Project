@@ -48,12 +48,12 @@ export default defineNuxtConfig({
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css",
         },
       ],
-      title: "Zero_Point_Path",
+      title: "ZeroPointPath",
       meta: [
         {
           name: "description",
           content:
-            "ZeroPointSecurity: Hands-on cybersecurity training with interactive challenges in PWN, WEB, MISC, Forensics, Mobile, and Hardware. Learn in a gamified environment with personalized feedback.",
+            "ZeroPointPath: Hands-on cybersecurity training with interactive challenges in PWN, WEB, MISC, Forensics, Mobile, and Hardware. Learn in a gamified environment with personalized feedback.",
         },
       ],
     },
