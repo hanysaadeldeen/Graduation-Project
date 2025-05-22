@@ -23,6 +23,7 @@ onMounted(() => {
     .clear()
     .type("🔍 Curious about phishing, malware, or privacy? Ask away...")
     .rest(1000)
+    .clear()
     .type("🧠 I'm here to help with anything cybersecurity-related...")
     .rest(1000)
     .clear()
