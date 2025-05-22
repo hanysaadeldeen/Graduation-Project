@@ -606,7 +606,7 @@
             <div class="mt-4 flex flex-col gap-2">
               <button
                 :disabled="loading"
-                class="w-full rounded-md bg-blue-600 px-4 py-2 text-white disabled:cursor-not-allowed disabled:bg-blue-300"
+                class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-hookYellow py-2 text-center text-xl font-medium tracking-wider text-black transition-all duration-300 ease-in-out hover:scale-105"
                 type="submit"
                 :class="{ 'cursor-not-allowed opacity-50': loading }"
               >

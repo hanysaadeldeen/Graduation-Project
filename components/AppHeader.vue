@@ -13,19 +13,6 @@
             />
           </nuxt-link>
           <div class="hidden items-center justify-between gap-10 lg:flex">
-            <nuxt-link :to="localePath('Login')" v-if="!isLogin">
-              <p :class="adjustedPath === '/' ? '/Login' : ''">
-                {{ $t("login") }}
-              </p>
-            </nuxt-link>
-            <div v-if="isLogin">
-              <p>{{ userName }}</p>
-            </div>
-            <nuxt-link :to="localePath('blogs')">
-              <p :class="adjustedPath === 'blogs' ? 'active' : ''">
-                {{ $t("blogs") }}
-              </p>
-            </nuxt-link>
             <div
               v-if="isLogin"
               class="relative flex cursor-pointer items-center gap-2"
@@ -42,6 +29,21 @@
                 ></div>
               </transition>
             </div>
+            <nuxt-link :to="localePath('blogs')">
+              <p :class="adjustedPath === 'blogs' ? 'active' : ''">
+                {{ $t("blogs") }}
+              </p>
+            </nuxt-link>
+            <nuxt-link
+              v-if="isLogin"
+              :to="localePath('community')"
+              class="relative flex cursor-pointer items-center gap-2"
+            >
+              <p :class="adjustedPath === 'community' ? 'active' : ''">
+                {{ $t("community") }}
+              </p>
+            </nuxt-link>
+
             <nuxt-link
               v-if="isLogin"
               :to="localePath('programs')"
@@ -62,15 +64,15 @@
                 {{ $t("CTF") }}
               </p>
             </a>
-            <nuxt-link
-              v-if="isLogin"
-              :to="localePath('community')"
-              class="relative flex cursor-pointer items-center gap-2"
-            >
-              <p :class="adjustedPath === 'community' ? 'active' : ''">
-                {{ $t("community") }}
+            <nuxt-link :to="localePath('Login')" v-if="!isLogin">
+              <p :class="adjustedPath === '/' ? '/Login' : ''">
+                {{ $t("login") }}
               </p>
             </nuxt-link>
+            <div v-if="isLogin">
+              <p>{{ userName }}</p>
+            </div>
+
             <!-- <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="cursor-pointer text-xl font-medium"
@@ -153,20 +155,24 @@
           <div class="container mx-auto px-5 pl-5">
             <nav class="mt-10 inline-block">
               <ul class="flex w-full flex-col gap-2">
-                <nuxt-link
-                  :to="localePath('index')"
-                  @click="isSideBar = !isSideBar"
-                >
-                  <li :class="adjustedPath === '/' ? 'active' : ''">
-                    {{ $t("home") }}
-                  </li>
-                </nuxt-link>
+                <div v-if="isLogin">
+                  <p class="font-bold">{{ userName }}</p>
+                </div>
                 <nuxt-link
                   :to="localePath('blogs')"
                   @click="isSideBar = !isSideBar"
                 >
                   <li :class="adjustedPath === '/blogs' ? 'active' : ''">
                     {{ $t("blogs") }}
+                  </li>
+                </nuxt-link>
+                <nuxt-link
+                  v-if="isLogin"
+                  :to="localePath('community')"
+                  class="relative flex cursor-pointer items-center gap-2"
+                >
+                  <li :class="adjustedPath === 'community' ? 'active' : ''">
+                    {{ $t("community") }}
                   </li>
                 </nuxt-link>
                 <nuxt-link
@@ -192,15 +198,6 @@
                   </li>
                 </a>
                 <nuxt-link
-                  v-if="isLogin"
-                  :to="localePath('community')"
-                  class="relative flex cursor-pointer items-center gap-2"
-                >
-                  <li :class="adjustedPath === 'community' ? 'active' : ''">
-                    {{ $t("community") }}
-                  </li>
-                </nuxt-link>
-                <nuxt-link
                   :to="localePath('Login')"
                   @click="isSideBar = !isSideBar"
                 >
@@ -208,6 +205,7 @@
                     {{ $t("login") }}
                   </li>
                 </nuxt-link>
+
                 <div
                   v-if="isLogin"
                   class="relative flex cursor-pointer items-center gap-2"
