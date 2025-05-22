@@ -17,12 +17,12 @@
         </h1>
         <div>
           <p
-            class="w-full text-center text-2xl font-extrabold tracking-wide text-white md:max-w-[1000px] md:text-4xl"
+            class="w-full text-center text-2xl font-extrabold tracking-wide md:max-w-[1000px] md:text-4xl"
           >
             Your Gateway to Mastering Cybersecurity
           </p>
           <p
-            class="mt-5 w-full text-center text-2xl font-medium tracking-wide text-white/60 max-sm:text-justify md:max-w-[1000px] md:text-2xl"
+            class="mt-5 w-full text-center text-2xl font-medium tracking-wide text-black/60 max-sm:text-justify md:max-w-[1000px] md:text-2xl"
           >
             ZeroPointPath is an online platform offering hands-on cybersecurity
             training through interactive challenges, real-world simulations, and

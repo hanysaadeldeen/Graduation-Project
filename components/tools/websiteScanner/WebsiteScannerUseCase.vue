@@ -1,7 +1,7 @@
 <template>
   <section class="mt-[90px]">
     <h1
-      class="mb-4 bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-2xl font-bold text-transparent md:mb-8 md:text-4xl"
+      class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
     >
       Use cases
     </h1>
@@ -23,14 +23,12 @@
         <h1
           class="relative z-20 my-2.5 cursor-pointer text-2xl font-bold text-white ease-in-out md:my-5"
         >
-          Unified vulnerability <br />
-          management
+          Unified Web Vulnerability <br />
+          Scanning
         </h1>
         <p class="text-justify text-xl font-medium leading-6 text-paragraph">
-          Gain complete visibility across your entire environment, from endpoint
-          to cloud. Advanced scanning capabilities ensure you never miss a
-          critical vulnerability, empowering your security team to stay
-          proactive in the face of evolving threats.
+          Gain complete visibility into your application’s <br />
+          exposure by combining multiple tools in one interface.
         </p>
       </div>
     </div>
@@ -45,16 +43,12 @@
         <h1
           class="relative z-20 my-2.5 cursor-pointer text-2xl font-bold text-white ease-in-out md:my-5"
         >
-          Adversary-aware risk <br />
-          prioritization
+          Streamlined Remediation <br />
+          Process.
         </h1>
         <p class="text-justify text-xl font-medium leading-6 text-paragraph">
-          Leverage advanced machine learning models and proprietary threat
-          intelligence from Rapid7 Labs to enrich vulnerability findings with
-          Active Risk, helping teams prioritize exposure response based on
-          exploitability, attack trends, and business-critical asset impact.
-          Rapid7’s Emergent Threat Response (ETR) program continuously flags
-          CVEs to ensure you stay ahead of the highest-priority security threat
+          Easily assign tasks, generate step-by-step fix guides, <br />
+          and ensure SLA compliance using actionable, exportable reports.
         </p>
       </div>
       <div class="w-full md:w-1/2 md:max-w-[600px]">
@@ -83,15 +77,12 @@
         <h1
           class="relative z-20 my-2.5 cursor-pointer text-2xl font-bold text-white ease-in-out md:my-5"
         >
-          Actionable remediation <br />
-          planning
+          Clear, Technical <br />
+          Reporting.
         </h1>
         <p class="text-justify text-xl font-medium leading-6 text-paragraph">
-          Simplify vulnerability response and reporting with remediation
-          projects to assign tasks, track progress, and measure SLA compliance.
-          Deliver actionable fixes to IT teams with step-by-step guidance
-          tailored to your environment and take immediate action with 500+
-          native integrations including automated patching tools.
+          Help security and development teams collaborate <br />
+          more effectively using clean, structured outputs.
         </p>
       </div>
     </div>

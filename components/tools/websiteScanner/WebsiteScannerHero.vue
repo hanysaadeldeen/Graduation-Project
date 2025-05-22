@@ -5,36 +5,31 @@
   >
     <div ref="WebsiteScannerHeroLeft" class="w-full md:w-1/2 md:max-w-[600px]">
       <h1
-        class="mb-4 bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-2xl font-bold text-transparent md:mb-8 md:text-4xl"
+        class="mb-4 bg-gradient-to-b bg-clip-text text-center text-2xl font-bold text-transparent text-white md:mb-6 md:text-4xl"
       >
-        Vulnerability <br />
-        Management
+        Web Vulnerability Management
       </h1>
       <p
-        class="mb-4 text-justify text-xl font-medium leading-6 text-paragraph md:mb-8"
+        class="mb-4 text-center text-xl font-medium leading-6 text-white/60 md:mb-6"
       >
-        Stay ahead of modern threats with a solution built for dynamic
-        environments. InsightVM delivers comprehensive visibility,
-        adversary-aware prioritization enriched with expert threat intelligence
-        to drive meaningful risk reduction and streamline remediation workflows.
+        Stay ahead of web threats with a powerful, unified vulnerability
+        scanning solution. Zero Point provides complete visibility, streamlined
+        workflows, and detailed reporting to help you identify and eliminate
+        critical injection-based vulnerabilities across dynamic web
+        environments.
       </p>
-      <div class="flex gap-5 max-lg:flex-wrap">
+      <div class="flex justify-center">
         <a
           href="https://drive.google.com/file/d/1TyN9cfcKjUTMViEfNs1Q5veSOdGFSYRP/view?usp=sharing"
           target="_blank"
           class="text-decoration-none cursor-pointer"
         >
           <button
-            class="rounded-full bg-[#152738] px-10 py-2 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
+            class="mx-auto w-full rounded-full bg-hookYellow px-7 py-2 text-lg font-medium shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:shadow-[0_0_35px_rgba(255,193,7,0.7)] sm:w-fit"
           >
             Request Demo
           </button>
         </a>
-        <!-- <button
-          class="rounded-full bg-[#152738] px-10 py-2 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
-        >
-          Start Free Trial
-        </button> -->
       </div>
     </div>
     <div ref="WebsiteScannerImage" class="w-full md:w-1/2 md:max-w-[600px]">

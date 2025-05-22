@@ -1,10 +1,10 @@
 <template>
   <section class="websiteScanner">
-    <div class="container px-4 mx-auto">
+    <div class="container mx-auto px-4">
       <h1
-        class="text-3xl md:text-4xl font-bold bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent tracking-wider text-center mb-8"
+        class="mb-8 bg-gradient-to-b bg-clip-text text-center text-3xl font-bold tracking-wider text-transparent text-white md:text-4xl"
       >
-        Website Scanner
+        ZeroPointSecurity Scanner
       </h1>
       <WebsiteScannerHero />
       <WebsiteScannerChasing />
