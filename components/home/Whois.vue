@@ -1,5 +1,5 @@
 <template>
-  <section class="whatUsSection relative h-screen">
+  <section class="WhoIs relative h-screen">
     <div
       class="absolute -top-10 left-0 z-10 h-dvh w-full rotate-180 opacity-30"
     >
@@ -10,26 +10,24 @@
     >
       <div class="flex w-full flex-col items-center justify-between gap-5">
         <h1
-          class="mb-5 w-fit rounded-full border-2 bg-black px-10 py-4 text-center text-xl font-semibold text-white md:text-xl"
+          class="mb-5 w-fit rounded-full border-2 bg-hookYellow px-10 py-4 text-center text-xl font-semibold text-black md:text-xl"
           style="box-shadow: inset 0 0 8px white"
         >
-          What is ZeroPointPath?
+          Who is it for?
         </h1>
         <div>
           <p
             class="w-full text-center text-2xl font-extrabold tracking-wide text-white md:max-w-[1000px] md:text-4xl"
           >
-            Your Gateway to Mastering Cybersecurity
+            A Cybersecurity Learner? You're in the Right Place!
           </p>
           <p
             class="mt-5 w-full text-center text-2xl font-medium tracking-wide text-white/60 max-sm:text-justify md:max-w-[1000px] md:text-2xl"
           >
-            ZeroPointPath is an online platform offering hands-on cybersecurity
-            training through interactive challenges, real-world simulations, and
-            adaptive learning. With integrated tools, personalized feedback, and
-            bug bounty opportunities, ZPP provides a gamified environment to
-            sharpen your skills anytime, anywhere. PWN - WEB – MISC - Forensics
-            – Mobile - Hardware
+            ZeroPointPath is for anyone interested in the cybersecurity field,
+            whether you're a beginner, amateur or expert. Start your journey
+            into the hacking world with us and unleash your potential in
+            cybersecurity with our distinctive challenges and labs.
           </p>
         </div>
       </div>

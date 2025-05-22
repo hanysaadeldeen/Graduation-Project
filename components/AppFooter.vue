@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <div
+      <!-- <div
         class="mt-8 flex w-fit flex-wrap items-start gap-6 text-lg font-semibold md:gap-10 md:text-xl lg:mx-auto lg:justify-between"
       >
         <div
@@ -92,10 +92,10 @@
         <div
           class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
         >
-          <!-- :to="localePath('gallery')" -->
+         :to="localePath('gallery')"
           <p>{{ $t("Partners") }}</p>
         </div>
-      </div>
+      </div> -->
 
       <h1
         class="text-paragraph-mediumDark my-6 text-base font-medium text-paragraph sm:text-center"

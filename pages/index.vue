@@ -2,6 +2,8 @@
   <div>
     <HeroSection ref="heroSection" />
     <WhatUs ref="whatUs" />
+    <WhyUs />
+    <Whois />
     <AccessCardsSection />
     <GeniusSection />
     <JoinUsSection />
