@@ -36,6 +36,22 @@ interface Props {
   blogs: Blog[] | null;
 }
 
+const Allblogs = [
+  {
+    id: "1",
+    title: "Blog 1",
+    sections: [
+      {
+        title: "Section 1",
+        content: "Section 1 Content",
+      },
+    ],
+    image: "https://via.placeholder.com/150",
+    createdAt: "2023-08-01",
+    authorName: "John Doe",
+  },
+];
+
 defineProps<Props>();
 </script>
 

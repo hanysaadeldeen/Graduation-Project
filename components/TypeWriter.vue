@@ -15,13 +15,15 @@ onMounted(() => {
   });
 
   writer
-    .type("👤 Who is our most profitable customer?")
+    .type("💬 Ask me anything about cybersecurity...")
     .rest(1000)
     .clear()
-    .type("✨ Explore our features")
+    .type("🛡 Got a security question? Type it here...")
     .rest(1000)
     .clear()
-    .type("📞 Contact us anytime")
+    .type("🔍 Curious about phishing, malware, or privacy? Ask away...")
+    .rest(1000)
+    .type("🧠 I'm here to help with anything cybersecurity-related...")
     .rest(1000)
     .clear()
     .start();

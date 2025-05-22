@@ -9,17 +9,17 @@
         <h1
           class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
         >
-          Meet Genius
+          Meet Sentinel
         </h1>
         <div class="text-center">
           <p class="text-center text-xl font-medium leading-6 text-paragraph">
-            Our Al-driven assistant is designed to decode complex financial
-            figures and illuminate
+            Your Al Assistant For Cybersecurity - Here To Answer Your Questions,
+            Explain Threats, And Help You Stay Safe Online.
           </p>
           <span
             class="mt-2 inline-block text-center text-xl font-medium leading-6 text-[#9AE266]"
           >
-            key trends in your business.</span
+            Cybersecurity, Explained Simply</span
           >
         </div>
       </div>
@@ -87,11 +87,11 @@
             </div>
             <div class="mb-7 px-5 text-center lg:px-12">
               <p class="mb-2 text-lg font-medium text-white">
-                Chat with Genius
+                Chat With Sentinel
               </p>
               <p class="font-normal text-[#A1A1AA]">
-                Just ask. With Genius by your side, navigating the <br />
-                financial maze becomes intuitive and effortless.
+                Just Ask. Whether You're Curious About Phishing, Malware, <br />
+                Or How To Stay Secure - Sentinel Makes Cybersecurity Simple.
               </p>
             </div>
           </div>

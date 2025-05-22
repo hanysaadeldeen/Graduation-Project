@@ -24,7 +24,26 @@
           <p
             class="mt-5 w-full text-center text-2xl font-medium tracking-wide text-black/60 max-sm:text-justify md:max-w-[1000px] md:text-2xl"
           >
-            {{ $t("whatUsSectionDescription") }}
+            ZeroPointSecurity makes cybersecurity learning hands-on and
+            engaging. With realworld challenges, interactive CTFs, and smart
+            tools, we bridge the gap between theory and practice, helping you
+            build real skills for real threats. Whether you're just starting or
+            already experienced, we've got the right challenges for you!
+          </p>
+        </div>
+        <div class="mt-5">
+          <p
+            class="w-full text-center text-2xl font-extrabold tracking-wide md:max-w-[1000px] md:text-4xl"
+          >
+            Who is it for?
+          </p>
+          <p
+            class="mt-5 w-full text-center text-2xl font-medium tracking-wide text-black/60 max-sm:text-justify md:max-w-[1000px] md:text-2xl"
+          >
+            ZeroPointSecurity is for anyone interested in the cybersecurity
+            field, whether you're a beginner, amateur or expert. Start your
+            journey into the hacking world with us and unleash your potential in
+            cybersecurity with our distinctive challenges and labs.
           </p>
         </div>
       </div>

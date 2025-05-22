@@ -44,14 +44,6 @@ const JoinUsCards = [
     color: "#FF832A",
   },
   {
-    id: 3,
-    title: "Comprehensive Assessments ",
-    description:
-      "Receive detailed performance reports after each challenge, with personalized feedback to track progress.",
-    icon: "fa-solid fa-chart-line",
-    color: "#714AE0",
-  },
-  {
     id: 4,
     title: "Regular Content Updates",
     description:
