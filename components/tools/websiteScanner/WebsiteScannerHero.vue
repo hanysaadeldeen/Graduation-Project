@@ -1,5 +1,5 @@
 <template>
-  <div
+  <section
     ref="WebsiteScannerHero"
     class="flex items-center justify-between gap-16 max-md:flex-col"
   >
@@ -20,7 +20,7 @@
       </p>
       <div class="flex justify-center">
         <a
-          href="https://drive.google.com/file/d/1TyN9cfcKjUTMViEfNs1Q5veSOdGFSYRP/view?usp=sharing"
+          href="https://download937.mediafire.com/s2pk2iss6kvgOEm4ivg3o1QJzahNCrmvRmo8jHzTRC6yHGCTZ7usfdYXit7GmA8OmpbHHY-1FotMqJ2SX7O0A7KaD2YB1psdteSvEwJgW5nF_JA3bO7ZzKR0URNy8tUaj7kYUw6Dd9-3mcbmHXJ0wHuTMvRb0UOS6IuvdAC6ukI/kdoo425yh3za9xi/Zero-Point-Security-Scanner.rar"
           target="_blank"
           class="text-decoration-none cursor-pointer"
         >
@@ -35,7 +35,7 @@
     <div ref="WebsiteScannerImage" class="w-full md:w-1/2 md:max-w-[600px]">
       <img src="~/assets/img/webScanner.png" alt="webScanner Image" />
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">

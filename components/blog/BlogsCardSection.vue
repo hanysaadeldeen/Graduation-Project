@@ -39,16 +39,55 @@ interface Props {
 const Allblogs = [
   {
     id: "1",
-    title: "Blog 1",
+    title: "Introduction to Network Security",
     sections: [
       {
         title: "Section 1",
         content: "Section 1 Content",
       },
     ],
-    image: "https://via.placeholder.com/150",
+    image: "~/assets/img/blog1.webp",
     createdAt: "2023-08-01",
-    authorName: "John Doe",
+    authorName: "Hany Mohamed",
+  },
+  {
+    id: "2",
+    title: "Cyber Kill Chain and Overview of the MITRE ATT&CK Matrix",
+    sections: [
+      {
+        title: "Section 1",
+        content: "Section 1 Content",
+      },
+    ],
+    image: "~/assets/img/blog2.webp",
+    createdAt: "2023-08-01",
+    authorName: "Hany Mohamed",
+  },
+  {
+    id: "3",
+    title: "Cyber Kill Chain and Overview of the MITRE ATT&CK Matrix",
+    sections: [
+      {
+        title: "Section 1",
+        content: "Section 1 Content",
+      },
+    ],
+    image: "~/assets/img/blog3.webp",
+    createdAt: "2023-08-01",
+    authorName: "Hany Mohamed",
+  },
+  {
+    id: "4",
+    title: "Cyber Kill Chain and Overview of the MITRE ATT&CK Matrix",
+    sections: [
+      {
+        title: "Section 1",
+        content: "Section 1 Content",
+      },
+    ],
+    image: "~/assets/img/blog4.webp",
+    createdAt: "2023-08-01",
+    authorName: "Hany Mohamed",
   },
 ];
 

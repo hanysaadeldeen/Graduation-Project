@@ -1,5 +1,5 @@
 <template>
-  <section class="whatUsSection relative h-screen">
+  <div class="whatUsSection relative h-screen">
     <div
       class="absolute -top-10 left-0 z-10 h-dvh w-full rotate-180 opacity-30"
     >
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts"></script>

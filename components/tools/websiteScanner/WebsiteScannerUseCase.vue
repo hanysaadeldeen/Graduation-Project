@@ -16,17 +16,22 @@
           class="rounded-3xl"
         />
       </div>
-      <div class="relative w-full md:w-1/2 md:max-w-[600px]">
+      <div class="relative mx-auto w-full md:w-1/2 md:max-w-[600px]">
         <div
-          class="absolute -left-2 -top-3 h-16 w-16 rounded-full bg-secondary max-md:size-14 md:-left-5"
-        ></div>
-        <h1
-          class="relative z-20 my-2.5 cursor-pointer text-2xl font-bold text-white ease-in-out md:my-5"
+          class="relative mx-auto my-2.5 w-fit cursor-pointer text-center text-2xl font-bold text-white ease-in-out md:my-5"
         >
-          Unified Web Vulnerability <br />
-          Scanning
-        </h1>
-        <p class="text-justify text-xl font-medium leading-6 text-paragraph">
+          <span class="relative z-40">
+            Unified Web Vulnerability <br />
+            Scanning
+          </span>
+          <span
+            class="absolute -left-2 -top-3 z-0 h-16 w-16 rounded-full bg-secondary max-md:size-14 md:-left-5"
+          ></span>
+        </div>
+
+        <p
+          class="text-center text-xl font-medium leading-6 text-paragraph md:text-justify"
+        >
           Gain complete visibility into your application’s <br />
           exposure by combining multiple tools in one interface.
         </p>
@@ -36,17 +41,22 @@
       ref="WebsiteScannerUseCaseTwo"
       class="mt-16 flex items-center justify-between gap-16 max-md:flex-col-reverse md:mt-24"
     >
-      <div class="relative w-full md:w-1/2 md:max-w-[600px]">
+      <div class="relative mx-auto w-full md:w-1/2 md:max-w-[600px]">
         <div
-          class="absolute -left-2 -top-3 h-16 w-16 rounded-full bg-secondary max-md:size-14 md:-left-5"
-        ></div>
-        <h1
-          class="relative z-20 my-2.5 cursor-pointer text-2xl font-bold text-white ease-in-out md:my-5"
+          class="relative mx-auto my-2.5 w-fit cursor-pointer text-center text-2xl font-bold text-white ease-in-out md:my-5"
         >
-          Streamlined Remediation <br />
-          Process.
-        </h1>
-        <p class="text-justify text-xl font-medium leading-6 text-paragraph">
+          <span class="relative z-40">
+            Streamlined Remediation <br />
+            Process.
+          </span>
+          <span
+            class="absolute -left-2 -top-3 z-0 h-16 w-16 rounded-full bg-secondary max-md:size-14 md:-left-5"
+          ></span>
+        </div>
+
+        <p
+          class="text-center text-xl font-medium leading-6 text-paragraph md:text-justify"
+        >
           Easily assign tasks, generate step-by-step fix guides, <br />
           and ensure SLA compliance using actionable, exportable reports.
         </p>
@@ -70,17 +80,23 @@
           class="rounded-3xl"
         />
       </div>
-      <div class="relative w-full md:w-1/2 md:max-w-[600px]">
+
+      <div class="relative mx-auto w-full md:w-1/2 md:max-w-[600px]">
         <div
-          class="absolute -left-2 -top-3 h-16 w-16 rounded-full bg-secondary max-md:size-14 md:-left-5"
-        ></div>
-        <h1
-          class="relative z-20 my-2.5 cursor-pointer text-2xl font-bold text-white ease-in-out md:my-5"
+          class="relative mx-auto my-2.5 w-fit cursor-pointer text-center text-2xl font-bold text-white ease-in-out md:my-5"
         >
-          Clear, Technical <br />
-          Reporting.
-        </h1>
-        <p class="text-justify text-xl font-medium leading-6 text-paragraph">
+          <span class="relative z-40">
+            Clear, Technical <br />
+            Reporting.
+          </span>
+          <span
+            class="absolute -left-2 -top-3 z-0 h-16 w-16 rounded-full bg-secondary max-md:size-14 md:-left-5"
+          ></span>
+        </div>
+
+        <p
+          class="text-center text-xl font-medium leading-6 text-paragraph md:text-justify"
+        >
           Help security and development teams collaborate <br />
           more effectively using clean, structured outputs.
         </p>
