@@ -32,7 +32,7 @@
       </div>
     </div>
     <div ref="WebsiteScannerImage" class="w-full md:w-1/2 md:max-w-[600px]">
-      <img src="~/assets/img/webScanner.png" alt="webScanner Image" />
+      <img src="~/assets/img/websiteScaner1.png" alt="webScanner Image" />
     </div>
   </section>
 </template>

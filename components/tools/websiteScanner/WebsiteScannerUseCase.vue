@@ -11,7 +11,7 @@
     >
       <div class="w-full md:w-1/2 md:max-w-[600px]">
         <img
-          src="~/assets/img/useCase1.png"
+          src="~/assets/img/websiteScaner2.png"
           alt="useCase1"
           class="rounded-3xl"
         />
@@ -63,7 +63,7 @@
       </div>
       <div class="w-full md:w-1/2 md:max-w-[600px]">
         <img
-          src="~/assets/img/useCase2.png"
+          src="~/assets/img/websiteScaner3.png"
           alt="useCase1"
           class="rounded-3xl"
         />
@@ -75,7 +75,7 @@
     >
       <div class="w-full md:w-1/2 md:max-w-[600px]">
         <img
-          src="~/assets/img/useCase1.png"
+          src="~/assets/img/websiteScaner4.png"
           alt="useCase1"
           class="rounded-3xl"
         />
