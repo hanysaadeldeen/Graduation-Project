@@ -54,7 +54,7 @@ const Allblogs = [
       },
     ],
     image: blog1,
-    createdAt: "2023-08-01",
+    createdAt: "2025-05-03",
     authorName: "Hany Mohamed",
   },
   {
@@ -67,7 +67,7 @@ const Allblogs = [
       },
     ],
     image: blog2,
-    createdAt: "2023-08-01",
+    createdAt: "2025-05-01",
     authorName: "ZeroPointPath",
   },
   {
@@ -80,7 +80,7 @@ const Allblogs = [
       },
     ],
     image: blog3,
-    createdAt: "2023-08-01",
+    createdAt: "2023-02-4",
     authorName: "Fawzy Mohamed",
   },
   {
@@ -93,7 +93,7 @@ const Allblogs = [
       },
     ],
     image: blog4,
-    createdAt: "2023-08-01",
+    createdAt: "2023-03-09",
     authorName: "eslam mohamed",
   },
 ];
