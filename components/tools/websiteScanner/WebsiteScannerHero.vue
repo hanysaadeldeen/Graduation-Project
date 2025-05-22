@@ -20,8 +20,7 @@
       </p>
       <div class="flex justify-center">
         <a
-          href="https://download937.mediafire.com/s2pk2iss6kvgOEm4ivg3o1QJzahNCrmvRmo8jHzTRC6yHGCTZ7usfdYXit7GmA8OmpbHHY-1FotMqJ2SX7O0A7KaD2YB1psdteSvEwJgW5nF_JA3bO7ZzKR0URNy8tUaj7kYUw6Dd9-3mcbmHXJ0wHuTMvRb0UOS6IuvdAC6ukI/kdoo425yh3za9xi/Zero-Point-Security-Scanner.rar"
-          target="_blank"
+          href="https://www.dropbox.com/scl/fi/r68gi2ysb3osl32imvhz5/Zero-Point-Security-Scanner.rar?rlkey=pb7bvlmsd6jsn14sydrk9mem5&st=dyqa3bd4&dl=1"
           class="text-decoration-none cursor-pointer"
         >
           <button

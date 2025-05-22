@@ -1,7 +1,7 @@
 <template>
   <section class="Last_bolg">
     <h1
-      class="mb-8 bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-center text-2xl font-bold tracking-wider text-transparent md:text-4xl"
+      class="mb-8 w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
     >
       Latest Post
     </h1>
@@ -23,11 +23,11 @@
           >
             ZeroPointPath
           </button>
-          <!-- <button
+          <button
             class="rounded-md bg-[#152738] px-5 py-4 text-center text-xl font-medium tracking-wider text-white max-md:w-full"
           >
-            Malware Analysis
-          </button> -->
+            Network Security
+          </button>
         </div>
         <h1 class="text-3xl font-bold text-white">
           Introduction to Network Security
