@@ -1,6 +1,8 @@
 <template>
   <section class="WhoIs relative flex h-[486px] items-center justify-center">
-    <div class="containerPoligon absolute left-0 top-0 h-full w-full"></div>
+    <div
+      class="containerPoligon absolute left-0 top-0 hidden h-full w-full md:block"
+    ></div>
 
     <div
       class="absolute -top-10 left-0 z-10 h-dvh w-full rotate-180 opacity-30"
