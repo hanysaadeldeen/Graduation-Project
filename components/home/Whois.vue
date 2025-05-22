@@ -1,5 +1,7 @@
 <template>
   <section class="WhoIs relative h-screen">
+    <div class="containerPoligon absolute left-0 top-0 h-3/4 w-full"></div>
+
     <div
       class="absolute -top-10 left-0 z-10 h-dvh w-full rotate-180 opacity-30"
     >
@@ -10,8 +12,7 @@
     >
       <div class="flex w-full flex-col items-center justify-between gap-5">
         <h1
-          class="mb-5 w-fit rounded-full border-2 bg-hookYellow px-10 py-4 text-center text-xl font-semibold text-black md:text-xl"
-          style="box-shadow: inset 0 0 8px white"
+          class="w-fit text-center text-xl font-semibold text-hookYellow md:text-xl"
         >
           Who is it for?
         </h1>
@@ -37,4 +38,9 @@
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+.containerPoligon {
+  background-color: #1f1f1f;
+  clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 75%);
+}
+</style>
