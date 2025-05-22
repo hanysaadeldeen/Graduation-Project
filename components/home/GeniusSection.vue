@@ -5,22 +5,26 @@
       id="GeniusSection"
       class="container mx-auto px-4"
     >
-      <div
-        class="sectionInfo relative mb-20 flex w-full flex-col gap-5 sm:max-w-[640px]"
-      >
+      <div class="sectionInfo relative mb-20 flex w-full flex-col gap-5">
         <h1
-          class="bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold leading-[3rem] text-transparent sm:text-5xl sm:leading-[4rem]"
+          class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
         >
           Meet Genius
         </h1>
-        <p class="text-xl font-medium leading-6 text-paragraph">
-          Our Al-driven assistant is designed to decode complex financial
-          figures and illuminate
-          <span class="text-white"> key trends in your business.</span>
-        </p>
+        <div class="text-center">
+          <p class="text-center text-xl font-medium leading-6 text-paragraph">
+            Our Al-driven assistant is designed to decode complex financial
+            figures and illuminate
+          </p>
+          <span
+            class="mt-2 inline-block text-center text-xl font-medium leading-6 text-[#9AE266]"
+          >
+            key trends in your business.</span
+          >
+        </div>
       </div>
-      <div class="grid grid-cols-1 justify-between gap-8 md:grid-cols-2">
-        <div ref="ginusCritical" class="card rounded-2xl bg-[#18181B] py-7">
+      <div class="flex justify-center">
+        <!-- <div ref="ginusCritical" class="card rounded-2xl bg-[#18181B] py-7">
           <div class="ginusBackground px-4 py-3 lg:px-8 lg:py-7">
             <div class="rounded-2xl bg-[#18181B] px-3 pt-16">
               <div
@@ -56,37 +60,33 @@
               financial future of your business.
             </p>
           </div>
-        </div>
+        </div> -->
         <div
           ref="ginusChat"
-          class="card relative rounded-2xl bg-[#18181B] py-7"
+          class="card relative w-full rounded-2xl bg-[#18181B] py-7 md:w-[700px]"
         >
-          <div
-            class="flex h-full flex-col justify-between gap-4 pt-14 md:pt-28"
-          >
-            <div class="px-4 py-3 lg:px-8 lg:py-7">
-              <div class="flex w-full flex-col gap-y-20">
+          <div class="flex h-full flex-col justify-between gap-12">
+            <div class="px-4 py-3 lg:px-8">
+              <div class="flex w-full flex-col gap-y-14">
                 <button
-                  class="mx-auto w-fit rounded-xl bg-[#0891B2] px-3 py-2 text-lg font-medium capitalize text-white"
+                  class="mx-auto mt-7 w-full rounded-full bg-hookYellow px-7 py-2 text-lg font-medium shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:shadow-[0_0_35px_rgba(255,193,7,0.7)] sm:w-fit"
                 >
-                  Hey! How can I help you?
+                  <span class="button-text"> Hey! How can I help you?</span>
                 </button>
                 <div
-                  class="flex w-full items-center justify-between gap-5 rounded-lg border border-gray-700 p-3 max-sm:flex-wrap md:gap-3"
+                  class="flex w-full items-center justify-between gap-5 rounded-full border border-gray-700 px-4 py-3 max-sm:flex-wrap md:gap-3"
                 >
-                  <p class="font-normal text-[#A1A1AA]">
-                    ✨ Who's our most profitable customer?
-                  </p>
+                  <TypeWriter />
                   <button
-                    class="buttonAskChat rounded-lg border border-gray-700 bg-black px-3 py-2 text-base font-medium text-white max-sm:w-full"
+                    class="buttonAskChat rounded-full border border-gray-700 bg-black px-6 py-2 text-base font-medium text-white"
                   >
                     Ask Genius
                   </button>
                 </div>
               </div>
             </div>
-            <div class="px-5 lg:px-12">
-              <p class="mb-4 text-lg font-medium text-white">
+            <div class="mb-7 px-5 text-center lg:px-12">
+              <p class="mb-2 text-lg font-medium text-white">
                 Chat with Genius
               </p>
               <p class="font-normal text-[#A1A1AA]">
@@ -117,7 +117,7 @@ onMounted(() => {
         trigger: GeniusSection.value,
         start: "top 40%",
         end: "center center",
-        scrub: true,
+        scrub: false,
         markers: false,
       },
     });
@@ -126,7 +126,7 @@ onMounted(() => {
       {
         opacity: 0,
         duration: 1,
-        x: -200,
+        y: -200,
         ease: "power3.out",
       },
       0,
@@ -136,7 +136,7 @@ onMounted(() => {
       {
         opacity: 0,
         duration: 1,
-        x: 200,
+        y: 200,
         ease: "power3.out",
       },
       0,

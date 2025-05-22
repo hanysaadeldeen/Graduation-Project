@@ -2,9 +2,11 @@
   <section class="JoinUs">
     <div ref="JoinUsSection" class="container mx-auto px-4">
       <h1
-        v-html="$t('joinUsTitle')"
-        class="w-full bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold text-transparent md:w-[536px] md:text-4xl"
-      ></h1>
+        class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
+      >
+        {{ $t("joinUsTitle") }}
+      </h1>
+
       <div
         class="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
@@ -27,65 +29,73 @@ gsap.registerPlugin(ScrollTrigger);
 const JoinUsCards = [
   {
     id: 1,
-    title: "joinUsCardOneTitle",
-    description: "joinUsCardOneDescription",
+    title: "Integrated Security Tools",
+    description:
+      "Use built-in scanning and data analysis tools like WHOIS to gather intelligence efficiently.",
     icon: "fa-brands fa-searchengin",
     color: "#4060F8",
   },
   {
     id: 2,
-    title: "joinUsCardTwoTitle",
-    description: "joinUsCardTwoDescription",
+    title: "Capture the Flag (CTF) Challenges",
+    description:
+      "Test and improve your hacking skills with interactive CTF challenges that simulate real-world attacks.",
     icon: "fa-solid fa-user-secret",
-
     color: "#FF832A",
   },
   {
     id: 3,
-    title: "joinUsCardThreeTitle ",
-    description: "joinUsCardThreeDescription",
+    title: "Comprehensive Assessments ",
+    description:
+      "Receive detailed performance reports after each challenge, with personalized feedback to track progress.",
     icon: "fa-solid fa-chart-line",
     color: "#714AE0",
   },
   {
     id: 4,
-    title: "joinUsCardFourTitle",
-    description: "joinUsCardFourDescription",
+    title: "Regular Content Updates",
+    description:
+      "Stay ahead with continuously updated challenges, tools, and cybersecurity techniques.",
     icon: "fa-solid fa-calendar-check",
     color: "#F0004F",
   },
   {
     id: 5,
-    title: "joinUsCardFiveTitle",
-    description: "joinUsCardFiveDescription",
+    title: "Cybersecurity Blog & News",
+    description:
+      "Keep up with the latest cybersecurity trends, tools, and research with our dedicated blog.",
     icon: "fa-solid fa-newspaper",
     color: "#00D356",
   },
   {
     id: 6,
-    title: "joinUsCardSixTitle",
-    description: "joinUsCardSixDescription",
+    title: "24/7 Chatbot Support",
+    description:
+      "Get instant assistance with our AI-driven cybersecurity chatbot, available anytime.",
     icon: "fa-solid fa-comment-dots",
     color: "#46494D",
   },
   {
     id: 7,
-    title: "joinUsCardSevenTitle",
-    description: "joinUsCardSevenDescription​.",
+    title: "Bug Bounty Participation",
+    description:
+      "Gain real-world experience by identifying security vulnerabilities and earning rewards..",
     icon: "fa-solid fa-bug",
     color: "#9AE266",
   },
   {
     id: 8,
-    title: "joinUsCardEightTitle",
-    description: "joinUsCardEightDescription",
+    title: "Cybersecurity Community",
+    description:
+      "Join a network of learners, professionals, and ethical hackers to share knowledge and grow together.",
     icon: "fa-solid fa-network-wired",
     color: "#F3B059",
   },
   {
     id: 9,
-    title: "joinUsCardNineTitle",
-    description: "joinUsCardNineDescription",
+    title: "Flexible Learning Experience",
+    description:
+      "Choose challenges that match your skill level, from beginner to expert, and learn at your own pace.",
     icon: "fa-solid fa-graduation-cap",
     color: "#987681",
   },

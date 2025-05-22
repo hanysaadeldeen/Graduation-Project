@@ -1,5 +1,5 @@
 <template>
-  <header class="relative z-10 bg-transparent py-5 text-white">
+  <header class="relative z-40 bg-transparent py-5 text-white">
     <div class="container mx-auto px-2 max-sm:px-4">
       <div class="relative z-20">
         <div class="flex items-center justify-between">
@@ -87,15 +87,19 @@
         <transition name="dropdown">
           <div
             v-if="isToolOpen"
-            class="absolute top-16 h-fit rounded-md bg-white p-4 max-lg:hidden md:w-fit"
+            class="absolute top-16 z-50 h-fit rounded-md bg-white p-4 max-lg:hidden md:w-fit"
             :class="{
               'left-5': locale === 'ar',
               'right-5': locale !== 'ar',
             }"
           >
-            <div class="grid w-full grid-cols-2 gap-4 xl:grid-cols-3">
+            <div class="relative grid w-full grid-cols-2 gap-4 xl:grid-cols-3">
+              <!-- <div
+                class="toolsDropdown absolute z-10 h-full w-full bg-white"
+              ></div> -->
               <nuxt-link
                 v-for="tool in tools"
+                class="relative z-30"
                 :key="tool.route"
                 :to="localePath(tool.route)"
                 @click="isToolOpen = !isToolOpen"
@@ -145,135 +149,136 @@
             },
           ]"
         >
-          <nav class="mt-10 inline-block">
-            <ul class="flex w-full flex-col gap-2">
-              <nuxt-link
-                :to="localePath('index')"
-                @click="isSideBar = !isSideBar"
-              >
-                <li :class="adjustedPath === '/' ? 'active' : ''">
-                  {{ $t("home") }}
-                </li>
-              </nuxt-link>
-              <nuxt-link
-                :to="localePath('blogs')"
-                @click="isSideBar = !isSideBar"
-              >
-                <li :class="adjustedPath === '/blogs' ? 'active' : ''">
-                  {{ $t("blogs") }}
-                </li>
-              </nuxt-link>
-              <nuxt-link
-                v-if="isLogin"
-                :to="localePath('programs')"
-                @click="isSideBar = !isSideBar"
-                class="relative flex cursor-pointer items-center gap-2"
-              >
-                <li :class="adjustedPath === '/programs' ? 'active' : ''">
-                  {{ $t("Bounties") }}
-                </li>
-                <i class="fa-solid fa-virus"></i>
-              </nuxt-link>
-              <a
-                v-if="isLogin"
-                href="https://ramadan-ctf-ieeemansb.me/"
-                @click="isSideBar = !isSideBar"
-                class="relative flex cursor-pointer items-center gap-2"
-                target="_blank"
-              >
-                <li :class="adjustedPath === '/ctf' ? 'active' : ''">
-                  {{ $t("CTF") }}
-                </li>
-              </a>
-              <nuxt-link
-                :to="localePath('community')"
-                class="relative flex cursor-pointer items-center gap-2"
-              >
-                <li :class="adjustedPath === 'community' ? 'active' : ''">
-                  {{ $t("community") }}
-                </li>
-              </nuxt-link>
-              <nuxt-link
-                :to="localePath('Login')"
-                @click="isSideBar = !isSideBar"
-              >
-                <li :class="adjustedPath === '/Login' ? 'active' : ''">
-                  {{ $t("login") }}
-                </li>
-              </nuxt-link>
-              <div
-                v-if="isLogin"
-                class="relative flex cursor-pointer items-center gap-2"
-                @click="isToolOpen = !isToolOpen"
-              >
-                <ul>
-                  <li>
-                    {{ $t("tools") }}
+          <div class="container mx-auto pl-5">
+            <nav class="mt-10 inline-block">
+              <ul class="flex w-full flex-col gap-2">
+                <nuxt-link
+                  :to="localePath('index')"
+                  @click="isSideBar = !isSideBar"
+                >
+                  <li :class="adjustedPath === '/' ? 'active' : ''">
+                    {{ $t("home") }}
                   </li>
-                </ul>
-                <i class="fa-solid fa-angle-down"></i>
+                </nuxt-link>
+                <nuxt-link
+                  :to="localePath('blogs')"
+                  @click="isSideBar = !isSideBar"
+                >
+                  <li :class="adjustedPath === '/blogs' ? 'active' : ''">
+                    {{ $t("blogs") }}
+                  </li>
+                </nuxt-link>
+                <nuxt-link
+                  v-if="isLogin"
+                  :to="localePath('programs')"
+                  @click="isSideBar = !isSideBar"
+                  class="relative flex cursor-pointer items-center gap-2"
+                >
+                  <li :class="adjustedPath === '/programs' ? 'active' : ''">
+                    {{ $t("Bounties") }}
+                  </li>
+                  <i class="fa-solid fa-virus"></i>
+                </nuxt-link>
+                <a
+                  v-if="isLogin"
+                  href="https://ramadan-ctf-ieeemansb.me/"
+                  @click="isSideBar = !isSideBar"
+                  class="relative flex cursor-pointer items-center gap-2"
+                  target="_blank"
+                >
+                  <li :class="adjustedPath === '/ctf' ? 'active' : ''">
+                    {{ $t("CTF") }}
+                  </li>
+                </a>
+                <nuxt-link
+                  :to="localePath('community')"
+                  class="relative flex cursor-pointer items-center gap-2"
+                >
+                  <li :class="adjustedPath === 'community' ? 'active' : ''">
+                    {{ $t("community") }}
+                  </li>
+                </nuxt-link>
+                <nuxt-link
+                  :to="localePath('Login')"
+                  @click="isSideBar = !isSideBar"
+                >
+                  <li :class="adjustedPath === '/Login' ? 'active' : ''">
+                    {{ $t("login") }}
+                  </li>
+                </nuxt-link>
+                <div
+                  v-if="isLogin"
+                  class="relative flex cursor-pointer items-center gap-2"
+                  @click="isToolOpen = !isToolOpen"
+                >
+                  <ul>
+                    <li>
+                      {{ $t("tools") }}
+                    </li>
+                  </ul>
+                  <i class="fa-solid fa-angle-down"></i>
+                  <transition name="dropdown">
+                    <div
+                      v-if="isToolOpen"
+                      class="arrowTools2 absolute -bottom-[8px] h-5 w-5"
+                      :class="{
+                        'left-5': locale === 'en',
+                        'right-0': locale !== 'ar',
+                      }"
+                    ></div>
+                  </transition>
+                </div>
                 <transition name="dropdown">
                   <div
-                    v-if="isToolOpen"
-                    class="arrowTools2 absolute -bottom-[8px] h-5 w-5"
+                    v-if="isToolOpen && isLogin"
                     :class="{
-                      'left-5': locale === 'en',
-                      'right-0': locale !== 'ar',
+                      'left-5': locale === 'ar',
+                      'right-5': locale !== 'ar',
                     }"
-                  ></div>
-                </transition>
-              </div>
-              <transition name="dropdown">
-                <div
-                  v-if="isToolOpen && isLogin"
-                  :class="{
-                    'left-5': locale === 'ar',
-                    'right-5': locale !== 'ar',
-                  }"
-                >
-                  <div class="grid w-full grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
-                    <nuxt-link
-                      v-for="tool in tools"
-                      :key="tool.route"
-                      :to="localePath(tool.route)"
-                      @click="isToolOpen = !isToolOpen"
-                    >
-                      <div
-                        class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
+                  >
+                    <div class="grid w-full grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
+                      <nuxt-link
+                        v-for="tool in tools"
+                        :key="tool.route"
+                        :to="localePath(tool.route)"
+                        @click="isToolOpen = !isToolOpen"
                       >
                         <div
-                          :class="{
-                            'flex h-[48px] w-[48px] items-center justify-center rounded-md bg-hookYellow':
-                              tool.iconType === 'fa',
-                          }"
+                          class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
                         >
-                          <i
-                            v-if="tool.iconType === 'fa'"
-                            :class="[
-                              'fa-solid',
-                              tool.icon,
-                              'text-2xl text-[#744712]',
-                            ]"
-                          ></i>
-                          <img
-                            v-else
-                            :src="tool.icon"
-                            :alt="tool.label.toLowerCase()"
-                          />
+                          <div
+                            :class="{
+                              'flex h-[48px] w-[48px] items-center justify-center rounded-md bg-hookYellow':
+                                tool.iconType === 'fa',
+                            }"
+                          >
+                            <i
+                              v-if="tool.iconType === 'fa'"
+                              :class="[
+                                'fa-solid',
+                                tool.icon,
+                                'text-2xl text-[#744712]',
+                              ]"
+                            ></i>
+                            <img
+                              v-else
+                              :src="tool.icon"
+                              :alt="tool.label.toLowerCase()"
+                            />
+                          </div>
+                          <p
+                            class="text-center text-base font-semibold tracking-wider text-black"
+                          >
+                            {{ tool.label }}
+                          </p>
                         </div>
-                        <p
-                          class="text-base font-semibold tracking-wider text-black"
-                        >
-                          {{ tool.label }}
-                        </p>
-                      </div>
-                    </nuxt-link>
+                      </nuxt-link>
+                    </div>
                   </div>
-                </div>
-              </transition>
-            </ul>
-          </nav>
-          <!-- <div class="mt-5 flex flex-col items-start justify-between gap-5">
+                </transition>
+              </ul>
+            </nav>
+            <!-- <div class="mt-5 flex flex-col items-start justify-between gap-5">
             <button
               @click="setLocale(locale === 'en' ? 'ar' : 'en')"
               class="text-xl font-medium"
@@ -281,6 +286,7 @@
               {{ locale === "en" ? "العربية" : "English" }}
             </button>
           </div> -->
+          </div>
         </div>
       </transition>
     </div>
@@ -472,4 +478,8 @@ ul li.active::before {
   transform: translateY(-10px);
   opacity: 0;
 }
+/* .toolsDropdown {
+  filter: blur(5px);
+  opacity: 0.5;
+} */
 </style>

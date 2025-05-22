@@ -2,18 +2,17 @@
   <section class="PalnSection" ref="PlanSection">
     <div class="container mx-auto px-4">
       <h1
-        class="w-full bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-4xl font-bold text-transparent md:w-[536px] md:text-4xl"
+        class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
       >
-        Join Us and Explore ZeroPointPath’s Features
+        Multiple Subscription Plans, With Flexible Payment.
       </h1>
-      <div
-        class="mt-20 grid grid-cols-1 gap-10 overflow-x-hidden lg:grid-cols-2 xl:grid-cols-3"
-      >
+      <div class="mt-20 flex justify-center gap-10 max-md:flex-col">
         <PlanCard
           v-for="card in PlanCardSection"
           :id="card.id"
           :key="card.id"
-          :title="card.title"
+          :price="card.price"
+          :currency="card.currency"
           :description="card.description"
           :content="card.content"
           :btn="card.btn"
@@ -28,44 +27,26 @@
 const PlanCardSection = [
   {
     id: 1,
-    title: "0Egp",
+    price: "0",
+    currency: " Egp",
     description: "Free",
-    content: [
-      " 10GB HDD space",
-      " 5 emaill addresses",
-      " 2 subdomains",
-      " 4 databases",
-    ],
+    content: [" Badges", " Active Challenges", " Leaderboard Ranking"],
     btn: "Current Plan",
     plan: "PlanOne",
   },
   {
     id: 2,
-    title: "100Egp",
+    price: "100",
+    currency: " Egp",
     description: "Advanced",
     content: [
-      "10GB HDD space",
-      "50emaill addresses",
-      "21 subdomains",
-      "14 databases",
-      " Advanced support",
+      "Badges",
+      "Active Challenges",
+      "Retired Challenges",
+      "Leaderboard Ranking",
     ],
     btn: "coming soon",
     plan: "PlanTwo",
-  },
-  {
-    id: 3,
-    title: "1000Egp",
-    description: "Professional",
-    content: [
-      "10GB HDD space",
-      " 90emaill addresses",
-      " 222 subdomains",
-      " 44 databases",
-      " Professional support",
-    ],
-    btn: "coming soon",
-    plan: "PlanThree",
   },
 ];
 

@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["swiper/css", "~/assets/css/main.css"],
   modules: ["@pinia/nuxt", "@vee-validate/nuxt", "@nuxtjs/i18n"],
-  plugins: ["~/plugins/toast.client"],
+  plugins: ["~/plugins/toast.client", "~/plugins/vue-typed.client.js"],
   components: [
     "~/components",
     { path: "~/components/home/", extensions: ["vue"] },

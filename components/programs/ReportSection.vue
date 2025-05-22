@@ -572,7 +572,9 @@
                 </div>
                 <div class="flex justify-between text-base">
                   <span class="text-gray-400">Range of bounty:</span>
-                  <span>$200 - $10,000</span>
+                  <span
+                    >${{ route.query.low }} - ${{ route.query.critical }}</span
+                  >
                 </div>
 
                 <div class="pt-4">
@@ -625,6 +627,10 @@ import { gsap } from "gsap";
 import { Form, Field } from "vee-validate";
 import { useToast } from "vue-toast-notification";
 import * as yup from "yup";
+
+const route = useRoute();
+console.log(route.query.critical);
+console.log(route.query.low);
 const fileInput = ref(null);
 const toast = useToast({ position: "top-right", duration: 1500 });
 const schema = yup.object({

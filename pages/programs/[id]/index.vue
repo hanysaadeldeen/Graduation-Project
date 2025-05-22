@@ -63,7 +63,16 @@
             </button>
 
             <nuxt-link
-              :to="localePath(`/programs/${params.id}/report`)"
+              v-if="userId"
+              :to="
+                localePath({
+                  path: `/programs/${params.id}/report`,
+                  query: {
+                    critical: programId.rewards.critical,
+                    low: programId.rewards.low,
+                  },
+                })
+              "
               class="group/edit flex w-full items-center justify-center gap-3 rounded-md bg-primary py-3 text-center text-xl font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:scale-105"
             >
               Submit report
@@ -124,6 +133,10 @@ const route = useRoute();
 import { programsController } from "~/composables/programs";
 const { fetchProgramById, programId, error, loading } =
   await programsController();
+
+if (programId) {
+  console.log(programId.value);
+}
 
 onMounted(() => {
   fetchProgramById(route.params.id.toString());
