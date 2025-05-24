@@ -73,7 +73,9 @@
       </div>
       <div class="mt-2 flex items-center">
         <span class="mr-2 text-green-500">💰</span>
-        <span class="text-lg font-semibold text-white">$50 - $5k</span>
+        <span class="text-lg font-semibold text-white"
+          >${{ program.high }}k - ${{ program.low }}k</span
+        >
       </div>
     </div>
 

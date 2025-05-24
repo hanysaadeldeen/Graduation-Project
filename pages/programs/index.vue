@@ -19,6 +19,7 @@
     </div>
     <div class="mt-20">
       <h1
+        v-if="!loading"
         class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
       >
         Campaigns & top-paying opportunities
