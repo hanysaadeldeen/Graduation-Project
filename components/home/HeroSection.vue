@@ -3,8 +3,17 @@
     ref="HeroSectionRef"
     class="HeroSectionRef startSection heroSection relative h-dvh"
   >
+    <!-- <div class="absolute -top-24 left-0 h-dvh w-full opacity-70">
+      <img
+        src="~/assets/img/Pattern.png"
+        class="h-full w-full"
+        alt="heroPattern"
+      />
+    </div> -->
     <div class="absolute -top-24 left-0 h-dvh w-full opacity-70">
-      <img src="~/assets/img/Pattern.png" class="h-full w-full" />
+      <div
+        class="h-full w-full bg-[url('/assets/img/Pattern.png')] bg-cover bg-top"
+      ></div>
     </div>
     <div
       ref="HeroSectionRefContainer"
@@ -34,7 +43,7 @@
           class="mx-auto mt-16 size-10 cursor-pointer"
           @click="scrollToNextSection"
         >
-          <img src="~/assets/img/scrollThree2.gif" alt="" />
+          <img src="~/assets/img/scrollThree2.gif" alt="scroll" />
         </div>
       </div>
     </div>
@@ -75,8 +84,9 @@ const scrollToNextSection = () => {
 
 <style scoped>
 .HeroSectionRef {
-  /* background-image: url("~/assets/img/Pattern.png");
+  /* background-image: url("../../assets/img/Pattern.png");
+  background-position: center top -6rem; 
   background-size: cover;
-  background-position: center; */
+  background-repeat: no-repeat; */
 }
 </style>

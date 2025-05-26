@@ -18,10 +18,35 @@
               class="relative flex cursor-pointer items-center gap-2"
               @click="isToolOpen = !isToolOpen"
             >
-              <p :class="adjustedPath === 'tools' ? 'active' : ''">
+              <p
+                :class="
+                  [
+                    '/emailScanner',
+                    '/passwordgenerator',
+                    '/virusscanner',
+                    '/whoisScanner',
+                    '/websiteScanner',
+                  ].includes(adjustedPath)
+                    ? 'active'
+                    : ''
+                "
+              >
                 {{ $t("tools") }}
               </p>
-              <i class="fa-solid fa-angle-down"></i>
+              <i
+                class="fa-solid fa-angle-down"
+                :class="
+                  [
+                    '/emailScanner',
+                    '/passwordgenerator',
+                    '/virusscanner',
+                    '/whoisScanner',
+                    '/websiteScanner',
+                  ].includes(adjustedPath)
+                    ? 'active'
+                    : ''
+                "
+              ></i>
               <transition name="dropdown">
                 <div
                   v-if="isToolOpen"
@@ -30,7 +55,7 @@
               </transition>
             </div>
             <nuxt-link :to="localePath('blogs')">
-              <p :class="adjustedPath === 'blogs' ? 'active' : ''">
+              <p :class="adjustedPath === '/blogs' ? 'active' : ''">
                 {{ $t("blogs") }}
               </p>
             </nuxt-link>
@@ -39,7 +64,7 @@
               :to="localePath('community')"
               class="relative flex cursor-pointer items-center gap-2"
             >
-              <p :class="adjustedPath === 'community' ? 'active' : ''">
+              <p :class="adjustedPath === '/community' ? 'active' : ''">
                 {{ $t("community") }}
               </p>
             </nuxt-link>
@@ -49,7 +74,7 @@
               :to="localePath('programs')"
               class="relative flex cursor-pointer items-center gap-2"
             >
-              <p :class="adjustedPath === 'programs' ? 'active' : ''">
+              <p :class="adjustedPath === '/programs' ? 'active' : ''">
                 {{ $t("Bounties") }}
               </p>
               <i class="fa-solid fa-virus"></i>
@@ -65,12 +90,16 @@
               </p>
             </a>
             <nuxt-link :to="localePath('Login')" v-if="!isLogin">
-              <p :class="adjustedPath === '/' ? '/Login' : ''">
+              <p :class="adjustedPath === '/Login' ? 'active' : ''">
                 {{ $t("login") }}
               </p>
             </nuxt-link>
             <div v-if="isLogin" class="relative">
-              <p class="cursor-pointer" @click="toggleUserDropdown">
+              <p
+                class="cursor-pointer"
+                @click="toggleUserDropdown"
+                :class="adjustedPath === '/UserPage' ? 'active' : ''"
+              >
                 {{ userName }}
               </p>
               <UserDropDown
@@ -364,6 +393,9 @@ const getPathWithoutLocale = (path: string) => {
 };
 const adjustedPath = computed(() => getPathWithoutLocale(route.path));
 
+console.log(route.path);
+console.log(adjustedPath.value);
+
 const isToolOpen = ref<boolean>(false);
 const isUserDropdownOpen = ref(false);
 
@@ -437,6 +469,10 @@ ul li:hover::before {
 }
 ul li.active::before {
   transform: scaleX(1);
+}
+
+.active {
+  color: #f9ae31;
 }
 
 .sidebar-en-enter-active,

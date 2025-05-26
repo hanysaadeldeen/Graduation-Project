@@ -1,5 +1,5 @@
 <template>
-  <section class="Last_bolg">
+  <div class="Last_bolg">
     <h1
       class="mb-8 w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
     >
@@ -13,6 +13,7 @@
           src="~/assets/img/blog1.webp"
           class="inline-block h-full max-h-[400px] w-full max-w-full object-cover"
           loading="lazy"
+          alt="blog1"
         />
       </div>
       <div class="flex w-full flex-col gap-5 md:w-1/2">
@@ -41,7 +42,7 @@
         </p>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">
