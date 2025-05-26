@@ -69,8 +69,14 @@
                 {{ $t("login") }}
               </p>
             </nuxt-link>
-            <div v-if="isLogin">
-              <p>{{ userName }}</p>
+            <div v-if="isLogin" class="relative">
+              <p class="cursor-pointer" @click="toggleUserDropdown">
+                {{ userName }}
+              </p>
+              <UserDropDown
+                :is-open="isUserDropdownOpen"
+                @toggle-dropdown="toggleUserDropdown"
+              />
             </div>
 
             <!-- <button
@@ -359,6 +365,11 @@ const getPathWithoutLocale = (path: string) => {
 const adjustedPath = computed(() => getPathWithoutLocale(route.path));
 
 const isToolOpen = ref<boolean>(false);
+const isUserDropdownOpen = ref(false);
+
+const toggleUserDropdown = () => {
+  isUserDropdownOpen.value = !isUserDropdownOpen.value;
+};
 </script>
 
 <style scoped>

@@ -24,7 +24,7 @@
             <h1
               class="mb-5 bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-center text-4xl font-bold text-transparent md:text-5xl"
             >
-              Login Page
+              LogIn Page
             </h1>
             <div class="w-full">
               <Form
@@ -72,7 +72,7 @@
                   class="w-full rounded-xl bg-gradient-to-l from-primary to-secondary py-2 text-2xl font-bold capitalize tracking-wider text-white"
                   :class="{ 'cursor-not-allowed opacity-50': isLoading }"
                 >
-                  Login In
+                  LogIn
                 </button>
               </Form>
               <nuxt-link :to="localePath('Register')">
