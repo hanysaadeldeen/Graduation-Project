@@ -8,6 +8,7 @@
     <GeniusSection />
     <JoinUsSection />
     <PlanSection />
+    <MapSection />
   </div>
 </template>
 

@@ -21,24 +21,26 @@
     >
       <div class="flex h-full flex-col justify-center">
         <h1
-          class="mb-2 bg-gradient-to-r from-[#FFFFFF] to-[#FFFFFF] bg-clip-text pt-4 text-5xl font-bold text-transparent md:text-center md:text-7xl"
+          class="mb-2 bg-gradient-to-r from-[#FFFFFF] to-[#FFFFFF] bg-clip-text pt-4 text-center text-5xl font-bold text-transparent md:text-center md:text-7xl"
         >
           {{ $t("introSectionTitle1") }}
         </h1>
 
         <div>
-          <p class="text-lg font-medium text-paragraph md:text-center">
+          <p class="text-center text-lg font-medium text-paragraph">
             {{ $t("introSectionTitle1Paragraph1") }}
           </p>
-          <p class="text-lg font-medium text-paragraph md:text-center">
+          <p class="text-center text-lg font-medium text-paragraph">
             {{ $t("introSectionTitle1Paragraph2") }}.
           </p>
         </div>
-        <button
-          class="mx-auto mt-7 w-full rounded-full bg-hookYellow px-7 py-2 text-lg font-medium shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:shadow-[0_0_35px_rgba(255,193,7,0.7)] sm:w-fit"
-        >
-          <span class="button-text">{{ $t("introSectionButton") }}</span>
-        </button>
+        <nuxt-link :to="'login'" class="mx-auto">
+          <button
+            class="mt-7 w-full rounded-full bg-hookYellow px-7 py-2 text-lg font-medium shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:shadow-[0_0_35px_rgba(255,193,7,0.7)] sm:w-fit"
+          >
+            <span class="button-text">{{ $t("introSectionButton") }}</span>
+          </button>
+        </nuxt-link>
         <div
           class="mx-auto mt-16 size-10 cursor-pointer"
           @click="scrollToNextSection"
@@ -51,6 +53,7 @@
 </template>
 
 <script setup lang="ts">
+const localePath = useLocalePath();
 // <div
 //       class="absolute left-0 top-0 h-screen w-full bg-gradient-to-b from-primary to-[#09090B]"
 //     ></div>

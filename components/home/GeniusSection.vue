@@ -7,17 +7,19 @@
     >
       <div class="sectionInfo relative mb-20 flex w-full flex-col gap-5">
         <h1
-          class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
+          class="w-full bg-gradient-to-b bg-clip-text text-center text-3xl font-bold text-white md:text-4xl"
         >
           Meet Sentinel
         </h1>
         <div class="text-center">
-          <p class="text-center text-xl font-medium leading-6 text-paragraph">
+          <p
+            class="text-center text-base font-medium leading-6 text-paragraph md:text-xl"
+          >
             Your Al Assistant For Cybersecurity - Here To Answer Your Questions,
             Explain Threats, And Help You Stay Safe Online.
           </p>
           <span
-            class="mt-2 inline-block text-center text-xl font-medium leading-6 text-[#9AE266]"
+            class="mt-2 inline-block text-center text-base font-medium leading-6 text-[#9AE266] md:text-xl"
           >
             Cybersecurity, Explained Simply</span
           >

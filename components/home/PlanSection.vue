@@ -2,7 +2,7 @@
   <section class="PalnSection" ref="PlanSection">
     <div class="container mx-auto px-4">
       <h1
-        class="w-full bg-gradient-to-b bg-clip-text text-center text-4xl font-bold text-white md:text-4xl"
+        class="w-full bg-gradient-to-b bg-clip-text text-center text-3xl font-bold text-white md:text-4xl"
       >
         Multiple Subscription Plans, With Flexible Payment.
       </h1>
