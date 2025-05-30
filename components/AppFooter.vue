@@ -35,12 +35,12 @@
             class="mx-auto flex items-center justify-center"
           >
             <input
-              class="bg-primary lowercase"
+              class="bg-primary lowercase max-md:w-full"
               type="email"
               placeholder="Enter Your Email "
             />
             <button
-              class="h-fit rounded-full bg-hookYellow px-7 py-2 text-lg font-medium text-black shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:text-white hover:shadow-[0_0_35px_rgba(255,193,7,0.7)]"
+              class="h-fit rounded-full bg-hookYellow px-7 py-2 text-lg font-medium text-black shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:text-white hover:shadow-[0_0_35px_rgba(255,193,7,0.7)] max-md:mt-2 max-md:w-full"
             >
               subscribe
             </button>
