@@ -46,7 +46,7 @@
             </button>
           </form>
         </div>
-        <div class="social">
+        <div class="social mx-auto">
           <div class="flex gap-6">
             <i
               class="fa-brands fa-facebook cursor-pointer text-2xl text-paragraph transition-all duration-300 ease-in-out hover:text-white"
@@ -65,12 +65,12 @@
       </div>
 
       <h1
-        class="text-paragraph-mediumDark my-6 text-base font-medium text-paragraph sm:text-center"
+        class="text-paragraph-mediumDark my-6 text-center text-base font-medium text-paragraph"
       >
         Our mission is to improve cybersecurity in every company we touch.
       </h1>
       <h1
-        class="text-paragraph-mediumDark border-t border-primary pt-6 text-base font-medium sm:text-center"
+        class="text-paragraph-mediumDark border-t border-primary pt-6 text-center text-base font-medium"
       >
         Copyright © 2025 Zero Point Path. All Rights Reserved.
       </h1>

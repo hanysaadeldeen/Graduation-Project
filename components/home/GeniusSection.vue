@@ -32,7 +32,7 @@
         >
           <div class="flex h-full flex-col justify-between gap-12">
             <div class="px-4 py-3 lg:px-8">
-              <div class="flex w-full flex-col gap-y-14">
+              <div class="flex w-full flex-col gap-y-8 md:gap-y-14">
                 <button
                   class="mx-auto mt-7 w-full rounded-full bg-hookYellow px-7 py-2 text-lg font-medium shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:shadow-[0_0_35px_rgba(255,193,7,0.7)] sm:w-fit"
                 >
