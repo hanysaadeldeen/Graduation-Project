@@ -30,14 +30,17 @@
             <br />
             New Security Updates Weekly!
           </h1>
-          <form @submit.prevent="" class="mx-auto">
+          <form
+            @submit.prevent="SubmitEmail"
+            class="mx-auto flex items-center justify-center"
+          >
             <input
-              class="bg-primary"
-              type="text"
-              placeholder="Enter Your Email"
+              class="bg-primary lowercase"
+              type="email"
+              placeholder="Enter Your Email "
             />
             <button
-              class="bg-gradient-to-l from-primary to-secondary text-lg font-bold tracking-wider"
+              class="h-fit rounded-full bg-hookYellow px-7 py-2 text-lg font-medium text-black shadow-[0_0_20px_rgba(255,193,7,0.7)] transition-all duration-500 ease-in-out hover:text-white hover:shadow-[0_0_35px_rgba(255,193,7,0.7)]"
             >
               subscribe
             </button>
@@ -61,42 +64,6 @@
         </div>
       </div>
 
-      <!-- <div
-        class="mt-8 flex w-fit flex-wrap items-start gap-6 text-lg font-semibold md:gap-10 md:text-xl lg:mx-auto lg:justify-between"
-      >
-        <div
-          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
-        >
-          <p>{{ $t("Home") }}</p>
-        </div>
-        <div
-          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
-        >
-          <p>{{ $t("Platform") }}</p>
-        </div>
-        <div
-          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
-        >
-          <p>{{ $t("Blogs") }}</p>
-        </div>
-        <div
-          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
-        >
-          <p>{{ $t("Services") }}</p>
-        </div>
-        <div
-          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
-        >
-          <p>{{ $t("Company") }}</p>
-        </div>
-        <div
-          class="cursor-pointer text-white transition-all duration-300 ease-in-out hover:text-paragraph"
-        >
-         :to="localePath('gallery')"
-          <p>{{ $t("Partners") }}</p>
-        </div>
-      </div> -->
-
       <h1
         class="text-paragraph-mediumDark my-6 text-base font-medium text-paragraph sm:text-center"
       >
@@ -115,7 +82,9 @@
 const route = useRoute();
 const adjustedPath = ref("");
 const { locale } = useI18n();
+import { useToast } from "vue-toast-notification";
 
+const toast = useToast({ position: "top-right", duration: 1500 });
 const getPathWithoutLocale = (path: string) => {
   const segments = path.split("/");
   if (segments[1] && segments[1].length === 2) {
@@ -127,6 +96,13 @@ const getPathWithoutLocale = (path: string) => {
 watchEffect(() => {
   adjustedPath.value = getPathWithoutLocale(route.path);
 });
+
+const SubmitEmail = (e: any) => {
+  if (e.target[0].value) {
+    toast.success("Email Subscribe Successfully");
+    e.target[0].value = "";
+  }
+};
 </script>
 
 <style scoped>
@@ -146,7 +122,6 @@ watchEffect(() => {
 .subscribe form {
   width: 600px;
   padding: 15px 20px;
-  background-image: url("~/assets/img/footer.svg");
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 50px;
@@ -177,10 +152,10 @@ watchEffect(() => {
   transition: 0.3s;
 }
 .subscribe form button {
-  padding: 16px;
+  /* padding: 16px;
   border-radius: 50px;
   border: none;
   text-transform: capitalize;
-  cursor: pointer;
+  cursor: pointer; */
 }
 </style>

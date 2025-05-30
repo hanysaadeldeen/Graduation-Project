@@ -3,13 +3,6 @@
     ref="HeroSectionRef"
     class="HeroSectionRef startSection heroSection relative h-dvh"
   >
-    <!-- <div class="absolute -top-24 left-0 h-dvh w-full opacity-70">
-      <img
-        src="~/assets/img/Pattern.png"
-        class="h-full w-full"
-        alt="heroPattern"
-      />
-    </div> -->
     <div class="absolute -top-24 left-0 h-dvh w-full opacity-70">
       <div
         class="h-full w-full bg-[url('/assets/img/Pattern.png')] bg-cover bg-top"
@@ -85,11 +78,4 @@ const scrollToNextSection = () => {
 };
 </script>
 
-<style scoped>
-.HeroSectionRef {
-  /* background-image: url("../../assets/img/Pattern.png");
-  background-position: center top -6rem; 
-  background-size: cover;
-  background-repeat: no-repeat; */
-}
-</style>
+<style scoped></style>

@@ -5,15 +5,6 @@
     ></div>
 
     <div
-      class="absolute -top-10 left-0 z-10 h-dvh w-full rotate-180 opacity-30"
-    >
-      <img
-        src="~/assets/img/Pattern 3.webp"
-        class="h-full w-full"
-        alt="Pattern"
-      />
-    </div>
-    <div
       class="container relative z-20 mx-auto flex h-[70%] items-center justify-center px-4"
     >
       <div class="flex w-full flex-col items-center justify-between gap-5">

@@ -26,43 +26,6 @@
         </div>
       </div>
       <div class="flex justify-center">
-        <!-- <div ref="ginusCritical" class="card rounded-2xl bg-[#18181B] py-7">
-          <div class="ginusBackground px-4 py-3 lg:px-8 lg:py-7">
-            <div class="rounded-2xl bg-[#18181B] px-3 pt-16">
-              <div
-                class="mx-auto flex w-fit items-center justify-between gap-3 rounded-2xl border border-gray-700 bg-[#27272A] px-2 py-3 max-sm:flex-wrap max-sm:justify-center"
-              >
-                <img src="~/assets/img/warning.svg" alt="warning" />
-                <div>
-                  <h1 class="text-lg font-medium text-white max-sm:text-center">
-                    Critical balance alert
-                  </h1>
-                  <p
-                    class="text-base font-normal text-[#A1A1AA] max-sm:text-center"
-                  >
-                    You will have less than $2,500 <br />
-                    in available funds in May
-                  </p>
-                </div>
-              </div>
-              <div class="">
-                <img
-                  src="~/assets/img/IconGinus.svg"
-                  alt="IconGinus"
-                  width="450"
-                  height="216"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="px-5 lg:px-12">
-            <p class="mb-4 text-lg font-medium text-white">Smart forecasting</p>
-            <p class="font-normal text-[#A1A1AA]">
-              Harness the power of Cobalt's predictive analytics to map out the
-              financial future of your business.
-            </p>
-          </div>
-        </div> -->
         <div
           ref="ginusChat"
           class="card relative w-full rounded-2xl bg-[#18181B] py-7 md:w-[700px]"
