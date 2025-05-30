@@ -110,14 +110,16 @@
     </div>
 
     <nuxt-link :to="localePath(`/programs/${program.id}`)">
-      <button
+      <!-- <button
         class="group/edit mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-hookYellow py-2 text-lg font-medium capitalize tracking-wider"
       >
         See Details
         <i
           class="fa-solid fa-arrow-right cursor-pointer text-white transition-all duration-300 ease-in-out group-hover/edit:translate-x-2"
         ></i>
-      </button>
+      </button> -->
+
+      <Button title="See Details" isArrow />
     </nuxt-link>
   </div>
 </template>

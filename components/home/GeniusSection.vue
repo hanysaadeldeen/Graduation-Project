@@ -75,6 +75,7 @@
                 >
                   <span class="button-text"> Hey! How can I help you?</span>
                 </button>
+
                 <div
                   class="flex w-full items-center justify-between gap-5 rounded-full border border-gray-700 px-4 py-3 max-sm:flex-wrap md:gap-3"
                 >

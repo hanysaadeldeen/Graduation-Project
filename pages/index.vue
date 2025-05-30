@@ -7,8 +7,8 @@
     <AccessCardsSection />
     <GeniusSection />
     <JoinUsSection />
-    <PlanSection />
     <MapSection />
+    <PlanSection />
   </div>
 </template>
 

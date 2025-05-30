@@ -29,14 +29,15 @@
         <!-- <button
           class="group/edit mt-8 flex w-full items-center justify-center gap-3 rounded-md bg-gradient-to-r from-primary to-[#09090B] py-3 text-center text-xl font-medium tracking-wider text-white opacity-0 transition-all duration-300 ease-in-out hover:scale-105 group-hover/item:opacity-100"
         > -->
-        <button
+        <!-- <button
           class="group/edit mb-4 mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-hookYellow py-2 text-lg font-medium capitalize tracking-wider"
         >
           Read More
           <i
             class="fa-solid fa-arrow-right cursor-pointer text-white transition-all duration-300 ease-in-out group-hover/edit:translate-x-2"
           ></i>
-        </button>
+        </button> -->
+        <Button title="Read More" isArrow />
       </nuxt-link>
     </div>
   </div>
