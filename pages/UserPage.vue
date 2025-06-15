@@ -56,7 +56,7 @@
               <CircleCheckBig class="h-[25px] w-[25px] text-green-500" />
             </div>
             <h3 class="mt-2 text-xl font-bold text-white">
-              {{ user.completed }}
+              {{ completedProgram }}
             </h3>
             <p class="text-paragraph">Completed Programs</p>
           </div>
@@ -65,9 +65,8 @@
             class="flex h-fit flex-col items-center justify-center gap-1 rounded-xl bg-secondary/20 py-8 text-center shadow">
             <div class="rounded-lg bg-blue-100 p-2.5">
               <Rss class="h-[25px] w-[25px] text-blue-500" />
-
             </div>
-            <h3 class="mt-2 text-xl font-bold text-white">{{ user.score }}</h3>
+            <h3 class="mt-2 text-xl font-bold text-white">{{ Adminblogs }}</h3>
             <p class="text-paragraph">Completed Blog</p>
           </div>
           <!-- <div
@@ -142,11 +141,21 @@ const userName = useCookie("userName");
 const userRole = useCookie("userRole");
 const userEmail = useCookie("userEmail");
 
+const completedProgram = ref(0)
+
+if (userRole.value === 'Admin') {
+  completedProgram.value = 7
+}
+const Adminblogs = ref(0)
+
+if (userRole.value === 'Admin') {
+  Adminblogs.value = 4
+}
 const user = ref({
   name: userName,
   email: userEmail ? userEmail : "admin@example.com",
-  completed: userRole === "Admin" ? 7 : 0,
-  score: userRole === "Admin" ? 4 : 0,
+  completed: userRole !== "Admin" ? 7 : 0,
+  score: userRole !== "Admin" ? 4 : 0,
   inProgress: 1,
 });
 
