@@ -4,54 +4,37 @@
       <div class="relative z-20">
         <div class="flex items-center justify-between">
           <nuxt-link :to="localePath('index')">
-            <img
-              src="~/assets/img/Logo White-H.svg"
-              alt="Zero Point Path"
-              class="inline-block w-48 object-contain"
-              width="192"
-              height="48"
-            />
+            <img src="~/assets/img/Logo White-H.svg" alt="Zero Point Path" class="inline-block w-48 object-contain"
+              width="192" height="48" />
           </nuxt-link>
           <div class="hidden items-center justify-between gap-10 lg:flex">
-            <div
-              v-if="isLogin"
-              class="relative flex cursor-pointer items-center gap-2"
-              @click="isToolOpen = !isToolOpen"
-            >
-              <p
-                :class="
-                  [
-                    '/emailScanner',
-                    '/passwordgenerator',
-                    '/virusscanner',
-                    '/whoisScanner',
-                    '/websiteScanner',
-                  ].includes(adjustedPath)
-                    ? 'active'
-                    : ''
-                "
-              >
+            <div v-if="isLogin" class="relative flex cursor-pointer items-center gap-2"
+              @click="isToolOpen = !isToolOpen">
+              <p :class="[
+                '/emailScanner',
+                '/passwordgenerator',
+                '/virusscanner',
+                '/whoisScanner',
+                '/websiteScanner',
+              ].includes(adjustedPath)
+                ? 'active'
+                : ''
+                ">
                 {{ $t("tools") }}
               </p>
-              <i
-                class="fa-solid fa-angle-down"
-                :class="
-                  [
-                    '/emailScanner',
-                    '/passwordgenerator',
-                    '/virusscanner',
-                    '/whoisScanner',
-                    '/websiteScanner',
-                  ].includes(adjustedPath)
-                    ? 'active'
-                    : ''
-                "
-              ></i>
+              <i class="fa-solid fa-angle-down" :class="[
+                '/emailScanner',
+                '/passwordgenerator',
+                '/virusscanner',
+                '/whoisScanner',
+                '/websiteScanner',
+              ].includes(adjustedPath)
+                ? 'active'
+                : ''
+                "></i>
               <transition name="dropdown">
-                <div
-                  v-if="isToolOpen"
-                  class="arrowTools absolute -bottom-[25px] left-1/2 h-5 w-5 -translate-x-1/2"
-                ></div>
+                <div v-if="isToolOpen" class="arrowTools absolute -bottom-[25px] left-1/2 h-5 w-5 -translate-x-1/2">
+                </div>
               </transition>
             </div>
             <nuxt-link :to="localePath('blogs')">
@@ -59,32 +42,21 @@
                 {{ $t("blogs") }}
               </p>
             </nuxt-link>
-            <nuxt-link
-              v-if="isLogin"
-              :to="localePath('community')"
-              class="relative flex cursor-pointer items-center gap-2"
-            >
+            <nuxt-link v-if="isLogin" :to="localePath('community')"
+              class="relative flex cursor-pointer items-center gap-2">
               <p :class="adjustedPath === '/community' ? 'active' : ''">
                 {{ $t("community") }}
               </p>
             </nuxt-link>
 
-            <nuxt-link
-              v-if="isLogin"
-              :to="localePath('programs')"
-              class="relative flex cursor-pointer items-center gap-2"
-            >
+            <nuxt-link v-if="isLogin" :to="localePath('programs')"
+              class="relative flex cursor-pointer items-center gap-2">
               <p :class="adjustedPath === '/programs' ? 'active' : ''">
                 {{ $t("Bounties") }}
               </p>
               <i class="fa-solid fa-virus"></i>
             </nuxt-link>
-            <a
-              v-if="isLogin"
-              href="https://ramadan-ctf-ieeemansb.me/"
-              class="relative"
-              target="_blank"
-            >
+            <a v-if="isLogin" href="https://ramadan-ctf-ieeemansb.me/" class="relative" target="_blank">
               <p>
                 {{ $t("CTF") }}
               </p>
@@ -95,17 +67,11 @@
               </p>
             </nuxt-link>
             <div v-if="isLogin" class="relative">
-              <p
-                class="cursor-pointer"
-                @click="toggleUserDropdown"
-                :class="adjustedPath === '/UserPage' ? 'active' : ''"
-              >
+              <p class="cursor-pointer" @click="toggleUserDropdown"
+                :class="adjustedPath === '/UserPage' ? 'active' : ''">
                 {{ userName }}
               </p>
-              <UserDropDown
-                :is-open="isUserDropdownOpen"
-                @toggle-dropdown="toggleUserDropdown"
-              />
+              <UserDropDown :is-open="isUserDropdownOpen" @toggle-dropdown="toggleUserDropdown" />
             </div>
 
             <!-- <button
@@ -116,58 +82,35 @@
             </button> -->
           </div>
           <div class="block lg:hidden">
-            <i
-              @click="isSideBar = !isSideBar"
-              class="fa-solid fa-bars-staggered cursor-pointer text-3xl"
-            ></i>
+            <i @click="isSideBar = !isSideBar" class="fa-solid fa-bars-staggered cursor-pointer text-3xl"></i>
           </div>
         </div>
         <transition name="dropdown">
-          <div
-            v-if="isToolOpen"
-            class="absolute top-16 z-50 h-fit rounded-md bg-white p-4 max-lg:hidden md:w-fit"
+          <div v-if="isToolOpen" class="absolute top-16 z-50 h-fit rounded-md bg-white p-4 max-lg:hidden md:w-fit"
             :class="{
               'left-5': locale === 'ar',
               'right-5': locale !== 'ar',
-            }"
-          >
+            }">
             <div class="relative grid w-full grid-cols-2 gap-4 xl:grid-cols-3">
               <!-- <div
                 class="toolsDropdown absolute z-10 h-full w-full bg-white"
               ></div> -->
-              <nuxt-link
-                v-for="tool in tools"
-                class="relative z-30"
-                :key="tool.route"
-                :to="localePath(tool.route)"
-                @click="isToolOpen = !isToolOpen"
-              >
+              <nuxt-link v-for="tool in tools" class="relative z-30" :key="tool.route" :to="localePath(tool.route)"
+                @click="isToolOpen = !isToolOpen">
                 <div
-                  class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                >
-                  <div
-                    :class="{
-                      'flex h-[48px] w-[48px] items-center justify-center rounded-md bg-hookYellow':
-                        tool.iconType === 'fa',
-                    }"
-                  >
-                    <i
-                      v-if="tool.iconType === 'fa'"
-                      :class="[
-                        'fa-solid',
-                        tool.icon,
-                        'text-2xl text-[#744712]',
-                      ]"
-                    ></i>
-                    <img
-                      v-else
-                      :src="tool.icon"
-                      :alt="tool.label.toLowerCase()"
-                    />
+                  class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-4 rounded-md p-5 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]">
+                  <div :class="{
+                    'flex h-[48px] w-[48px] items-center justify-center rounded-md bg-hookYellow':
+                      tool.iconType === 'fa',
+                  }">
+                    <i v-if="tool.iconType === 'fa'" :class="[
+                      'fa-solid',
+                      tool.icon,
+                      'text-2xl text-[#744712]',
+                    ]"></i>
+                    <img v-else :src="tool.icon" :alt="tool.label.toLowerCase()" />
                   </div>
-                  <p
-                    class="text-center text-base font-semibold tracking-wider text-black"
-                  >
+                  <p class="text-center text-base font-semibold tracking-wider text-black">
                     {{ tool.label }}
                   </p>
                 </div>
@@ -177,75 +120,59 @@
         </transition>
       </div>
       <transition :name="transitionName">
-        <div
-          v-if="isSideBar"
+        <div v-if="isSideBar"
           class="sideBar absolute right-0 z-40 flex max-h-fit min-h-[calc(100vh-75px)] w-full flex-col items-start bg-white px-8 pb-5 text-black transition-all lg:hidden"
           :class="[
             {
               'right-0': locale === 'ar',
               'left-0': locale !== 'ar',
             },
-          ]"
-        >
+          ]">
           <div class="container mx-auto px-5 pl-5">
             <nav class="mt-10 inline-block">
               <ul class="flex w-full flex-col gap-2">
                 <div v-if="isLogin">
                   <p class="font-bold">{{ userName }}</p>
                 </div>
-                <nuxt-link
-                  :to="localePath('blogs')"
-                  @click="isSideBar = !isSideBar"
-                >
+                <nuxt-link :to="localePath('blogs')" @click="isSideBar = !isSideBar">
                   <li :class="adjustedPath === '/blogs' ? 'active' : ''">
                     {{ $t("blogs") }}
                   </li>
                 </nuxt-link>
-                <nuxt-link
-                  v-if="isLogin"
-                  :to="localePath('community')"
-                  class="relative flex cursor-pointer items-center gap-2"
-                >
+                <nuxt-link v-if="isLogin" :to="localePath('community')"
+                  class="relative flex cursor-pointer items-center gap-2">
                   <li :class="adjustedPath === 'community' ? 'active' : ''">
                     {{ $t("community") }}
                   </li>
                 </nuxt-link>
-                <nuxt-link
-                  v-if="isLogin"
-                  :to="localePath('programs')"
-                  @click="isSideBar = !isSideBar"
-                  class="relative flex cursor-pointer items-center gap-2"
-                >
+                <nuxt-link v-if="isLogin" :to="localePath('programs')" @click="isSideBar = !isSideBar"
+                  class="relative flex cursor-pointer items-center gap-2">
                   <li :class="adjustedPath === '/programs' ? 'active' : ''">
                     {{ $t("Bounties") }}
                   </li>
                   <i class="fa-solid fa-virus"></i>
                 </nuxt-link>
-                <a
-                  v-if="isLogin"
-                  href="https://ramadan-ctf-ieeemansb.me/"
-                  @click="isSideBar = !isSideBar"
-                  class="relative flex cursor-pointer items-center gap-2"
-                  target="_blank"
-                >
+                <a v-if="isLogin" href="https://ramadan-ctf-ieeemansb.me/" @click="isSideBar = !isSideBar"
+                  class="relative flex cursor-pointer items-center gap-2" target="_blank">
                   <li :class="adjustedPath === '/ctf' ? 'active' : ''">
                     {{ $t("CTF") }}
                   </li>
                 </a>
-                <nuxt-link
-                  :to="localePath('Login')"
-                  @click="isSideBar = !isSideBar"
-                >
+                <nuxt-link :to="localePath('Login')" @click="isSideBar = !isSideBar">
                   <li :class="adjustedPath === '/Login' ? 'active' : ''">
                     {{ $t("login") }}
                   </li>
                 </nuxt-link>
+                <div v-if="isLogin" class="relative">
+                  <p class="cursor-pointer" @click="toggleUserDropdown"
+                    :class="adjustedPath === '/UserPage' ? 'active' : ''">
+                    {{ userName }}
+                  </p>
+                  <UserDropDown :is-open="isUserDropdownOpen" @toggle-dropdown="toggleUserDropdown" />
+                </div>
 
-                <div
-                  v-if="isLogin"
-                  class="relative flex cursor-pointer items-center gap-2"
-                  @click="isToolOpen = !isToolOpen"
-                >
+                <div v-if="isLogin" class="relative flex cursor-pointer items-center gap-2"
+                  @click="isToolOpen = !isToolOpen">
                   <ul>
                     <li>
                       {{ $t("tools") }}
@@ -253,57 +180,34 @@
                   </ul>
                   <i class="fa-solid fa-angle-down"></i>
                   <transition name="dropdown">
-                    <div
-                      v-if="isToolOpen"
-                      class="arrowTools2 absolute -bottom-[8px] h-5 w-5"
-                      :class="{
-                        'left-5': locale === 'en',
-                        'right-0': locale !== 'ar',
-                      }"
-                    ></div>
+                    <div v-if="isToolOpen" class="arrowTools2 absolute -bottom-[8px] h-5 w-5" :class="{
+                      'left-5': locale === 'en',
+                      'right-0': locale !== 'ar',
+                    }"></div>
                   </transition>
                 </div>
                 <transition name="dropdown">
-                  <div
-                    v-if="isToolOpen && isLogin"
-                    :class="{
-                      'left-5': locale === 'ar',
-                      'right-5': locale !== 'ar',
-                    }"
-                  >
+                  <div v-if="isToolOpen && isLogin" :class="{
+                    'left-5': locale === 'ar',
+                    'right-5': locale !== 'ar',
+                  }">
                     <div class="grid w-full grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
-                      <nuxt-link
-                        v-for="tool in tools"
-                        :key="tool.route"
-                        :to="localePath(tool.route)"
-                        @click="isToolOpen = !isToolOpen"
-                      >
+                      <nuxt-link v-for="tool in tools" :key="tool.route" :to="localePath(tool.route)"
+                        @click="isToolOpen = !isToolOpen">
                         <div
-                          class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]"
-                        >
-                          <div
-                            :class="{
-                              'flex h-[48px] w-[48px] items-center justify-center rounded-md bg-hookYellow':
-                                tool.iconType === 'fa',
-                            }"
-                          >
-                            <i
-                              v-if="tool.iconType === 'fa'"
-                              :class="[
-                                'fa-solid',
-                                tool.icon,
-                                'text-2xl text-[#744712]',
-                              ]"
-                            ></i>
-                            <img
-                              v-else
-                              :src="tool.icon"
-                              :alt="tool.label.toLowerCase()"
-                            />
+                          class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]">
+                          <div :class="{
+                            'flex h-[48px] w-[48px] items-center justify-center rounded-md bg-hookYellow':
+                              tool.iconType === 'fa',
+                          }">
+                            <i v-if="tool.iconType === 'fa'" :class="[
+                              'fa-solid',
+                              tool.icon,
+                              'text-2xl text-[#744712]',
+                            ]"></i>
+                            <img v-else :src="tool.icon" :alt="tool.label.toLowerCase()" />
                           </div>
-                          <p
-                            class="text-center text-base font-semibold tracking-wider text-black"
-                          >
+                          <p class="text-center text-base font-semibold tracking-wider text-black">
                             {{ tool.label }}
                           </p>
                         </div>
@@ -408,6 +312,7 @@ const toggleUserDropdown = () => {
 a {
   text-decoration: none;
 }
+
 ul li {
   font-weight: 500;
   font-size: 20px;
@@ -419,6 +324,7 @@ ul li {
   padding: 10px 0;
   cursor: pointer;
 }
+
 ul li::before {
   content: "";
   position: absolute;
@@ -431,6 +337,7 @@ ul li::before {
   transform-origin: right;
   transition: transform 0.3s ease-in-out;
 }
+
 .gradient-button {
   position: relative;
   overflow: hidden;
@@ -467,6 +374,7 @@ ul li:hover::before {
   transform: scaleX(1);
   transform-origin: left;
 }
+
 ul li.active::before {
   transform: scaleX(1);
 }
@@ -507,12 +415,15 @@ ul li.active::before {
   border-width: 10px;
   border-style: solid;
 }
+
 .arrowTools {
   border-color: transparent transparent white transparent;
 }
+
 .arrowTools2 {
   border-color: transparent transparent #f4f8fd transparent;
 }
+
 .dropdown-enter-active,
 .dropdown-leave-active {
   transition:
@@ -525,6 +436,7 @@ ul li.active::before {
   transform: translateY(-10px);
   opacity: 0;
 }
+
 /* .toolsDropdown {
   filter: blur(5px);
   opacity: 0.5;

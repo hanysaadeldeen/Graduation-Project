@@ -21,6 +21,9 @@ export const useAuthStore = defineStore("authentication", () => {
   const userRole = useCookie("userRole", { maxAge: 60 * 60 * 24 * 7 });
   const userName = useCookie("userName", { maxAge: 60 * 60 * 24 * 7 });
 
+  // for register
+  const userEmail = useCookie("userEmail", { maxAge: 60 * 60 * 24 * 7 });
+
   // register
   const registerUser = async (data: {
     firstName: string;
@@ -34,6 +37,11 @@ export const useAuthStore = defineStore("authentication", () => {
     error.value = null;
     try {
       const response = await register(data);
+      if (response) {
+        userRole.value = "User";
+        userName.value = data.userName;
+        userEmail.value = data.email;
+      }
       isLoading.value = false;
       return response;
     } catch (err: any) {
@@ -118,6 +126,7 @@ export const useAuthStore = defineStore("authentication", () => {
     userId.value = null;
     userRole.value = null;
     user.value = null;
+    userEmail.value = null;
   };
 
   return {
