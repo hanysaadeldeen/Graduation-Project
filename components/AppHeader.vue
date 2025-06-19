@@ -166,7 +166,7 @@
                     {{ $t("blogs") }}
                   </li>
                 </nuxt-link>
-                <nuxt-link v-if="isLogin" :to="localePath('community')"
+                <nuxt-link v-if="isLogin" :to="localePath('community')" @click="isSideBar = !isSideBar"
                   class="relative flex cursor-pointer items-center gap-2">
                   <li :class="adjustedPath === 'community' ? 'active' : ''">
                     {{ $t("community") }}
@@ -179,22 +179,57 @@
                   </li>
                   <i class="fa-solid fa-virus"></i>
                 </nuxt-link>
-                <a v-if="isLogin" href="https://ramadan-ctf-ieeemansb.me/" @click="isSideBar = !isSideBar"
+                <!-- <a v-if="isLogin" href="https://ramadan-ctf-ieeemansb.me/" @click="isSideBar = !isSideBar"
                   class="relative flex cursor-pointer items-center gap-2" target="_blank">
                   <li :class="adjustedPath === '/ctf' ? 'active' : ''">
                     {{ $t("CTF") }}
                   </li>
-                </a>
-                <nuxt-link :to="localePath('Login')" @click="isSideBar = !isSideBar">
+                </a> -->
+                <div v-if="isLogin" class="relative">
+                  <div class="cursor-pointer flex items-center gap-2" @click="toggleCtfDropdown">
+                    <p :class="adjustedPath === '/ctfevent' ? 'active' : ''">
+                      {{ $t("CTF") }}
+                    </p>
+                    <i class="fa-solid fa-angle-down" :class="[
+                      '/ctfevent',
+                    ].includes(adjustedPath)
+                      ? 'active'
+                      : ''
+                      " v-if="!isCTpDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" :class="[
+                      '/ctfevent',
+                    ].includes(adjustedPath)
+                      ? 'active'
+                      : ''
+                      " v-if="isCTpDropdownOpen"></i>
+                  </div>
+                  <CTFDropDown :is-open="isCTpDropdownOpen" @toggle-dropdown="toggleCtfDropdown"
+                    @toggle-sidebar="toggleSideBar" />
+                </div>
+                <nuxt-link v-if="!isLogin" :to="localePath('Login')" @click="isSideBar = !isSideBar">
                   <li :class="adjustedPath === '/Login' ? 'active' : ''">
                     {{ $t("login") }}
                   </li>
                 </nuxt-link>
                 <div v-if="isLogin" class="relative">
-                  <p class="cursor-pointer font-bold" @click="toggleUserDropdown"
-                    :class="adjustedPath === '/UserPage' ? 'active' : ''">
-                    {{ userName }}
-                  </p>
+                  <div class="flex items-center gap-x-2 cursor-pointer" @click="toggleUserDropdown">
+
+                    <p class=" font-bold" :class="adjustedPath === '/UserPage' ? 'active' : ''">
+                      {{ userName }}
+                    </p>
+                    <i class="fa-solid fa-angle-down" :class="[
+                      '/UserPage',
+                    ].includes(adjustedPath)
+                      ? 'active'
+                      : ''
+                      " v-if="!isUserDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" :class="[
+                      '/UserPage',
+                    ].includes(adjustedPath)
+                      ? 'active'
+                      : ''
+                      " v-if="isUserDropdownOpen"></i>
+                  </div>
                   <UserDropDown :is-open="isUserDropdownOpen" @toggle-dropdown="toggleUserDropdown" />
                 </div>
 
@@ -336,7 +371,9 @@ const toggleCtfDropdown = () => {
 };
 
 
-console.log(adjustedPath.value);
+const toggleSideBar = () => {
+  isSideBar.value = !isSideBar.value
+}
 
 </script>
 
