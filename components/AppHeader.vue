@@ -56,21 +56,50 @@
               </p>
               <i class="fa-solid fa-virus"></i>
             </nuxt-link>
-            <a v-if="isLogin" href="https://ramadan-ctf-ieeemansb.me/" class="relative" target="_blank">
-              <p>
-                {{ $t("CTF") }}
-              </p>
-            </a>
+            <div v-if="isLogin" class="relative">
+              <div class="cursor-pointer flex items-center gap-2" @click="toggleCtfDropdown">
+                <p :class="adjustedPath === '/ctfevent' ? 'active' : ''">
+                  {{ $t("CTF") }}
+                </p>
+                <i class="fa-solid fa-angle-down" :class="[
+                  '/ctfevent',
+                ].includes(adjustedPath)
+                  ? 'active'
+                  : ''
+                  " v-if="!isCTpDropdownOpen"></i>
+                <i class="fa-solid fa-angle-up" :class="[
+                  '/ctfevent',
+                ].includes(adjustedPath)
+                  ? 'active'
+                  : ''
+                  " v-if="isCTpDropdownOpen"></i>
+              </div>
+
+              <CTFDropDown :is-open="isCTpDropdownOpen" @toggle-dropdown="toggleCtfDropdown" />
+            </div>
             <nuxt-link :to="localePath('Login')" v-if="!isLogin">
               <p :class="adjustedPath === '/Login' ? 'active' : ''">
                 {{ $t("login") }}
               </p>
             </nuxt-link>
-            <div v-if="isLogin" class="relative">
-              <p class="cursor-pointer" @click="toggleUserDropdown"
-                :class="adjustedPath === '/UserPage' ? 'active' : ''">
-                {{ userName }}
-              </p>
+            <div v-if="isLogin" class="relative ">
+              <div @click="toggleUserDropdown" class="cursor-pointer flex items-center gap-2">
+                <i class="fa-solid fa-angle-down" :class="[
+                  '/UserPage',
+                ].includes(adjustedPath)
+                  ? 'active'
+                  : ''
+                  " v-if="!isUserDropdownOpen"></i>
+                <i class="fa-solid fa-angle-up" :class="[
+                  '/UserPage',
+                ].includes(adjustedPath)
+                  ? 'active'
+                  : ''
+                  " v-if="isUserDropdownOpen"></i>
+                <p class=" cursor-pointer" :class="adjustedPath === '/UserPage' ? 'active' : ''">
+                  {{ userName }}
+                </p>
+              </div>
               <UserDropDown :is-open="isUserDropdownOpen" @toggle-dropdown="toggleUserDropdown" />
             </div>
 
@@ -92,9 +121,7 @@
               'right-5': locale !== 'ar',
             }">
             <div class="relative grid w-full grid-cols-2 gap-4 xl:grid-cols-3">
-              <!-- <div
-                class="toolsDropdown absolute z-10 h-full w-full bg-white"
-              ></div> -->
+
               <nuxt-link v-for="tool in tools" class="relative z-30" :key="tool.route" :to="localePath(tool.route)"
                 @click="isToolOpen = !isToolOpen">
                 <div
@@ -131,9 +158,9 @@
           <div class="container mx-auto px-5 pl-5">
             <nav class="mt-10 inline-block">
               <ul class="flex w-full flex-col gap-2">
-                <div v-if="isLogin">
+                <!-- <div v-if="isLogin">
                   <p class="font-bold">{{ userName }}</p>
-                </div>
+                </div> -->
                 <nuxt-link :to="localePath('blogs')" @click="isSideBar = !isSideBar">
                   <li :class="adjustedPath === '/blogs' ? 'active' : ''">
                     {{ $t("blogs") }}
@@ -164,7 +191,7 @@
                   </li>
                 </nuxt-link>
                 <div v-if="isLogin" class="relative">
-                  <p class="cursor-pointer" @click="toggleUserDropdown"
+                  <p class="cursor-pointer font-bold" @click="toggleUserDropdown"
                     :class="adjustedPath === '/UserPage' ? 'active' : ''">
                     {{ userName }}
                   </p>
@@ -297,15 +324,20 @@ const getPathWithoutLocale = (path: string) => {
 };
 const adjustedPath = computed(() => getPathWithoutLocale(route.path));
 
-console.log(route.path);
-console.log(adjustedPath.value);
-
 const isToolOpen = ref<boolean>(false);
 const isUserDropdownOpen = ref(false);
+const isCTpDropdownOpen = ref(false);
 
 const toggleUserDropdown = () => {
   isUserDropdownOpen.value = !isUserDropdownOpen.value;
 };
+const toggleCtfDropdown = () => {
+  isCTpDropdownOpen.value = !isCTpDropdownOpen.value;
+};
+
+
+console.log(adjustedPath.value);
+
 </script>
 
 <style scoped>
