@@ -151,6 +151,7 @@ import { ref } from "vue";
 const userName = useCookie("userName");
 const userRole = useCookie("userRole");
 const userEmail = useCookie("userEmail");
+console.log(userEmail.value);
 
 const completedProgram = ref(0)
 

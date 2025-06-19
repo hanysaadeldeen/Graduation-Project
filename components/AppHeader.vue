@@ -187,9 +187,9 @@
                 </a> -->
                 <div v-if="isLogin" class="relative">
                   <div class="cursor-pointer flex items-center gap-2" @click="toggleCtfDropdown">
-                    <p :class="adjustedPath === '/ctfevent' ? 'active' : ''">
+                    <li class="font-bold" :class="adjustedPath === '/ctfevent' ? 'active' : ''">
                       {{ $t("CTF") }}
-                    </p>
+                    </li>
                     <i class="fa-solid fa-angle-down" :class="[
                       '/ctfevent',
                     ].includes(adjustedPath)
@@ -214,9 +214,9 @@
                 <div v-if="isLogin" class="relative">
                   <div class="flex items-center gap-x-2 cursor-pointer" @click="toggleUserDropdown">
 
-                    <p class=" font-bold" :class="adjustedPath === '/UserPage' ? 'active' : ''">
+                    <li class=" font-bold" :class="adjustedPath === '/UserPage' ? 'active' : ''">
                       {{ userName }}
-                    </p>
+                    </li>
                     <i class="fa-solid fa-angle-down" :class="[
                       '/UserPage',
                     ].includes(adjustedPath)
@@ -230,23 +230,46 @@
                       : ''
                       " v-if="isUserDropdownOpen"></i>
                   </div>
-                  <UserDropDown :is-open="isUserDropdownOpen" @toggle-dropdown="toggleUserDropdown" />
+                  <UserDropDown @toggle-sidebar="toggleSideBar" :is-open="isUserDropdownOpen"
+                    @toggle-dropdown="toggleUserDropdown" />
                 </div>
 
                 <div v-if="isLogin" class="relative flex cursor-pointer items-center gap-2"
                   @click="isToolOpen = !isToolOpen">
-                  <ul>
-                    <li>
+                  <!-- <ul>
+                    <li :class="adjustedPath === '/UserPage' ? 'active' : ''">
                       {{ $t("tools") }}
                     </li>
-                  </ul>
-                  <i class="fa-solid fa-angle-down"></i>
-                  <transition name="dropdown">
+                  </ul> -->
+                  <li :class="[
+                    '/emailScanner',
+                    '/passwordgenerator',
+                    '/virusscanner',
+                    '/whoisScanner',
+                    '/websiteScanner',
+                  ].includes(adjustedPath)
+                    ? 'active'
+                    : ''
+                    ">
+                    {{ $t("tools") }}
+                  </li>
+                  <i class="fa-solid fa-angle-down" :class="[
+                    '/emailScanner',
+                    '/passwordgenerator',
+                    '/virusscanner',
+                    '/whoisScanner',
+                    '/websiteScanner',
+                  ].includes(adjustedPath)
+                    ? 'active'
+                    : ''
+                    "></i>
+                  <!-- <i class="fa-solid fa-angle-down"></i> -->
+                  <!-- <transition name="dropdown">
                     <div v-if="isToolOpen" class="arrowTools2 absolute -bottom-[8px] h-5 w-5" :class="{
                       'left-5': locale === 'en',
                       'right-0': locale !== 'ar',
                     }"></div>
-                  </transition>
+                  </transition> -->
                 </div>
                 <transition name="dropdown">
                   <div v-if="isToolOpen && isLogin" :class="{
@@ -255,7 +278,7 @@
                   }">
                     <div class="grid w-full grid-cols-2 gap-5 bg-[#F4F8FD] p-3">
                       <nuxt-link v-for="tool in tools" :key="tool.route" :to="localePath(tool.route)"
-                        @click="isToolOpen = !isToolOpen">
+                        @click="toggleSideBar">
                         <div
                           class="tool mx-auto flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md p-2 transition-all duration-300 ease-in-out hover:bg-[#E8EBF0]">
                           <div :class="{
@@ -373,6 +396,8 @@ const toggleCtfDropdown = () => {
 
 const toggleSideBar = () => {
   isSideBar.value = !isSideBar.value
+  isToolOpen.value = !isToolOpen.value
+
 }
 
 </script>
