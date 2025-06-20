@@ -8,8 +8,7 @@
               width="192" height="48" />
           </nuxt-link>
           <div class="hidden items-center justify-between gap-10 lg:flex">
-            <div v-if="isLogin" class="relative flex cursor-pointer items-center gap-2"
-              @click="isToolOpen = !isToolOpen">
+            <div v-if="isLogin" class="relative flex cursor-pointer items-center gap-2" @click="toogleTools">
               <p :class="[
                 '/emailScanner',
                 '/passwordgenerator',
@@ -61,21 +60,16 @@
                 <p :class="adjustedPath === '/ctfevent' ? 'active' : ''">
                   {{ $t("CTF") }}
                 </p>
-                <i class="fa-solid fa-angle-down" :class="[
-                  '/ctfevent',
-                ].includes(adjustedPath)
-                  ? 'active'
-                  : ''
-                  " v-if="!isCTpDropdownOpen"></i>
-                <i class="fa-solid fa-angle-up" :class="[
-                  '/ctfevent',
-                ].includes(adjustedPath)
-                  ? 'active'
-                  : ''
-                  " v-if="isCTpDropdownOpen"></i>
+                <i class="fa-solid fa-angle-down   duration-300 ease-in-out transition-all " :class="[
+                  isCTpDropdownOpen ? 'rotate-180' : 'rotate-0',
+                  adjustedPath === '/ctfevent' ? 'active' : ''
+                ]"></i>
               </div>
+              <transition name="dropdown">
 
-              <CTFDropDown :is-open="isCTpDropdownOpen" @toggle-dropdown="toggleCtfDropdown" />
+                <CTFDropDown v-if="isCTpDropdownOpen" :is-open="isCTpDropdownOpen"
+                  @toggle-dropdown="toggleCtfDropdown" />
+              </transition>
             </div>
             <nuxt-link :to="localePath('login')" v-if="!isLogin">
               <p :class="adjustedPath === '/login' ? 'active' : ''">
@@ -84,23 +78,18 @@
             </nuxt-link>
             <div v-if="isLogin" class="relative ">
               <div @click="toggleUserDropdown" class="cursor-pointer flex items-center gap-2">
-                <i class="fa-solid fa-angle-down" :class="[
-                  '/UserPage',
-                ].includes(adjustedPath)
-                  ? 'active'
-                  : ''
-                  " v-if="!isUserDropdownOpen"></i>
-                <i class="fa-solid fa-angle-up" :class="[
-                  '/UserPage',
-                ].includes(adjustedPath)
-                  ? 'active'
-                  : ''
-                  " v-if="isUserDropdownOpen"></i>
                 <p class=" cursor-pointer" :class="adjustedPath === '/UserPage' ? 'active' : ''">
                   {{ userName }}
                 </p>
+                <i class="fa-solid fa-angle-down   duration-300 ease-in-out transition-all " :class="[
+                  isUserDropdownOpen ? 'rotate-180' : 'rotate-0',
+                  adjustedPath === '/UserPage' ? 'active' : ''
+                ]"></i>
               </div>
-              <UserDropDown :is-open="isUserDropdownOpen" @toggle-dropdown="toggleUserDropdown" />
+              <transition name="dropdown">
+                <UserDropDown v-if="isUserDropdownOpen" :is-open="isUserDropdownOpen"
+                  @toggle-sidebar="toggleUserDropdown" />
+              </transition>
             </div>
 
             <!-- <button
@@ -179,32 +168,24 @@
                   </li>
                   <i class="fa-solid fa-virus"></i>
                 </nuxt-link>
-                <!-- <a v-if="isLogin" href="https://ramadan-ctf-ieeemansb.me/" @click="isSideBar = !isSideBar"
-                  class="relative flex cursor-pointer items-center gap-2" target="_blank">
-                  <li :class="adjustedPath === '/ctf' ? 'active' : ''">
-                    {{ $t("CTF") }}
-                  </li>
-                </a> -->
+
                 <div v-if="isLogin" class="relative">
                   <div class="cursor-pointer flex items-center gap-2" @click="toggleCtfDropdown">
                     <li class="font-bold" :class="adjustedPath === '/ctfevent' ? 'active' : ''">
                       {{ $t("CTF") }}
                     </li>
-                    <i class="fa-solid fa-angle-down" :class="[
-                      '/ctfevent',
-                    ].includes(adjustedPath)
-                      ? 'active'
-                      : ''
-                      " v-if="!isCTpDropdownOpen"></i>
-                    <i class="fa-solid fa-angle-up" :class="[
-                      '/ctfevent',
-                    ].includes(adjustedPath)
-                      ? 'active'
-                      : ''
-                      " v-if="isCTpDropdownOpen"></i>
+
+                    <i class="fa-solid fa-angle-down   duration-300 ease-in-out transition-all " :class="[
+                      isCTpDropdownOpen ? 'rotate-180' : 'rotate-0',
+                      adjustedPath === '/ctfevent' ? 'active' : ''
+                    ]"></i>
+
                   </div>
-                  <CTFDropDown :is-open="isCTpDropdownOpen" @toggle-dropdown="toggleCtfDropdown"
-                    @toggle-sidebar="toggleSideBar" />
+                  <transition name="dropdown">
+
+                    <CTFDropDown v-if="isCTpDropdownOpen" :is-open="isCTpDropdownOpen"
+                      @toggle-dropdown="toggleCtfDropdown" @toggle-sidebar="toggleSideBar" />
+                  </transition>
                 </div>
                 <nuxt-link v-if="!isLogin" :to="localePath('login')" @click="isSideBar = !isSideBar">
                   <li :class="adjustedPath === '/login' ? 'active' : ''">
@@ -217,21 +198,16 @@
                     <li class=" font-bold" :class="adjustedPath === '/UserPage' ? 'active' : ''">
                       {{ userName }}
                     </li>
-                    <i class="fa-solid fa-angle-down" :class="[
-                      '/UserPage',
-                    ].includes(adjustedPath)
-                      ? 'active'
-                      : ''
-                      " v-if="!isUserDropdownOpen"></i>
-                    <i class="fa-solid fa-angle-up" :class="[
-                      '/UserPage',
-                    ].includes(adjustedPath)
-                      ? 'active'
-                      : ''
-                      " v-if="isUserDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-down   duration-300 ease-in-out transition-all " :class="[
+                      isUserDropdownOpen ? 'rotate-180' : 'rotate-0',
+                      adjustedPath === '/UserPage' ? 'active' : ''
+                    ]"></i>
                   </div>
-                  <UserDropDown @toggle-sidebar="toggleSideBar" :is-open="isUserDropdownOpen"
-                    @toggle-dropdown="toggleUserDropdown" />
+                  <transition name="dropdown">
+
+                    <UserDropDown v-if="isUserDropdownOpen" @toggle-sidebar="toggleSideBar"
+                      :is-open="isUserDropdownOpen" @toggle-dropdown="toggleUserDropdown" />
+                  </transition>
                 </div>
 
                 <div v-if="isLogin" class="relative flex cursor-pointer items-center gap-2"
@@ -388,16 +364,26 @@ const isCTpDropdownOpen = ref(false);
 
 const toggleUserDropdown = () => {
   isUserDropdownOpen.value = !isUserDropdownOpen.value;
+  isCTpDropdownOpen.value = false;
+  isToolOpen.value = false
 };
 const toggleCtfDropdown = () => {
   isCTpDropdownOpen.value = !isCTpDropdownOpen.value;
+  isUserDropdownOpen.value = false
+  isToolOpen.value = false
+};
+const toogleTools = () => {
+  isToolOpen.value = !isToolOpen.value
+  isCTpDropdownOpen.value = false;
+  isUserDropdownOpen.value = false
 };
 
 
 const toggleSideBar = () => {
   isSideBar.value = !isSideBar.value
-  isToolOpen.value = !isToolOpen.value
-
+  isCTpDropdownOpen.value = false;
+  isUserDropdownOpen.value = false
+  isToolOpen.value = false
 }
 
 </script>

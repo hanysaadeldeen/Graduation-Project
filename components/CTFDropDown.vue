@@ -8,7 +8,7 @@
                 <img src="~/assets/img/CTF icon.png" alt="CTF icon" class="w-5 h-5">
                 CTF Platform
             </a>
-            <nuxt-link :to="localePath('ctfevent')" @click="$emit('toggle-sidebar')"
+            <nuxt-link :to="localePath('ctfevent')" @click="$emit('toggle-dropdown')"
                 class="flex items-center gap-2 px-4 py-2 text-black hover:bg-gray-100">
                 <img src="~/assets/img/CTF event.png" alt="CTF event" class="w-5 h-5">
                 CTF Events
