@@ -8,7 +8,7 @@
               width="192" height="48" />
           </nuxt-link>
           <div class="hidden items-center justify-between gap-10 lg:flex">
-            <div v-if="isLogin" class="relative flex cursor-pointer items-center gap-2" @click="toogleTools">
+            <div v-if="isLogin" class="tools relative flex cursor-pointer items-center gap-2" @click="toogleTools">
               <p :class="[
                 '/emailScanner',
                 '/passwordgenerator',
@@ -41,6 +41,11 @@
                 {{ $t("blogs") }}
               </p>
             </nuxt-link>
+            <nuxt-link :to="localePath('login')" v-if="!isLogin">
+              <p :class="adjustedPath === '/login' ? 'active' : ''">
+                {{ $t("login") }}
+              </p>
+            </nuxt-link>
             <nuxt-link v-if="isLogin" :to="localePath('community')"
               class="relative flex cursor-pointer items-center gap-2">
               <p :class="adjustedPath === '/community' ? 'active' : ''">
@@ -49,13 +54,13 @@
             </nuxt-link>
 
             <nuxt-link v-if="isLogin" :to="localePath('programs')"
-              class="relative flex cursor-pointer items-center gap-2">
+              class="Bounties relative flex cursor-pointer items-center gap-2">
               <p :class="adjustedPath === '/programs' ? 'active' : ''">
                 {{ $t("Bounties") }}
               </p>
               <i class="fa-solid fa-virus"></i>
             </nuxt-link>
-            <div v-if="isLogin" class="relative">
+            <div v-if="isLogin" class="CTF relative">
               <div class="cursor-pointer flex items-center gap-2" @click="toggleCtfDropdown">
                 <p :class="adjustedPath === '/ctfevent' ? 'active' : ''">
                   {{ $t("CTF") }}
@@ -66,16 +71,11 @@
                 ]"></i>
               </div>
               <transition name="dropdown">
-
                 <CTFDropDown v-if="isCTpDropdownOpen" :is-open="isCTpDropdownOpen"
                   @toggle-dropdown="toggleCtfDropdown" />
               </transition>
             </div>
-            <nuxt-link :to="localePath('login')" v-if="!isLogin">
-              <p :class="adjustedPath === '/login' ? 'active' : ''">
-                {{ $t("login") }}
-              </p>
-            </nuxt-link>
+
             <div v-if="isLogin" class="relative ">
               <div @click="toggleUserDropdown" class="cursor-pointer flex items-center gap-2">
                 <p class=" cursor-pointer" :class="adjustedPath === '/UserPage' ? 'active' : ''">
@@ -147,9 +147,7 @@
           <div class="container mx-auto px-5 pl-5">
             <nav class="mt-10 inline-block">
               <ul class="flex w-full flex-col gap-2">
-                <!-- <div v-if="isLogin">
-                  <p class="font-bold">{{ userName }}</p>
-                </div> -->
+
                 <nuxt-link :to="localePath('blogs')" @click="isSideBar = !isSideBar">
                   <li :class="adjustedPath === '/blogs' ? 'active' : ''">
                     {{ $t("blogs") }}
