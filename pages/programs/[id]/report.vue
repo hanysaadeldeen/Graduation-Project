@@ -1,9 +1,7 @@
 <template>
   <div class="container mx-auto px-2 max-sm:px-4">
-    <nuxt-link
-      class="flex items-center gap-2 text-lg text-paragraph hover:text-white"
-      :to="$localePath(`/programs/${params.id}`)"
-    >
+    <nuxt-link class="flex items-center gap-2 text-lg text-paragraph hover:text-white"
+      :to="$localePath(`/programs/${params.id}`)">
       <i class="fa-solid fa-arrow-left"></i>
       <span> Back to Reports </span>
     </nuxt-link>
@@ -17,6 +15,8 @@
 import ReportSection from "~/components/programs/ReportSection.vue";
 
 const { params } = useRoute();
+
+
 </script>
 
 <style scoped>

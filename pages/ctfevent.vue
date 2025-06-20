@@ -24,7 +24,7 @@
                 <tbody>
                     <tr v-for="ctf in ctfs" :key="ctf.id"
                         class="border-t border-gray-800 hover:bg-gray-800 transition-all">
-                        <td class="py-4 px-4 font-medium text-blue-400 whitespace-nowrap min-w-[200px]">
+                        <td class="py-4 px-4 font-medium text-blue-400 underline whitespace-nowrap min-w-[200px]">
                             <a :href="ctf.url" target="_blank" class="hover:underline">
                                 {{ ctf.title }}
                             </a>
@@ -33,7 +33,7 @@
                             <span class="block">{{ formatDate(ctf.start) }}</span>
                             <span class="block text-gray-500">→ {{ formatDate(ctf.finish) }}</span>
                         </td>
-                        <td class="py-4 px-4 text-green-400 whitespace-nowrap min-w-[100px]">
+                        <td class="py-4 px-4 text-hookYellow whitespace-nowrap min-w-[100px]">
                             {{ ctf.format }}
                         </td>
                         <td class="py-4 px-4 text-gray-200 whitespace-nowrap min-w-[150px]">
@@ -60,10 +60,21 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { gsap } from "gsap";
-const ctfs = ref([])
+interface CTF {
+    id: number
+    title: string
+    url: string
+    start: string
+    finish: string
+    format: string
+    organizers?: { name: string }[]
+    participants: number
+    weight: number
+}
+
+const ctfs = ref<CTF[]>([])
 const loading = ref(true)
 const error = ref(false)
-
 
 
 
@@ -85,7 +96,13 @@ if (ctfs.value.length !== 0) {
 
 function formatDate(dateStr: string) {
     const date = new Date(dateStr)
-    return date.toUTCString().slice(5, 22)
+    return date.toLocaleString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    })
 }
 
 
@@ -98,4 +115,8 @@ onMounted(() => {
     });
 });
 
+
+definePageMeta({
+    middleware: 'auth',
+})
 </script>

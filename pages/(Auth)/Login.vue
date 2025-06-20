@@ -19,7 +19,7 @@
                 <label for="email"
                   class="mb-2 inline-block cursor-pointer text-base font-semibold text-paragraph">Email</label>
                 <Field id="email" name="email" type="email" placeholder="Enter Your Email"
-                  class="w-full rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white placeholder-white/60 transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  class="lowercase w-full rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white placeholder-white/60 transition focus:outline-none focus:ring-2 focus:ring-orange-500"
                   :class="{ 'border-red-500': errors.email }" />
                 <span class="mt-2 inline-block text-sm text-red-500">{{
                   errors.email

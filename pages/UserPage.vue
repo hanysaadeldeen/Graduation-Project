@@ -69,16 +69,7 @@
               <h3 class="mt-2 text-xl font-bold text-white">{{ Adminblogs }}</h3>
               <p class="text-paragraph">Completed Blog</p>
             </div>
-            <!-- <div
-            class="flex h-fit flex-col items-center justify-center gap-1 rounded-xl bg-secondary/20 py-8 text-center shadow">
-            <div class="rounded-lg bg-orange-100 p-2.5">
-              <Clock class="h-[25px] w-[25px] text-orange-500" />
-            </div>
-            <h3 class="mt-2 text-xl font-bold text-white">
-              {{ user.inProgress }}
-            </h3>
-            <p class="text-paragraph">In Progress</p>
-          </div> -->
+
           </div>
           <div class="rounded-xl bg-secondary/20 p-6 shadow-lg">
             <h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
@@ -110,7 +101,6 @@
               <div class="mb-3 flex items-center justify-between rounded-lg bg-secondary/20 p-4">
                 <div class="flex items-center gap-2 text-hookYellow">
                   You didn't add any program Report yet
-
                 </div>
               </div>
             </div>
@@ -151,7 +141,6 @@ import { ref } from "vue";
 const userName = useCookie("userName");
 const userRole = useCookie("userRole");
 const userEmail = useCookie("userEmail");
-console.log(userEmail.value);
 
 const completedProgram = ref(0)
 
@@ -220,6 +209,11 @@ const reports = ref([
 // if (userData) {
 //   console.log(userData.value && userData.value[0].authorName);
 // }
+definePageMeta({
+  middleware: 'auth',
+})
+
+
 </script>
 
 

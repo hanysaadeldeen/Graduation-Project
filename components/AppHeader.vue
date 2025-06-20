@@ -77,8 +77,8 @@
 
               <CTFDropDown :is-open="isCTpDropdownOpen" @toggle-dropdown="toggleCtfDropdown" />
             </div>
-            <nuxt-link :to="localePath('Login')" v-if="!isLogin">
-              <p :class="adjustedPath === '/Login' ? 'active' : ''">
+            <nuxt-link :to="localePath('login')" v-if="!isLogin">
+              <p :class="adjustedPath === '/login' ? 'active' : ''">
                 {{ $t("login") }}
               </p>
             </nuxt-link>
@@ -206,8 +206,8 @@
                   <CTFDropDown :is-open="isCTpDropdownOpen" @toggle-dropdown="toggleCtfDropdown"
                     @toggle-sidebar="toggleSideBar" />
                 </div>
-                <nuxt-link v-if="!isLogin" :to="localePath('Login')" @click="isSideBar = !isSideBar">
-                  <li :class="adjustedPath === '/Login' ? 'active' : ''">
+                <nuxt-link v-if="!isLogin" :to="localePath('login')" @click="isSideBar = !isSideBar">
+                  <li :class="adjustedPath === '/login' ? 'active' : ''">
                     {{ $t("login") }}
                   </li>
                 </nuxt-link>

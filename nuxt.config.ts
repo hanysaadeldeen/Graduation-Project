@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     { path: "~/components/tools/websiteScanner/", extensions: ["vue"] },
   ],
   i18n: {
-    strategy: "prefix_except_default",
+    strategy: "prefix",
     locales: [
       { code: "en", iso: "en-US", name: "English" },
       { code: "ar", iso: "ar-EG", name: "Arabic" },

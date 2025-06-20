@@ -114,7 +114,7 @@
 
             <span class="block w-full text-center text-paragraph">
               Already have an account?
-              <nuxt-link :to="localePath('Login')" class="tracking-wider text-white underline">
+              <nuxt-link :to="localePath('login')" class="tracking-wider text-white underline">
                 Login here
               </nuxt-link>
             </span>
