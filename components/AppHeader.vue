@@ -41,7 +41,7 @@
                 {{ $t("blogs") }}
               </p>
             </nuxt-link>
-            <nuxt-link :to="localePath('login')" v-if="!isLogin">
+            <nuxt-link :to="localePath('Register')" v-if="!isLogin">
               <p :class="adjustedPath === '/login' ? 'active' : ''">
                 {{ $t("login") }}
               </p>
