@@ -61,6 +61,8 @@ export const programsController = async () => {
     eligibility: string;
     rewards: Rewards;
   }
+
+  const token = useCookie("token");
   const fetchPrograms = async () => {
     loading.value = true;
     try {
@@ -68,7 +70,10 @@ export const programsController = async () => {
         `${runtimeConfig.public.BaseApi}/BBPrograms`,
         { method: "GET" },
       );
-      data.value = response;
+      if (response && response.success) {
+        data.value = response.data;
+        // console.log(data.value);
+      }
     } catch (err: any) {
       console.error("Fetch error:", err);
       error.value =
@@ -81,13 +86,17 @@ export const programsController = async () => {
   const fetchProgramById = async (id: string) => {
     loading.value = true;
     try {
-      const data = await $fetch<ProgramDetails>(
+      const response = await $fetch<ProgramDetails>(
         `${runtimeConfig.public.BaseApi}/BBPrograms/ProgramDetails/${id}`,
         {
           method: "GET",
         },
       );
-      programId.value = data;
+      if (response && response.success) {
+        programId.value = response.data;
+
+        // console.log(programId.value);
+      }
     } catch (err: any) {
       console.error("Fetch program by ID error:", err);
       error.value =
@@ -105,6 +114,9 @@ export const programsController = async () => {
       const data = await $fetch(`${runtimeConfig.public.BaseApi}/BBPrograms`, {
         method: "POST",
         body: values,
+        headers: {
+          Authorization: `Bearer ${token.value}`,
+        },
       });
 
       return { data, error: null };

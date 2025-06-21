@@ -6,8 +6,8 @@ export const useUserPage = () => {
 
   const fetchUserData = async () => {
     try {
-      if (userRole.value === "admin") {
-        const response = await $fetch(`${config.public.BaseApi}/Admins`);
+      if (userRole.value === "Admin") {
+        const response = await $fetch(`${config.public.Users}/Admins`);
         return response;
       } else {
         const response = await $fetch(`${config.public.BaseApi}/Users`);
@@ -17,40 +17,41 @@ export const useUserPage = () => {
       return error?.response?._data ?? error;
     }
   };
-  const fetchAdminById = async () => {
-    try {
-      const response = await $fetch(
-        `${config.public.BaseApi}/Admins/${userId.value}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token.value}`,
-          },
-        },
-      );
-      return response;
-    } catch (error: any) {
-      return error?.response?._data ?? error;
-    }
-  };
-  const fetchUserById = async () => {
-    try {
-      const response = await $fetch(
-        `${config.public.BaseApi}/Users/${userId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token.value}`,
-          },
-        },
-      );
-      return response;
-    } catch (error: any) {
-      return error?.response?._data ?? error;
-    }
-  };
+
+  // const fetchAdminById = async () => {
+  // try {
+  //   const response = await $fetch(
+  //     `${config.public.BaseApi}/Admins/${userId.value}`,
+  //     {
+  //       headers: {
+  //         Authorization: `Bearer ${token.value}`,
+  //       },
+  //     },
+  //   );
+  //   return response;
+  // } catch (error: any) {
+  //   return error?.response?._data ?? error;
+  // }
+  // };
+  // const fetchUserById = async () => {
+  //   try {
+  //     const response = await $fetch(
+  //       `${config.public.BaseApi}/Users/${userId}`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token.value}`,
+  //         },
+  //       },
+  //     );
+  //     return response;
+  //   } catch (error: any) {
+  //     return error?.response?._data ?? error;
+  //   }
+  // };
 
   return {
     fetchUserData,
-    fetchAdminById,
-    fetchUserById,
+    // fetchAdminById,
+    // fetchUserById,
   };
 };

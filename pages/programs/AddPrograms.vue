@@ -1,6 +1,6 @@
 <template>
-  <Form @submit="onSubmit" v-slot="{ errors, isSubmitting, values }" :validation-schema="schema"
-    class="w-full rounded-lg p-6 shadow-lg" as="form">
+  <!-- :validation-schema="schema" -->
+  <Form @submit="onSubmit" v-slot="{ errors, isSubmitting, values }" class="w-full rounded-lg p-6 shadow-lg" as="form">
     <h1
       class="mb-8 bg-gradient-to-b from-[#FFFFFF] to-[#71717A] bg-clip-text text-center text-2xl font-bold tracking-wider text-transparent md:text-4xl">
       Add Bug Bounty Program
@@ -28,29 +28,19 @@
     <div class="mb-4">
       <label for="image" class="mb-2 inline-block cursor-pointer text-xl font-semibold text-gray-300">Company
         Image</label>
-      <Field name="image" as="input" id="image" type="text" placeholder="enter Company Image"
+      <!-- <Field name="image" as="input" id="image" type="text" placeholder="enter Company Image"
         class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-white"
         :class="{ 'border-red-500': errors.title }" />
-      <span class="text-sm text-red-500">{{ errors.image }}</span>
-      <!-- <Field name="image" v-slot="{ field, errorMessage }">
-        <input
-          id="image"
-          type="file"
-          accept="image/*"
-          @change="handleImageUpload($event, field)"
-          class="block w-full text-sm text-gray-400 file:mr-4 file:rounded-md file:border-0 file:bg-gray-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-gray-600"
-        />
+      <span class="text-sm text-red-500">{{ errors.image }}</span> -->
+      <Field name="image" v-slot="{ field, errorMessage }">
+        <input id="image" type="file" accept="image/*" @change="handleImageUpload($event, field)"
+          class="block w-full text-sm text-gray-400 file:mr-4 file:rounded-md file:border-0 file:bg-gray-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-gray-600" />
         <span v-if="errorMessage" class="text-sm text-red-500">{{
           errorMessage
         }}</span>
       </Field>
 
-      <img
-        v-if="imagePreview"
-        :src="imagePreview"
-        alt="Preview"
-        class="mt-4 h-48 w-full rounded object-cover"
-      /> -->
+      <img v-if="imagePreview" :src="imagePreview" alt="Preview" class="mt-4 h-48 w-full rounded object-cover" />
     </div>
     <!-- Targets -->
     <div class="mb-4">
@@ -424,7 +414,7 @@ const onSubmit = async (values: any) => {
     focusArea: "Web Security",
     responseEfficiency: Number(values.responseEfficiency) || 50,
   };
-  console.log(data);
+  // console.log(data);
 
   const response = await addProgram(data);
   if (response) {

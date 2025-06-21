@@ -141,6 +141,7 @@ import { ref } from "vue";
 const userName = useCookie("userName");
 const userRole = useCookie("userRole");
 const userEmail = useCookie("userEmail");
+const userId = useCookie("userId");
 
 const completedProgram = ref(0)
 
@@ -194,21 +195,15 @@ const reports = ref([
 //   getAdminData();
 // });
 
-// const { fetchUserData } = useUserPage();
+const { fetchUserData } = useUserPage();
 // const { data: userData, pending, error } = await useAsyncData('user-data', () => fetchUserData());
 
 
-// if (pending) {
-//   console.log("pending", pending.value)
-// }
-
-// if (!pending) {
-//   console.log(pending.value)
-// }
 
 // if (userData) {
 //   console.log(userData.value && userData.value[0].authorName);
 // }
+
 definePageMeta({
   middleware: 'auth',
 })

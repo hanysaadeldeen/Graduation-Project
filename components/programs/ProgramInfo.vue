@@ -1,93 +1,56 @@
 <template>
   <div class="Program_Info mt-8">
     <div class="flex flex-wrap gap-4 border-b border-gray-500 pb-4">
-      <p
-        class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black"
-        :class="
-          bountyType === 'All'
-            ? 'bg-hookYellow text-white'
-            : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
-        "
-        @click="bountyType = 'All'"
-      >
+      <p class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black" :class="bountyType === 'All'
+        ? 'bg-hookYellow text-white'
+        : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
+        " @click="bountyType = 'All'">
         All
       </p>
-      <p
-        class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black"
-        :class="
-          bountyType === 'Scope'
-            ? 'bg-secondary text-white'
-            : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
-        "
-        @click="bountyType = 'Scope'"
-      >
+      <p class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black" :class="bountyType === 'Scope'
+        ? 'bg-secondary text-white'
+        : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
+        " @click="bountyType = 'Scope'">
         Scope
       </p>
-      <p
-        class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black"
-        :class="
-          bountyType === 'FocusArea'
-            ? 'bg-secondary text-white'
-            : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
-        "
-        @click="bountyType = 'FocusArea'"
-      >
+      <p class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black" :class="bountyType === 'FocusArea'
+        ? 'bg-secondary text-white'
+        : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
+        " @click="bountyType = 'FocusArea'">
         Focus Area
       </p>
-      <p
-        class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black"
-        :class="
-          bountyType === 'ProgramRules'
-            ? 'bg-secondary text-white'
-            : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
-        "
-        @click="bountyType = 'ProgramRules'"
-      >
+      <p class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black" :class="bountyType === 'ProgramRules'
+        ? 'bg-secondary text-white'
+        : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
+        " @click="bountyType = 'ProgramRules'">
         Program Rules
       </p>
-      <p
-        class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black"
-        :class="
-          bountyType === 'Disclosure'
-            ? 'bg-secondary text-white'
-            : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
-        "
-        @click="bountyType = 'Disclosure'"
-      >
+      <p class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black" :class="bountyType === 'Disclosure'
+        ? 'bg-secondary text-white'
+        : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
+        " @click="bountyType = 'Disclosure'">
         Disclosure Guidelines
       </p>
-      <p
-        class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black"
-        :class="
-          bountyType === 'Eligibility'
-            ? 'bg-secondary text-white'
-            : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
-        "
-        @click="bountyType = 'Eligibility'"
-      >
+      <p class="cursor-pointer rounded-2xl px-5 py-2 text-lg font-semibold tracking-wide text-black" :class="bountyType === 'Eligibility'
+        ? 'bg-secondary text-white'
+        : 'bg-white text-black transition-all duration-300 ease-in-out hover:bg-gray-200'
+        " @click="bountyType = 'Eligibility'">
         Eligibility and Coordinated Disclosure
       </p>
     </div>
     <div class="mt-8 flex items-start gap-10 max-lg:flex-col-reverse">
       <div class="w-full lg:w-[75%]">
-        <!-- <h1
-          class="border-b border-paragraph pb-10 text-xl font-bold text-white"
-        >
+        <!-- <h1 class="border-b border-paragraph pb-10 text-xl font-bold text-white">
           AscendEX is a platform for investors of all experience levels who want
           to make their crypto ascent better. Simple crypto solutions and
           friendly customer support help our users invest, trade, earn, and
           manage their ascents with confidence. All Scope Focus Area
         </h1> -->
         <!-- scope -->
-        <div
-          v-if="bountyType === 'Scope' || bountyType === 'All'"
-          class="mr-auto max-w-4xl"
-        >
+        <div v-if="bountyType === 'Scope' || bountyType === 'All'" class="mr-auto max-w-4xl">
           <h1 class="mb-4 text-2xl font-bold text-white">IN SCOPE</h1>
           <div class="mb-8 overflow-x-auto rounded-lg shadow-md">
-            <table
-              class="w-full min-w-[600px] border-collapse rounded-lg bg-white/10 text-left"
-            >
+            <table class="w-full min-w-[600px] border-collapse rounded-lg bg-white/10 text-left">
               <thead>
                 <tr class="bg-primary text-lg text-white">
                   <th class="px-6 py-4 font-normal">Target</th>
@@ -97,21 +60,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  v-for="target in programId.targets"
-                  class="group cursor-pointer border-b border-secondary transition-all duration-200 ease-in-out hover:bg-secondary"
-                >
-                  <td
-                    class="flex items-center gap-2 px-4 py-3 font-medium capitalize text-white"
-                  >
-                    <span
-                      class="inline-block w-[300px] truncate text-blue-600 group-hover:text-white"
-                      >{{ target.url }}</span
-                    >
-                    <button
-                      @click="copyPassword(target.url)"
-                      class="transion-all ml-2 text-gray-400 duration-300 ease-in-out hover:scale-110 group-hover:text-white"
-                    >
+                <tr v-for="target in programId.targets"
+                  class="group cursor-pointer border-b border-secondary transition-all duration-200 ease-in-out hover:bg-secondary">
+                  <td class="flex items-center gap-2 px-4 py-3 font-medium capitalize text-white">
+                    <span class="inline-block w-[300px] truncate text-blue-600 group-hover:text-white">{{ target.url
+                    }}</span>
+                    <button @click="copyPassword(target.url)"
+                      class="transion-all ml-2 text-gray-400 duration-300 ease-in-out hover:scale-110 group-hover:text-white">
                       <i class="far fa-copy"></i>
                     </button>
                   </td>
@@ -119,10 +74,7 @@
                     {{ target.type }}
                   </td>
                   <td class="px-4 py-3 font-medium capitalize text-white">
-                    <span
-                      class="severity-dot severity-critical text-hookYellow"
-                      >{{ target.severity }}</span
-                    >
+                    <span class="severity-dot severity-critical text-hookYellow">{{ target.severity }}</span>
                   </td>
                   <td class="px-4 py-3 font-medium capitalize text-white">
                     {{ target.reward }}
@@ -133,24 +85,19 @@
           </div>
         </div>
         <!--Focus Area -->
-        <div
-          v-if="bountyType === 'FocusArea' || bountyType === 'All'"
-          class="mt-8"
-        >
+        <div v-if="bountyType === 'FocusArea' || bountyType === 'All'" class="mt-8">
           <h1 class="mb-4 text-3xl font-bold text-white">Focus Area</h1>
           <div>
-            <h2
-              class="mb-4 border-b-2 border-gray-500 pb-2 text-xl font-bold text-white"
-            >
+            <h2 class="mb-4 border-b-2 border-gray-500 pb-2 text-xl font-bold text-white">
               IN SCOPE VULNERABILITIES (WEB, MOBILE)
             </h2>
             <p class="text-xl text-paragraph">
               We are interested in the following vulnerabilities:
             </p>
-            <!-- <p class="text-2xl text-paragraph">
+            <p class="text-2xl text-paragraph">
               {{ programId.inScopeVulnerabilities }}
-            </p> -->
-            <ul class="mt-5 space-y-4">
+            </p>
+            <!-- <ul class="mt-5 space-y-4">
               <li class="textDescription text-xl text-white">
                 Business logic issues
               </li>
@@ -169,12 +116,10 @@
               <li class="textDescription text-xl text-white">
                 Cross-Site Scripting (XSS)
               </li>
-            </ul>
+            </ul> -->
           </div>
           <div class="mt-8">
-            <h2
-              class="mb-4 border-b-2 border-gray-500 pb-2 text-xl font-bold text-white"
-            >
+            <h2 class="mb-4 border-b-2 border-gray-500 pb-2 text-xl font-bold text-white">
               OUT OF SCOPE: WEB VULNERABILITIES
             </h2>
             <p class="text-xl text-paragraph">
@@ -183,10 +128,10 @@
               discretion). In general, the following vulnerabilities do not
               correspond to the severity threshold:
             </p>
-            <!-- <p class="text-2xl text-paragraph">
+            <p class="text-2xl text-paragraph">
               {{ programId.outOfScopeVulnerabilities }}
-            </p> -->
-            <ul class="mt-5 space-y-4">
+            </p>
+            <!-- <ul class="mt-5 space-y-4">
               <li class="textDescription text-xl text-white">
                 Vulnerabilities in third-party applications
               </li>
@@ -236,19 +181,16 @@
               <li class="textDescription text-xl text-white">
                 Missing HTTP security headers
               </li>
-            </ul>
+            </ul> -->
           </div>
         </div>
         <!--Program Rules -->
-        <div
-          class="mt-8"
-          v-if="bountyType === 'ProgramRules' || bountyType === 'All'"
-        >
+        <div class="mt-8" v-if="bountyType === 'ProgramRules' || bountyType === 'All'">
           <h1 class="mb-4 text-3xl font-bold text-white">Program Rules</h1>
-          <!-- <p class="text-2xl text-paragraph">
+          <p class="text-2xl text-paragraph">
             {{ programId.programRules }}
-          </p> -->
-          <ul class="mt-5 space-y-4">
+          </p>
+          <!-- <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               Avoid using web application scanners for automatic vulnerability
               searching which generates massive traffic
@@ -279,20 +221,17 @@
             <li class="textDescription text-xl text-white">
               Don’t break any law and stay in the defined scope
             </li>
-          </ul>
+          </ul> -->
         </div>
         <!--Disclosure Guidelines -->
-        <div
-          class="mt-8"
-          v-if="bountyType === 'Disclosure' || bountyType === 'All'"
-        >
+        <div class="mt-8" v-if="bountyType === 'Disclosure' || bountyType === 'All'">
           <h1 class="mb-4 text-3xl font-bold text-white">
             Disclosure Guidelines
           </h1>
-          <!-- <p class="text-2xl text-paragraph">
+          <p class="text-2xl text-paragraph">
             {{ programId.disclosureGuidelines }}
-          </p> -->
-          <ul class="mt-5 space-y-4">
+          </p>
+          <!-- <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               Do not discuss this program or any vulnerabilities (even resolved
               ones) outside of the program without express consent from the
@@ -305,13 +244,10 @@
             <li class="textDescription text-xl text-white">
               Please do NOT publish/discuss bugs
             </li>
-          </ul>
+          </ul> -->
         </div>
         <!--Eligibility and Coordinated Disclosure -->
-        <div
-          class="mt-8"
-          v-if="bountyType === 'Eligibility' || bountyType === 'All'"
-        >
+        <div class="mt-8" v-if="bountyType === 'Eligibility' || bountyType === 'All'">
           <h1 class="mb-4 text-3xl font-bold text-white">
             Eligibility and Coordinated Disclosure
           </h1>
@@ -320,10 +256,10 @@
             us improve the security. However, only those that meet the following
             eligibility requirements may receive a monetary reward:
           </p>
-          <!-- <p class="text-2xl text-paragraph">
+          <p class="text-2xl text-paragraph">
             {{ programId.eligibility }}
-          </p> -->
-          <ul class="mt-5 space-y-4">
+          </p>
+          <!-- <ul class="mt-5 space-y-4">
             <li class="textDescription text-xl text-white">
               You must be the first reporter of a vulnerability.
             </li>
@@ -350,14 +286,12 @@
               ONLY USE the EMAIL under which you registered your HackenProof
               account (in case of violation, no bounty can be awarded)
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
       <div class="w-full lg:w-2/5">
         <div class="mb-5 rounded-lg border border-paragraph py-4">
-          <div
-            class="flex items-center gap-4 border-b border-paragraph px-6 pb-4"
-          >
+          <div class="flex items-center gap-4 border-b border-paragraph px-6 pb-4">
             <i class="fa-solid fa-circle-dollar-to-slot text-hookYellow"></i>
             <h1 class="text-xl font-bold text-white">Rewards</h1>
           </div>
