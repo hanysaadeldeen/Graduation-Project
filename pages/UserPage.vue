@@ -188,25 +188,46 @@ const reports = ref([
   },
 ]);
 
-// const { getAdminData, userData, isLoading } = useUserPage();
 
 
-// onMounted(() => {
-//   getAdminData();
-// });
+import { useUserPage } from "~/composables/user"
+const { fetchPrograms, fetchUserDataTest } = useUserPage();
 
-const { fetchUserData } = useUserPage();
-// const { data: userData, pending, error } = await useAsyncData('user-data', () => fetchUserData());
+const token = useCookie("token");
+
+const runtimeConfig = useRuntimeConfig();
+const loading = ref(false);
+
+const fetchUserData = async () => {
+  console.log(token.value);
+  console.log(userRole.value);
+  console.log(runtimeConfig.public.BaseApi);
+  loading.value = true;
+  try {
+    const response = await fetch(
+      `https://zeropoint.runasp.net/api/Users`,
+      {
+        headers: {
+          Authorization: `Bearer ${token.value}`,
+        },
+      },
+    );
+    return response;
+  } catch (err) {
+    console.error("Fetch error:", err);
+  } finally {
+    loading.value = false;
+  }
+};
+onMounted(() => {
+  fetchUserDataTest();
+  // fetchUserData();
+});
 
 
-
-// if (userData) {
-//   console.log(userData.value && userData.value[0].authorName);
-// }
-
-definePageMeta({
-  middleware: 'auth',
-})
+// definePageMeta({
+//   middleware: 'auth',
+// })
 
 
 </script>
